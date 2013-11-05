@@ -1,0 +1,33 @@
+one:
+  username: MyString
+  hashed_password: MyString
+  salt: MyString
+  name: MyString
+  sex: MyString
+  birthday: 2013-10-09
+  status: MyString
+  height: 1
+  position: MyString
+  address: MyString
+  relation: MyString
+  image: MyString
+  rights: 1
+  score: 1
+  description: MyText
+
+two:
+  username: MyString
+  hashed_password: MyString
+  salt: MyString
+  name: MyString
+  sex: MyString
+  birthday: 2013-10-09
+  status: MyString
+  height: 1
+  position: MyString
+  address: MyString
+  relation: MyString
+  image: MyString
+  rights: 1
+  score: 1
+  description: MyText

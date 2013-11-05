@@ -1,0 +1,47 @@
+<% title "Users" %>
+<% if session[:user_id].present? %>
+<%= link_to 'logout', user_logout_path %>
+<% end %>
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Hashed Password</th>
+    <th>Salt</th>
+    <th>Name</th>
+    <th>Sex</th>
+    <th>Birthday</th>
+    <th>Status</th>
+    <th>Height</th>
+    <th>Position</th>
+    <th>Address</th>
+    <th>Relation</th>
+    <th>Image</th>
+    <th>Rights</th>
+    <th>Score</th>
+    <th>Description</th>
+  </tr>
+  <% for user in @users %>
+    <tr>
+      <td><%= user.username %></td>
+      <td><%= user.hashed_password %></td>
+      <td><%= user.salt %></td>
+      <td><%= user.name %></td>
+      <td><%= user.sex %></td>
+      <td><%= user.birthday %></td>
+      <td><%= user.status %></td>
+      <td><%= user.height %></td>
+      <td><%= user.position %></td>
+      <td><%= user.address %></td>
+      <td><%= user.relation %></td>
+      <td><%= user.image %></td>
+      <td><%= user.rights %></td>
+      <td><%= user.score %></td>
+      <td><%= user.description %></td>
+      <td><%= link_to "Show", user %></td>
+      <td><%= link_to "Edit", edit_user_path(user) %></td>
+      <td><%= link_to "Destroy", user, method: :delete, confirm: 'Are u sure' %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New User", new_user_path %></p>

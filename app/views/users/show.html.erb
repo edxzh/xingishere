@@ -1,0 +1,68 @@
+<% title "User" %>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+<p>
+  <strong>Hashed Password:</strong>
+  <%= @user.hashed_password %>
+</p>
+<p>
+  <strong>Salt:</strong>
+  <%= @user.salt %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+<p>
+  <strong>Sex:</strong>
+  <%= @user.sex %>
+</p>
+<p>
+  <strong>Birthday:</strong>
+  <%= @user.birthday %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%= @user.status %>
+</p>
+<p>
+  <strong>Height:</strong>
+  <%= @user.height %>
+</p>
+<p>
+  <strong>Position:</strong>
+  <%= @user.position %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+<p>
+  <strong>Relation:</strong>
+  <%= @user.relation %>
+</p>
+<p>
+  <strong>Image:</strong>
+  <%= @user.image %>
+</p>
+<p>
+  <strong>Rights:</strong>
+  <%= @user.rights %>
+</p>
+<p>
+  <strong>Score:</strong>
+  <%= @user.score %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @user.description %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_user_path(@user) %> |
+  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", users_path %>
+</p>
