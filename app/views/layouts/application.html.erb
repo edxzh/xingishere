@@ -8,12 +8,25 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
-    </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a href="#" class="brand">星际争霸2</a>
+          <ul class="nav navbar-nav">
+            <li><a href="#">主页</a></li>
+            <li><a href="#">博客</a></li>
+            <li><a href="#">个人中心</a></li>
+            <li><a href="#">幸运抽奖</a></li>
+            <li><a href="#">留言</a></li>
+            <li><a href="#">关于我们</a></li>
+          </ul>
+          <form action="#" method="post" class="navbar-form pull-right">
+            <input type="text" name="" value="" width="200px" />
+            <button class="btn">搜索</button>
+          </form>
+        </div><!-- container -->
+      </div><!-- navbar-inner  -->
+    </div><!-- navbar -->
+    <%= yield %>
   </body>
 </html>
