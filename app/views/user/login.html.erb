@@ -1,16 +1,13 @@
 <%= form_tag(user_login_path, method: :post) do %>
-  <% if flash[:alert] %>
-    <%= flash[:alert] %>
-  <% end %>
   <p>
-    <%= label_tag "username" %>
+    <%= label_tag "用户名" %>
     <%= text_field_tag :username %>
     </p>
     <p>
-      <%= label_tag "password" %>
+      <%= label_tag "密码" %>
       <%= password_field_tag :password %>
       </p>
       <p>
-        <%= submit_tag "login" %>
+        <%= submit_tag "登录", class: "btn" %>
       </p>
 <% end %>
