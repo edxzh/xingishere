@@ -65,6 +65,8 @@ group :development do
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'factory_girl_rails'
+  gem 'awesome_print'
+  gem 'unicorn'
 end
 
 group :test do
@@ -74,7 +76,7 @@ group :test do
   gem 'capybara'
 end
 
-gem 'mocha', :group => :test
+gem 'mocha', :group => :test, :require => false
 gem 'simple_form'
 
 group :development do
