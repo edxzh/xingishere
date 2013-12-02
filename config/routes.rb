@@ -1,4 +1,10 @@
 Mywebsite::Application.routes.draw do
+  get "sessions/index"
+
+  get "sessions/login"
+
+  get "sessions/logout"
+
   get "account/advanced"
 
   get "account/icon"
@@ -7,6 +13,7 @@ Mywebsite::Application.routes.draw do
 
   get "user/register"
 
+  get "user/index"
   get "user/login"
   post "user/login"
   post "user/zhuce"
