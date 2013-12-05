@@ -1,64 +1,20 @@
 <%= form_for @user do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :username %><br />
+    <%= f.label :username, "用户名" %><br />
     <%= f.text_field :username %>
   </p>
   <p>
-    <%= f.label :hashed_password %><br />
-    <%= f.text_field :hashed_password %>
+    <%= f.label :password, "密码" %><br />
+    <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :salt %><br />
-    <%= f.text_field :salt %>
+    <%= f.label :password_confirmation, "确认密码" %><br />
+    <%= f.password_field :password_confirmation %>
   </p>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :email, "电子邮件" %><br />
+    <%= f.email_field :email %>
   </p>
-  <p>
-    <%= f.label :sex %><br />
-    <%= f.text_field :sex %>
-  </p>
-  <p>
-    <%= f.label :birthday %><br />
-    <%= f.date_select :birthday %>
-  </p>
-  <p>
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </p>
-  <p>
-    <%= f.label :height %><br />
-    <%= f.number_field :height %>
-  </p>
-  <p>
-    <%= f.label :position %><br />
-    <%= f.text_field :position %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
-  <p>
-    <%= f.label :relation %><br />
-    <%= f.text_field :relation %>
-  </p>
-  <p>
-    <%= f.label :image %><br />
-    <%= f.text_field :image %>
-  </p>
-  <p>
-    <%= f.label :rights %><br />
-    <%= f.number_field :rights %>
-  </p>
-  <p>
-    <%= f.label :score %><br />
-    <%= f.number_field :score %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p><%= f.submit %></p>
+  <p><%= f.submit "提交", class: "btn" %></p>
 <% end %>

@@ -23,6 +23,8 @@ gem 'roo'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-datetimepicker-rails'
 
+gem 'bcrypt-ruby', '3.0.1'
+
 gem 'whenever'
 gem 'mechanize', '~> 2.5.1'
 gem 'chinese_pinyin'
@@ -51,6 +53,7 @@ gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'
+gem 'bcrypt-ruby', '3.0.1'
 
 # Deploy with Capistrano
 gem 'capistrano'

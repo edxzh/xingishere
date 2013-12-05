@@ -1,6 +1,6 @@
 # encoding : utf-8
 class ApplicationController < ActionController::Base
-  before_filter :authorize
+  # before_filter :authorize
   protect_from_forgery
   def authorize
     if User.find_by_id(session[:user_id]).blank?

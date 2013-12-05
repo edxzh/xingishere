@@ -1,6 +1,5 @@
 # encoding : utf-8
 class UsersController < ApplicationController
-  before_filter :authorize
   def index
     @users = User.all
   end
@@ -36,7 +35,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    p '============================'
     @user = User.find(params[:id])
     @user.destroy
     redirect_to users_url, :notice => "Successfully destroyed user."
