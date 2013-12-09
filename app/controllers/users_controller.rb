@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to @user, :notice => "Successfully created user."
+      flash[:success] = "恭喜您注册成功，现在您可畅游所有服务"
+      redirect_to @user
     else
       render :action => 'new'
     end
