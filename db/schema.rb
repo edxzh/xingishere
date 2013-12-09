@@ -33,8 +33,7 @@ ActiveRecord::Schema.define(:version => 20131204071340) do
 
   create_table "users", :force => true do |t|
     t.string   "username",        :limit => 20,                      :null => false
-    t.string   "hashed_password"
-    t.string   "salt"
+    t.string   "password_digest"
     t.string   "name",            :limit => 20,  :default => "星哥粉丝", :null => false
     t.string   "sex"
     t.date     "birthday"

@@ -27,7 +27,11 @@ Mywebsite::Application.routes.draw do
 
   resources :blogs
 
-  resources :users
+  resources :users, except: [:new, :edit, :update, :destory] do
+    collection do
+      get "/register" => "users#new", as: :register
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

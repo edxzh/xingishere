@@ -7,8 +7,7 @@ describe User do
   subject { @user }
 
   it { should respond_to(:username, :password, :password_confirmation, :name, :sex, :birthday, :status, :email, :height, :position, :address, :relation, :image, :rights, :score, :description) }
-  it { should respond_to(:hashed_password) }
-  # it { should respond_to(:authenticate) }
+  it { should respond_to(:password_digest) }
 
   it { should be_valid }
 

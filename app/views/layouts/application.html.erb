@@ -2,35 +2,24 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
+
     <%= stylesheet_link_tag "application", "data-turbolinks-track" => true %>
+    <%= yield :styles %>
+
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= yield :javascripts %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
   <body>
-    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
-      <div class="navbar-inner">
-        <div class="container">
-          <a href="#" class="brand">星际争霸2</a>
-          <nav>
-          <ul class="nav navbar-nav">
-            <li><a href="#">主页</a></li>
-            <li><a href="#">博客</a></li>
-            <li><a href="#">个人中心</a></li>
-            <li><a href="#">幸运抽奖</a></li>
-            <li><a href="#">留言</a></li>
-            <li><a href="#">关于我们</a></li>
-          </ul>
-          </nav>
-          <form action="#" method="post" class="navbar-form pull-right">
-            <input type="text" name="" value="" width="200px" />
-            <button class="btn">搜索</button>
-          </form>
-        </div><!-- container -->
-      </div><!-- navbar-inner  -->
-    </header><!-- navbar -->
+    <%= render 'layouts/header' %>
     <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
       <%= yield %>
     </div>
+    <%= render 'layouts/footer' %>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
