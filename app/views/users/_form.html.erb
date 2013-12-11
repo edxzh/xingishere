@@ -1,37 +1,41 @@
-<%= form_for @user, html: {class: "form-horizontal"} do |f| %>
-  <fieldset>
-  <%= f.error_messages %>
-  <legend>用户注册</legend>
-  <div class="control-group">
-    <%= f.label :username, "用户名", class: "control-label" %>
-    <div class="controls">
-      <%= f.text_field :username %>
-      <p class="help-block">输入不少于6位的字母，数字，可包含下划线</p>
-    </div>
+<div class="row">
+  <div class="span6">
+    <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
+      <fieldset>
+        <%= f.error_messages %>
+        <legend>用户注册</legend>
+        <div class="control-group">
+          <%= f.label :username, "用户名", class: "control-label" %>
+          <div class="controls">
+            <%= f.text_field :username %>
+            <p class="help-block">输入不少于6位的字母，数字，可包含下划线</p>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password, "密码", class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password %>
+            <p class="help-block">输入不少于6位的字母，数字，可包含下划线</p>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password_confirmation, "确认密码", class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation %>
+            <p class="help-block">再次输入密码</p>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :email, "电子邮件", class: "control-label" %>
+          <div class="controls">
+            <%= f.email_field :email %>
+            <p class="help-block">请输入正确的电子邮箱，方便我们找到你</p>
+          </div>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "提交", class: "btn btn-primary pull-right" %>
+        </div>
+      </fieldset>
+    <% end %>
   </div>
-  <div class="control-group">
-    <%= f.label :password, "密码", class: "control-label" %>
-    <div class="controls">
-      <%= f.password_field :password %>
-      <p class="help-block">输入不少于6位的字母，数字，可包含下划线</p>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :password_confirmation, "确认密码", class: "control-label" %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation %>
-      <p class="help-block">再次输入密码</p>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :email, "电子邮件", class: "control-label" %>
-    <div class="controls">
-      <%= f.email_field :email %>
-      <p class="help-block">请输入正确的电子邮箱，方便我们找到你</p>
-    </div>
-  </div>
-  <div class="form-actions">
-    <%= f.submit "提交", class: "btn btn-primary pull-right" %>
-  </div>
-  </fieldset>
-<% end %>
+</div>

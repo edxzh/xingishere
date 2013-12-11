@@ -1,25 +1,9 @@
 Mywebsite::Application.routes.draw do
-  get "sessions/index"
-
-  get "sessions/login"
-
-  get "sessions/logout"
+  resources :sessions,  only: [:new, :create, :destory]
 
   get "account/advanced"
-
   get "account/icon"
-
   get "account/profile"
-
-  get "user/register"
-
-  get "user/index"
-  get "user/login"
-  post "user/login"
-  post "user/zhuce"
-
-  get "user/logout"
-
   get "home/index"
   root  to: 'home#index', as: :root
 
@@ -27,11 +11,10 @@ Mywebsite::Application.routes.draw do
 
   resources :blogs
 
-  resources :users, except: [:new, :edit, :update, :destory] do
-    collection do
-      get "/register" => "users#new", as: :register
-    end
-  end
+  resources :users, except: [:new, :edit, :update, :destory]
+  match '/register',  to: 'users#new',          via: 'get'
+  match '/login',     to: 'sessions#new',       via: 'get'
+  match '/logout',    to: 'sessions#destory',   via: 'delete'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
