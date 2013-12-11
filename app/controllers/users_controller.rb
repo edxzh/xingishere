@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   def new
@@ -16,6 +16,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = "恭喜您注册成功，现在您可畅游所有服务"
+      session[:user_id]     = @user.id
+      session[:user_name]   = @user.name
       redirect_to @user
     else
       render :action => 'new'
@@ -23,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   def update

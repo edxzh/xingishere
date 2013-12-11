@@ -4,18 +4,35 @@
       <a href="/" class="brand">星际争霸2</a>
       <nav>
         <ul class="nav navbar-nav">
-          <li><a href="#">主页</a></li>
+          <li><%= link_to "主页", root_path %></li>
           <li><a href="#">博客</a></li>
-          <li><a href="#">个人中心</a></li>
           <li><a href="#">幸运抽奖</a></li>
           <li><a href="#">留言</a></li>
-          <li><a href="#">关于我们</a></li>
+          <li><a href="/about">关于我们</a></li>
         </ul>
       </nav>
-      <form action="#" method="post" class="navbar-form pull-right">
+      <form action="#" method="post" class="navbar-form pull-left">
         <input type="text" name="" value="" width="200px" />
         <button class="btn">搜索</button>
       </form>
+      <ul class="nav navbar-nav pull-right">
+      <% if session[:user_name] %>
+        <li class="dropdown">
+          <a href="#user" data-toggle="dropdown"><%= session[:user_name] %><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to '我的主页', user_path(id: session[:user_id]) %></li>
+            <li><%= link_to '个人资料设置', "#" %></li>
+            <li>
+              <a href="#">我的关注</a>
+            </li>
+            <li><%= link_to '退出', logout_path %></li>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to '注册', register_path %></li>
+        <li><%= link_to '登录', login_path %></li>
+      <% end %>
+      </ul>
     </div><!-- container -->
   </div><!-- navbar-inner  -->
 </header><!-- navbar -->

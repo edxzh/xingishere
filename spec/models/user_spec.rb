@@ -8,6 +8,7 @@ describe User do
 
   it { should respond_to(:username, :password, :password_confirmation, :name, :sex, :birthday, :status, :email, :height, :position, :address, :relation, :image, :rights, :score, :description) }
   it { should respond_to(:password_digest) }
+  it { should respond_to(:authenticate) }
 
   it { should be_valid }
 
@@ -26,8 +27,10 @@ describe User do
 
   # 验证长度
   describe "密码不能过长或者过短" do
-    before { @user.password = "xx" }
-    before { @user.password = "x" * 60 }
+    before do
+      @user.password = "xx" 
+      @user.password = "x" * 60
+    end
     it { should_not be_valid }
   end
 
