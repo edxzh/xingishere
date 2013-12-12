@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
 
-  validates :username,    presence: true, uniqueness: true
+  # validates :username,    presence: true, uniqueness: true
+  # username is quit
 
   validates :sex,         presence: { message: '请选择性别' }, :if => :profile?
 
