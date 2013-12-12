@@ -1,5 +1,5 @@
 # encoding : utf-8
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 
 describe User do
   before { @user = User.new(username: "example user", password: "abc123", password_confirmation: "abc123", name: "Example User", sex: "male", email: "xxx@xx.com") }
@@ -9,7 +9,8 @@ describe User do
   it { should respond_to(:username, :password, :password_confirmation, :name, :sex, :birthday, :status, :email, :height, :position, :address, :relation, :image, :rights, :score, :description) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:authenticate) }
-  it {should respond_to(:admin)}
+  it { should respond_to(:admin) }
+  it { should respond_to(:blogs) }
 
   it { should be_valid }
 
@@ -55,7 +56,7 @@ describe User do
       end
     end
   end
-  describe "UserName和Email不能重复" do
+  describe "Email大小写敏感" do
     before do
       user_with_same_email = @user.dup
       user_with_same_email.email = @user.email.upcase
@@ -69,6 +70,25 @@ describe User do
     before do
       @user.save!
       @user.toggle!(:admin)
+    end
+  end
+
+  describe "association with blog" do
+    before { @user.save }
+    let!(:older_blog) { FactoryGirl.create(:blog, user: @user, created_at: 1.day.ago) }
+    let!(:newer_blog) { FactoryGirl.create(:blog, user: @user, created_at: 1.hour.ago) }
+
+    it "the blogs should have right orders" do
+      expect(@user.blogs.to_a).to eq [newer_blog, older_blog]
+    end
+  end
+
+  describe "when destory user, destory his blogs" do
+    let(:blogs) { @user.blogs.to_a }
+    @user.destory
+    expect(:blogs).not_to be_empty
+    blogs.each do |blog|
+      expect(Blog.where(id: blog.id)).to be_empty
     end
   end
 end

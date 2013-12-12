@@ -1,7 +1,5 @@
 # encoding : utf-8
 require 'spec_helper'
-require 'factory_girl'
-require 'factories/users.rb'
 
 describe "登录验证Authentication" do
   subject { page }

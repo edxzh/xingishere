@@ -1,8 +1,7 @@
 # encoding : utf-8
 require 'spec_helper'
-require 'factory_girl'
-require 'factories/users.rb'
-# require File.dirname(__FILE__) + '/../spec_helper'
+# require 'factory_girl'
+# require 'factories/users.rb'
 
 describe "Users pages" do
   subject { page }
@@ -50,20 +49,28 @@ describe "Users pages" do
 
   describe "个人主页" do
     let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user.id)}
+    let!(:b1) { FactoryGirl.create(:blog, user: user, content: "博客1") }
+    let!(:b2) { FactoryGirl.create(:blog, user: user, content: "博客2") }
+    before { visit user_path(user)}
 
     it { should have_content(user.name) }
-    it { should have_title(user.name) }
+    it { should have_title(full_title(user.name)) }
+
+    describe "blogs" do
+      it { should have_content(b1.content) }
+      it { should have_content(b1.content) }
+      it { should have_content(user.blogs.count) }
+    end
   end
 
   # 用户编辑页面
   describe "编辑" do
     let(:user) { FactoryGirl.create(:user) }
-    before { visit edit_user_path(user.id) }
+    before { visit edit_user_path(user) }
 
     describe "页面" do
       it { should have_content("编辑") }
-      it { should have_title("编辑") }
+      it { should have_title(full_title("资料编辑")) }
       # it { should have_link("change", href: 'http://sds') }
     end
     describe "填写无效数据" do
@@ -94,8 +101,8 @@ describe "Users pages" do
       let(:user) { FactoryGirl.create(:user) }
 
       describe "in the users controller" do
-        before { visit edit_user_path(user) }
-        it { should have_title("编辑") }
+        before { visit edit_user_path(user.id) }
+        it { should have_title(full_title("资料编辑")) }
 
         describe "进入列表页" do
           before { visit users_path }
@@ -104,7 +111,7 @@ describe "Users pages" do
       end
 
       describe "提交更新用户资料" do
-        before { patch user_path(user) }
+        before { put user_path(user) }
         specify { expect(response).to redirect_to(login_path) }
       end
     end
@@ -138,7 +145,7 @@ describe "Users pages" do
       end
       describe "登录之后" do
         it "回到刚刚登录的页面" do
-          expect(page).to have_title(full_title('编辑'))
+          expect(page).to have_title(full_title('资料编辑'))
         end
       end
     end

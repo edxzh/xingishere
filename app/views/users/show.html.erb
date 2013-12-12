@@ -2,10 +2,6 @@
 
 <%= gravatar_for @user %>
 <p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-<p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
@@ -54,8 +50,12 @@
   <strong>Description:</strong>
   <%= @user.description %>
 </p>
-
-<p>
-  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", users_path %>
-</p>
+<div class="span8">
+  <% if @user.blogs.any? %>
+    <h3>共<%= @user.blogs.count %>篇博客</h3>
+    <ol class="blogs">
+      <%= render @blogs %>
+    </ol>
+    <%= paginate @blogs %>
+  <% end %>
+</div>
