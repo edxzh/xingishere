@@ -2,15 +2,12 @@
   <%= f.error_messages %>
   <p>
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: "我的日志" %>
   </p>
   <p>
     <%= f.label :content %><br />
     <%= f.text_area :content %>
-  </p>
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <script type="text/javascript">CKEDITOR.replace('blog[content]');</script>
   </p>
   <p>
     <%= f.label :tag %><br />

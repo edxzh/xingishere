@@ -1,9 +1,10 @@
+# encoding : utf-8
 FactoryGirl.define do
   factory :user do
-    id                          1000
+    sequence(:id)               { |n| n }
     username                    "testuser"
     sequence(:name)             { |n| "testuser_#{n}" }
-    sequence(:email)            { |n| "test_#{n}@qq.com" }
+    sequence(:email)            { |n| "test_e_#{n}@qq.com" }
     password                    "password"
     password_confirmation       "password"
     password_digest             "asdfawef"
@@ -11,5 +12,10 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+  end
+  factory :blog do
+    title           "我的日记"
+    content         "日记内容1"
+    user
   end
 end

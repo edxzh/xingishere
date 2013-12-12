@@ -56,20 +56,21 @@ gem 'jbuilder'
 gem 'bcrypt-ruby', '3.0.1'
 
 # Deploy with Capistrano
-gem 'capistrano'
+gem 'capistrano', require: false
 
 # To use debugger
 # gem 'debugger'
-gem 'nifty-generators', :group => :development
 
 group :development do
   gem 'debugger'
-  gem 'rspec'
-  gem 'rspec-rails'
-  gem 'factory_girl'
-  gem 'factory_girl_rails'
   gem 'awesome_print'
   gem 'unicorn'
+  gem 'nifty-generators'
+end
+
+group :test, :development do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
 end
 
 group :test do

@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20131212021719) do
   create_table "blogs", :force => true do |t|
     t.string   "title",      :limit => 30, :default => "我的日志", :null => false
     t.text     "content",                                      :null => false
-    t.integer  "user_id"
+    t.integer  "user_id",                                      :null => false
     t.string   "tag"
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false

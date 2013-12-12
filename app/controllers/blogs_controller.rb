@@ -1,3 +1,4 @@
+# encoding : utf-8
 class BlogsController < ApplicationController
   def index
     @blogs = Blog.all
@@ -13,8 +14,9 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(params[:blog])
+    @blog.user_id = session[:user_id]
     if @blog.save
-      redirect_to @blog, :notice => "Successfully created blog."
+      redirect_to @blog, :notice => "发表成功"
     else
       render :action => 'new'
     end
@@ -27,7 +29,7 @@ class BlogsController < ApplicationController
   def update
     @blog = Blog.find(params[:id])
     if @blog.update_attributes(params[:blog])
-      redirect_to @blog, :notice  => "Successfully updated blog."
+      redirect_to @blog, :notice  => "更新成功"
     else
       render :action => 'edit'
     end

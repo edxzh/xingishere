@@ -2,20 +2,17 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>User</th>
-    <th>Tag</th>
+    <th>标题</th>
+    <th>内容</th>
+    <th>标签</th>
   </tr>
   <% for blog in @blogs %>
     <tr>
-      <td><%= blog.title %></td>
-      <td><%= blog.content %></td>
-      <td><%= blog.user_id %></td>
+      <td><%= link_to blog.title, blog %></td>
+      <td><%= raw blog.content %></td>
       <td><%= blog.tag %></td>
-      <td><%= link_to "Show", blog %></td>
-      <td><%= link_to "Edit", edit_blog_path(blog) %></td>
-      <td><%= link_to "Destroy", blog, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to "编辑", edit_blog_path(blog) %></td>
+      <td><%= link_to "删除", blog, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>

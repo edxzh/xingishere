@@ -4,7 +4,7 @@ class CreateBlogs < ActiveRecord::Migration
     create_table :blogs do |t|
       t.string :title,        limit:30,   null:false, default:"我的日志"
       t.text :content,                    null:false
-      t.integer :user_id
+      t.integer :user_id,                 null:false
       t.string :tag
       t.timestamps
     end
