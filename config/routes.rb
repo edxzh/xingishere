@@ -11,10 +11,10 @@ Mywebsite::Application.routes.draw do
 
   resources :blogs
 
-  resources :users, except: [:new, :edit, :update, :destory]
+  resources :users
   match '/register',  to: 'users#new',          via: 'get'
   match '/login',     to: 'sessions#new',       via: 'get'
-  match '/logout',    to: 'sessions#destory',   via: 'delete'
+  match '/logout',    to: 'sessions#destroy',   via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

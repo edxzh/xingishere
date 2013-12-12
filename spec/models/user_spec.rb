@@ -9,6 +9,7 @@ describe User do
   it { should respond_to(:username, :password, :password_confirmation, :name, :sex, :birthday, :status, :email, :height, :position, :address, :relation, :image, :rights, :score, :description) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:authenticate) }
+  it {should respond_to(:admin)}
 
   it { should be_valid }
 
@@ -62,5 +63,12 @@ describe User do
     end
 
     it { should_not be_valid }
+  end
+
+  describe "设置管理员权限" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
   end
 end

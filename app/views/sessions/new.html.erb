@@ -4,9 +4,9 @@
     <%= form_tag sessions_path,class: "form-horizontal" %>
       <legend>登录</legend>
       <div class="control-group">
-        <%= label_tag 'username', "用户名/电子邮箱", class: "control-label" %>
+        <%= label_tag 'email', "电子邮箱", class: "control-label" %>
         <div class="controls">
-          <%= text_field_tag :username %>
+          <%= text_field_tag :email %>
         </div>
       </div>
       <div class="control-group">
