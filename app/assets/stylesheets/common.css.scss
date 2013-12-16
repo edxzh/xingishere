@@ -60,3 +60,14 @@ aside{
     margin-bottom: 5px;
   }
 }
+
+/* 总体css */
+.info { font-size: 16px; padding: 10px 10px 0px; text-align: left; border-bottom: 1px solid #e5e5e5; }
+.info h1 { font-size: 30px; font-weight: normal; color: #563d7c; }
+.info p { color: #333; margin-bottom: 10px; padding-bottom: 10px;}
+.title { font-weight: normal; }
+.user h2 { text-align:center; font-size: 18px; border-bottom: 1px solid #e5e5e5; }
+.user p { text-indent: 2em; }
+
+/* 首页样式 */
+.caption h3 a{ color: #333; font-weight: 500; line-height: 1.1;}

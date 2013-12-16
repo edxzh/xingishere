@@ -15,4 +15,8 @@ module ApplicationHelper
     gravatar_url  = "http://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
+
+  def format_time(time)
+    time.strftime("%Y-%m-%d %H:%M:%S")
+  end
 end

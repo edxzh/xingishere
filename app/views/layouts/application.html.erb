@@ -17,7 +17,20 @@
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
-      <%= yield %>
+      <div class="row">
+        <div class="span12">
+          <div class="info">
+            <h1>Edward的博客</h1>
+            <p>爱好广泛，没有专长</p>
+          </div><!-- info -->
+          <div class="span8">
+            <%= yield %>
+          </div>
+          <div class="span3">
+            <%= render 'shared/aside' %>
+          </div><!-- span3 -->
+        </div><!-- span12 -->
+      </div><!-- row -->
     </div>
     <%= render 'layouts/footer' %>
     <%= debug(params) if Rails.env.development? %>

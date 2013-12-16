@@ -63,8 +63,8 @@ class UsersController < ApplicationController
       end
     end
     def is_admin
-      user = User.find(session[:user_id])
-      if user.blank? || !user.admin?
+      user = User.find(session[:user_id]) if session[:user_id].present?
+      if !user || !user.admin?
         redirect_to '/404.html'
       end
     end
