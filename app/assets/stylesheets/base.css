@@ -147,3 +147,6 @@ abbr,acronym { border:0}
 .bBlue{border:1px dashed #00F} 
 
 .container{max-width: 980px;}
+
+/* color */
+.red{color:#F00}
