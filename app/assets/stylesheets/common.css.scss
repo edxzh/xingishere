@@ -67,7 +67,21 @@ aside{
 .info p { color: #333; margin-bottom: 10px; padding-bottom: 10px;}
 .title { font-weight: normal; }
 .user h2 { text-align:center; font-size: 18px; border-bottom: 1px solid #e5e5e5; }
-.user p { text-indent: 2em; }
+.user p { font-size: 16px; }
+.user .doc { text-indent: 2em; }
+.rss{ font-size: 16px; font-weight: bold; margin-top: 18px; }
 
 /* 首页样式 */
+.caption .underline {font-size: 24px;border-bottom:1px solid #e5e5e5;}
 .caption h3 a{ color: #333; font-weight: 500; line-height: 1.1;}
+.blog_info{color:#999;}
+
+/* 新建和编辑日志样式 */
+#blog_title{width: 670px; text-align: center;}
+#blog_content{width: 680px; padding:0px;margin:0px;}
+.span8{padding:0px;margin:0px;}
+
+/* blog的show页面 */
+.blog .title{color: #333; font-weight: 500; line-height: 1.1;font-size:30px;width: 670px; text-align:center;border-bottom: 1px solid #e8e8e8; padding-bottom: 5px;}
+.blog .content{margin-top: 18px;}
+

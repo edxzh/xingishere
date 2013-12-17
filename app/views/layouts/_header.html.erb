@@ -1,7 +1,7 @@
 <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
   <div class="navbar-inner">
     <div class="container">
-      <a href="/" class="brand">星际争霸2</a>
+      <a href="/" class="brand">撕瓦星哥2</a>
       <nav>
         <ul class="nav navbar-nav">
           <li><%= link_to "主页", root_path %></li>
@@ -10,10 +10,10 @@
           <li><a href="#">留言</a></li>
         </ul>
       </nav>
-      <form action="#" method="post" class="navbar-form pull-left">
-        <input type="text" name="" value="" width="200px" />
-        <button class="btn">搜索</button>
-      </form>
+      <%= form_tag(root_path, method: :get, class: "navbar-form pull-right") do %>
+        <%= text_field_tag(:keyword, params[:keyword]) %>
+        <%= submit_tag "搜索", class: "btn" %>
+      <% end %>
       <ul class="nav navbar-nav pull-right">
       <% if session[:user_name] %>
         <li class="dropdown">

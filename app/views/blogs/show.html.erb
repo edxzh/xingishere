@@ -1,24 +1,17 @@
-<% title "Blog" %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
-<p>
-  <strong>Content:</strong>
-  <%= raw @blog.content %>
-</p>
-<p>
-  <strong>User:</strong>
-  <%= @blog.user_id %>
-</p>
-<p>
-  <strong>Tag:</strong>
-  <%= @blog.tag %>
-</p>
-
-<p>
-  <%= link_to "Edit", edit_blog_path(@blog) %> |
-  <%= link_to "Destroy", @blog, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", blogs_path %>
-</p>
+<% title @blog.title %>
+<ol class="breadcrumb">
+  <li><%= link_to '首页', '/' %><span class="divider">/</span></li>
+  <li><%= link_to @blog.category, blogs_path(category: @blog.category) %><span class="divider">/</span></li>
+  <li class="active">正文</li>
+</ol>
+<div class="blog">
+  <h2 class="title"><%= @blog.title %></h2>
+    <div class="blog_info">
+      作者：<%= @blog.username %> | 
+      标签：<% @blog.tags.each do |tag| %>
+              <%= link_to @blog.tag, root_path(tags: @blog.category) %><br />
+            <% end %>
+      | 发布：<%= format_time(@blog.created_at) %>
+    </div>
+  <div class="content"><%= raw @blog.content %></div>
+</div>
