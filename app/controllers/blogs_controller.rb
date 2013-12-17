@@ -1,7 +1,12 @@
 # encoding : utf-8
 class BlogsController < ApplicationController
+  before_filter :is_admin,      only: [:edit, :update, :new, :create]
   def index
-    @blogs = Blog.all
+    if params[:category].present?
+      @blogs = Blog.category(params[:category])
+    else
+      @blogs = Blog.all
+    end
   end
 
   def show
