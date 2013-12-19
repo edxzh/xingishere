@@ -1,23 +1,37 @@
-<%= form_tag users_path do %>
-  <p>
-    <%= label_tag :名字 %><br />
-    <%= text_field_tag :name %>
-  </p>
-  <p>
-    <%= label_tag :性别 %><br />
-    <%= text_field_tag :sex %>
-  </p>
-  <p>
-    <%= label_tag :出生日期 %><br />
-    <%= date_select :sex, options = {} %>
-  </p>
-  <p>
-    <%= label_tag :婚姻情况 %><br />
-    <%= text_field_tag :status %>
-  </p>
-  <p>
-    <%= label_tag :身高 %><br />
-    <%= number_field_tag :height %>
-    </p>
-    <%= submit_tag "确认" %>
+<%= render "nav", base_path: "#", advanced_path: account_advanced_path %>
+<%= form_tag users_path, class: "form-horizontal", roles: "form" do %>
+  <fieldset>
+    <div class="form-group">
+      <%= label_tag :sex, "您是：", class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <label class="inline"><%= radio_button_tag :sex, '1', false, class: "inline" %>帅哥</label>
+        <label class="inline"><%= radio_button_tag :sex, '0', false, class: "inline" %>美女</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag :birthday, "出生日期：", class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= text_field_tag :birthday,'', { class: "form-control" } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag :status, "婚姻情况：", class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= text_field_tag :status,'', { class: "form-control" } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag :status, "身高：", class: "col-sm-2 control-label" %>
+      <div class="col-sm-10 input-group">
+        <%= number_field_tag :height,'', { class: "form-control" } %>
+        <span class="input-group-addon">cm</span>
+      </div>
+    </div>
+    <%= submit_tag "确认", class: "btn" %>
+  </fieldset>
 <% end %>
+<script type="text/javascript">
+  $('#birthday').datetimepicker({
+    format: 'yyyy-mm-dd'
+  });
+</script>

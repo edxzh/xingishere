@@ -51,10 +51,10 @@
   <%= @user.description %>
 </p>
 <div class="span8">
-  <% if @user.blogs.any? %>
-    <h3>共<%= @user.blogs.count %>篇博客</h3>
+  <% if @blogs.any? %>
+    <h3>共<%= @blogs.count %>篇博客</h3>
     <ol class="blogs">
-      <%= render @blogs %>
+      <%= render partial: 'blogs/blog', collection: @blogs %>
     </ol>
     <%= paginate @blogs %>
   <% end %>
