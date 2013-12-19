@@ -2,6 +2,7 @@
 class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   attr_accessible :username, :password, :password_confirmation, :name, :sex, :birthday, :status, :height, :position, :address, :relation, :image, :rights, :score, :description, :email
+  has_many  :user_loves,      dependent:  :destroy
   has_many  :blogs,           dependent:  :destroy
   has_many  :comments,        dependent:  :destroy
   # 加入has_secure_password后不再需要此代码

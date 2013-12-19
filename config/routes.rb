@@ -1,4 +1,6 @@
 Mywebsite::Application.routes.draw do
+  resources :links
+
   resources :sessions,  only: [:new, :create, :destory]
 
   get "account/advanced"
@@ -9,7 +11,11 @@ Mywebsite::Application.routes.draw do
 
   resources :comments
 
-  resources :blogs
+  resources :blogs do
+    collection do
+      get "user_like"
+    end
+  end
 
   resources :users
   match '/register',  to: 'users#new',          via: 'get'

@@ -2,6 +2,7 @@ class Blog < ActiveRecord::Base
   attr_accessible :title, :content, :user_id, :category
   belongs_to  :user
   has_many    :tags
+  has_many    :user_loves
   validates :user_id,           presence: true
   validates :title,             presence: true
 
@@ -18,6 +19,9 @@ class Blog < ActiveRecord::Base
   # 日志作者的名字
   def username
     User.where("id = ?", user_id).first.name
+  end
+  def loves_count
+    UserLove.where("blog_id = ?", id).count
   end
 
 end

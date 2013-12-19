@@ -11,7 +11,11 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find(params[:id])
-    @auth = @blog.user_id == current_user(:id)? ? true : false
+    @like = false                   # 当前用户是否喜欢此博客
+    @like = true if UserLove.where("user_id = ? AND blog_id = ?", current_user.id, @blog.id).first
+
+    @auth = false # 用户是否有权限操作此博客
+    @auth = true if current_user.present? && @blog.user_id == current_user.id
   end
 
   def new
@@ -45,5 +49,19 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @blog.destroy
     redirect_to blogs_url, :notice => "Successfully destroyed blog."
+  end
+
+  def user_like
+    blog_id = params[:blog_id].to_i
+
+    
+    @blog = Blog.find(blog_id)
+    if current_user.present?
+      add_type = UserLove.add(current_user.id, blog_id)
+      render json: { type: add_type, count: @blog.loves_count }
+    else
+      render json: { type: 0 }
+    end
+    
   end
 end
