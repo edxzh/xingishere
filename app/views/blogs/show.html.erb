@@ -1,10 +1,14 @@
 <% title @blog.title %>
 <ol class="breadcrumb">
-  <li><%= link_to '首页', '/' %><span class="divider">/</span></li>
-  <li><%= link_to @blog.category, blogs_path(category: @blog.category) %><span class="divider">/</span></li>
+  <li><%= link_to '首页', '/' %></li>
+  <li><%= link_to @blog.category, root_path(category: @blog.category) %></li>
   <li class="active">正文</li>
 </ol>
-<div class="blog">
+<div class="blog panel panel-default">
+  <div class="panel-heading">
+    <span>博客</span>
+    <%= link_to "返回博客列表", blogs_path, class: "pull-right" %>
+  </div>
   <h2 class="title"><%= @blog.title %></h2>
     <div class="blog_info">
       作者：<%= @blog.username %> | 
@@ -12,6 +16,9 @@
               <%= link_to @blog.tag, root_path(tags: @blog.category) %><br />
             <% end %>
       | 发布：<%= format_time(@blog.created_at) %>
+      <% if @auth.present? %>
+        klk
+      <% end %>
     </div>
   <div class="content"><%= raw @blog.content %></div>
 </div>

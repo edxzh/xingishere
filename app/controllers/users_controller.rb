@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @blogs = @user.blogs.page(params[:page]).per(5)
+    @blogs = @user.blogs.page(params[:page]).per(2)
   end
 
   def new

@@ -6,7 +6,7 @@
   <%= f.error_messages %>
   <%= f.text_field :title, placeholder: "我的日志" %>
   <%= f.text_area :content %>
-  <p><%= f.submit %></p>
+  <p><%= f.submit "发表", class: "btn" %></p>
 <% end %>
 <script type="text/javascript">
   KindEditor.ready(function(K){

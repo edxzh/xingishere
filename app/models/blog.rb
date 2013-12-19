@@ -14,7 +14,10 @@ class Blog < ActiveRecord::Base
   # scope :tag,      ->(tag) do
   #   tags.where("name = ?", tag)
   # end
+
+  # 日志作者的名字
   def username
     User.where("id = ?", user_id).first.name
   end
+
 end

@@ -11,6 +11,7 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find(params[:id])
+    @auth = @blog.user_id == current_user(:id)? ? true : false
   end
 
   def new

@@ -4,29 +4,34 @@
     <title><%= full_title(yield(:title)) %></title>
 
     <%= stylesheet_link_tag "application", "data-turbolinks-track" => true %>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/dist/css/docs.css" rel="stylesheet" type="text/css" />
     <%= yield :styles %>
 
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <script type="text/javascript" src="/dist/js/bootstrap.min.js"></script>
     <%= yield :javascripts %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <div class="info">
+      <div class="container">
+        <h1>Edward的博客</h1>
+        <p>爱好广泛，没有专长</p>
+      </div>
+    </div><!-- info -->
     <div class="container">
       <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
+        <p class="bg-<%= key %>"><%= value %></p>
       <% end %>
       <div class="row">
-        <div class="span12">
-          <div class="info">
-            <h1>Edward的博客</h1>
-            <p>爱好广泛，没有专长</p>
-          </div><!-- info -->
-          <div class="span8">
+        <div class="col-sm-12">
+          <div class="col-sm-9">
             <%= yield %>
           </div>
-          <div class="span3">
+          <div class="col-sm-3">
             <%= render 'shared/aside' %>
           </div><!-- span3 -->
         </div><!-- span12 -->

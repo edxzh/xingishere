@@ -1,8 +1,11 @@
-<% title "Edit Blog" %>
-
-<%= render 'form' %>
-
+<% title "编辑日志" %>
+<div class="blog">
+  <div class="legend">
+    <h3>编辑日志</h3>
+  </div>
+  <%= render 'form' %>
+</div>
 <p>
   <%= link_to "Show", @blog %> |
-  <%= link_to "View All", blogs_path %>
+  <%= link_to "返回查看所有日志", blogs_path %>
 </p>
