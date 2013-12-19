@@ -21,4 +21,10 @@
       <% end %>
     </div>
   <div class="content"><%= raw @blog.content %></div>
+  <div class="panel-footer">
+    <span onclick="user_like(<%= @blog.id %>)" class="pull-right">
+      <a href="javascript:void(0)" id="like"><%= like_icon %><span id="count"><%= @blog.loves_count %></span>人喜欢</a>
+    </span>
+    <div class="cb"></div>
+  </div>
 </div>

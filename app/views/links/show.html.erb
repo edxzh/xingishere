@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @link.title %>
+</p>
+
+<p>
+  <b>Href:</b>
+  <%= @link.href %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @link.category %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @link.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_link_path(@link) %> |
+<%= link_to 'Back', links_path %>
