@@ -11,15 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131219091254) do
+ActiveRecord::Schema.define(:version => 20131220080113) do
+
+  create_table "blog_categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "blog_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "blogs", :force => true do |t|
-    t.string   "title",      :limit => 30, :default => "我的日志", :null => false
-    t.text     "content",                                      :null => false
-    t.integer  "user_id",                                      :null => false
-    t.string   "category"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.string   "title",            :limit => 30, :default => "我的日志", :null => false
+    t.text     "content",                                            :null => false
+    t.integer  "user_id",                                            :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+    t.integer  "blog_category_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -31,13 +38,19 @@ ActiveRecord::Schema.define(:version => 20131219091254) do
     t.datetime "updated_at",                :null => false
   end
 
+  create_table "link_categories", :force => true do |t|
+    t.string   "category"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "links", :force => true do |t|
-    t.string   "title",       :limit => 20,                    :null => false
-    t.string   "href",                                         :null => false
-    t.string   "category",                   :default => "其它", :null => false
-    t.text     "description", :limit => 255
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.string   "title",            :limit => 20,  :null => false
+    t.string   "href",                            :null => false
+    t.text     "description",      :limit => 255
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "link_category_id"
   end
 
   create_table "tags", :force => true do |t|

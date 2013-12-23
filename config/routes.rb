@@ -1,5 +1,6 @@
 Mywebsite::Application.routes.draw do
   resources :links
+  resources :link_category
 
   resources :sessions,  only: [:new, :create, :destory]
 
