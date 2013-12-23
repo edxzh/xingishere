@@ -1,0 +1,10 @@
+<% @link_category.each do |category| %>
+  <div class="rows">
+    <h3><%= category.category %></h3>
+    <ul class="list-inline">
+      <% category.links.each do |link| %>
+        <li><a href=<%= link.href %> data-toggle="tooltip" data-original-title = <%= link.description %> ><%= link.title %></a></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

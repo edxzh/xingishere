@@ -1,8 +1,10 @@
 <% title "新建日志" %>
 <div class="blog">
-  <div class="legend">
-    <h3>新建日志</h3>
-  </div>
-  <%= render 'form' %>
-</div>
-<p><%= link_to "返回日志列表", blogs_path %></p>
+  <div class="blog panel panel-default">
+    <div class="panel-heading">
+      <span>新建日志</span>
+      <%= link_to "返回博客列表", blogs_path, class: "pull-right" %>
+    </div>
+    <%= render 'form' %>
+  </div><!-- panel panel-default -->
+</div><!-- blog -->

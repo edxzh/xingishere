@@ -4,9 +4,17 @@
 <% end %>
 <%= form_for @blog do |f| %>
   <%= f.error_messages %>
-  <%= f.text_field :title, placeholder: "我的日志" %>
+  <%= f.text_field :title, placeholder: "我的日志", class: "form-control" %>
   <%= f.text_area :content %>
-  <p><%= f.submit "发表", class: "btn" %></p>
+  <div class="panel-footer">
+    <span class="form-inline" role="form">
+      <span class="pull-left ">
+        
+      </span>
+      <%= f.submit "发表", class: "btn btn-default pull-right btn-lg" %>
+    </span>
+    <div class="cb"></div>
+  </div>
 <% end %>
 <script type="text/javascript">
   KindEditor.ready(function(K){

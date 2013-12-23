@@ -17,7 +17,7 @@ $(document).ready ->
           $("#like_icon").attr("class", "glyphicon glyphicon-heart-empty")
           updateLike(data.count)
       error: () ->
-        alert("ajax请求不成功？！")
+        alert("ajax请求不成功，请联系开发者")
 
   window.updateLike = (count) ->
     str = ''

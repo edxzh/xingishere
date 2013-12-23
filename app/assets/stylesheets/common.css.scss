@@ -75,11 +75,11 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 /* 首页样式 */
 .caption .underline {font-size: 24px;border-bottom:1px solid #e5e5e5;}
 .caption h3 a{ color: #333; font-weight: 500; line-height: 1.1;}
-.blog{border: 1px solid #DDDDDD; border-bottom-style:0px none #000; border-radius: 5px 5px 0 0;}
+.blog{border-right: 1px solid #DDDDDD; border-bottom-style:0px none #000; border-radius: 5px 5px 0 0;}
 .blog_info{color:#999;}
 
 /* 新建和编辑日志样式 */
-#blog_title{width: 670px; text-align: center;}
+#blog_title{width: 680px; text-align: center;}
 #blog_content{width: 680px; padding:0;margin:0px;}
 .span8{padding:0px;margin:0px;}
 
@@ -87,3 +87,8 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 .blog .title{color: #333; font-weight: 500; line-height: 1.1;font-size:30px;width: 670px; text-align:center;border-bottom: 1px solid #e8e8e8; padding-bottom: 5px;}
 .blog .content{margin:18px 0 10px 0; padding: 0 0 0 8px;}
 
+
+
+/* 链接的分类 */
+.modal-sm{width: 300px;}
+.modal-lg{width: 900px;}

@@ -1,13 +1,17 @@
+# encoding : utf-8
 class LinksController < ApplicationController
+  layout  'links'
   # GET /links
   # GET /links.json
   def index
+    @link_category = LinkCategory.all
     @links = Link.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @links }
     end
+    
   end
 
   # GET /links/1
@@ -25,6 +29,7 @@ class LinksController < ApplicationController
   # GET /links/new.json
   def new
     @link = Link.new
+    @category = LinkCategory.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,15 +45,19 @@ class LinksController < ApplicationController
   # POST /links
   # POST /links.json
   def create
-    @link = Link.new(params[:link])
+    title       = params[:title]
+    href        = params[:href]
+    category_id = params[:category].to_i
+
+    link = Link.new(title: title, href: href, link_category_id: category_id)
 
     respond_to do |format|
-      if @link.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
-        format.json { render json: @link, status: :created, location: @link }
+      if link.save
+        format.html { redirect_to link, notice: 'Link was successfully created.' }
+        format.json { render json: link, status: :created, location: link }
       else
         format.html { render action: "new" }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
+        format.json { render json: link.errors, status: :unprocessable_entity }
       end
     end
   end

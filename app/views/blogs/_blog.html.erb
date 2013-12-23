@@ -4,7 +4,7 @@
       <%= link_to blog.title, blog %>
     </h3>
     <div class="blog_info">
-      分类：<%= link_to blog.category, root_path(category: blog.category) %> | 
+      分类：<%= link_to blog.category, root_path(category: blog.blog_category_id) %> | 
       标签：<% blog.tags.each do |tag| %>
         <%= link_to blog.tag, root_path(tags: blog.category) %><br />
       <% end %>
