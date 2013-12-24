@@ -1,5 +1,6 @@
 # encoding : utf-8
 class LinksController < ApplicationController
+  before_filter :is_admin,      only: [:edit, :update, :new, :create]
   layout  'links'
   # GET /links
   # GET /links.json

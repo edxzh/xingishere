@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131220080113) do
+ActiveRecord::Schema.define(:version => 20131224034317) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(:version => 20131220080113) do
     t.string   "name",            :limit => 20,  :default => "星哥粉丝", :null => false
     t.string   "sex"
     t.date     "birthday"
-    t.string   "status",                         :default => "2",    :null => false
+    t.integer  "status",                         :default => 2,      :null => false
     t.integer  "height"
     t.string   "position"
     t.string   "address"

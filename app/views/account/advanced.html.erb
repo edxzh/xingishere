@@ -1,18 +1,34 @@
-<%= form_tag user_create_path do %>
-  <p>
-    <%= label_tag :职业 %><br />
-    <%= text_field_tag :position %>
-    </p>
-  <p>
-    <%= label_tag :住址 %><br />
-    <%= text_field_tag :address %>
-  </p>
-  <p>
-    <%= label_tag :与星哥的关系 %><br />
-    <%= text_field_tag :relation %>
-    </p>
-<p>
-    <%= label_tag :个性签名 %><br />
-    <%= text_area_tag :description %>
-    </p>
+<%= render "nav", base_path: account_profile_path, advanced_path: "#" %>
+<%= form_tag account_update_adv_path, method: :post, class: "form-horizontal", roles: "form" do %>
+  <fieldset>
+    <div class="form-group">
+      <%= label_tag :position, "职业：", class: "col-sm-2 control-label" %>
+      <div class="col-sm-5">
+        <%= text_field_tag :position, @user.position, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag :address, "现住址：", class: "col-sm-2 control-label" %>
+      <div class="col-sm-5">
+        <%= text_field_tag :address, @user.address, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag :relation, "与星哥的关系：", class: "col-sm-2 control-label" %>
+      <div class="col-sm-5">
+        <%= select_tag :status, options_for_select_relation(@user.relation_name), { class: "form-control" } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag :description, "个性签名：", class: "col-sm-2 control-label" %>
+      <div class="col-sm-5">
+        <%= text_area_tag :description, @user.description, { class: "form-control" } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-5">
+        <%= submit_tag "确认", class: "btn" %>
+      </div>
+    </div>
+  </fieldset>
 <% end %>

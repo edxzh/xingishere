@@ -33,4 +33,5 @@ window.addCategory = (id, name) ->
     $(this).attr("selected", false)
   $("#category").prepend("<option value=\""+id+"\" selected=\"selected\">"+name+"</option>")
 
-$(".list-inline li a").tooltip()
+$(document).ready ->
+  $(".list-inline li a").tooltip()

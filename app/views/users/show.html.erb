@@ -1,55 +1,30 @@
 <% title @user.name %>
 
-<%= gravatar_for @user %>
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#home" data-toggle="tab">基本资料</a></li>
+  <li><a href="#profile" data-toggle="tab">高级资料</a></li>
+  <li><a href="#messages" data-toggle="tab">个人描述</a></li>
+</ul>
 
-<p>
-  <strong>Sex:</strong>
-  <%= @user.sex %>
-</p>
-<p>
-  <strong>Birthday:</strong>
-  <%= @user.birthday %>
-</p>
-<p>
-  <strong>Status:</strong>
-  <%= @user.status %>
-</p>
-<p>
-  <strong>Height:</strong>
-  <%= @user.height %>
-</p>
-<p>
-  <strong>Position:</strong>
-  <%= @user.position %>
-</p>
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-<p>
-  <strong>Relation:</strong>
-  <%= @user.relation %>
-</p>
-<p>
-  <strong>Image:</strong>
-  <%= @user.image %>
-</p>
-<p>
-  <strong>Rights:</strong>
-  <%= @user.rights %>
-</p>
-<p>
-  <strong>Score:</strong>
-  <%= @user.score %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @user.description %>
-</p>
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home">
+    <p>名字：<%= @user.name %></p>
+    <p>性别：<%= I18n.t("user.sex.#{@user.sex}") %></p>
+    <p>出生日期：<%= @user.birthday %></p>
+    <p>婚姻情况：<%= @user.status_name %></p>
+  </div>
+  <div class="tab-pane" id="profile">
+    <p>身高：<%= @user.height %>cm</p>
+    <p>职业：<%= @user.position %></p>
+    <p>现居地：<%= @user.address %></p>
+    <p>与星哥关系：<%= @user.relation_name %></p>
+  </div>
+  <div class="tab-pane" id="messages">
+    <p>个性签名：</p>
+    <%= @user.description %>
+  </div>
+</div><!-- tab-content -->
 <div class="span8">
   <% if @blogs.any? %>
     <h3>共<%= @blogs.count %>篇博客</h3>
