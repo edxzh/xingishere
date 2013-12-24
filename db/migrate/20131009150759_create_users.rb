@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :name,               limit: 20,    null:false, default:"星哥粉丝"
       t.string  :password_digest
       t.string  :sex
-      t.date    :birthday
+      t.date    :birthday                          null:false, default:"1970-01-01"
       t.string  :status
       t.integer :height
       t.string  :position

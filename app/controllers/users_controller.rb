@@ -1,6 +1,7 @@
 # encoding : utf-8
 class UsersController < ApplicationController
   include SessionsHelper
+  layout "account",       only: [:show]
   before_filter :user_login,    only: [:edit, :update, :show]
   before_filter :is_admin,  only: [:edit, :update, :show]
   def index
@@ -47,24 +48,4 @@ class UsersController < ApplicationController
     redirect_to users_url, :success => "删除成功"
   end
   private
-    # def user_login
-    #   if session[:user_id].blank?
-    #     store_location
-    #     flash[:notice] = "请您先登录"
-    #     redirect_to login_path
-    #   end
-    # end
-    # def correct_user
-    #   user = User.find(params[:id])
-    #   if user.id != session[:user_id]
-    #     flash[:notice] = "您无权查看"
-    #     redirect_to root_path
-    #   end
-    # end
-    # def is_admin
-    #   user = User.find(session[:user_id]) if session[:user_id].present?
-    #   if !user || !user.admin?
-    #     redirect_to '/404.html'
-    #   end
-    # end
 end

@@ -20,4 +20,25 @@ module ApplicationHelper
   def format_time(time)
     time.strftime("%Y-%m-%d %H:%M:%S")
   end
+
+  def options_for_select_status(selected = nil)
+    options = []
+    I18n.t("user.status").each do |k, v|
+      options << [v, k]
+    end
+    options_for_select(options)
+  end
+  def options_for_select_relation(selected = nil)
+    options = []
+    I18n.t("user.relation").each do |k, v|
+      options << [v, k]
+    end
+    options_for_select(options)
+  end
+
+  def display_birth(date)
+    if date.present? && date > Date.parse('1970-01-01')
+      date
+    end
+  end
 end

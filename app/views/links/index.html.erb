@@ -3,8 +3,13 @@
     <h3><%= category.category %></h3>
     <ul class="list-inline">
       <% category.links.each do |link| %>
-        <li><a href=<%= link.href %> data-toggle="tooltip" data-original-title = <%= link.description %> ><%= link.title %></a></li>
+        <li><a href=<%= link.href %> target="_blank" data-toggle="tooltip" data-original-title=<%= link.description %> ><%= link.title %></a></li>
       <% end %>
     </ul>
   </div>
 <% end %>
+<script type="text/javascript">
+  $(function(){
+$(".list-inline li a").tooltip()
+      })
+</script>

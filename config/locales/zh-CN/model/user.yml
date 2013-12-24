@@ -1,0 +1,18 @@
+zh-CN:
+  user:
+    sex:
+      male:     "帅哥"
+      female:   "美女"
+    status:
+      single:   "单身"
+      married:  "已婚"
+      divorce:  "离异"
+    relation:
+      primary:  "小学同学"
+      junior:   "中学同学"
+      senior:   "高中同学"
+      colleage: "大学同学"
+      society:  "社会朋友"
+      workmate: "同事"
+      relative: "亲戚"
+

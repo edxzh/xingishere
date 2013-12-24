@@ -7,6 +7,8 @@ Mywebsite::Application.routes.draw do
   get "account/advanced"
   get "account/icon"
   get "account/profile"
+  post "account/update_pro"
+  post "account/update_adv"
   get "home/index"
   root  to: 'home#index', as: :root
 
