@@ -7,6 +7,8 @@ class Blog < ActiveRecord::Base
   validates :user_id,           presence: true
   validates :title,             presence: true
 
+  validates :user,              presence: true
+
   default_scope -> { order('created_at DESC') }
   scope :keyword,  ->(keyword) { where("title like ? or content like ?", "%#{keyword}%", "%#{keyword}%") if keyword.present? }
 
