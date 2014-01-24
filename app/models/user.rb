@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   attr_accessible :username, :password, :password_confirmation, :name, :sex, :birthday, :status, :height, :position, :address, :relation, :image, :rights, :score, :description, :email
   STATUS    = %w(single married divorce).freeze
   RELATION  = %w(primary junior senior colleage society workmate relative)
-  has_many  :user_loves,      dependent:  :destroy
-  has_many  :blogs,           dependent:  :destroy
-  has_many  :comments,        dependent:  :destroy
+  has_many  :user_loves,      dependent:  :destroy, inverse_of: :user
+  has_many  :blogs,           dependent:  :destroy, inverse_of: :user
+  has_many  :comments,        dependent:  :destroy, inverse_of: :user
   # 加入has_secure_password后不再需要此代码
   # attr_accessor :password,  :password_confirmation
 
@@ -17,9 +17,10 @@ class User < ActiveRecord::Base
 
   validates :sex,         presence: { message: '请选择性别' }, :if => :profile?
 
-  validates :password,    presence: true, confirmation: true, length: { minimum: 6, maximum: 20 }, unless: :profile?
+  validates :password,    presence: true, confirmation: true, length: { minimum: 6, maximum: 20 }, on: :create
   validates :name,        presence: true, :if => :profile?
   validates :email,       presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, unless: :profile?
+  validates :height,      numericality: { only_integer: true }
   has_secure_password
 
   def status_name
