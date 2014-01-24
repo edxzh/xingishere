@@ -13,6 +13,7 @@ gem 'dalli'
 gem 'rails_kindeditor'
 
 gem 'carrierwave'
+gem 'carrierwave-mongoid'
 gem 'mini_magick', '~> 3.4'
 gem 'mongo', '1.8.0'
 gem 'mongoid', '~> 3.1.4'
