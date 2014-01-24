@@ -70,20 +70,20 @@ ActiveRecord::Schema.define(:version => 20131224034317) do
   create_table "users", :force => true do |t|
     t.string   "username",        :limit => 20
     t.string   "password_digest"
-    t.string   "name",            :limit => 20,  :default => "星哥粉丝", :null => false
+    t.string   "name",            :limit => 20,  :default => "星哥粉丝",       :null => false
     t.string   "sex"
-    t.date     "birthday"
-    t.integer  "status",                         :default => 2,      :null => false
+    t.date     "birthday",                       :default => '1970-01-01', :null => false
+    t.integer  "status",                         :default => 2
     t.integer  "height"
     t.string   "position"
     t.string   "address"
     t.string   "relation"
     t.string   "image"
     t.integer  "rights"
-    t.integer  "score",                          :default => 0,      :null => false
+    t.integer  "score",                          :default => 0,            :null => false
     t.text     "description",     :limit => 255
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
     t.string   "email"
     t.boolean  "admin",                          :default => false
   end
