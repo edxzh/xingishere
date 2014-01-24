@@ -5,7 +5,7 @@
 <%= form_for @blog do |f| %>
   <%= f.error_messages %>
   <%= f.text_field :title, placeholder: "我的日志", class: "form-control" %>
-  <%= f.text_area :content %>
+  <%= f.kindeditor :content %>
   <div class="panel-footer">
     <span class="form-inline" role="form">
       <span class="pull-left ">
@@ -17,7 +17,7 @@
   </div>
 <% end %>
 <script type="text/javascript">
-  KindEditor.ready(function(K){
-    window.editor = K.create('#blog_content');
-  });
+  // KindEditor.ready(function(K){
+  //   window.editor = K.create('#blog_content');
+  // });
 </script>
