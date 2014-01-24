@@ -10,6 +10,8 @@ gem 'mysql2'
 gem 'rails_config'
 gem 'dalli'
 
+gem 'rails_kindeditor'
+
 gem 'carrierwave'
 gem 'mini_magick', '~> 3.4'
 gem 'mongo', '1.8.0'
