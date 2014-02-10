@@ -20,11 +20,13 @@ class BlogsController < ApplicationController
 
   def new
     @blog = Blog.new
+    @category = BlogCategory.all
   end
 
   def create
-    @blog = Blog.new(params[:blog])
-    @blog.user_id = session[:user_id]
+    @blog                   = Blog.new(params[:blog])
+    @blog.user_id           = session[:user_id]
+    @blog.blog_category_id  = params[:category].to_i
     if @blog.save
       redirect_to @blog, :notice => "发表成功"
     else
