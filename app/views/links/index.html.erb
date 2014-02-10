@@ -1,3 +1,6 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag controller_path, media: "all" %>
+<% end %>
 <% @link_category.each do |category| %>
   <div class="rows">
     <h3><%= category.category %></h3>

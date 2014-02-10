@@ -1,3 +1,6 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag controller_path, media: "all" %>
+<% end %>
 <h1>New link</h1>
 
 <%= render 'form' %>
