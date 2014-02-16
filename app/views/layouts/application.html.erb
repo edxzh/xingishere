@@ -10,6 +10,7 @@
     <%= yield :styles %>
 
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag controller_path, media: "all" %>
     <script type="text/javascript" src="/dist/js/bootstrap.min.js"></script>
     <%= yield :javascripts %>
     <%= csrf_meta_tag %>

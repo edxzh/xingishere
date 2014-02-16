@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140210083002) do
+ActiveRecord::Schema.define(:version => 20140216091009) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20140210083002) do
     t.datetime "created_at",                                         :null => false
     t.datetime "updated_at",                                         :null => false
     t.integer  "blog_category_id"
+    t.integer  "view_total",                     :default => 0,      :null => false
   end
 
   create_table "comments", :force => true do |t|

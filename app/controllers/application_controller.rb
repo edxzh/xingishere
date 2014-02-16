@@ -18,9 +18,9 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin
-      user = User.find(session[:user_id]) if session[:user_id].present?
-      if !user || !user.admin?
-        redirect_to '/404.html'
-      end
+    user = User.find(session[:user_id]) if session[:user_id].present?
+    if !user || !user.admin?
+      redirect_to '/404.html'
     end
+  end
 end

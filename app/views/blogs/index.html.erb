@@ -1,1 +1,5 @@
-<% title "Blogs" %>
+<% provide(:title, '博客') %>
+<div id="main">
+  <%= render partial: 'blogs/blog', collection: @blogs %>
+  <%= paginate @blogs %>
+</div>
