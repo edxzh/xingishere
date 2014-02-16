@@ -30,7 +30,7 @@ class LinksController < ApplicationController
   # GET /links/new.json
   def new
     @link = Link.new
-    @category = LinkCategory.all
+    @category = LinkCategory.where(user_id: current_user.id)
 
     respond_to do |format|
       format.html # new.html.erb

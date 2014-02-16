@@ -25,6 +25,9 @@ Mywebsite::Application.routes.draw do
   match '/login',     to: 'sessions#new',       via: 'get'
   match '/logout',    to: 'sessions#destroy',   via: 'get'
 
+  match 'about', to: 'pages#about', as: :about
+  match 'me', to: 'pages#me', as: :me
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

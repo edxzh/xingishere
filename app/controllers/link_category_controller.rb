@@ -6,7 +6,7 @@ class LinkCategoryController < ApplicationController
 
   def create
     name = params[:link_category_name]
-    link_category = LinkCategory.new(category: name)
+    link_category = LinkCategory.new(category: name, user_id: current_user.id)
     if link_category.save
       render json: { status: 1, id: link_category.id, name: link_category.category }
     else
