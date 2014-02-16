@@ -63,6 +63,7 @@ abbr,acronym { border:0}
 .w200{width:200px}
 .w250{width:250px}
 .w300{width:300px}
+.w350{width:350px}
 .w400{width:400px}
 .w500{width:500px}
 .w600{width:600px}
@@ -151,3 +152,5 @@ abbr,acronym { border:0}
 
 /* color */
 .red{color:#F00}
+.white{color:#FFF}
+.w360{width:360px}
