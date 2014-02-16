@@ -3,15 +3,19 @@ class BlogsController < ApplicationController
   before_filter :is_admin,      only: [:edit, :update, :new, :create]
   def index
     if params[:category].present?
-      @blogs = Blog.category(params[:category])
+      @blogs = Blog.category(params[:category]).per(5)
+    elsif params[:keyword]
+      @blogs = Blog.keyword(params[:keyword]).page(params[:page]).per(5)
     else
-      @blogs = Blog.all
+      @blogs = Blog.page(params[:page]).per(5)
     end
   end
 
   def show
     @blog = Blog.find(params[:id])
     @like = false                   # 当前用户是否喜欢此博客
+    @blog.view_total = @blog.view_total += 1
+    @blog.save
     @like = true if UserLove.where("user_id = ? AND blog_id = ?", current_user.id, @blog.id).first
 
     @auth = false # 用户是否有权限操作此博客

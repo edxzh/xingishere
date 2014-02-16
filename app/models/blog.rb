@@ -1,5 +1,5 @@
 class Blog < ActiveRecord::Base
-  attr_accessible :title, :content, :user_id, :blog_category_id
+  attr_accessible :title, :content, :user_id, :blog_category_id, :view_total
   belongs_to  :user
   belongs_to  :blog_category
   has_many    :tags

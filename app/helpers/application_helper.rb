@@ -41,4 +41,8 @@ module ApplicationHelper
       date
     end
   end
+
+  def hot_blogs
+    Blog.order("view_total ASC, created_at DESC").limit(10)
+  end
 end
