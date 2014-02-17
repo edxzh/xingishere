@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav">
         <li><%= link_to (root_path) do %>主页&nbsp;<span class="glyphicon glyphicon-home"></span><% end %></li>
         <li><%= link_to "博客", blogs_path %></li>
-        <li><a href="#">吐槽</a></li>
+        <li><%= link_to "吐槽", messages_path %></li>
         <li><%= link_to "链接", links_path, target: "_blank" %></li>
         <li><%= link_to "关于本站", about_path %></li>
       </ul>
