@@ -13,9 +13,11 @@ $(document).ready ->
         if data.type == 1
           $("#like_icon").attr("class", "glyphicon glyphicon-heart")
           updateLike(data.count)
-        else
+        else if data.type == 0
           $("#like_icon").attr("class", "glyphicon glyphicon-heart-empty")
           updateLike(data.count)
+        else
+          toggle()
       error: () ->
         alert("ajax请求不成功，请联系开发者")
 
@@ -23,3 +25,14 @@ $(document).ready ->
     str = ''
     str = '' + count
     $("#count").html(str)
+
+  window.toggle = () ->
+    count = $("#count").html()
+    if $("#like_icon").hasClass("glyphicon-heart-empty")
+      $("#like_icon").attr("class", "glyphicon glyphicon-heart")
+      count -= -1
+      updateLike(count)
+    else
+      $("#like_icon").attr("class", "glyphicon glyphicon-heart-empty")
+      count -= 1
+      updateLike(count)

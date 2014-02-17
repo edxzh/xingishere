@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
       login user
       session[:user_name] = user.name
       session[:user_id] = user.id
-      redirect_back_or user
+      flash.now[:success] = "登录成功"
+      redirect_back_or root_path
     else
       flash.now[:error] = "登录失败"
       render 'new'

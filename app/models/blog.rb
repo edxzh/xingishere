@@ -18,6 +18,16 @@ class Blog < ActiveRecord::Base
   #   tags.where("name = ?", tag)
   # end
 
+  class << self
+    def like_by_user?(user_id, blog_id)
+      if UserLove.where("user_id = ? AND blog_id = ?", user_id, blog_id).first
+        true
+      else
+        false
+      end
+    end
+  end
+
   # 日志作者的名字
   def username
     User.where("id = ?", user_id).first.name

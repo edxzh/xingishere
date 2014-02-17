@@ -16,7 +16,7 @@ class BlogsController < ApplicationController
     @like = false                   # 当前用户是否喜欢此博客
     @blog.view_total = @blog.view_total += 1
     @blog.save
-    @like = true if UserLove.where("user_id = ? AND blog_id = ?", current_user.id, @blog.id).first
+    @like = true if (current_user.present? && Blog.like_by_user?(current_user.id, @blog.id))
 
     @auth = false # 用户是否有权限操作此博客
     @auth = true if current_user.present? && @blog.user_id == current_user.id
@@ -66,7 +66,7 @@ class BlogsController < ApplicationController
       add_type = UserLove.add(current_user.id, blog_id)
       render json: { type: add_type, count: @blog.loves_count }
     else
-      render json: { type: 0 }
+      render json: { type: -1, count: @blog.loves_count+1 }
     end
     
   end

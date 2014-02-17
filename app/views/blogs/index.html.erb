@@ -1,5 +1,9 @@
 <% provide(:title, '博客') %>
 <div id="main">
-  <%= render partial: 'blogs/blog', collection: @blogs %>
-  <%= paginate @blogs %>
+  <ul class="blog_index">
+    <% @blogs.each do |blog|  %>
+      <li class="blogs_li"><%= link_to blog.title, blog %><span class="blog_time"><%= format_time(blog.created_at) %><span class="blog_view">访问量：<%= blog.view_total %></span></span></li>
+    <% end %>
+    <%= paginate @blogs %>
+  </ul>
 </div>
