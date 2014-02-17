@@ -43,7 +43,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message          = Message.new(params[:message])
-    @message.user_id  = current_user.id
+    @message.user_id  = current_user.present? ? current_user.id : 0
 
     respond_to do |format|
       if @message.save
