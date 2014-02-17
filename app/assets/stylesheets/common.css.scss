@@ -97,10 +97,16 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 .hot{font-size: 16px;}
 
 /* 留言板 */
+.message{position:relative;min-height: 140px; border-bottom:1px solid #e5e5e5; padding: 10px 0px 0px 4px;}
 .author_title{padding:2px 0 2px 10px;border-bottom:1px solid #e5e5e5;}
 .author_message{height:120px;padding-left: 10px;}
 .message_title{padding:4px 0 4px 10px;border:1px solid #e5e5e5;font-weight:bold;}
+.message img{float:left;margin-right:14px;}
+.message_id{margin-left:10px;color:#777;}
+.msg_name{margin-left:10px;}
+.msg_time{position:absolute;bottom: 5px; left:68px;color:#999;font-size:12px;}
 
 /* 博客index界面 */
 .blogs_li{margin:10px 0px 4px -4px}
-.blog_time{float:right}
+.blog_time{float:right;color:#777;}
+.blog_view{margin-left:8px;}
