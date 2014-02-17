@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many  :blogs,           dependent:  :destroy, inverse_of: :user
   has_many  :comments,        dependent:  :destroy, inverse_of: :user
   has_many  :link_categories, dependent:  :destroy, inverse_of: :user
+  has_many  :messages
   # 加入has_secure_password后不再需要此代码
   # attr_accessor :password,  :password_confirmation
 

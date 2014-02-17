@@ -1,4 +1,7 @@
 Mywebsite::Application.routes.draw do
+  resources :messages, only: [:create, :destory, :index]
+
+
   resources :links
   resources :link_category
 

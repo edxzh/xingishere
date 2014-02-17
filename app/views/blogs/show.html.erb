@@ -1,4 +1,4 @@
-<% title @blog.title %>
+<% provide(:title, '博客') %>
 <ol class="breadcrumb">
   <li><%= link_to '首页', '/' %></li>
   <li><%= link_to @blog.category, root_path(category: @blog.blog_category_id) %></li>

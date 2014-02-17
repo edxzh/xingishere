@@ -1,0 +1,41 @@
+<% provide(:title, '吐槽') %>
+<div class="blog panel panel-default">
+  <div class="panel-heading">
+    <span>吐槽板</span>
+  </div>
+  <div class="author">
+    <p class="author_title">主人寄语</p>
+    <p class="author_message">大家可以在这里畅所欲言，欢迎吐槽BUG，欢迎提出意见！！！</p>
+  </div>
+  <p class="message_title">吐槽（<%= Message.all.length %>）</p>
+  <% if @messages.present? %>
+    <% @messages.each do |message| %>
+      <div class="message">
+        <p><%= message.name %></p>
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  <% else %>
+    还没有人留下痕迹，快来抢沙发哦！！！！！！
+  <% end %>
+  <%= form_for(@message) do |f| %>
+    <% if @message.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+        <ul>
+          <% @message.errors.full_messages.each do |status, msg| %>
+            <div class="alert alert-<%= status %> in"><%= msg %>
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true" >x</button>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.text_area :content %>
+    <%= f.submit "发表", class: "btn btn-large" %>
+  <% end %>
+  <div class="panel-footer">
+    XXXXXXXXX
+    <div class="cb"></div>
+  </div>
+</div>
