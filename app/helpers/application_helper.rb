@@ -1,7 +1,7 @@
 # encoding : utf-8
 module ApplicationHelper
   def full_title(page_title)
-    base_title = "星哥's blog"
+    base_title = "星's blog"
     if page_title.present?
       "#{page_title} | #{base_title}"
     else
