@@ -7,7 +7,7 @@ class Message < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
 
   def name
-    if self.user_id
+    if self.user_id != 0
       User.find(self.user_id).name
     else
       "匿名用户"
