@@ -7,21 +7,32 @@
     <p class="author_title">主人寄语</p>
     <p class="author_message">大家可以在这里畅所欲言，欢迎吐槽BUG，欢迎提出意见！！！<br />本吐槽板会在近期更新，希望大家持续关注！！！<br />由于头像上传功能暂未开发，此处共用头像，此功能将在近期完善！！！</p>
   </div>
+  <div class="msg_form">
+    <form action="" method="post">
+      <textarea name="" class="msg_text_area"></textarea>
+      <br />
+      <input type="button" class="btn btn-primary msg_btn" value="发表" name="" />
+    </form>
+  </div>
+  <a href=javascript:void(0) class="say">我要吐槽</a>
   <p class="message_title">吐槽（<%= Message.all.length %>）</p>
-  <% if @messages.present? %>
-    <% @messages.each do |message| %>
-      <div class="message">
-        <img src="/images/50.jpg" alt="" />
-        <div class="msg">
-          <p class="msg_name"><%= message.name %><%= message.user_id %><span class="message_id">第<%= message.id %>楼</span></p>
-          <p class="msg_content"><%= message.content %></p>
-          <p class="msg_time"><%= format_time(message.created_at) %></p>
+  <div class="msg_box">
+    <% if @messages.present? %>
+      <% @messages.each do |message| %>
+        <div class="message">
+          <img src="/images/50.jpg" alt="" />
+          <div class="msg">
+            <p class="msg_name"><%= message.name %><span class="message_id">第<%= message.id %>楼</span></p>
+            <p class="msg_content"><%= message.content %></p>
+            <p class="msg_time"><%= format_time(message.created_at) %></p>
+          </div>
         </div>
-      </div>
+      <% end %>
+      <%= paginate @messages %>
+    <% else %>
+      还没有人留下痕迹，快来抢沙发哦！！！！！！
     <% end %>
-  <% else %>
-    还没有人留下痕迹，快来抢沙发哦！！！！！！
-  <% end %>
+  </div>
   <div class="panel-footer">
     XXXXXXXXX
     <div class="cb"></div>

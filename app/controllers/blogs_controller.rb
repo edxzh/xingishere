@@ -60,7 +60,6 @@ class BlogsController < ApplicationController
   def user_like
     blog_id = params[:blog_id].to_i
 
-    
     @blog = Blog.find(blog_id)
     if current_user.present?
       add_type = UserLove.add(current_user.id, blog_id)
@@ -68,6 +67,5 @@ class BlogsController < ApplicationController
     else
       render json: { type: -1, count: @blog.loves_count+1 }
     end
-    
   end
 end

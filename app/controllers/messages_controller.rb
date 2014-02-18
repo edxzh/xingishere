@@ -2,8 +2,10 @@
 class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
+
+  layout false, only: :create
   def index
-    @messages = Message.all
+    @messages = Message.page(params[:page]).per(10)
     @message = Message.new
 
     respond_to do |format|
@@ -42,18 +44,24 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message          = Message.new(params[:message])
+    # 前端发来ajax请求，只有一个参数content
+
+    @message          = Message.new(content: params[:content])
     @message.user_id  = current_user.present? ? current_user.id : 0
 
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to messages_path, success: '发表成功' }
-        format.json { render json: @message, status: :created, location: @message }
-      else
-        format.html { render action: messages_path }
-        format.json { render json: @message.errors, status: :error }
-      end
+    if @message.save
+      @messages = Message.page(params[:page]).per(10)
     end
+
+    # respond_to do |format|
+    #   if @message.save
+    #     format.html { redirect_to messages_path, success: '发表成功' }
+    #     format.json { render json: @message, status: :created, location: @message }
+    #   else
+    #     format.html { render action: messages_path }
+    #     format.json { render json: @message.errors, status: :error }
+    #   end
+    # end
   end
 
   # PUT /messages/1
