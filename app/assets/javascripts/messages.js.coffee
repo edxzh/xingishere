@@ -28,8 +28,9 @@ $(document).ready ->
         url: $(this).attr('href')
         type: 'GET'
         success: (data) ->
-          $(".msg_box").html(data)
-          paginate
+          $(".msg_box").html $(data).find('.msg_box').html()
+          window.location.hash = "#tag"
+          paginate()
       return false
 
   paginate()

@@ -8,10 +8,13 @@ class MessagesController < ApplicationController
     @messages = Message.page(params[:page]).per(10)
     @message = Message.new
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @messages }
+    if request.xhr?
+      render layout: false
     end
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.json { render json: @messages }
+#    end
   end
 
   # GET /messages/1
