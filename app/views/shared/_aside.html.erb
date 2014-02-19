@@ -11,4 +11,10 @@
       <li><%= link_to hot_blog.title, hot_blog %></li>
     <% end %>
   </ul>
+  <h2 class=mt25>分类大全</h2>
+  <ul class="hot">
+    <% all_category.each do |category| %>
+      <li><%= link_to category.name, blogs_path(category: category.id) %></li>
+    <% end %>
+  </ul>
 </div>

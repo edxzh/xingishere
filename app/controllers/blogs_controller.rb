@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   before_filter :is_admin,      only: [:edit, :update, :new, :create]
   def index
     if params[:category].present?
-      @blogs = Blog.category(params[:category]).per(10)
+      @blogs = Blog.category(params[:category]).page(params[:page]).per(10)
     elsif params[:keyword]
       @blogs = Blog.keyword(params[:keyword]).page(params[:page]).per(10)
     else

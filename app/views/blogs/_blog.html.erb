@@ -1,11 +1,11 @@
 <div class="caption">
   <h3 class="underline mb5 pb5">
-    <%= link_to blog.title, blog %>
+    <%= raw weight_status(blog) %><%= link_to blog.title, blog %>
   </h3>
   <div class="blog_info">
-    分类：<%= link_to blog.category, root_path(category: blog.blog_category_id) %> |
+    分类：<%= link_to blog.category_name, blogs_path(category: blog.blog_category_id) %> |
     标签：<% blog.tags.each do |tag| %>
-      <%= link_to blog.tag, root_path(tags: blog.category) %><br />
+      <%= link_to blog.tag, root_path(tags: blog.blog_category_id) %><br />
     <% end %>
     | 发布：<%= format_time(blog.created_at) %> | 热度：<span class="label label-default"><%= blog.view_total %>℃</span>
   </div>

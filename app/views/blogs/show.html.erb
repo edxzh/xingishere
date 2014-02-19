@@ -1,7 +1,7 @@
 <% provide(:title, '博客') %>
 <ol class="breadcrumb">
   <li><%= link_to '首页', '/' %></li>
-  <li><%= link_to @blog.category, root_path(category: @blog.blog_category_id) %></li>
+  <li><%= link_to @blog.category_name, blogs_path(category: @blog.blog_category_id) %></li>
   <li class="active">正文</li>
 </ol>
 <div class="blog panel panel-default">
