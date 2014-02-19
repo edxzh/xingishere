@@ -1,7 +1,7 @@
 <% provide(:title, '吐槽') %>
 <div class="blog panel panel-default">
   <div class="panel-heading">
-    <span>吐槽板</span>
+    <span id="tag">吐槽板</span>
   </div>
   <div class="author">
     <p class="author_title">主人寄语</p>
@@ -19,22 +19,16 @@
   <div class="msg_box">
     <% if @messages.present? %>
       <% @messages.each do |message| %>
-        <div class="message">
-          <img src="/images/50.jpg" alt="" />
-          <div class="msg">
-            <p class="msg_name"><%= message.name %><span class="message_id">第<%= message.id %>楼</span></p>
-            <p class="msg_content"><%= message.content %></p>
-            <p class="msg_time"><%= format_time(message.created_at) %></p>
-          </div>
-        </div>
+        <%= raw show_message(message) %>
       <% end %>
       <div class="pagi"><%= paginate @messages %></div>
     <% else %>
-      还没有人留下痕迹，快来抢沙发哦！！！！！！
+      还没有人留下痕迹，还不快来抢沙发！！！！！！！
+      <img src="/images/shafa.jpg" alt="" />
     <% end %>
   </div>
   <div class="panel-footer">
-    XXXXXXXXX
+    <a href="#tag" class="say">我要吐槽</a>
     <div class="cb"></div>
   </div>
 </div>
