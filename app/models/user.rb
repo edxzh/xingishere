@@ -19,24 +19,30 @@ class User < ActiveRecord::Base
 
   validates :sex,         presence: { message: '请选择性别' }, :if => :profile?
 
-  validates :password,    presence: true, confirmation: true, length: { minimum: 6, maximum: 20 }, on: :create
-  validates :name,        presence: true, :if => :profile?
-  validates :email,       presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, unless: :profile?
-  validates :height,      numericality: { only_integer: true }
+  validates :password,    presence: { message: '请输入密码' }, confirmation: { message: '两次输入的密码不一致' }, length: { minimum: 6, maximum: 20, message: '密码长度应大于6个字符，小于20个字符' }, on: :create
+  validates :name,        presence: { message: '请输入名字' }, uniqueness: { case_sensitive: false, message: '名字已存在，请重新填写' }
+  validates :email,       presence: { message: '请输入email' }, format: { with: VALID_EMAIL_REGEX, message: 'email格式不正确' }, uniqueness: { case_sensitive: false, message: '重复的email，请重新填写' }#, unless: :profile?
+  validates :height,      numericality: { only_integer: true }, :if => :profile?
   has_secure_password
 
   def status_name
-    I18n.t("user.status.#{STATUS.at(self.status)}")
+    I18n.t("user.status.#{STATUS.at(status)}")
   end
   def status_name=(name)
     self.status = STATUS.index(name)
   end
+  def status_EN
+    STATUS.at(status)
+  end
 
   def relation_name
-    I18n.t("user.relation.#{RELATION.at(self.status)}")
+    I18n.t("user.relation.#{RELATION.at(relation)}")
   end
   def relation_name=(name)
     self.relation = RELATION.index(name)
+  end
+  def relation_EN
+    RELATION.at(relation)
   end
 
   def profile?

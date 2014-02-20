@@ -12,6 +12,7 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <script type="text/javascript" src="/dist/js/bootstrap.min.js"></script>
     <%= yield :javascripts %>
+    <%= javascript_include_tag controller_path %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>

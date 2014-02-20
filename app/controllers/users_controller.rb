@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include SessionsHelper
   layout "account",       only: [:show]
   before_filter :user_login,    only: [:edit, :update, :show]
-  before_filter :is_admin,  only: [:edit, :update, :show]
+  before_filter :is_admin,  only: [:edit, :update, :show, :index]
   def index
     @users = User.page(params[:page]).per(10)# .padding(1)
   end
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       flash[:success] = "恭喜您注册成功，现在您可畅游所有服务"
       session[:user_id]     = @user.id
       session[:user_name]   = @user.name
-      redirect_to @user
+      redirect_to root_path
     else
       render :action => 'new'
     end
