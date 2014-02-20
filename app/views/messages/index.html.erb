@@ -14,7 +14,9 @@
       <input type="button" class="btn btn-primary msg_btn" value="发表" name="" />
     </form>
   </div>
-  <a href=javascript:void(0) class="say">我要吐槽</a>
+  <% if current_user %>
+    <a href=javascript:void(0) class="say">我要吐槽</a>
+  <% end %>
   <p class="message_title">吐槽（<%= Message.all.length %>）</p>
   <div class="msg_box">
     <% if @messages.present? %>
@@ -28,7 +30,11 @@
     <% end %>
   </div>
   <div class="panel-footer">
-    <a href="#tag" class="say">我要吐槽</a>
-    <div class="cb"></div>
+    <% if current_user.nil? %>
+      需要<%= link_to '登录', login_path, class: 'btn btn-primary' %>后方可回复，如果你还没有帐号你可以<%= link_to '注册', register_path, class: "btn btn-danger" %>一个帐号。
+    <% else %>
+      <a href="#tag" class="say">我要吐槽</a>
+      <div class="cb"></div>
+    <% end %>
   </div>
 </div>

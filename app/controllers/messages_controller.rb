@@ -52,6 +52,9 @@ class MessagesController < ApplicationController
     @message          = Message.new(content: params[:content])
     @message.user_id  = current_user.present? ? current_user.id : 0
 
+    if current_user.nil?
+      render json: {status: -1, message: '只有登录后的用户才能评论哦！如果没有帐号点击右上角注册按钮！'} and return
+    end
     if @message.save
       @messages = Message.page(params[:page]).per(10)
     end

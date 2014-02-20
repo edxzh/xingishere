@@ -15,10 +15,14 @@ $(document).ready ->
         content: content
       success: (data) ->
         # $("").html(data.message)
-        $(".msg_box").html(data)
-        $(".msg_form").hide()
-        $(".msg_text_area").val("")
-        $(".say").show()
+        if data.status != -1
+          $(".alert").show()
+          $(".msg_box").html(data)
+          $(".msg_form").hide()
+          $(".msg_text_area").val("")
+          $(".say").show()
+        else
+          alert data.message
       error: (data) ->
         alert(data.message)
 

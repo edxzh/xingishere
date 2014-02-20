@@ -26,14 +26,14 @@ module ApplicationHelper
     I18n.t("user.status").each do |k, v|
       options << [v, k]
     end
-    options_for_select(options)
+    options_for_select(options, selected)
   end
   def options_for_select_relation(selected = nil)
     options = []
     I18n.t("user.relation").each do |k, v|
       options << [v, k]
     end
-    options_for_select(options)
+    options_for_select(options, selected)
   end
 
   def display_birth(date)

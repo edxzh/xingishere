@@ -20,13 +20,13 @@
       <div class="col-sm-3 input-group date form_date" data-date="" data-date-format="yyyy-mm-dd">
         <%= text_field_tag :birthday, display_birth(@user.birthday), class: "form-control", readonly: "readonly" %>
         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
       </div>
     </div>
     <div class="form-group">
       <%= label_tag :status, "婚姻情况：", class: "col-sm-2 control-label" %>
       <div class="col-sm-3 input-group">
-        <%= select_tag :status, options_for_select_status(@user.status_name), { class: "form-control" } %>
+        <%= select_tag :status, options_for_select_status(@user.status_EN), { class: "form-control" } %>
         <span class="input-group-addon"><span class="glyphicon glyphicon-heart-empty"></span></span>
       </div>
     </div>
