@@ -19,13 +19,30 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.activate_code = SecureRandom.hex 32       # 生成32位随机字符串
     if @user.save
       flash[:success] = "恭喜您注册成功，现在您可畅游所有服务"
       session[:user_id]     = @user.id
       session[:user_name]   = @user.name
-      redirect_to root_path
+      ActivateMailer.user_activate(@user)
+      redirect_to success_users_path
     else
       render :action => 'new'
+    end
+  end
+
+  def success
+    
+  end
+
+  def activate
+    user = User.where(email: params[:email]).first
+    if user.present? && !user.active_status && user.activate_code == params[:activate_code]
+      user.activate_status = true
+      user.save
+      flash[:success] = "恭喜您激活成功！"
+    else
+      flash[:error]   = "激活不成功，请检查地址链接是否复制错误"
     end
   end
 

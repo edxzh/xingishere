@@ -52,6 +52,11 @@ gem 'jquery-rails'
 # To use Jbuilder templates for JSON
 gem 'kaminari'
 
+# mail
+gem 'mail', '~> 2.5.4'
+gem 'rest-client', '~> 1.6.7'
+gem 'multimap', '~> 1.1.2'
+
 gem 'jbuilder'
 
 # Use unicorn as the app server
@@ -59,7 +64,7 @@ gem 'jbuilder'
 gem 'bcrypt-ruby', '3.0.1'
 
 # Deploy with Capistrano
-gem 'capistrano', require: false
+gem 'capistrano', '~> 3.1.0', require: false
 
 # To use debugger
 # gem 'debugger'
