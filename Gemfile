@@ -64,7 +64,7 @@ gem 'jbuilder'
 gem 'bcrypt-ruby', '3.0.1'
 
 # Deploy with Capistrano
-gem 'capistrano', '~> 3.1.0', require: false
+gem 'capistrano', require: false
 
 # To use debugger
 # gem 'debugger'
