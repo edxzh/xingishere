@@ -23,7 +23,12 @@ Mywebsite::Application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    collection do
+      get "success"
+      get "activate"
+    end
+  end
   match '/register',  to: 'users#new',          via: 'get'
   match '/login',     to: 'sessions#new',       via: 'get'
   match '/logout',    to: 'sessions#destroy',   via: 'get'

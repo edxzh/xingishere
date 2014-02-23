@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>恭喜您成功注册xingishere.com</title>
+</head>
+<body>
+  <p>亲爱的<%= @user.name %>，您好！</p>
+  <h1 style="color:red">恭喜您成功注册xingishere.com！！！！</h1>
+  <p>请点击点击下面链接激活您的帐号</p>
+  <a href="www.xingishere.com/user?email=<%= @user.email %>&activate_code=<%= @user.activate_code %>"></a>
+</body>
+</html>

@@ -34,4 +34,16 @@ Mywebsite::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # send emails
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address        => "smtp.mailgun.org",
+    :port           => 587,
+    :domain         => "www.xingishere.com",
+    :user_name      => "postmaster@xingishere.com",
+    :password       => "1gr53ig90kq4",
+  }
 end
