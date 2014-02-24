@@ -17,7 +17,7 @@ set :deploy_via, :remote_cache
 # tell server where source code located, default is "/apps#{application}"
 set :normalize_asset_timestamps, false
 # ssh_options[:forward_agent] = true
-set :user, fetch(:user, 'root')
+set :user, fetch(:user, 'deployer')
 
 set :user_sudo, false
 
@@ -37,9 +37,9 @@ namespace :deploy do
         f.write <<-CONFIG
 # encoding : utf-8
 Capistrano::Configuration.instance.load do
-  role :app, "198.199.96.199"                       # Web服务器，运行 Rails 项目的服务器
-  role :db,  "198.199.96.199", :primary => true     # 执行Rake任务的服务器
-  role :web, "198.199.96.199"
+  role :app, "128.199.228.130"                       # Web服务器，运行 Rails 项目的服务器
+  role :db,  "128.199.228.130", :primary => true     # 执行Rake任务的服务器
+  role :web, "128.199.228.130"
   set :branch, "master"                             # 分支
   set :deploy_to, "/var/www/sites/mywebsite"               # 部署目录
 end
