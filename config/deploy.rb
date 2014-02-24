@@ -19,7 +19,7 @@ set :normalize_asset_timestamps, false
 # ssh_options[:forward_agent] = true
 set :user, fetch(:user, 'root')
 
-# set :user_sudo, false
+set :user_sudo, false
 
 set :application, "mywebsite"
 set :branch, fetch(:branch, "master")
