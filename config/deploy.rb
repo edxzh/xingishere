@@ -24,7 +24,7 @@ set :use_sudo, false
 set :application, "mywebsite"
 set :branch, fetch(:branch, "master")
 set :deploy_to, fetch(:deploy_to, "/var/www/sites/mywebsite")
-set :repository,  "git@github.com/Dogzhou/My_blog"
+set :repository,  "git@github.com:Dogzhou/My_blog.git"
 
 # set :whenever_command, "bundle exec whenever"
 after "deploy", "deploy:cleanup"
