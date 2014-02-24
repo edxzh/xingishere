@@ -53,7 +53,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 
 # mail
-gem 'mail', '~> 2.5.4'
+# gem 'mail', '~> 2.5.4'
 gem 'rest-client', '~> 1.6.7'
 gem 'multimap', '~> 1.1.2'
 

@@ -282,7 +282,6 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari
-  mail (~> 2.5.4)
   mechanize (~> 2.5.1)
   mini_magick (~> 3.4)
   mocha

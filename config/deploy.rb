@@ -17,7 +17,7 @@ set :deploy_via, :remote_cache
 # tell server where source code located, default is "/apps#{application}"
 set :normalize_asset_timestamps, false
 # ssh_options[:forward_agent] = true
-set :user, fetch(:user, root)
+set :user, fetch(:user, 'root')
 
 # set :user_sudo, false
 
@@ -53,7 +53,7 @@ end
     end
   end
 
-  task :restart do
+  task :restart, :roles => :app do
     run "cd #{deploy_to}/current/; touch tmp/restart.txt"
   end
 
@@ -108,10 +108,10 @@ end
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+# role :web, "your web-server here"                          # Your HTTP server, Apache/etc
+# role :app, "your app-server here"                          # This may be the same as your `Web` server
+# role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
+# role :db,  "your slave db-server here"
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
