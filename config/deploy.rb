@@ -104,6 +104,11 @@ end
   end
 
   after "deploy:update_code", "deploy:symlink_configs", "deploy:precompile_assets", "deploy:migrate"
+
+  # rvm Capistrano
+  set :rvm_type, :user                     # Defaults to: :auto
+  set :rvm_ruby_version, '1.9.3-p125'      # Defaults to: 'default'
+  # set :rvm_custom_path, '~/.myveryownrvm'  # only needed if not detected
 end
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`

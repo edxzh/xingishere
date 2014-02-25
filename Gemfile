@@ -65,6 +65,7 @@ gem 'bcrypt-ruby', '3.0.1'
 
 # Deploy with Capistrano
 gem 'capistrano', require: false
+gem 'capistrano-rvm'
 
 # To use debugger
 # gem 'debugger'

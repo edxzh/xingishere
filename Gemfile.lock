@@ -48,6 +48,8 @@ GEM
     capistrano-conditional (0.0.3)
       capistrano
       git
+    capistrano-rvm (0.0.3)
+      capistrano
     capybara (2.1.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -270,6 +272,7 @@ DEPENDENCIES
   bson_ext (= 1.8.0)
   capistrano
   capistrano-conditional
+  capistrano-rvm
   capybara
   carrierwave
   carrierwave-mongoid
