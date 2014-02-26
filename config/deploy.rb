@@ -1,7 +1,13 @@
 # encoding : utf-8
 
+require 'rvm/capistrano'
 require 'bundler/capistrano'
 
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+
+set :rvm_path, '/usr/local/rvm'
+#set :rvm_type, :system                    # Defaults to: :auto
+set :rvm_ruby_version, '1.9.3p125'      # Defaults to: 'default'
 default_run_options[:pty] = true
 
 set :scm, :git
@@ -106,8 +112,7 @@ end
   after "deploy:update_code", "deploy:symlink_configs", "deploy:precompile_assets", "deploy:migrate"
 
   # rvm Capistrano
-  set :rvm_type, :user                     # Defaults to: :auto
-  set :rvm_ruby_version, '1.9.3-p125'      # Defaults to: 'default'
+  
   # set :rvm_custom_path, '~/.myveryownrvm'  # only needed if not detected
 end
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
@@ -132,3 +137,4 @@ end
 #     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 #   end
 # end
+
