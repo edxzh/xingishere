@@ -6,7 +6,7 @@ require 'bundler/capistrano'
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
 set :default_environment, {
-  'PATH' => "PATH=$PATH:$HOME/.rvm/bin"
+  'PATH' => "PATH=/usr/local/rvm/bin"
 }
 set :default_shell, "/bin/bash -l"
 set :rvm_path, '/usr/local/rvm'
