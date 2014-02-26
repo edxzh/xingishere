@@ -6,10 +6,9 @@ require 'bundler/capistrano'
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
 set :default_environment, {
-  'PATH' => "PATH=/usr/local/rvm/bin"
+  'PATH' => "PATH=/usr/local/rvm"
 }
-set :default_shell, "/bin/bash -l"
-set :rvm_path, '/usr/local/rvm'
+#set :rvm_path, '/usr/local/rvm'
 #set :rvm_type, :system                    # Defaults to: :auto
 set :rvm_ruby_version, '1.9.3p125'      # Defaults to: 'default'
 default_run_options[:pty] = true
