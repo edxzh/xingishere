@@ -48,8 +48,6 @@ GEM
     capistrano-conditional (0.0.3)
       capistrano
       git
-    capistrano-rvm (0.0.3)
-      capistrano
     capybara (2.1.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -210,6 +208,8 @@ GEM
       rspec-mocks (~> 2.14.0)
     ruby-ole (1.2.11.7)
     rubyzip (1.0.0)
+    rvm-capistrano (1.5.1)
+      capistrano (~> 2.15.4)
     safe_yaml (0.9.7)
     sass (3.2.11)
     sass-rails (3.2.6)
@@ -272,7 +272,6 @@ DEPENDENCIES
   bson_ext (= 1.8.0)
   capistrano
   capistrano-conditional
-  capistrano-rvm
   capybara
   carrierwave
   carrierwave-mongoid
@@ -300,6 +299,7 @@ DEPENDENCIES
   rest-client (~> 1.6.7)
   roo
   rspec-rails
+  rvm-capistrano
   sass-rails (~> 3.2.3)
   shoulda-matchers
   simple_form
