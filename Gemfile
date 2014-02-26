@@ -61,7 +61,7 @@ gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'
-gem 'bcrypt-ruby', '3.0.1'
+# gem 'bcrypt-ruby', '3.0.1'
 
 # Deploy with Capistrano
 gem 'capistrano', require: false
