@@ -1,16 +1,19 @@
 # encoding : utf-8
 
-require 'rvm/capistrano'
+#require 'rvm/capistrano'
 require 'bundler/capistrano'
 
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+# $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
 set :default_environment, {
-  'PATH' => "PATH=/usr/local/rvm"
+  'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
 }
+
 #set :rvm_path, '/usr/local/rvm'
 #set :rvm_type, :system                    # Defaults to: :auto
-set :rvm_ruby_version, '1.9.3p125'      # Defaults to: 'default'
+#set :rvm_ruby_version, '1.9.3p125'      # Defaults to: 'default'
+#set :rvm_ruby_string,  ENV['GEM_HOME'].gsub(/.*\//,"")
+#set :rvm_type, :user
 default_run_options[:pty] = true
 
 set :scm, :git
