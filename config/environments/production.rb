@@ -49,7 +49,7 @@ Mywebsite::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Enable threaded mode
   # config.threadsafe!
@@ -64,4 +64,16 @@ Mywebsite::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # send emails
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address        => "smtp.mailgun.org",
+    :port           => 587,
+    :domain         => "www.xingishere.com",
+    :user_name      => "postmaster@xingishere.com",
+    :password       => "1gr53ig90kq4",
+  }
 end
