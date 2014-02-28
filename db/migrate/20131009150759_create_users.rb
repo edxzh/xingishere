@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
       t.string  :username,           limit: 20
-      t.string  :name,               limit: 100,    null: false, default: "星哥粉丝"
+      t.string  :name,               limit: 20,    null: false, default: "星哥粉丝"
       t.string  :password_digest
       t.string  :sex
       t.date    :birthday,                         null: false, default: "1970-01-01"
