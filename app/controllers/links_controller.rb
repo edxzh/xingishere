@@ -41,6 +41,7 @@ class LinksController < ApplicationController
   # GET /links/1/edit
   def edit
     @link = Link.find(params[:id])
+    @category = LinkCategory.where(user_id: current_user.id)
   end
 
   # POST /links
