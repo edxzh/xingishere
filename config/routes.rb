@@ -1,8 +1,8 @@
 Mywebsite::Application.routes.draw do
   resources :messages, only: [:create, :destory, :index]
 
-
   resources :links
+  resources :tips
   resources :link_category
 
   resources :sessions,  only: [:new, :create, :destory]

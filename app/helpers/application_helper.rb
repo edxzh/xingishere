@@ -49,4 +49,23 @@ module ApplicationHelper
   def all_category
     BlogCategory.all
   end
+
+  def tips
+    if Tip.count > 0
+      random_id = rand(Tip.first.id..Tip.count)
+      loop do
+        tip = Tip.find(random_id)
+        return tip if tip.present?
+        random_id = (Tip.first.id..Tip.count)
+      end
+    end
+  end
+
+  def statistics
+    raw "<ul>
+      <li>会员个数：#{User.count}</li>
+      <li>文章个数：#{Blog.count}</li>
+      <li>留言个数：#{Message.count}</li>
+    </ul>"
+  end
 end

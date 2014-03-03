@@ -1,10 +1,14 @@
 <div class="user">
   <h2>关于作者</h2>
-  <!-- <p class="doc">一个半吊子ruby on rails程序员，现就职于某声称:"<span class="white">强烈反对员工加班的</span>"互联网公司。拥有一个被员工公开称赞为:"<span class="white">这辈子遇到的最不抠门</span>的老板"&nbsp;&nbsp;<%= link_to "更多信息", me_path %></p>
-  -->
   <p class="doc">一个半吊子ruby on rails程序员，现就职于成都团博百众有限责任公司&nbsp;&nbsp;<%= link_to "更多信息", me_path %></p>
   <p class="rss"><%= link_to '订阅本站', '#' %></p>
   <p>联系作者：Edward_mjz@hotmail.com</p>
+  <div class="panel panel-default mt25">
+    <div class="panel-heading" style="text-align:center;">小贴士</div>
+    <div class="panel-body">
+      <%= tips.content %>
+    </div>
+  </div>
   <h2 class=mt25>最热最新</h2>
   <ul class="hot">
     <% hot_blogs.each do |hot_blog| %>
@@ -17,4 +21,6 @@
       <li><%= link_to category.name, blogs_path(category: category.id) %></li>
     <% end %>
   </ul>
+  <h2 class="mt25">统计信息</h2>
+  <%= statistics %>
 </div>
