@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       flash[:success] = "恭喜您注册成功，现在您可畅游所有服务"
       session[:user_id]     = @user.id
       session[:user_name]   = @user.name
-      ActivateMailer.user_activate(@user)
+      ActivateMailer.user_activate(@user).deliver
       redirect_to success_users_path
     else
       render :action => 'new'
