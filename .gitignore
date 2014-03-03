@@ -45,6 +45,7 @@ config/mongoid.yml
 config/sidekiq*.yml
 config/redis.yml
 config/alimama.yml
+config/initializers/secret_token.rb
 god/local_resque.god
 script/local/*
 *.swp

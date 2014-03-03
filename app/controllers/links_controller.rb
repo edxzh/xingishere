@@ -49,9 +49,10 @@ class LinksController < ApplicationController
   def create
     title       = params[:title]
     href        = params[:href]
+    description = params[:description]
     category_id = params[:category].to_i
 
-    link = Link.new(title: title, href: href, link_category_id: category_id)
+    link = Link.new(title: title, href: href, description: description, link_category_id: category_id)
 
     respond_to do |format|
       if link.save
