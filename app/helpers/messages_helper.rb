@@ -6,7 +6,7 @@ module MessagesHelper
           <img src='/images/50.jpg' alt='' />
           <div class='msg'>
             <p class='msg_name'>#{message.name}<span class='message_id'>第#{message.id}楼</span></p>
-            <p class='msg_content'>#{message.content}</p>
+            <p class='msg_content'>#{h message.content}</p>
             <p class='msg_time'>#{format_time(message.created_at)}</p>
           </div>
         </div>"

@@ -1,0 +1,25 @@
+<%= form_for @tip, html: {class: "form-horizontal"} do |f| %>
+  <% if @tip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tip.errors.count, "error") %> prohibited this tip from being saved:</h2>
+
+      <ul>
+        <% @tip.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label 'content', '内容', class: "col-sm-2 control-label" %>
+    <div class="col-sm-5">
+      <%= f.text_area :content, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-5 col-sm-5">
+      <%= button_tag "登录", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
