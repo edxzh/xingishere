@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def success
-    
+    @user = User.find(session[:user_id])
   end
 
   def activate
