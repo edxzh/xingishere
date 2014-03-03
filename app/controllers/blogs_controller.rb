@@ -68,4 +68,14 @@ class BlogsController < ApplicationController
       render json: { type: -1, count: @blog.loves_count+1 }
     end
   end
+
+  def add_category
+    name = params[:blog_category_name]
+    blog_category = BlogCategory.new(name: name)
+    if blog_category.save
+      render json: { status: 1, id: blog_category.id, name: blog_category.name }
+    else
+      render json: { status: 0 }
+    end
+  end
 end

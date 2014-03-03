@@ -20,6 +20,7 @@ Mywebsite::Application.routes.draw do
   resources :blogs do
     collection do
       get "user_like"
+      post "add_category"
     end
   end
 
