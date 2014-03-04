@@ -55,7 +55,7 @@ module ApplicationHelper
       random_id = rand(Tip.first.id..Tip.count)
       loop do
         tip = Tip.find(random_id)
-        return tip if tip.present?
+        return tip.content if tip.present?
         random_id = (Tip.first.id..Tip.count)
       end
     end
