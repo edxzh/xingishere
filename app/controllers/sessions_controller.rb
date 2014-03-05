@@ -2,7 +2,9 @@
 class SessionsController < ApplicationController
   include SessionsHelper
   def new
+
   end
+
   def create
     user = User.where("email = ?", params[:email].downcase).first
     if user && user.authenticate(params[:password])

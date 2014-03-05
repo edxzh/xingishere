@@ -3,14 +3,16 @@ class UsersController < ApplicationController
   include SessionsHelper
   layout "account",       only: [:show]
   before_filter :user_login,    only: [:edit, :update, :show]
-  before_filter :is_admin,  only: [:edit, :update, :show, :index]
+  before_filter :is_admin,  only: [:edit, :update, :index]
   def index
     @users = User.page(params[:page]).per(10)# .padding(1)
   end
 
   def show
-    @user = User.find(params[:id])
-    @blogs = @user.blogs.page(params[:page]).per(2)
+    @user       = User.find(params[:id])
+    @blogs      = @user.blogs.page(params[:page]).per(2)
+
+    @love_blogs = Blog.loved_by_user(current_user.id)
   end
 
   def new
@@ -33,17 +35,24 @@ class UsersController < ApplicationController
 
   def success
     @user = User.find(session[:user_id])
+    if @user.blank?
+      flash[:danger] = "请您注册并登录"
+      redirect_to root_path
+    end
   end
 
   def activate
     user = User.where(email: params[:email]).first
-    if user.present? && !user.active_status && user.activate_code == params[:activate_code]
+    if user.present? && !user.activate_status && user.activate_code == params[:activate_code]
       user.activate_status = true
       user.save
       flash[:success] = "恭喜您激活成功！"
+    elsif user.present? && user.activate_status
+      flash[:danger] = "您的帐号已经处于激活状态"
     else
-      flash[:error]   = "激活不成功，请检查地址链接是否复制错误"
+      flash[:danger]   = "激活不成功，请检查地址链接是否复制错误"
     end
+    redirect_to root_path
   end
 
   def edit

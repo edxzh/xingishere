@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140303060632) do
+ActiveRecord::Schema.define(:version => 20140305143610) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20140303060632) do
   end
 
   create_table "tips", :force => true do |t|
-    t.text     "content",    :null => false
+    t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -86,17 +86,17 @@ ActiveRecord::Schema.define(:version => 20140303060632) do
 
   create_table "users", :force => true do |t|
     t.string   "username",        :limit => 20
-    t.string   "password_digest"
     t.string   "name",            :limit => 20,  :default => "星哥粉丝",       :null => false
+    t.string   "password_digest"
     t.string   "sex"
     t.date     "birthday",                       :default => '1970-01-01', :null => false
-    t.integer  "status",                         :default => 2
+    t.integer  "status",                         :default => 0,            :null => false
     t.integer  "height"
     t.string   "position"
     t.string   "address"
-    t.string   "relation"
+    t.integer  "relation",                       :default => 0,            :null => false
     t.string   "image"
-    t.integer  "rights"
+    t.integer  "rights",                         :default => 2,            :null => false
     t.integer  "score",                          :default => 0,            :null => false
     t.text     "description",     :limit => 255
     t.datetime "created_at",                                               :null => false

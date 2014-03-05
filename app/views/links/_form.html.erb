@@ -1,7 +1,7 @@
-<%= form_tag links_path, method: :post do %>
-  标题：<%= text_field_tag :title, @link.title %>
-  地址：<%= text_field_tag :href, @link.href %>
-  描述：<%= text_field_tag :description, @link.description %>
+<%= form_for @link do |f| %>
+  标题：<%= f.text_field :title, @link.title %>
+  地址：<%= f.text_field :href, @link.href %>
+  描述：<%= f.text_field :description, @link.description %>
   分类：<%= select_tag(:category, options_from_collection_for_select(@category, :id, :category)) %>
   <%= submit_tag "提交" %>
 <% end %>

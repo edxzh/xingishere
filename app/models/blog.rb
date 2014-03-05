@@ -28,6 +28,11 @@ class Blog < ActiveRecord::Base
       end
     end
 
+    def loved_by_user(user_id)
+      blog_ids = UserLove.where(user_id: user_id).pluck("blog_id")
+      where(id: blog_ids)
+    end
+
     # def category
     #   BlogCategory.find(blog_category_id).name
     # end
@@ -37,12 +42,18 @@ class Blog < ActiveRecord::Base
   def username
     User.where("id = ?", user_id).first.name
   end
+
+  # 共有多少人喜欢
   def loves_count
     UserLove.where("blog_id = ?", id).count
   end
+
+  # 类别名
   def category_name
     BlogCategory.find(blog_category_id).name
   end
+
+  # 通过类别找一批blog
   def self.category_find(category_id)
     BlogCategory.find(category_id).blogs if category_id.present?
   end

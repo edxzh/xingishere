@@ -38,9 +38,11 @@ class User < ActiveRecord::Base
   def relation_name
     I18n.t("user.relation.#{RELATION.at(relation)}")
   end
+
   def relation_name=(name)
     self.relation = RELATION.index(name)
   end
+
   def relation_EN
     RELATION.at(relation)
   end
