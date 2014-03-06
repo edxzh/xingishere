@@ -1,4 +1,5 @@
 class TipsController < ApplicationController
+  before_filter :is_admin,    only: [:new, :create, :edit, :update]
   # GET /tips
   # GET /tips.json
   def index
