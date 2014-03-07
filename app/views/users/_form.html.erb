@@ -5,28 +5,28 @@
     <div class="form-group">
       <%= f.label :name, "名字", class: "col-sm-2 control-label" %>
       <div class="col-sm-5">
-        <%= f.text_field :name, class: "form-control" %>
+        <%= f.text_field :name, class: "form-control", required: true %>
         <p class="help-block">建议使用真实姓名，方便其他人找到你</p>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :email, "电子邮箱", class: "col-sm-2 control-label" %>
       <div class="col-sm-5">
-        <%= f.email_field :email, class: "form-control" %>
+        <%= f.email_field :email, class: "form-control", required: true %>
         <p class="help-block">请输入正确的电子邮箱，用户登录</p>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :password, "密码", class: "col-sm-2 control-label" %>
       <div class="col-sm-5">
-        <%= f.password_field :password, class: "form-control" %>
+        <%= f.password_field :password, class: "form-control", required: true %>
         <p class="help-block">输入不少于6位的字母，数字，可包含下划线</p>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :password_confirmation, "确认密码", class: "col-sm-2 control-label" %>
       <div class="col-sm-5">
-        <%= f.password_field :password_confirmation, class: "form-control" %>
+        <%= f.password_field :password_confirmation, class: "form-control", required: true %>
         <p class="help-block">再次输入密码</p>
       </div>
     </div>
