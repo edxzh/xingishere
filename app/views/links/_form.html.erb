@@ -1,8 +1,8 @@
 <%= form_for @link do |f| %>
-  标题：<%= f.text_field :title, @link.title %>
-  地址：<%= f.text_field :href, @link.href %>
-  描述：<%= f.text_field :description, @link.description %>
-  分类：<%= select_tag(:category, options_from_collection_for_select(@category, :id, :category)) %>
+  标题：<%= f.text_field :title %>
+  地址：<%= f.text_field :href %>
+  描述：<%= f.text_field :description %>
+  分类：<%= f.select(:link_category_id, options_from_collection_for_select(@category, :id, :category)) %>
   <%= submit_tag "提交" %>
 <% end %>
 <input type="button" class="btn" value="增加分类" name="" data-toggle="modal" data-target=".bs-modal-sm" />

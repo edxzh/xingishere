@@ -1,4 +1,6 @@
+# encoding : utf-8
 class CommentsController < ApplicationController
+  layout false, only: :create
   def index
     @comments = Comment.all
   end
@@ -12,11 +14,20 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = Comment.new
+    @comment.content = params[:content]
+    @comment.user_id = current_user.present? ? current_user.id : 0
+    @comment.blog_id = params[:blog_id]
+
+    if current_user.nil?
+      render json: { status: -1, message: '只有登录后的用户才能评论哦！如果没有帐号点击右上角注册按钮！' } and return
+    end
+
+    p 'X' * 100
+    p @comment
+
     if @comment.save
-      redirect_to @comment, :notice => "Successfully created comment."
-    else
-      render :action => 'new'
+      @comments = Comment.blog_has(params[:blog_id]).page(params[:page]).per(10)
     end
   end
 

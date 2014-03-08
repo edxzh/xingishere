@@ -20,6 +20,8 @@ class BlogsController < ApplicationController
 
     @auth = false # 用户是否有权限操作此博客
     @auth = true if current_user.present? && @blog.user_id == current_user.id
+
+    @comments = Comment.blog_has(@blog.id)
   end
 
   def new
@@ -39,7 +41,8 @@ class BlogsController < ApplicationController
   end
 
   def edit
-    @blog = Blog.find(params[:id])
+    @blog     = Blog.find(params[:id])
+    @category = BlogCategory.all
   end
 
   def update

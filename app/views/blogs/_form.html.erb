@@ -9,12 +9,12 @@
   <div class="panel-footer">
     <span class="form-inline" role="form">
       <span class="pull-left ">
-        分类：<%= select_tag(:category, options_from_collection_for_select(@category, :id, :name), class: "form-control") %>
+        分类：<%= select_tag(:category, options_from_collection_for_select(@category, :id, :name, @blog.blog_category_id), class: "form-control") %>
         <input type="button" class="btn" value="增加分类" name="" data-toggle="modal" data-target=".bs-modal-sm" />
         <span class="form-inline">
           <span class="form-group">
           <label class="control-label">权重：</label>
-          <%= text_field_tag :weight, @blog.weight, class: "form-control", placeholder: "权重" %>
+          <%= f.text_field :weight, class: "form-control", placeholder: "权重" %>
           </span>
         </span>
       </span>

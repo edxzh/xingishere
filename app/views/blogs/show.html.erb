@@ -11,6 +11,7 @@
   </div>
   <h2 class="title"><%= @blog.title %></h2>
     <div class="blog_info">
+      <%= hidden_field_tag :blog_id, @blog.id, id: "blog_id" %>
       作者：<%= @blog.username %> | 
       标签：<% @blog.tags.each do |tag| %>
               <%= link_to @blog.tag, root_path(tags: @blog.category) %><br />
@@ -27,3 +28,20 @@
     <div class="cb"></div>
   </div>
 </div>
+<form action="" method="post">
+  <textarea name="" class="cmt_text_area"></textarea>
+  <br />
+  <input type="button" class="btn btn-primary cmt_btn" value="发表" name="" />
+</form>
+<p class="message_title">评论（<%= @comments.length %>）</p>
+<div class="cmt_box">
+  <% if @comments.present? %>
+    <% @comments.each_with_index do |comment, index| %>
+      <%= raw show_comment(comment, @comments.count - index -1) %>
+    <% end %>
+  <% else %>
+    还没有人留下痕迹，还不快来抢沙发！！！！！！！
+    <img src="/images/shafa.jpg" alt="" />
+  <% end %>
+</div>
+

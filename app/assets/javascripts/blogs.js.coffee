@@ -68,3 +68,37 @@ $(document).ready ->
     $("#category option").each (index, item) ->
       $(this).attr("selected", false)
     $("#category").prepend("<option value=\""+id+"\" selected=\"selected\">"+name+"</option>")
+
+  $(".cmt_btn").on 'click', () ->
+    content = $(".cmt_text_area").val()
+    blog_id = $("#blog_id").val()
+    console.log(blog_id)
+    console.log(content)
+    $.ajax
+      url: '/comments'
+      type: 'POST'
+      data:
+        blog_id: blog_id
+        content: content
+      success: (data) ->
+        # $("").html(data.message)
+        if data.status != -1
+          $(".cmt_box").html(data)
+          $(".cmt_text_area").val("")
+        else
+          alert data.message
+      error: (data) ->
+        alert(data.message)
+
+  window.paginate = () ->
+    $(".pagi nav .pagination").on "click", "a", () ->
+      $.ajax
+        url: $(this).attr('href')
+        type: 'GET'
+        success: (data) ->
+          $(".cmt_box").html $(data).find('.cmt_box').html()
+          window.location.hash = "#tag"
+          paginate()
+      return false
+
+  paginate()

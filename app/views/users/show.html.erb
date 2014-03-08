@@ -10,7 +10,7 @@
 <div class="tab-content">
   <div class="tab-pane active" id="home">
     <p>名字：<%= @user.name %></p>
-    <p>性别：<%= I18n.t("user.sex.#{@user.sex}") %></p>
+    <p>性别：<%= I18n.t("user.sex.#{@user.sex}") if @user.sex %></p>
     <p>出生日期：<%= @user.birthday %></p>
     <p>婚姻情况：<%= @user.status_name %></p>
   </div>

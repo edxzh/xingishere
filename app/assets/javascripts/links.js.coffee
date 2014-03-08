@@ -23,15 +23,15 @@ window.addLink = () ->
 
 window.notExist = (value) ->
   flag = true
-  $("#category option").each (index, item) ->
+  $("#link_link_category_id option").each (index, item) ->
     if $(this).html() == value
       flag = false
   return flag
 
 window.addCategory = (id, name) ->
-  $("#category option").each (index, item) ->
+  $("#link_link_category_id option").each (index, item) ->
     $(this).attr("selected", false)
-  $("#category").prepend("<option value=\""+id+"\" selected=\"selected\">"+name+"</option>")
+  $("#link_link_category_id").prepend("<option value=\""+id+"\" selected=\"selected\">"+name+"</option>")
 
 $(document).ready ->
   $(".list-inline li a").tooltip()
