@@ -58,4 +58,8 @@ class Blog < ActiveRecord::Base
     BlogCategory.find(category_id).blogs if category_id.present?
   end
 
+  def comments_count
+    Comment.where(blog_id: id).count
+  end
+
 end
