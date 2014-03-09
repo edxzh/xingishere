@@ -60,7 +60,7 @@ gem 'multimap', '~> 1.1.2'
 gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 # gem 'bcrypt-ruby', '3.0.1'
 
 # Deploy with Capistrano
@@ -96,4 +96,3 @@ gem 'simple_form'
 group :development do
   gem 'capistrano-conditional', :require => false # <-- This is important!
 end
-

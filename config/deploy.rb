@@ -37,6 +37,7 @@ set :application, "mywebsite"
 set :branch, fetch(:branch, "master")
 set :deploy_to, fetch(:deploy_to, "/var/www/sites/mywebsite")
 set :repository,  "git@github.com:Dogzhou/My_blog.git"
+set :unicorn_path, "#{deploy_to}/current/config/unicorn.rb"
 
 # set :whenever_command, "bundle exec whenever"
 after "deploy", "deploy:cleanup"
@@ -65,18 +66,34 @@ end
     end
   end
 
+  desc "start unicorn server"
+  task :start, :roles => :app do
+    run "cd #{deploy_to}/current/; bundle exec unicorn_rails -c #{unicorn_path} -E production -D"
+  end
+
+  desc "stop unicorn server"
+  task :stop, :roles => :app do
+    run "kill -s QUIT `cat #{deploy_to}/current/tmp/pids/unicorn.pid`"
+  end
+
+  desc "restart unicorn server"
   task :restart, :roles => :app do
-    run "cd #{deploy_to}/current/; touch tmp/restart.txt"
+    run "kill -s USR2 `cat #{deploy_to}/current/tmp/pids/unicorn.pid`"
   end
 
   desc "在本地生成配置文件"
   task :setup_local_configs do
     system "cat config/database.yml.example > config/database.yml"
     system "cat config/settings/production.local.yml.example > config/settings/production.local.yml"
+    system "cat config/unicorn.rb.example > config/unicorn.rb"
+    system "cat config/unicorn_init.example > config/unicorn_init"
+    system "chmod +x config/unicorn_init"
 
     puts "请修改如下配置，这些配置将同步到服务器"
     puts "config/database.yml"
     puts "config/settings/production.local.yml"
+    puts "config/unicorn.rb"
+    puts "config/unicorn_init"
   end
 
   desc "在服务器创建配置文件"
@@ -86,10 +103,15 @@ end
 
     put File.read("config/database.yml.example"), "#{shared_path}/config/database.yml"
     put File.read("config/settings/production.local.yml.example"), "#{shared_path}/config/settings/production.local.yml"
+    put File.read("config/unicorn.rb.example"), "#{shared_path}/config/unicorn.rb"
+    put File.read("config/unicorn_init.example"), "#{shared_path}/config/unicorn_init"
+    run "chmod +x #{shared_path}/config/unicorn_init"
 
     puts "请修改如下配置"
     puts "#{shared_path}/config/database.yml"
     puts "#{shared_path}/config/settings/production.local.yml"
+    puts "#{shared_path}/config/unicorn.rb"
+    puts "#{shared_path}/config/unicorn_init"
   end
 
   after "deploy:setup", "deploy:setup_configs"
@@ -100,6 +122,8 @@ end
     run "ln -nfs #{shared_path}/config/settings/production.local.yml #{release_path}/config/settings/production.local.yml"
     run "ln -nfs #{shared_path}/public/uploads #{release_path}/public/uploads"
     run "ln -nfs #{shared_path}/config/newrelic.yml #{release_path}/config/newrelic.yml"
+    run "ln -nfs #{shared_path}/config/unicorn_init #{release_path}/config/unicorn_init"
+    run "ln -nfs #{shared_path}/config/unicorn.rb #{release_path}/config/unicorn.rb"
   end
 
   desc "Sync the public/assets directory."
