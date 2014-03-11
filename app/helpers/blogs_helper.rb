@@ -15,7 +15,7 @@ module BlogsHelper
   def show_comment(comment, index)
     if comment.publish_status
       "<div class='comment'>
-          <img src='/images/50.jpg' alt='' />
+          #{gravatar_for comment.user}
           <div class='cmt'>
             <p class='cmt_name'>#{comment.name}<span class='cmt_id'>第#{index + 1}楼</span></p>
             <p class='cmt_content'>#{h comment.content}</p>

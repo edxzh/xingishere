@@ -3,7 +3,7 @@ module MessagesHelper
   def show_message(message)
     if message.publish_status
       "<div class='message'>
-          <img src='/images/50.jpg' alt='' />
+          #{gravatar_for message.user}
           <div class='msg'>
             <p class='msg_name'>#{message.name}<span class='message_id'>第#{message.id}楼</span></p>
             <p class='msg_content'>#{h message.content}</p>
