@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user       = User.find(params[:id])
     @blogs      = @user.blogs.page(params[:page]).per(2)
 
-    @love_blogs = Blog.loved_by_user(current_user.id)
+    @love_blogs = Blog.loved_by_user(current_user.id).page(params[:page]).per(10)
   end
 
   def new
