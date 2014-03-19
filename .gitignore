@@ -19,6 +19,8 @@ config/debug_database.yml
 config/resque.yml
 config/taobao_api.yml
 config/bunny.yml
+config/unicorn.rb
+config/unicorn_init.rb
 db/*.sqlite3
 doc/api
 doc/app

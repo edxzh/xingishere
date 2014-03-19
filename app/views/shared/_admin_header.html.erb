@@ -1,0 +1,46 @@
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">后台管理</a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li><%= link_to (root_path) do %>主页&nbsp;<span class="glyphicon glyphicon-home"></span><% end %></li>
+        <li><%= link_to "博客", blogs_path %></li>
+        <li><%= link_to "吐槽", messages_path %></li>
+        <li><%= link_to "链接", links_path, target: "_blank" %></li>
+        <li><%= link_to "关于本站", about_path %></li>
+      </ul>
+      <%= form_tag(blogs_path, method: :get, class: "navbar-form navbar-left", role: "search") do %>
+        <div class="form-group">
+          <%= text_field_tag(:keyword, params[:keyword], class: "form-control", placeholder: "Search") %>
+        </div>
+        <%= submit_tag "搜索", class: "btn" %>
+      <% end %>
+      <ul class="nav navbar-nav navbar-right">
+      <% if session[:user_name] %>
+        <li class="dropdown">
+          <a href="#user" data-toggle="dropdown"><%= session[:user_name] %><b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to '我的主页', user_path(id: session[:user_id]) %></li>
+            <li><%= link_to '个人资料设置', account_profile_path %></li>
+            <li>
+              <a href="#">我的关注</a>
+            <li class="divider"></li>
+            <li><%= link_to '退出', logout_path %></li>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to '注册', register_path %></li>
+        <li><%= link_to '登录', login_path %></li>
+      <% end %>
+      </ul>
+    </nav>
+  </div><!-- container -->
+</header><!-- navbar -->

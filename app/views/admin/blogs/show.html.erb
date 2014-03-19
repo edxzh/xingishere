@@ -1,0 +1,29 @@
+<% provide(:title, '博客') %>
+<ol class="breadcrumb">
+  <li><%= link_to '首页', '/' %></li>
+  <li><%= link_to @blog.category_name, blogs_path(category: @blog.blog_category_id) %></li>
+  <li class="active">正文</li>
+</ol>
+<div class="blog panel panel-default">
+  <div class="panel-heading">
+    <span>博客</span>
+    <%= link_to "返回博客列表", blogs_path, class: "pull-right" %>
+  </div>
+  <h2 class="title"><%= @blog.title %></h2>
+    <div class="blog_info">
+      作者：<%= @blog.username %> | 
+      标签：<% @blog.tags.each do |tag| %>
+              <%= link_to @blog.tag, root_path(tags: @blog.category) %><br />
+            <% end %>
+      | 发布：<%= format_time(@blog.created_at) %>
+      <% if @auth.present? %>
+      <% end %>
+    </div>
+  <div class="content"><%= raw @blog.content %></div>
+  <div class="panel-footer">
+    <span onclick="user_like(<%= @blog.id %>)" class="pull-right">
+      <a href="javascript:void(0)" id="like"><%= like_icon %><span id="count"><%= @blog.loves_count %></span>人喜欢</a>
+    </span>
+    <div class="cb"></div>
+  </div>
+</div>

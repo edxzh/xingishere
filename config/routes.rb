@@ -36,6 +36,20 @@ Mywebsite::Application.routes.draw do
   match 'about', to: 'pages#about', as: :about
   match 'me', to: 'pages#me', as: :me
 
+  namespace 'admin' do
+    resources :blogs
+
+    resources :messages, only: [:destroy]
+
+    resources :comments, only: [:destroy]
+
+    resources :links, except: [:show]
+
+    resources :blog_categories
+
+    resources :link_categories
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

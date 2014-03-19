@@ -17,7 +17,7 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'shared/header' %>
     <div class="info">
       <div class="container">
         <%= gravatar_for @user %>
@@ -28,7 +28,7 @@
     <div class="container">
       <%= yield %>
     </div><!-- container -->
-    <%= render 'layouts/footer' %>
+    <%= render 'shared/footer' %>
     <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
