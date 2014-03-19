@@ -17,7 +17,7 @@ Mywebsite::Application.routes.draw do
 
   resources :comments
 
-  resources :blogs do
+  resources :blogs, only: [:show] do
     collection do
       get "user_like"
       post "add_category"
@@ -36,6 +36,14 @@ Mywebsite::Application.routes.draw do
 
   match 'about', to: 'pages#about', as: :about
   match 'me', to: 'pages#me', as: :me
+
+  scope constraints: { subdomain: 'admin' } do
+    namespace 'admin' do
+      resources :blogs do
+      end
+    end
+
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
