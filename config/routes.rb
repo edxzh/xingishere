@@ -17,7 +17,7 @@ Mywebsite::Application.routes.draw do
 
   resources :comments
 
-  resources :blogs, only: [:show] do
+  resources :blogs, only: [:show, :index] do
     collection do
       get "user_like"
       post "add_category"
