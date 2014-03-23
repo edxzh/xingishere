@@ -37,10 +37,8 @@ Mywebsite::Application.routes.draw do
   match 'about', to: 'pages#about', as: :about
   match 'me', to: 'pages#me', as: :me
 
-  scope constraints: { subdomain: 'admin' } do
-    namespace 'admin' do
-      resources :blogs do
-      end
+  namespace 'admin' do
+    resources :blogs do
     end
 
   end
