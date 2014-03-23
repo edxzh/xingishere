@@ -1,5 +1,5 @@
 class Blog < ActiveRecord::Base
-  attr_accessible :title, :content, :user_id, :blog_category_id, :view_total, :weight
+  attr_accessible :title, :content, :user_id, :blog_category_id, :view_total, :weight, :publish_status
   belongs_to  :user
   belongs_to  :blog_category
   has_many    :tags
@@ -7,9 +7,10 @@ class Blog < ActiveRecord::Base
   validates :user_id,           presence: true
   validates :title,             presence: true
 
-  validates :user,              presence: true
+  # validates :user,              presence: true
 
   default_scope -> { order('weight DESC, created_at DESC') }
+  scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
   scope :keyword,  ->(keyword) { where("title like ? or content like ?", "%#{keyword}%", "%#{keyword}%") if keyword.present? }
   scope :category, ->(category_id) { where("blog_category_id = ?", category_id) }
 

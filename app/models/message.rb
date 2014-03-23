@@ -4,6 +4,7 @@ class Message < ActiveRecord::Base
   belongs_to  :user
   validates   :content,     presence: true
 
+  scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
   default_scope -> { order('created_at DESC') }
 
   def name

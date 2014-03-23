@@ -17,7 +17,7 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'shared/header' %>
     <div class="info">
       <div class="container">
         <h1>Edward的博客</h1>
@@ -45,8 +45,6 @@
         </div><!-- span12 -->
       </div><!-- row -->
     </div>
-    <%= render 'layouts/footer' %>
-
 <script type="text/javascript">
 
       var _gaq = _gaq || [];
@@ -60,5 +58,7 @@
        })();
 
 </script>
+    <%= render 'shared/footer' %>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

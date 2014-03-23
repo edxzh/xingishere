@@ -2,11 +2,11 @@
 class CommentsController < ApplicationController
   layout false, only: :create
   def index
-    @comments = Comment.all
+    @comments = Comment.published
   end
 
   def show
-    @comment = Comment.find(params[:id])
+    @comment = Comment.published.find(params[:id])
   end
 
   def new
@@ -23,20 +23,17 @@ class CommentsController < ApplicationController
       render json: { status: -1, message: '只有登录后的用户才能评论哦！如果没有帐号点击右上角注册按钮！' } and return
     end
 
-    p 'X' * 100
-    p @comment
-
     if @comment.save
-      @comments = Comment.blog_has(params[:blog_id]).page(params[:page]).per(10)
+      @comments = Blog.published.find(params[:blog_id]).comments.published
     end
   end
 
   def edit
-    @comment = Comment.find(params[:id])
+    @comment = Comment.published.find(params[:id])
   end
 
   def update
-    @comment = Comment.find(params[:id])
+    @comment = Comment.published.find(params[:id])
     if @comment.update_attributes(params[:comment])
       redirect_to @comment, :notice  => "Successfully updated comment."
     else

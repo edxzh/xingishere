@@ -7,6 +7,7 @@ class Comment < ActiveRecord::Base
   validates :blog_id,   presence: true
 
   default_scope -> { order('created_at DESC') }
+  scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
 
   class << self
     def blog_has(blog_id)

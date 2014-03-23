@@ -69,3 +69,7 @@ config/sunspot.yml
 dump.rdb
 
 coverage/
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
