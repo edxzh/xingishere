@@ -8,14 +8,16 @@ FactoryGirl.define do
     password                    "password"
     password_confirmation       "password"
     password_digest             "asdfawef"
+    factory :profile_user do
+      status                      1
+      relation                    1
+      factory :advanced_user do
+        address                 "成都市XX村"
+      end
+    end
 
     factory :admin do
       admin true
     end
-  end
-  factory :blog do
-    title           "我的日记"
-    content         "日记内容1"
-    user
   end
 end

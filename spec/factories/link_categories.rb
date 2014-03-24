@@ -1,8 +1,8 @@
+# encoding: utf-8
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
   factory :link_category do
-    category "MyString"
-    link_id 1
+    category "行业大牛"
   end
 end

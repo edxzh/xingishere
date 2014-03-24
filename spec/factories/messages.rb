@@ -1,8 +1,8 @@
+# encoding: utf-8
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
   factory :message do
-    user_id 1
-    content "MyText"
+    content "留言"
   end
 end

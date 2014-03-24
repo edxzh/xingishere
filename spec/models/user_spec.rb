@@ -2,7 +2,10 @@
 require 'spec_helper'
 
 describe User do
-  before { @user = User.new(username: "example user", password: "abc123", password_confirmation: "abc123", name: "Example User", sex: "male", email: "xxx@xx.com", height: 170) }
+  before {
+    @user = FactoryGirl.create(:user)
+    @profile_user = FactoryGirl.create(:profile_user)
+  }
 
   subject { @user }
 
@@ -14,83 +17,80 @@ describe User do
 
   it { should be_valid }
 
-  describe "用户名不存在时" do
-    before { @user.name = " " }
-    it { should_not be_valid }
-  end
-  describe "密码不存在时" do
-    before { @user.password = " " }
-    it { should_not be_valid }
-  end
-  describe "两次输入密码是否匹配" do
-    before { @user.password_confirmation = "abce" }
-    it { should_not be_valid }
-  end
-
-  # 验证长度
-  describe "密码不能过长或者过短" do
-    before do
-      @user.password = "xx" 
-      @user.password = "x" * 60
+  describe "模型校验" do
+    before {
+      @user = FactoryGirl.create(:user)
+    }
+    it "用户姓名不存在时" do
+      @user.name = " "
+      expect(@user).not_to be_valid
     end
-    it { should_not be_valid }
-  end
 
-  # 验证格式
-  describe "无效的email格式" do
-    it "should be valid" do
-      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-                             foo@bar_baz.com foo@bar+baz.com]
-      addresses.each do |invalid_address|
-        @user.email =  invalid_address
+    it "密码不存在时" do
+      @user.password = " "
+      expect(@user).not_to be_valid
+    end
+
+    it "两次输入密码不匹配时" do
+      @user.password_confirmation = "password1"
+      expect(@user).not_to be_valid
+    end
+
+    it "密码太长时" do
+      @user.password = "x" * 21
+      expect(@user).not_to be_valid
+    end
+
+    it "密码太短时" do
+      @user.password = "x" * 5
+      expect(@user).not_to be_valid
+    end
+
+    it "email格式无效时" do
+      email = %w( user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar+baz.com )
+      email.each do |invalid_email|
+        @user.email =  invalid_email
         expect(@user).not_to be_valid
       end
     end
-  end
-  describe "有效的email格式" do
-    it "should not be valid" do
-      addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
-      addresses.each do |valid_address|
-        @user.email = valid_address
+
+    it "有效的email格式" do
+      email = %w( user@foo.com A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn )
+      email.each do |valid_email|
+        @user.email = valid_email
         expect(@user).to be_valid
       end
     end
-  end
-  describe "Email大小写敏感" do
-    before do
-      user_with_same_email = @user.dup
-      user_with_same_email.email = @user.email.upcase
-      user_with_same_email.save
+
+    it "Email的大小写敏感" do
+      @user_with_same_email = @user.dup
+      @user_with_same_email.email = @user.email.upcase
+      expect(@user_with_same_email).not_to be_valid
     end
 
-    it { should_not be_valid }
-  end
-
-  describe "设置管理员权限" do
-    before do
-      @user.save!
+    it "设置管理员权限" do
       @user.toggle!(:admin)
+      expect(@user.admin).to eq true
     end
+
+    it "普通用户和高级用户的信息" do
+      expect(@user.status_name).to eq "单身"
+      expect(@user.relation_name).to eq "小学同学"
+
+      expect(@profile_user.status_name).to eq "已婚"
+      expect(@profile_user.relation_name).to eq "中学同学"
+
+    end
+
+    describe "与blog关联" do
+      let!(:older_blog) { FactoryGirl.create(:blog, user_id: @user.id, created_at: 1.day.ago) }
+      let!(:newer_blog) { FactoryGirl.create(:blog, user_id: @user.id, created_at: 1.hour.ago) }
+
+      it "测试blog的默认排序" do
+        expect(@user.blogs.to_a).to eq [newer_blog, older_blog]
+      end
+    end
+
   end
 
-  describe "association with blog" do
-    before { @user.save }
-    let!(:older_blog) { FactoryGirl.create(:blog, user: @user, created_at: 1.day.ago) }
-    let!(:newer_blog) { FactoryGirl.create(:blog, user: @user, created_at: 1.hour.ago) }
-
-    it "the blogs should have right orders" do
-      expect(@user.blogs.to_a).to eq [newer_blog, older_blog]
-    end
-  end
-
-  # describe "when destory user, destory his blogs" do
-  #   before { @user.save }
-  #   let(:blogs) { @user.blogs.to_a }
-  #   puts @user
-  #   @user.destory
-  #   expect(:blogs).not_to be_empty
-  #   blogs.each do |blog|
-  #     expect(Blog.where(id: blog.id)).to be_empty
-  #   end
-  # end
 end

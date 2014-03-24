@@ -4,8 +4,10 @@ class Blog < ActiveRecord::Base
   belongs_to  :blog_category
   has_many    :tags
   has_many    :user_loves
+  has_many    :comments
   validates :user_id,           presence: true
   validates :title,             presence: true
+  validates :content,           presence: true
 
   # validates :user,              presence: true
 
@@ -14,13 +16,8 @@ class Blog < ActiveRecord::Base
   scope :keyword,  ->(keyword) { where("title like ? or content like ?", "%#{keyword}%", "%#{keyword}%") if keyword.present? }
   scope :category, ->(category_id) { where("blog_category_id = ?", category_id) }
 
-  # 暂时不用这个功能
-  # scope :current_user_blog, ->() { where("user_id = ?", current_user.id }
-  # scope :tag,      ->(tag) do
-  #   tags.where("name = ?", tag)
-  # end
-
-  class << self
+    class << self
+    # TODO 此方法需重构
     def like_by_user?(user_id, blog_id)
       if UserLove.where("user_id = ? AND blog_id = ?", user_id, blog_id).first
         true
@@ -41,7 +38,7 @@ class Blog < ActiveRecord::Base
 
   # 日志作者的名字
   def username
-    User.where("id = ?", user_id).first.name
+    User.find(user_id).name
   end
 
   # 共有多少人喜欢
@@ -57,10 +54,6 @@ class Blog < ActiveRecord::Base
   # 通过类别找一批blog
   def self.category_find(category_id)
     BlogCategory.find(category_id).blogs if category_id.present?
-  end
-
-  def comments_count
-    Comment.where(blog_id: id).count
   end
 
 end

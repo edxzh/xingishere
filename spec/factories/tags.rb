@@ -1,8 +1,8 @@
+# encoding: utf-8
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
   factory :tag do
-    blog_id 1
-    name "MyString"
+    name "标签1"
   end
 end

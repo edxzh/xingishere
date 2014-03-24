@@ -1,8 +1,8 @@
-# FactoryGirl.define do
-#   factory :blog do
-#     id              1000
-#     user_id         1000
-#     title           "我的日记"
-#     content         "日记内容1"
-#   end
-# end
+# encoding: utf-8
+FactoryGirl.define do
+  # association :user
+  factory :blog do
+    title           "我的日记"
+    content         "日记内容1"
+  end
+end
