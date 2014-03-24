@@ -5,6 +5,8 @@
       <span>新建日志</span>
       <%= link_to "返回博客列表", blogs_path, class: "pull-right" %>
     </div>
-    <%= render 'form' %>
+    <%= form_for(@blog, url: admin_blogs_path) do |f| %>
+      <%= render partial: "form", locals: { f: f } %>
+    <% end %>
   </div><!-- panel panel-default -->
 </div><!-- blog -->

@@ -32,9 +32,8 @@ class Admin::BlogsController < AdminController
   def create
     @blog                   = Blog.new(params[:blog])
     @blog.user_id           = session[:user_id]
-    @blog.blog_category_id  = params[:category].to_i
     if @blog.save
-      redirect_to @blog, :notice => "发表成功"
+      redirect_to admin_blogs_path, :success => "发表成功"
     else
       render :action => 'new'
     end
@@ -42,12 +41,13 @@ class Admin::BlogsController < AdminController
 
   def edit
     @blog = Blog.find(params[:id])
+    @category = BlogCategory.all
   end
 
   def update
     @blog = Blog.find(params[:id])
     if @blog.update_attributes(params[:blog])
-      redirect_to @blog, :notice  => "更新成功"
+      redirect_to admin_blogs_path, :success  => "更新成功"
     else
       render :action => 'edit'
     end

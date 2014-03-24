@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe Blog do
   let(:user) { FactoryGirl.create(:user) }
   before do
-    @blog = user.blogs.create(title: "日记1", content: "我开始写日记啦啦啦", tag: "日记")
+    @blog = user.blogs.create(title: "日记1", content: "我开始写日记啦啦啦", category_name: "日记")
   end
   subject { @blog }
   it { should respond_to(:content) }
@@ -17,5 +17,10 @@ describe Blog do
   describe "without user_id" do
     before { @blog.user_id = nil }
     it { should_not be_valid }
+  end
+
+  describe "#username" do
+    # @blog.save
+    # @blog.username.should eq user.name
   end
 end

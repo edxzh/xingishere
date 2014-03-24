@@ -33,7 +33,9 @@ Mywebsite::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+
+  # development_log without message like Could not determine content-length of response body
+  # config.assets.debug = true
 
   # send emails
   config.action_mailer.delivery_method = :smtp

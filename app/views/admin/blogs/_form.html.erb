@@ -2,19 +2,18 @@
   <script type="text/javascript" src="/kindeditor/kindeditor-all-min.js"></script>
   <script type="text/javascript" src="/kindeditor/lang/zh_CN.js"></script>
 <% end %>
-<%= form_for @blog do |f| %>
   <%= f.error_messages %>
   <%= f.text_field :title, placeholder: "我的日志", class: "form-control" %>
   <%= f.kindeditor :content, height: 500 %>
   <div class="panel-footer">
     <span class="form-inline" role="form">
       <span class="pull-left ">
-        分类：<%= select_tag(:category, options_from_collection_for_select(@category, :id, :name), class: "form-control") %>
+        分类：<%= f.select :blog_category_id, options_from_collection_for_select(@category, :id, :name, @blog.blog_category_id), {}, { class: "form-control" } %>
         <input type="button" class="btn" value="增加分类" name="" data-toggle="modal" data-target=".bs-modal-sm" />
         <span class="form-inline">
           <span class="form-group">
           <label class="control-label">权重：</label>
-          <%= text_field_tag :weight, @blog.weight, class: "form-control", placeholder: "权重" %>
+          <%= f.text_field :weight, class: "form-control", placeholder: "权重" %>
           </span>
         </span>
       </span>
@@ -22,7 +21,6 @@
     </span>
     <div class="cb"></div>
   </div>
-<% end %>
 <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
