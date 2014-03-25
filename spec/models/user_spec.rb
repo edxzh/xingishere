@@ -92,15 +92,29 @@ describe User do
 
     end
 
-    describe "与blog关联" do
-      let!(:older_blog) { FactoryGirl.create(:blog, user_id: @user.id, created_at: 1.day.ago) }
-      let!(:newer_blog) { FactoryGirl.create(:blog, user_id: @user.id, created_at: 1.hour.ago) }
+  end
 
-      it "测试blog的默认排序" do
-        expect(@user.blogs.to_a).to eq [newer_blog, older_blog]
-      end
+  describe "与blog关联" do
+    let!(:older_blog) { FactoryGirl.create(:blog, user_id: @user.id, created_at: 1.day.ago) }
+    let!(:newer_blog) { FactoryGirl.create(:blog, user_id: @user.id, created_at: 1.hour.ago) }
+
+    it "测试blog的默认排序" do
+      expect(@user.blogs.to_a).to eq [newer_blog, older_blog]
+    end
+  end
+
+  describe "测试登录的authenticate方法" do
+    let(:found_user) { User.where("email = ?", @user.email).first }
+
+    it "登录验证成功" do
+      user = found_user.authenticate(@user.password)
+      expect(user).to eq @user
     end
 
+    it "验证失败" do
+      user = found_user.authenticate("invalid_password")
+      expect(user).no_to eq @user
+    end
   end
 
 end

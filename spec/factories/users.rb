@@ -7,7 +7,7 @@ FactoryGirl.define do
     sequence(:email)            { |n| "test_e_#{n}@qq.com" }
     password                    "password"
     password_confirmation       "password"
-    password_digest             "asdfawef"
+    # password_digest             "asdfawef"
     factory :profile_user do
       status                      1
       relation                    1

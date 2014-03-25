@@ -78,6 +78,8 @@ group :development do
   gem 'nifty-generators'
 end
 
+# TODO add guard and spork
+
 group :test, :development do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
