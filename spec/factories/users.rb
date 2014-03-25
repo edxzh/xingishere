@@ -1,6 +1,6 @@
 # encoding : utf-8
 FactoryGirl.define do
-  factory :user do
+  factory :user, class: "User" do
     sequence(:id)               { |n| n }
     username                    "testuser"
     sequence(:name)             { |n| "testuser_#{n}" }

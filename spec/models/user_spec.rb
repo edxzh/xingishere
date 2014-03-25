@@ -17,6 +17,16 @@ describe User do
 
   it { should be_valid }
 
+  describe "常量" do
+    it "STATUS应该是个指定的数组" do
+      expect(User::STATUS).to eq %w(single married divorce)
+    end
+
+    it "RELATION应该是个指定的数组" do
+      expect(User::RELATION).to eq %w(primary junior senior colleage society workmate relative)
+    end
+  end
+
   describe "模型校验" do
     before {
       @user = FactoryGirl.create(:user)
