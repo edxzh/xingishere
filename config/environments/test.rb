@@ -1,4 +1,5 @@
 Mywebsite::Application.configure do
+  require 'bcrypt'
   # Settings specified here will take precedence over those in config/application.rb
 
   # The test environment is used exclusively to run your application's
@@ -36,5 +37,7 @@ Mywebsite::Application.configure do
   config.active_support.deprecation = :stderr
 
   # faster the test
-  # ActiveModel::SecurePassword.min_cost = true
+  silence_warnings do
+    BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
+  end
 end

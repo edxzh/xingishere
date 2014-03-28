@@ -2,7 +2,9 @@
 require 'spec_helper'
 
 describe "登录验证Authentication" do
+  let(:user) { FactoryGirl.create(:user) }
   subject { page }
+
   describe "登录界面" do
     before { visit login_path }
 
@@ -22,9 +24,8 @@ describe "登录验证Authentication" do
     end
 
     describe "输入正确时点击登录" do
-      let(:user) { FactoryGirl.create(:user) }
       before do
-        fill_in "username",        with: user.email.downcase
+        fill_in "email",        with: user.email.downcase
         fill_in "password",        with: user.password
         click_button "登录"
       end
@@ -34,13 +35,12 @@ describe "登录验证Authentication" do
       it { should have_title(full_title(user.name)) }
       it { should have_link("个人主页", href: user_path(user)) }
       it { should have_link("个人资料设置", href: edit_user_path(user)) }
-      it { should have_link("退出", href: login_path) }
+      it { should have_link("退出", href: logout_path) }
       it { should_not have_link("登录", href: login_path) }
     end
   end
 
   describe "authentication" do
-    let(:user) { FactoryGirl.create(:user) }
     let(:no_admin) { FactoryGirl.create(:user) }
 
     before { login no_admin, no_capybara: true }
