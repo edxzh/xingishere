@@ -1,5 +1,6 @@
+# encoding: utf-8
 def full_title(page_title)
-  base_title = "Edward Joy's blog"
+  base_title = "星's blog"
   if page_title.present?
     "#{page_title} | #{base_title}"
   else

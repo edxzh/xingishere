@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       flash.now[:success] = "登录成功"
       redirect_back_or root_path
     else
-      flash.now[:danger] = "登录失败,请检查用户和密码"
+      flash.now[:danger] = "登录失败,请检查邮件地址和密码"
       render 'new'
     end
   end
