@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(:version => 20140323051846) do
   create_table "blogs", :force => true do |t|
     t.string   "title",            :limit => 30, :default => "我的日志", :null => false
     t.text     "content",                                            :null => false
-    t.integer  "user_id",                                            :null => false
+    t.integer  "user_id",                        :default => 0,      :null => false
+    t.string   "tag"
     t.datetime "created_at",                                         :null => false
     t.datetime "updated_at",                                         :null => false
     t.integer  "blog_category_id"
@@ -50,11 +51,11 @@ ActiveRecord::Schema.define(:version => 20140323051846) do
   end
 
   create_table "links", :force => true do |t|
-    t.string   "title",            :limit => 20,  :null => false
-    t.string   "href",                            :null => false
+    t.string   "title",            :limit => 20,  :default => "", :null => false
+    t.string   "href",                            :default => "", :null => false
     t.text     "description",      :limit => 255
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
     t.integer  "link_category_id"
   end
 
@@ -67,10 +68,10 @@ ActiveRecord::Schema.define(:version => 20140323051846) do
   end
 
   create_table "tags", :force => true do |t|
-    t.integer  "blog_id",                  :null => false
-    t.string   "name",       :limit => 20, :null => false
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.integer  "blog_id",                  :default => 0,  :null => false
+    t.string   "name",       :limit => 20, :default => "", :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
   create_table "tips", :force => true do |t|
