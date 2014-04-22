@@ -55,7 +55,7 @@ class Admin::BlogsController < AdminController
 
   def destroy
     @blog = Blog.find(params[:id])
-    @blog.update_attributes(publish_status:  true)
+    @blog.update_attributes(publish_status:  false)
     if @blog.save
       redirect_to admin_blogs_url, :notice => "删除成功"
     else
