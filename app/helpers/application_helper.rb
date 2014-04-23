@@ -65,7 +65,7 @@ module ApplicationHelper
   def statistics
     raw "<ul>
       <li>会员个数：#{User.count}</li>
-      <li>文章个数：#{Blog.count}</li>
+      <li>文章个数：#{Blog.published.count}</li>
       <li>留言个数：#{Message.count}</li>
     </ul>"
   end

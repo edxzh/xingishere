@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
-      @comments = Blog.published.find(params[:blog_id]).comments.published
+      @comments = Blog.published.find(params[:blog_id]).comments.published.page(params[:page]).per(10)
     end
   end
 

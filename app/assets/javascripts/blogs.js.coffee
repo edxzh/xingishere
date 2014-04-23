@@ -37,43 +37,9 @@ $(document).ready ->
       count -= 1
       updateLike(count)
 
-  window.addLink = () ->
-    $value = $("#Cname").val()
-    if $value != '' && notExist($value)
-      $.ajax
-        url: "/blogs/add_category"
-        data: 
-          blog_category_name: $value
-        type: "POST"
-        success: (data) ->
-          if data.status == 1
-            addCategory(data.id, data.name)
-            $('.bs-modal-sm').modal('hide')
-          else
-            alert("Ajax请求失败，请联系开发者")
-        error: () ->
-          alert("ajax请求不成功，请联系开发者")
-    else
-      alert "新增的分类已存在"
-      $('.bs-modal-sm').modal('hide')
-
-  window.notExist = (value) ->
-    flag = true
-    $("#category option").each (index, item) ->
-      if $(this).html() == value
-        flag = false
-    return flag
-
-  window.addCategory = (id, name) ->
-    $("#category option").each (index, item) ->
-      $(this).attr("selected", false)
-    $("#category").prepend("<option value=\""+id+"\" selected=\"selected\">"+name+"</option>")
-
   $(".cmt_btn").on 'click', () ->
     content = $(".cmt_text_area").val()
     blog_id = $("#blog_id").val()
-    console.log(blog_id)
-    console.log(content)
     $.ajax
       url: '/comments'
       type: 'POST'
@@ -81,7 +47,6 @@ $(document).ready ->
         blog_id: blog_id
         content: content
       success: (data) ->
-        # $("").html(data.message)
         if data.status != -1
           $(".cmt_box").html(data)
           $(".cmt_text_area").val("")
