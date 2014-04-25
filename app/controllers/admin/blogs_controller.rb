@@ -1,7 +1,6 @@
-# encoding : utf-8
+# encoding: utf-8
 class Admin::BlogsController < AdminController
   layout 'admin'
-  # before_filter :is_admin
   def index
     @blogs = Blog.published.page(params[:page]).per(10)
   end

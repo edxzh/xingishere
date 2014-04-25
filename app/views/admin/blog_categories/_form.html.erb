@@ -1,16 +1,16 @@
 <fieldset>
-    <%= f.error_messages %>
-    <legend></legend>
-    <div class="form-group">
-      <%= f.label :name, "类别名", class: "col-sm-2 control-label" %>
-      <div class="col-sm-5">
-        <%= f.text_field :name, class: "form-control", required: true %>
-        <p class="help-block">输入类别名，不能与已有类别名重复</p>
-      </div>
+  <%= f.error_messages %>
+  <legend></legend>
+  <div class="form-group">
+    <%= f.label :name, "类别名", class: "col-sm-2 control-label" %>
+    <div class="col-sm-5">
+      <%= f.text_field :name, class: "form-control", required: true %>
+      <p class="help-block">输入类别名，不能与已有类别名重复</p>
     </div>
-    <div class="form-group">
-      <div class="col-sm-offset-5 col-sm-6 col-xs-3">
-        <%= f.submit "确认", class: "btn btn-default btn-lg" %>
-      </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-5 col-sm-6 col-xs-3">
+      <%= f.submit "确认", class: "btn btn-default btn-lg" %>
     </div>
-  </fieldset>
+  </div>
+</fieldset>

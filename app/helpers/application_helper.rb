@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def hot_blogs
-    Blog.order("view_total ASC, created_at DESC").limit(10)
+    Blog.published.order("view_total ASC, created_at DESC").limit(10)
   end
 
   def all_category

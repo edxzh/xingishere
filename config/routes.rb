@@ -2,7 +2,6 @@ Mywebsite::Application.routes.draw do
   resources :messages, only: [:create, :destory, :index]
 
   resources :links
-  resources :tips
   resources :link_category
 
   resources :sessions,  only: [:new, :create, :destory]
@@ -39,16 +38,12 @@ Mywebsite::Application.routes.draw do
 
   namespace 'admin' do
     resources :blogs
-
-    resources :messages, only: [:destroy]
-
-    resources :comments, only: [:destroy]
-
+    resources :messages, only: [:index, :destroy]
+    resources :comments, only: [:index, :destroy]
     resources :links, except: [:show]
-
     resources :blog_categories
-
     resources :link_categories
+    resources :tips
   end
 
   # The priority is based upon order of creation:

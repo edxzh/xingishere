@@ -11,7 +11,7 @@
       <tr>
         <td><%= link_to bc.name, admin_blog_category_path(bc) %></td>
         <td><%= bc.blogs.published.count %></td>
-        <td><%= link_to '编辑', edit_admin_blog_category_path(bc) %></span><span class="ml10"><%= link_to '删除', admin_blog_category_path(bc), method: :delete, data: { confirm: '确定删除？' } %></td>
+        <td><span><%= link_to '编辑', edit_admin_blog_category_path(bc) %></span><span class="ml10"><%= link_to '删除', admin_blog_category_path(bc), method: :delete, data: { confirm: '确定删除？' } %></td>
       </tr>
     <% end %>
   </table>
