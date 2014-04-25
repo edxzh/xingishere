@@ -4,7 +4,7 @@
   <li><%= link_to @blog.category_name, blogs_path(category: @blog.blog_category_id) %></li>
   <li class="active">正文</li>
 </ol>
-<div class="blog panel panel-default">
+<div class="blog">
   <div class="panel-heading">
     <span>博客</span>
     <%= link_to "返回博客列表", blogs_path, class: "pull-right" %>
@@ -21,7 +21,7 @@
       <% end %>
     </div>
   <div class="content"><%= raw @blog.content %></div>
-  <div class="panel-footer">
+  <div class="mb40">
     <span onclick="user_like(<%= @blog.id %>)" class="pull-right">
       <a href="javascript:void(0)" id="like"><%= like_icon %><span id="count"><%= @blog.loves_count %></span>人喜欢</a>
     </span>
