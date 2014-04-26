@@ -8,23 +8,26 @@ $(document).ready ->
 
   $(".msg_btn").on 'click', () ->
     content = $(".msg_text_area").val()
-    $.ajax
-      url: '/messages'
-      type: 'POST'
-      data:
-        content: content
-      success: (data) ->
-        # $("").html(data.message)
-        if data.status != -1
-          $(".alert").show()
-          $(".msg_box").html(data)
-          $(".msg_form").hide()
-          $(".msg_text_area").val("")
-          $(".say").show()
-        else
-          alert data.message
-      error: (data) ->
-        alert(data.message)
+    if content != ""
+      $.ajax
+        url: '/messages'
+        type: 'POST'
+        data:
+          content: content
+        success: (data) ->
+          # $("").html(data.message)
+          if data.status != -1
+            $(".alert").show()
+            $(".msg_box").html(data)
+            $(".msg_form").hide()
+            $(".msg_text_area").val("")
+            $(".say").show()
+          else
+            alert data.message
+        error: (data) ->
+          alert(data.message)
+    else
+      alert "请填写评论内容"
 
   window.paginate = () ->
     $(".pagi nav .pagination").on "click", "a", () ->

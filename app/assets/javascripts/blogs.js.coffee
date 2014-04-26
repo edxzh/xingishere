@@ -40,20 +40,23 @@ $(document).ready ->
   $(".cmt_btn").on 'click', () ->
     content = $(".cmt_text_area").val()
     blog_id = $("#blog_id").val()
-    $.ajax
-      url: '/comments'
-      type: 'POST'
-      data:
-        blog_id: blog_id
-        content: content
-      success: (data) ->
-        if data.status != -1
-          $(".cmt_box").html(data)
-          $(".cmt_text_area").val("")
-        else
-          alert data.message
-      error: (data) ->
-        alert(data.message)
+    if content != ""
+      $.ajax
+        url: '/comments'
+        type: 'POST'
+        data:
+          blog_id: blog_id
+          content: content
+        success: (data) ->
+          if data.status != -1
+            $(".cmt_box").html(data)
+            $(".cmt_text_area").val("")
+          else
+            alert data.message
+        error: (data) ->
+          alert(data.message)
+    else
+      alert "请填写评论内容"
 
   window.paginate = () ->
     $(".pagi nav .pagination").on "click", "a", () ->
