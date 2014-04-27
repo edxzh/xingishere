@@ -28,4 +28,8 @@ module BlogsHelper
       "
     end
   end
+
+  def baidu_share_code
+    
+  end
 end
