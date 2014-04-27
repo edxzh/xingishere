@@ -74,7 +74,6 @@ gem 'rvm-capistrano'
 group :development do
   gem 'debugger'
   gem 'awesome_print'
-  gem 'unicorn'
   gem 'nifty-generators'
 end
 
