@@ -37,6 +37,7 @@ Mywebsite::Application.routes.draw do
   match 'me', to: 'pages#me', as: :me
 
   namespace 'admin' do
+    get '/' => 'blogs#index'
     resources :blogs
     resources :messages, only: [:index, :destroy]
     resources :comments, only: [:index, :destroy]
