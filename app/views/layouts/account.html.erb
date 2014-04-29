@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/stylesheets/base.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/docs.css" rel="stylesheet" type="text/css" />
@@ -19,16 +19,15 @@
   <body>
     <%= render 'shared/header' %>
     <div class="info">
-      <div class="container">
+      <div class="container" style="max-width:calc(78%)">
         <%= gravatar_for @user %>
         <h1><%= @user.name %></h1>
         <p><%= @user.description %></p>
       </div><!-- container -->
     </div><!-- info -->
-    <div class="container">
+    <div class="container" style="max-width:calc(78%)">
       <%= yield %>
     </div><!-- container -->
     <%= render 'shared/footer' %>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

@@ -1,9 +1,6 @@
 Mywebsite::Application.routes.draw do
-  resources :messages, only: [:create, :destory, :index]
-
-  resources :links
-  resources :link_category
-
+  resources :messages, only: [:create, :index]
+  resources :links, only: [:index]
   resources :sessions,  only: [:new, :create, :destory]
 
   get "account/advanced"
@@ -14,7 +11,7 @@ Mywebsite::Application.routes.draw do
   get "home/index"
   root  to: 'home#index', as: :root
 
-  resources :comments
+  resources :comments, only: [:index, :create]
 
   resources :blogs, only: [:show, :index] do
     collection do

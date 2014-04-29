@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/stylesheets/base.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/docs.css" rel="stylesheet" type="text/css" />
@@ -18,15 +18,14 @@
   <body>
     <%= render 'shared/link_header' %>
     <div class="info">
-      <div class="container">
+      <div class="container" style="max-width:calc(78%)">
         <h1>星哥导航站</h1>
         <p>星哥导航站,一个值得你ctrl D的网站</p>
       </div><!-- container -->
     </div><!-- info -->
-    <div class="container">
+    <div class="container" style="max-width:calc(78%)">
       <%= yield %>
     </div><!-- container -->
     <%= render 'shared/footer' %>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
