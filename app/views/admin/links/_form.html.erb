@@ -1,0 +1,29 @@
+<div class="form-group">
+  <%= label_tag :title, "标题", class: "col-sm-2 control-label" %>
+  <div class="col-sm-5">
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= label_tag :title, "地址", class: "col-sm-2 control-label" %>
+  <div class="col-sm-5">
+    <%= f.text_field :href, class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= label_tag :title, "描述", class: "col-sm-2 control-label" %>
+  <div class="col-sm-5">
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= label_tag :title, "分类", class: "col-sm-2 control-label" %>
+  <div class="col-sm-5">
+    <%= f.select(:link_category_id, options_from_collection_for_select(@category, :id, :category), {}, class: "form-control") %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-5 col-sm-6 col-xs-3">
+    <%= submit_tag "提交", class: "btn btn-primary" %>
+  </div>
+</div>

@@ -1,7 +1,11 @@
 # encoding : utf-8
-class LinkCategoryController < ApplicationController
+class Admin::LinkCategoriesController < AdminController
   def index
-    
+    @link = LinkCategory.all
+  end
+
+  def new
+    @link = LinkCategory.new
   end
 
   def create

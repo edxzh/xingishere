@@ -10,7 +10,7 @@ describe "Users pages" do
     before { visit register_path }
 
     it { should have_content('注册') }
-    it { should have_title(full_title('注册')) }
+    it { should have_title('注册') }
 
   end
   describe "注册页面创建功能" do
@@ -42,7 +42,7 @@ describe "Users pages" do
         let(:user) { User.find_by_email("test@qq.com") }
 
         it { should have_title(user.name) }
-        it {should have_selector('div.alert.alert-success', text: '注册成功') }
+        it { should have_selector('div.alert.alert-success', text: '注册成功') }
       end
     end
   end
