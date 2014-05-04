@@ -13,12 +13,13 @@ Mywebsite::Application.routes.draw do
 
   resources :comments, only: [:index, :create]
 
-  resources :blogs, only: [:show, :index] do
+  resources :blogs, only: [:index] do
     collection do
       get "user_like"
       post "add_category"
     end
   end
+  get "blogs/:title" => "blogs#show", as: :blog
 
   resources :users do
     collection do
