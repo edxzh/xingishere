@@ -6,4 +6,7 @@ class PagesController < ApplicationController
   def me
     
   end
+  def resume
+    
+  end
 end

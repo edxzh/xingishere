@@ -31,8 +31,9 @@ Mywebsite::Application.routes.draw do
   match '/login',     to: 'sessions#new',       via: 'get'
   match '/logout',    to: 'sessions#destroy',   via: 'get'
 
-  match 'about', to: 'pages#about', as: :about
-  match 'me', to: 'pages#me', as: :me
+  match 'about',  to: 'pages#about', as: :about
+  match 'me',     to: 'pages#me', as: :me
+  match 'resume', to: 'pages#resume', as: :resume
 
   namespace 'admin' do
     get '/' => 'blogs#index'
