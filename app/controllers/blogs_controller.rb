@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
     elsif params[:keyword]
       relation = Blog.published.keyword(params[:keyword])
     else
-      relation = Blog.published
+      relation = Blog.published.includes(:comments)
     end
     @blogs = relation.group_by { |blog| blog.blog_category_id }
   end
