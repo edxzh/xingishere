@@ -1,5 +1,5 @@
 class Blog < ActiveRecord::Base
-  attr_accessible :title, :content, :user_id, :blog_category_id, :view_total, :weight, :publish_status
+  attr_accessible :title, :content, :user_id, :blog_category_id, :view_total, :weight, :publish_status, :url_name, :seo_keyword
   belongs_to  :user
   belongs_to  :blog_category
   has_many    :tags
@@ -8,6 +8,8 @@ class Blog < ActiveRecord::Base
   validates :user_id,           presence: true
   validates :title,             presence: true
   validates :content,           presence: true
+  validates :url_name,          presence: true, uniqueness: true
+  validates :seo_keyword,       presence: true
 
   # validates :user,              presence: true
 

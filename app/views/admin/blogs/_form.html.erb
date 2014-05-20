@@ -12,8 +12,16 @@
         <input type="button" class="btn" value="增加分类" name="" data-toggle="modal" data-target=".bs-modal-sm" />
         <span class="form-inline">
           <span class="form-group">
-          <label class="control-label">权重：</label>
-          <%= f.text_field :weight, class: "form-control", placeholder: "权重" %>
+            <label class="control-label">权重：</label>
+            <%= f.text_field :weight, class: "form-control", placeholder: "权重" %>
+          </span>
+          <span class="form-group">
+            <label class="control-label">url_name：</label>
+            <%= f.text_field :url_name, class: "form-control", placeholder: "url name" %>
+          </span>
+          <span class="form-group">
+            <label class="control-label">seo_keyword</label>
+            <%= f.text_field :seo_keyword, class: "form-control", placeholder: "seo keyword" %>
           </span>
         </span>
       </span>
