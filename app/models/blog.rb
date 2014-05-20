@@ -6,7 +6,7 @@ class Blog < ActiveRecord::Base
   has_many    :user_loves
   has_many    :comments
   validates :user_id,           presence: true
-  validates :title,             presence: true
+  validates :title,             presence: true, uniqueness: true
   validates :content,           presence: true
   validates :url_name,          presence: true, uniqueness: true
   validates :seo_keyword,       presence: true

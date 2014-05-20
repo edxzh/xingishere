@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def hot_blogs
-    Blog.order("view_total ASC, created_at DESC").limit(10)
+    Blog.published.order("view_total ASC, created_at DESC").limit(10)
   end
 
   def all_category
@@ -65,7 +65,7 @@ module ApplicationHelper
   def statistics
     raw "<ul>
       <li>会员个数：#{User.count}</li>
-      <li>文章个数：#{Blog.count}</li>
+      <li>文章个数：#{Blog.published.count}</li>
       <li>留言个数：#{Message.count}</li>
     </ul>"
   end

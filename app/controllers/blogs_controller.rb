@@ -1,18 +1,18 @@
 # encoding : utf-8
 class BlogsController < ApplicationController
-  before_filter :is_admin,      only: [:edit, :update, :new, :create]
   def index
     if params[:category].present?
-      @blogs = Blog.published.category(params[:category]).page(params[:page]).per(10)
+      relation = Blog.published.category(params[:category])
     elsif params[:keyword]
-      @blogs = Blog.published.keyword(params[:keyword]).page(params[:page]).per(10)
+      relation = Blog.published.keyword(params[:keyword])
     else
-      @blogs = Blog.published.page(params[:page]).per(10)
+      relation = Blog.published.includes(:comments)
     end
+    @blogs = relation.group_by { |blog| blog.blog_category_id }
   end
 
   def show
-    @blog = Blog.find(params[:id])
+    @blog = Blog.find_by_title(params[:title])
     @like = false                   # 当前用户是否喜欢此博客
     @blog.view_total = @blog.view_total += 1
     @blog.save
@@ -21,43 +21,7 @@ class BlogsController < ApplicationController
     @auth = false # 用户是否有权限操作此博客
     @auth = true if current_user.present? && @blog.user_id == current_user.id
 
-    @comments = Comment.blog_has(@blog.id)
-  end
-
-  def new
-    @blog = Blog.new
-    @category = BlogCategory.all
-  end
-
-  def create
-    @blog                   = Blog.new(params[:blog])
-    @blog.user_id           = session[:user_id]
-    @blog.blog_category_id  = params[:category].to_i
-    if @blog.save
-      redirect_to @blog, :notice => "发表成功"
-    else
-      render :action => 'new'
-    end
-  end
-
-  def edit
-    @blog     = Blog.find(params[:id])
-    @category = BlogCategory.all
-  end
-
-  def update
-    @blog = Blog.find(params[:id])
-    if @blog.update_attributes(params[:blog])
-      redirect_to @blog, :notice  => "更新成功"
-    else
-      render :action => 'edit'
-    end
-  end
-
-  def destroy
-    @blog = Blog.find(params[:id])
-    @blog.destroy
-    redirect_to blogs_url, :notice => "Successfully destroyed blog."
+    @comments = @blog.comments.page(params[:page]).per(10)
   end
 
   def user_like

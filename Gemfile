@@ -97,3 +97,7 @@ gem 'simple_form'
 group :development do
   gem 'capistrano-conditional', :require => false # <-- This is important!
 end
+
+group :production do
+  gem 'newrelic_rpm'
+end

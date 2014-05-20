@@ -5,14 +5,6 @@ class CommentsController < ApplicationController
     @comments = Comment.published
   end
 
-  def show
-    @comment = Comment.published.find(params[:id])
-  end
-
-  def new
-    @comment = Comment.new
-  end
-
   def create
     @comment = Comment.new
     @comment.content = params[:content]
@@ -24,26 +16,8 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
-      @comments = Blog.published.find(params[:blog_id]).comments.published
+      @comments = Blog.published.find(params[:blog_id]).comments.published.page(params[:page]).per(10)
     end
   end
 
-  def edit
-    @comment = Comment.published.find(params[:id])
-  end
-
-  def update
-    @comment = Comment.published.find(params[:id])
-    if @comment.update_attributes(params[:comment])
-      redirect_to @comment, :notice  => "Successfully updated comment."
-    else
-      render :action => 'edit'
-    end
-  end
-
-  def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to comments_url, :notice => "Successfully destroyed comment."
-  end
 end

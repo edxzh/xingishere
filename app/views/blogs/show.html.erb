@@ -1,10 +1,10 @@
-<% provide(:title, '博客') %>
+<% provide(:title, @blog.title) %>
 <ol class="breadcrumb">
   <li><%= link_to '首页', '/' %></li>
   <li><%= link_to @blog.category_name, blogs_path(category: @blog.blog_category_id) %></li>
   <li class="active">正文</li>
 </ol>
-<div class="blog panel panel-default">
+<div class="blog">
   <div class="panel-heading">
     <span>博客</span>
     <%= link_to "返回博客列表", blogs_path, class: "pull-right" %>
@@ -21,13 +21,17 @@
       <% end %>
     </div>
   <div class="content"><%= raw @blog.content %></div>
-  <div class="panel-footer">
+  <div class="mb40">
     <span onclick="user_like(<%= @blog.id %>)" class="pull-right">
       <a href="javascript:void(0)" id="like"><%= like_icon %><span id="count"><%= @blog.loves_count %></span>人喜欢</a>
     </span>
     <div class="cb"></div>
   </div>
 </div>
+<!-- 百度分享代码 -->
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
 <form action="" method="post">
   <textarea name="" class="cmt_text_area"></textarea>
   <br />
@@ -39,9 +43,12 @@
     <% @comments.each_with_index do |comment, index| %>
       <%= raw show_comment(comment, @comments.count - index -1) %>
     <% end %>
+    <%= paginate @comments %>
   <% else %>
     还没有人留下痕迹，还不快来抢沙发！！！！！！！
     <img src="/images/shafa.jpg" alt="" />
   <% end %>
 </div>
-
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>

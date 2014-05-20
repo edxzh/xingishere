@@ -1,16 +1,8 @@
-# encoding : utf-8
+# encoding: utf-8
 class Admin::BlogsController < AdminController
   layout 'admin'
-  # before_filter :is_admin
   def index
     @blogs = Blog.published.page(params[:page]).per(10)
-    # if params[:category].present?
-    #   @blogs = Blog.category(params[:category]).page(params[:page]).per(10)
-    # elsif params[:keyword]
-    #   @blogs = Blog.keyword(params[:keyword]).page(params[:page]).per(10)
-    # else
-    #   @blogs = Blog.page(params[:page]).per(10)
-    # end
   end
 
   def show
@@ -33,7 +25,7 @@ class Admin::BlogsController < AdminController
     @blog                   = Blog.new(params[:blog])
     @blog.user_id           = session[:user_id]
     if @blog.save
-      redirect_to admin_blogs_path, :success => "发表成功"
+      redirect_to admin_blogs_path, success: "发表成功"
     else
       render :action => 'new'
     end
@@ -47,7 +39,7 @@ class Admin::BlogsController < AdminController
   def update
     @blog = Blog.find(params[:id])
     if @blog.update_attributes(params[:blog])
-      redirect_to admin_blogs_path, :success  => "更新成功"
+      redirect_to admin_blogs_path, success: "更新成功"
     else
       render :action => 'edit'
     end
@@ -55,11 +47,11 @@ class Admin::BlogsController < AdminController
 
   def destroy
     @blog = Blog.find(params[:id])
-    @blog.update_attributes(publish_status:  true)
+    @blog.update_attributes(publish_status:  false)
     if @blog.save
-      redirect_to admin_blogs_url, :notice => "删除成功"
+      redirect_to admin_blogs_url, success: "删除成功"
     else
-      redirect_to admin_blogs_url, :notice => "删除失败"
+      redirect_to admin_blogs_url, danger: "删除失败"
     end
   end
 

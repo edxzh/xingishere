@@ -18,7 +18,7 @@
   </head>
   <body>
     <%= render 'shared/admin_header' %>
-    <div class="container bs-docs-container">
+    <div class="container bs-docs-container mt40">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %> fade in"><%= value %>
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true" >x</button>
@@ -27,7 +27,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="col-sm-3">
-            <%= render 'shared/aside' %>
+            <%= render 'shared/admin_aside' %>
           </div><!-- span3 -->
           <div class="col-sm-9">
             <%= yield %>
@@ -35,7 +35,5 @@
         </div><!-- span12 -->
       </div><!-- row -->
     </div>
-    <%= render 'shared/footer' %>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

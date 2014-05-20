@@ -1,0 +1,20 @@
+<% provide(:title, '吐槽列表') %>
+<div id="main">
+  <table class="table">
+    <tr>
+      <th>发布者</th>
+      <th>内容</th>
+      <th>发布状态</th>
+      <th>操作</th>
+    </tr>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.name %></td>
+        <td><%= message.content %></td>
+        <td><%= message.publish_status %></td>
+        <td><span class="ml10"><%= link_to '取消发布', admin_message_path(message), method: :delete, data: { confirm: '确定取消发布？' } %></td>
+      </tr>
+    <% end %>
+  </table>
+    <%= paginate @messages %>
+</div>

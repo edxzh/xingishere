@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= full_title(yield(:title)) %></title>
-
+    <title><%= yield(:title) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="一个程序员的blog，专职ruby on rails开发">
+    <meta name="author" content="周星">
     <link href="/stylesheets/base.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/docs.css" rel="stylesheet" type="text/css" />
@@ -19,12 +21,12 @@
   <body>
     <%= render 'shared/header' %>
     <div class="info">
-      <div class="container">
+      <div class="container" style="max-width:calc(78%)">
         <h1>Edward的博客</h1>
         <p>有时过于聪明，有时过于愚蠢</p>
       </div>
     </div><!-- info -->
-    <div class="container">
+    <div class="container" style="max-width:calc(77%)">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %> fade in"><%= value %>
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true" >x</button>
@@ -35,14 +37,14 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true" >x</button>
       </div>
       <div class="row">
-        <div class="col-sm-12">
-          <div class="col-sm-9">
+        <!-- <div class="col-sm-12"> -->
+          <div class="col-lg-9">
             <%= yield %>
           </div>
-          <div class="col-sm-3">
+          <div class="col-lg-3">
             <%= render 'shared/aside' %>
           </div><!-- span3 -->
-        </div><!-- span12 -->
+        <!-- </div>-->
       </div><!-- row -->
     </div>
 <script type="text/javascript">
@@ -59,6 +61,5 @@
 
 </script>
     <%= render 'shared/footer' %>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
