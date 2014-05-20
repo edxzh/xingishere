@@ -68,7 +68,7 @@ end
 
   desc "start unicorn server"
   task :start, :roles => :app do
-    # bundle exec unicorn_reails -c config/unicorn.rb -E production -D
+    # bundle exec unicorn_rails -c config/unicorn.rb -E production -D
     run "cd #{deploy_to}/current/; bundle exec unicorn_rails -c #{unicorn_path} -E production -D"
   end
 
