@@ -19,7 +19,7 @@ Mywebsite::Application.routes.draw do
       post "add_category"
     end
   end
-  get "blogs/:title" => "blogs#show", as: :blog
+  get "blogs/:url_name" => "blogs#show", as: :blog
 
   resources :users do
     collection do

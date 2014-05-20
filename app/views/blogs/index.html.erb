@@ -5,7 +5,7 @@
       <h3><%= BlogCategory.find(category_id).name %></h3>
       <% blogs.each do |blog| %>
         <li class="blogs_li">
-          <%= raw weight_status_index(blog) %><%= link_to blog.title, blog_path(title: blog.title) %>
+          <%= raw weight_status_index(blog) %><%= link_to blog.title, blog_path(url_name: blog.url_name) %>
           <span class="blog_time"><%= blog.created_at.strftime("%Y-%m-%d") %>
             <span class="blog_view">访问量：<%= blog.view_total %></span>
             <span class="ml10">评论数：<%= blog.comments.count %></span>
