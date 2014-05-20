@@ -7,15 +7,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">后台管理</a>
+      <a href="/admin" class="navbar-brand">后台管理</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
-        <li><%= link_to (root_path) do %>主页&nbsp;<span class="glyphicon glyphicon-home"></span><% end %></li>
+        <li><%= link_to (root_path) do %>前台主页&nbsp;<span class="glyphicon glyphicon-home"></span><% end %></li>
         <li><%= link_to "博客", blogs_path %></li>
         <li><%= link_to "吐槽", messages_path %></li>
-        <li><%= link_to "链接", links_path, target: "_blank" %></li>
-        <li><%= link_to "关于本站", about_path %></li>
+        <li><%= link_to "友情链接", links_path, target: "_blank" %></li>
+        <li><%= link_to "关于本站", about_path, target: "_blank" %></li>
       </ul>
       <%= form_tag(blogs_path, method: :get, class: "navbar-form navbar-left", role: "search") do %>
         <div class="form-group">

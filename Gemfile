@@ -74,7 +74,6 @@ gem 'rvm-capistrano'
 group :development do
   gem 'debugger'
   gem 'awesome_print'
-  gem 'unicorn'
   gem 'nifty-generators'
 end
 
@@ -97,4 +96,8 @@ gem 'simple_form'
 
 group :development do
   gem 'capistrano-conditional', :require => false # <-- This is important!
+end
+
+group :production do
+  gem 'newrelic_rpm'
 end

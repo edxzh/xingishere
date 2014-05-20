@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= full_title(yield(:title)) %></title>
-
+    <title><%= yield(:title) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="友情链接,ruby on rails,vim,前端">
+    <meta name="description" content="一个程序员的blog，专职ruby on rails开发">
+    <meta name="author" content="周星">
     <link href="/stylesheets/base.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/docs.css" rel="stylesheet" type="text/css" />
@@ -18,15 +21,14 @@
   <body>
     <%= render 'shared/link_header' %>
     <div class="info">
-      <div class="container">
-        <h1>星哥导航站</h1>
-        <p>星哥导航站,一个值得你ctrl D的网站</p>
+      <div class="container" style="max-width:calc(78%)">
+        <h1>友情链接</h1>
+        <p>一个值得你ctrl D的网站</p>
       </div><!-- container -->
     </div><!-- info -->
-    <div class="container">
+    <div class="container" style="max-width:calc(78%)">
       <%= yield %>
     </div><!-- container -->
     <%= render 'shared/footer' %>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

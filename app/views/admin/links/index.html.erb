@@ -1,0 +1,21 @@
+<% provide :title, "友情链接" %>
+<div id="main">
+  <%= link_to '新建友情链接', new_admin_link_path, class: "btn btn-primary btn-large" %>
+  <table class="table">
+    <tr>
+      <th>链接名</th>
+      <th class="w40">地址</th>
+      <th>分类</th>
+      <th>操作</th>
+    </tr>
+    <% @links.each do |link| %>
+      <tr>
+        <td><%= link.title %></td>
+        <td><%= link.href %></td>
+        <td><%= link.category %></td>
+        <td><span><%= link_to '编辑', edit_admin_link_path(link) %></span><span class="ml10"><%= link_to '删除', admin_link_path(link), method: :delete, data: { confirm: '确定删除？' } %></td>
+      </tr>
+    <% end %>
+  </table>
+    <%= paginate @links %>
+</div>

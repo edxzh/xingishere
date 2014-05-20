@@ -73,9 +73,10 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 .rss{ font-size: 16px; font-weight: bold; margin-top: 18px; }
 
 /* 首页样式 */
+.caption{margin-top:30px;}
 .caption .underline {font-size: 24px;border-bottom:1px solid #e5e5e5;}
 .caption h3 a{ color: #333; font-weight: 500; line-height: 1.1;}
-.blog{border-right: 1px solid #DDDDDD; border-bottom-style:0px none #000; border-radius: 5px 5px 0 0;}
+.blog{border-bottom-style:0px none #000; border-radius: 5px 5px 0 0;}
 /*.blog{border:none;} */
 .blog_info{color:#999;padding-bottom:10px;}
 .ding{color:#FE6600;margin-right:4px;}
@@ -86,8 +87,8 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 .span8{padding:0px;margin:0px;}
 
 /* blog的show页面 */
-.blog .title{color: #333; font-weight: 500; line-height: 1.1;font-size:30px;width: 670px; text-align:center;border-bottom: 1px solid #e8e8e8; padding-bottom: 5px;}
-.blog .content{margin:18px 0 10px 0; padding: 0 1px 0 8px;}
+.blog .title{color: #333; font-weight: 500; line-height: 1.1;font-size:30px; text-align:center;border-bottom: 1px solid #e8e8e8; padding-bottom: 5px;}
+.blog .content{margin:18px 0 10px 0;}
 
 
 
@@ -120,6 +121,8 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 .blog_view{margin-left:8px;}
 .ding_blogs{color:#FE6600;margin-right:2px;}
 
+/* 百度分享样式 */
+.bdsharebuttonbox{margin:10px 0px 6px 8px;}
 
 /* footer */
 .footer{border-top:1px solid #e5e5e5;text-align:center;padding:20px 0px 20px 0px; margin: 10px 0px 10px 0px;color:#777777;}
@@ -146,3 +149,6 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 .pagi{text-align:center;}
 .say{margin:0px 0px 4px 8px;color:#26709A;font-weight:bold;}
 .delete{color:#aaa;text-decoration:line-through;font-size:12px;padding:10px 0px 10px 0px;border-bottom:1px solid #e5e5e5;text-align:center;}
+
+/* 静态页面 */
+.r_content{ margin: 40px auto; width: 800px; }

@@ -1,14 +1,9 @@
-class TipsController < ApplicationController
-  before_filter :is_admin,    only: [:new, :create, :edit, :update]
+class Admin::TipsController < AdminController
+  layout 'admin'
   # GET /tips
   # GET /tips.json
   def index
-    @tips = Tip.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @tips }
-    end
+    @tips = Tip.page(params[:page]).per(10)
   end
 
   # GET /tips/1

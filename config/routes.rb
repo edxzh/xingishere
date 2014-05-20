@@ -1,10 +1,6 @@
 Mywebsite::Application.routes.draw do
-  resources :messages, only: [:create, :destory, :index]
-
-  resources :links
-  resources :tips
-  resources :link_category
-
+  resources :messages, only: [:create, :index]
+  resources :links, only: [:index]
   resources :sessions,  only: [:new, :create, :destory]
 
   get "account/advanced"
@@ -15,14 +11,15 @@ Mywebsite::Application.routes.draw do
   get "home/index"
   root  to: 'home#index', as: :root
 
-  resources :comments
+  resources :comments, only: [:index, :create]
 
-  resources :blogs, only: [:show, :index] do
+  resources :blogs, only: [:index] do
     collection do
       get "user_like"
       post "add_category"
     end
   end
+  get "blogs/:title" => "blogs#show", as: :blog
 
   resources :users do
     collection do
@@ -34,21 +31,19 @@ Mywebsite::Application.routes.draw do
   match '/login',     to: 'sessions#new',       via: 'get'
   match '/logout',    to: 'sessions#destroy',   via: 'get'
 
-  match 'about', to: 'pages#about', as: :about
-  match 'me', to: 'pages#me', as: :me
+  match 'about',  to: 'pages#about', as: :about
+  match 'me',     to: 'pages#me', as: :me
+  match 'resume', to: 'pages#resume', as: :resume
 
   namespace 'admin' do
+    get '/' => 'blogs#index'
     resources :blogs
-
-    resources :messages, only: [:destroy]
-
-    resources :comments, only: [:destroy]
-
+    resources :messages, only: [:index, :destroy]
+    resources :comments, only: [:index, :destroy]
     resources :links, except: [:show]
-
     resources :blog_categories
-
     resources :link_categories
+    resources :tips
   end
 
   # The priority is based upon order of creation:

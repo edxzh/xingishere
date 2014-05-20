@@ -33,7 +33,7 @@
     <div class="form-group">
       <%= label_tag :status, "身高：", class: "col-sm-2 control-label" %>
       <div class="col-sm-3 input-group">
-        <%= text_field_tag :height, @user.height, { class: "form-control" } %>
+        <%= number_field_tag :height, @user.height, { class: "form-control" } %>
         <span class="input-group-addon">cm</span>
       </div>
     </div>
