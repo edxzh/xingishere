@@ -33,9 +33,6 @@ class Blog < ActiveRecord::Base
       where(id: blog_ids)
     end
 
-    # def category
-    #   BlogCategory.find(blog_category_id).name
-    # end
   end
 
   # 日志作者的名字
@@ -46,11 +43,6 @@ class Blog < ActiveRecord::Base
   # 共有多少人喜欢
   def loves_count
     UserLove.where("blog_id = ?", id).count
-  end
-
-  # 类别名
-  def category_name
-    BlogCategory.find(blog_category_id).name
   end
 
   # 通过类别找一批blog

@@ -4,7 +4,7 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all.group_by { |link| link.link_category_id }
+    @links = Link.includes(:link_category).group_by { |link| link.link_category_id }
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @links }

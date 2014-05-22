@@ -3,7 +3,7 @@
     <%= raw weight_status(blog) %><%= link_to blog.title, blog_path(url_name: blog.url_name) %>
   </h3>
   <div class="blog_info">
-    分类：<%= link_to blog.category_name, blogs_path(category: blog.blog_category_id) %> |
+    分类：<%= link_to blog.blog_category.name, blogs_path(category: blog.blog_category_id) %> |
     标签：<% blog.tags.each do |tag| %>
       <%= link_to blog.tag, root_path(tags: blog.blog_category_id) %><br />
     <% end %>

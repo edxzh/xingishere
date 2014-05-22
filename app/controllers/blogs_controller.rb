@@ -2,11 +2,11 @@
 class BlogsController < ApplicationController
   def index
     if params[:category].present?
-      relation = Blog.published.category(params[:category])
+      relation = Blog.published.includes(:comments).category(params[:category])
     elsif params[:keyword]
-      relation = Blog.published.keyword(params[:keyword])
+      relation = Blog.published.includes(:comments).keyword(params[:keyword])
     else
-      relation = Blog.published.includes(:comments)
+      relation = Blog.published.includes(:blog_category, :comments)
     end
     @blogs = relation.group_by { |blog| blog.blog_category_id }
   end

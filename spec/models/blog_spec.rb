@@ -71,10 +71,6 @@ describe Blog do
       expect(@blog.username).to eq user.name
     end
 
-    it ".category_name" do
-      expect(@blog.category_name).to eq blog_category.name
-    end
-
     it ".loves_count" do
       user_love = FactoryGirl.create(:user_love, user_id: user.id, blog_id: @blog.id)
       expect(@blog.loves_count).to eq 1

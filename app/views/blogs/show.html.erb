@@ -4,7 +4,7 @@
 <% end %>
 <ol class="breadcrumb">
   <li><%= link_to '首页', '/' %></li>
-  <li><%= link_to @blog.category_name, blogs_path(category: @blog.blog_category_id) %></li>
+  <li><%= link_to @blog.blog_category.name, blogs_path(category: @blog.blog_category_id) %></li>
   <li class="active">正文</li>
 </ol>
 <div class="blog">
