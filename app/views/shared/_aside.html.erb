@@ -12,7 +12,7 @@
   <h2 class=mt25>最热最新</h2>
   <ul class="hot">
     <% hot_blogs.each do |hot_blog| %>
-      <li><%= link_to hot_blog.title, hot_blog %></li>
+      <li><%= link_to hot_blog.title, blog_path(url_name: hot_blog.url_name) %></li>
     <% end %>
   </ul>
   <h2 class=mt25>分类大全</h2>
