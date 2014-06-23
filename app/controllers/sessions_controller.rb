@@ -12,6 +12,10 @@ class SessionsController < ApplicationController
       session[:user_name] = user.name
       session[:user_id] = user.id
       flash.now[:success] = "登录成功"
+      if params[:remeber] == "1"
+        cookies[:user_name] = { value: user.name, expires: 1.year.from_now }
+        cookies[:user_id] = { value: user.id, expires: 1.year.from_now }
+      end
       redirect_back_or root_path
     else
       flash.now[:danger] = "登录失败,请检查邮件地址和密码"
