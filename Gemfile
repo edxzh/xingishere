@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-#source 'http://ruby.taobao.org'
+#source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.13'
 
@@ -68,6 +68,7 @@ gem 'capistrano', require: false
 # gem 'capistrano-rvm'
 gem 'rvm-capistrano'
 gem 'rails_best_practices'
+gem 'annotate', ">=2.6.0"
 
 # To use debugger
 # gem 'debugger'

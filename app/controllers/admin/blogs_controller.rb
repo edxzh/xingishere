@@ -3,6 +3,7 @@ class Admin::BlogsController < AdminController
   layout 'admin'
   def index
     @blogs = Blog.published.page(params[:page]).per(10)
+    @category = BlogCategory.all
   end
 
   def show
