@@ -67,6 +67,7 @@ gem 'unicorn'
 gem 'capistrano', require: false
 # gem 'capistrano-rvm'
 gem 'rvm-capistrano'
+gem 'rails_best_practices'
 
 # To use debugger
 # gem 'debugger'
