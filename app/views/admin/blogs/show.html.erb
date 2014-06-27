@@ -11,7 +11,7 @@
   </div>
   <h2 class="title"><%= @blog.title %></h2>
     <div class="blog_info">
-      作者：<%= @blog.user.name %> | 
+      作者：<%= @blog.user_name %> | 
       标签：<% @blog.tags.each do |tag| %>
               <%= link_to @blog.tag, root_path(tags: @blog.category) %><br />
             <% end %>

@@ -16,8 +16,5 @@ class UserLove < ActiveRecord::Base
         1
       end
     end
-    def like_by_user(user_id, blog_id)
-      where("user_id = ? AND blog_id = ?", current_user.id, @blog.id).first
-    end
   end
 end

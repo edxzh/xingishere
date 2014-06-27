@@ -15,7 +15,7 @@
   <h2 class="title"><%= @blog.title %></h2>
     <div class="blog_info">
       <%= hidden_field_tag :blog_id, @blog.id, id: "blog_id" %>
-      作者：<%= @blog.user.name %> | 
+      作者：<%= @blog.user_name %> |
       标签：<% @blog.tags.each do |tag| %>
               <%= link_to @blog.tag, root_path(tags: @blog.category) %><br />
             <% end %>

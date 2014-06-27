@@ -9,10 +9,9 @@ class AccountController < ApplicationController
 
   def update_pro
     @user = current_user
-    @user.sex =         params[:sex]
-    @user.birthday =    params[:birthday] if params[:birthday].present?
-    @user.status_name = params[:status]
-    @user.height =      params[:height]
+    birthday = params[:birthday] if params[:birthday].present?
+
+    @user.assign_attributes({ sex: params[:sex], birthday: birthday, status_name: params[:status], height: params[:height] })
     if @user.save
       flash[:info] = "修改成功"
       redirect_to account_advanced_path
@@ -28,11 +27,7 @@ class AccountController < ApplicationController
 
   def update_adv
     @user = current_user
-
-    @user.position        = params[:position]
-    @user.address         = params[:address]
-    @user.relation_name   = params[:relation]
-    @user.description     = params[:description]
+    @user.assign_attributes({ position: params[:position], address: params[:address], relation_name: params[:relation_name], description: params[:description] })
 
     if @user.save
       flash[:info] = "更新成功"

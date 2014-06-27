@@ -18,7 +18,8 @@ class Blog < ActiveRecord::Base
   scope :keyword,  ->(keyword) { where("title like ? or content like ?", "%#{keyword}%", "%#{keyword}%") if keyword.present? }
   scope :category, ->(category_id) { where("blog_category_id = ?", category_id) }
 
-  delegate :name,   to: :blog_category,  prefix: true
+  delegate :name,   to: :blog_category,   prefix: true
+  delegate :name,   to: :user,            prefix: true
 
     class << self
     # TODO 此方法需重构
