@@ -4,6 +4,6 @@
     <h3>编辑日志</h3>
   </div>
   <%= form_for(@blog, url: admin_blog_path) do |f| %>
-    <%= render partial: "form", locals: { f: f } %>
+    <%= render "form", f: f %>
   <% end %>
 </div>

@@ -51,7 +51,7 @@ class Admin::LinksController < AdminController
         format.html { redirect_to admin_links_path, success: '创建成功' }
         format.json { render json: link, status: :created, location: link }
       else
-        format.html { render action: "new" }
+        format.html { render "new" }
         format.json { render json: link.errors, status: :unprocessable_entity }
       end
     end
@@ -67,7 +67,7 @@ class Admin::LinksController < AdminController
         format.html { redirect_to admin_links_path, success: '更新成功' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render "edit" }
         format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end

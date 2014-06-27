@@ -43,7 +43,7 @@ class Admin::TipsController < AdminController
         format.html { redirect_to @tip, notice: 'Tip was successfully created.' }
         format.json { render json: @tip, status: :created, location: @tip }
       else
-        format.html { render action: "new" }
+        format.html { render "new" }
         format.json { render json: @tip.errors, status: :unprocessable_entity }
       end
     end
@@ -59,7 +59,7 @@ class Admin::TipsController < AdminController
         format.html { redirect_to @tip, notice: 'Tip was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render "edit" }
         format.json { render json: @tip.errors, status: :unprocessable_entity }
       end
     end

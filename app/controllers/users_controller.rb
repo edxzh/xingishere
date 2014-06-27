@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       ActivateMailer.user_activate(@user).deliver
       redirect_to success_users_path
     else
-      render :action => 'new'
+      render 'new'
     end
   end
 
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       redirect_to @user, :notice  => "更新成功"
     else
-      render :action => 'edit'
+      render 'edit'
     end
   end
 

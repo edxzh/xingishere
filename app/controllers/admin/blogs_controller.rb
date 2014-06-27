@@ -28,7 +28,7 @@ class Admin::BlogsController < AdminController
     if @blog.save
       redirect_to admin_blogs_path, success: "发表成功"
     else
-      render :action => 'new'
+      render 'new'
     end
   end
 
@@ -42,7 +42,7 @@ class Admin::BlogsController < AdminController
     if @blog.update_attributes(params[:blog])
       redirect_to admin_blogs_path, success: "更新成功"
     else
-      render :action => 'edit'
+      render 'edit'
     end
   end
 

@@ -2,7 +2,7 @@
   <%= javascript_include_tag controller_path, media: "all" %>
 <% end %>
 <%= form_for(@link, url: admin_links_path, html: { class: "form-horizontal" }) do |f| %>
-  <%= render partial: "form", locals: { f: f } %>
+  <%= render "form", f: f %>
 <% end %>
 <input type="button" class="btn btn-default" value="增加分类" name="" data-toggle="modal" data-target=".bs-modal-sm" />
 <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
