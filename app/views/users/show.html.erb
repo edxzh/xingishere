@@ -31,7 +31,7 @@
   <div class="panel-body">
     <ul class="blog_index">
     <% @love_blogs.each do |blog| %>
-      <li><span class="love_blog_cate"><%= blog.blog_category.name %></span><span><%= link_to blog.title, blog_path(url_name: blog.url_name) %></span><span class="love_blog_right"><span class="love_count">共<%= blog.loves_count %>人喜欢</span></span></li>
+      <li><span class="love_blog_cate"><%= blog.blog_category.name %></span><span><%= link_to blog.title, blog_path(url_name: blog.url_name) %></span><span class="love_blog_right"><span class="love_count">共<%= blog.user_loves.count %>人喜欢</span></span></li>
     <% end %>
     <%= paginate @love_blogs %>
   </ul>

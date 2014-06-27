@@ -3,13 +3,13 @@ class Blog < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :blog_category
   has_many    :tags
-  has_many    :user_loves
+  has_many    :user_loves,        dependent:  :destroy, inverse_of: :blog,  class_name: UserLove
   has_many    :comments
-  validates :user_id,           presence: true
-  validates :title,             presence: true, uniqueness: true
-  validates :content,           presence: true
-  validates :url_name,          presence: true, uniqueness: true
-  validates :seo_keyword,       presence: true
+  validates   :user_id,           presence: true
+  validates   :title,             presence: true, uniqueness: true
+  validates   :content,           presence: true
+  validates   :url_name,          presence: true, uniqueness: true
+  validates   :seo_keyword,       presence: true
 
   # validates :user,              presence: true
 
@@ -33,16 +33,6 @@ class Blog < ActiveRecord::Base
       where(id: blog_ids)
     end
 
-  end
-
-  # 日志作者的名字
-  def username
-    User.find(user_id).name
-  end
-
-  # 共有多少人喜欢
-  def loves_count
-    UserLove.where("blog_id = ?", id).count
   end
 
   # 通过类别找一批blog
