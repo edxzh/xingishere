@@ -13,8 +13,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       flash.now[:success] = "登录成功"
       if params[:remeber] == "1"
-        cookies[:user_name] = { value: user.name, expires: 1.year.from_now }
-        cookies[:user_id] = { value: user.id, expires: 1.year.from_now }
+        cookies[:email] = { value: user.email, expires: 1.year.from_now }
+        cookies[:password] = { value:params[:password], expires: 1.year.from_now }
       end
       redirect_back_or root_path
     else
