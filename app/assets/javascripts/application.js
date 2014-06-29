@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require kindeditor
+if (window.console) {
+  var cons = console;
+  if (cons) {
+    cons.log("喜欢看星哥的代码，星哥欢迎和您一起讨论学习! 请邮件至Edward_mjz@hotmail.com");
+    cons.log("请在邮件中注明%c来自:console,星哥愿意请您吃饭！","color:red;font-weight:bold;");
+  }
+}
