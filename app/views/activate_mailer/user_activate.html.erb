@@ -5,9 +5,17 @@
     <title>恭喜您成功注册xingishere.com</title>
 </head>
 <body>
-  <p>亲爱的<%= @user.name %>，您好！</p>
-  <h1 style="color:red">恭喜您成功注册xingishere.com！！！！</h1>
-  <p>请点击点击下面链接激活您的帐号</p>
-  <a href="http://www.xingishere.com/users/activate?email=<%= @user.email %>&activate_code=<%= @user.activate_code %>">http://www.xingishere.com/users/activate?email=<%= @user.email %>&activate_code=<%= @user.activate_code %></a>
+  <style type="text/css">
+    .container{ width:400px; }
+    .f12{font-size: 12px;}
+    .ccc{color: #ccc;}
+  </style>
+  <div class="container">
+    <p class="f12 ccc">提示：此邮件是系统自动发出，请不要直接“回复”本邮件。如果您有任何疑问，欢</p>
+    <p>亲爱的<%= @user.name %>，您好！</p>
+    <h1 style="color:red">恭喜您成功注册xingishere.com！！！！</h1>
+    <p>请点击点击下面链接激活您的帐号</p>
+    <a href="http://www.xingishere.com/users/activate?email=<%= @user.email %>&activate_code=<%= @user.activate_code %>">http://www.xingishere.com/users/activate?email=<%= @user.email %>&activate_code=<%= @user.activate_code %></a>
+  </div>
 </body>
 </html>

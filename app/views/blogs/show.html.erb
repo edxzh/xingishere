@@ -4,7 +4,7 @@
 <% end %>
 <ol class="breadcrumb">
   <li><%= link_to '首页', '/' %></li>
-  <li><%= link_to @blog.blog_category.name, blogs_path(category: @blog.blog_category_id) %></li>
+  <li><%= link_to @blog.blog_category_name, blogs_path(category: @blog.blog_category_id) %></li>
   <li class="active">正文</li>
 </ol>
 <div class="blog">
@@ -15,7 +15,7 @@
   <h2 class="title"><%= @blog.title %></h2>
     <div class="blog_info">
       <%= hidden_field_tag :blog_id, @blog.id, id: "blog_id" %>
-      作者：<%= @blog.username %> | 
+      作者：<%= @blog.user_name %> |
       标签：<% @blog.tags.each do |tag| %>
               <%= link_to @blog.tag, root_path(tags: @blog.category) %><br />
             <% end %>
@@ -26,7 +26,7 @@
   <div class="content"><%= raw @blog.content %></div>
   <div class="mb40">
     <span onclick="user_like(<%= @blog.id %>)" class="pull-right">
-      <a href="javascript:void(0)" id="like"><%= like_icon %><span id="count"><%= @blog.loves_count %></span>人喜欢</a>
+      <a href="javascript:void(0)" id="like"><%= like_icon %><span id="count"><%= @blog.user_loves.count %></span>人喜欢</a>
     </span>
     <div class="cb"></div>
   </div>

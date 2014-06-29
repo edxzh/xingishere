@@ -19,7 +19,7 @@ class Admin::BlogCategoriesController < AdminController
     if @blog_category.save
       redirect_to admin_blog_categories_path, success: "新增分类成功"
     else
-      render :action => 'new'
+      render 'new'
     end
   end
 
@@ -32,7 +32,7 @@ class Admin::BlogCategoriesController < AdminController
     if @blog_category.update_attributes(params[:blog_category])
       redirect_to admin_blog_categories_path, success: "更新成功"
     else
-      render :action => 'edit'
+      render 'edit'
     end
   end
 

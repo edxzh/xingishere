@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :username, :password, :password_confirmation, :name, :sex, :birthday, :status, :height, :position, :address, :relation, :image, :rights, :score, :description, :email
   STATUS    = %w(single married divorce).freeze
   RELATION  = %w(primary junior senior colleage society workmate relative)
-  has_many  :user_loves,      dependent:  :destroy, inverse_of: :user
+  has_many  :user_loves,      dependent:  :destroy, inverse_of: :user,  class_name: UserLove
   has_many  :blogs,           dependent:  :destroy, inverse_of: :user
   has_many  :comments,        dependent:  :destroy, inverse_of: :user
   has_many  :link_categories, dependent:  :destroy, inverse_of: :user
