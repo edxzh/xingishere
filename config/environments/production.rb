@@ -46,7 +46,7 @@ Mywebsite::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( account.js blogs.js comments.js users.js bootstrap.js home.js link_category.js links.js messages.js pages.js sessions.js tips.js admin/blogs.js admin/comments.js admin/link_category.js admin/links.js admin/messages.js admin/tips.js admin/user.js admin/blog_categories.js admin/common.css )
+  config.assets.precompile += %w( application.js account.js blogs.js comments.js users.js bootstrap.js home.js link_category.js links.js messages.js pages.js sessions.js tips.js admin/blogs.js admin/comments.js admin/link_category.js admin/links.js admin/messages.js admin/tips.js admin/user.js admin/blog_categories.js admin/common.css )
 
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = true
