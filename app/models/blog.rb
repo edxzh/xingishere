@@ -21,7 +21,10 @@ class Blog < ActiveRecord::Base
   delegate :name,   to: :blog_category,   prefix: true
   delegate :name,   to: :user,            prefix: true
 
-    class << self
+  def to_param
+    url_name
+  end
+  class << self
     # TODO 此方法需重构
     def like_by_user?(user_id, blog_id)
       if UserLove.where("user_id = ? AND blog_id = ?", user_id, blog_id).first

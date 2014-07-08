@@ -12,7 +12,7 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @blog = Blog.find_by_url_name(params[:url_name])
+    @blog = Blog.find_by_url_name(params[:id])
     @like = false                   # 当前用户是否喜欢此博客
     @blog.view_total = @blog.view_total += 1
     @blog.save
