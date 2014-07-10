@@ -15,3 +15,39 @@
 #
 # Mechanize log: log/mechanize.log
 # deadlink log: tmp/2014-07-10-111111_broken_link.csv
+
+require 'csv'
+require 'net/http'
+require 'mechanize'
+require 'typhoeus'
+
+ALLOW_STATUS = [200, 301, 302, 303]
+
+outfile_path = File.expand_path("../../tmp/#{Time.now.strftime("%Y-%m-%d")}_broken_link.csv", __FILE__)
+outfile = CSV.open(outfile_path, 'w')
+
+def valid_link?(href)
+  href.to_s != "javascript:void(0)" && href.to_s != "#" && href.to_s != "" && href.to_s.include?('http')
+end
+
+class String
+  def to_link
+    if self[0] == '/'
+      "http://www.xingishere.com#{self}"
+    else
+      self
+    end
+  end
+end
+
+class NilClass
+  def to_link
+    ""
+  end
+end
+
+TO_TEST_LINK = {
+  :index      =>  "http://www.xingishere.com",
+  :blogs      =>  "http://www.xingishere.com/blogs",
+  :links      =>  "http://www.xingishere.com/links",
+}
