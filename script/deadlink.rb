@@ -51,3 +51,23 @@ TO_TEST_LINK = {
   :blogs      =>  "http://www.xingishere.com/blogs",
   :links      =>  "http://www.xingishere.com/links",
 }
+
+@options                    = {}
+@request_hash               = {}
+@broken_responses_hash      = {}
+@final_errors               = {}
+
+# max_concurrency并发数，默认200
+# hydra = Typhoeus::Hydra.new
+
+hydra = Typhoeus::Hydra.new(max_concurrency: 100)
+
+Typhoeus.on_success do |response|
+  p "SUCCESS #{response.code} : #{response.effective_url}"
+end
+
+Typhoeus.on_failure do |response|
+  p "ERROR #{response.code} : #{effective_url}"
+end
+
+p Time.now
