@@ -52,6 +52,8 @@ gem 'jquery-rails'
 # To use Jbuilder templates for JSON
 gem 'kaminari'
 
+gem 'typhoeus', '~> 0.6.1', require: false
+
 # mail
 # gem 'mail', '~> 2.5.4'
 gem 'rest-client', '~> 1.6.7'
