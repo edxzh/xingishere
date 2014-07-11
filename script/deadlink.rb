@@ -71,3 +71,34 @@ Typhoeus.on_failure do |response|
 end
 
 p Time.now
+
+agent = Mechanize.new
+agent.log = Logger.new(File.expand_path('../../log/mech.log', __FILE__))
+
+TO_TEST_link.each do |k, v|
+  page = agent.get(v)
+  links = page.links.map(&href) + page.search('script').map{ |x| x['src'] } + page.search("link").map{ |x| x['href'] }
+  links.uniq!
+  @request_hash[k] ||= []
+
+  links.each do |link|
+    if valid_link?(link) && link != 'http://www.xingishere.com/logout'
+      request = Typhoeus::Request.new(link, @options.merge(:timeout => 30))
+      @request_hash[k] << request
+      hydra.queue request
+    end
+  end
+
+end
+
+p 'run'
+hydra.run
+p 'finish run'
+
+@request_hash.each do |k, request|
+  @broken_responses_hash[k] ||= []
+  requests.each do |request|
+    response = request.response
+    @broken_responses_hash[k] << response unless ALLOW_STATUS.include?(response.code.to_i)
+  end
+end
