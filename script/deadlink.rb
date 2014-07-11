@@ -49,13 +49,13 @@ end
 TO_TEST_LINK = {
   :index      =>  "http://www.xingishere.com",
   :blogs      =>  "http://www.xingishere.com/blogs",
-  :links      =>  "http://www.xingishere.com/links",
+  :links      =>  "http://www.xingishere.com/links"
 }
 
 @options                    = {}
 @request_hash               = {}
 @broken_responses_hash      = {}
-@final_errors               = {}
+@final_errors               = []
 
 # max_concurrency并发数，默认200
 # hydra = Typhoeus::Hydra.new
@@ -67,7 +67,7 @@ Typhoeus.on_success do |response|
 end
 
 Typhoeus.on_failure do |response|
-  p "ERROR #{response.code} : #{effective_url}"
+  p "ERROR #{response.code} : #{response.effective_url}"
 end
 
 p Time.now
@@ -75,9 +75,9 @@ p Time.now
 agent = Mechanize.new
 agent.log = Logger.new(File.expand_path('../../log/mech.log', __FILE__))
 
-TO_TEST_link.each do |k, v|
+TO_TEST_LINK.each do |k, v|
   page = agent.get(v)
-  links = page.links.map(&href) + page.search('script').map{ |x| x['src'] } + page.search("link").map{ |x| x['href'] }
+  links = page.links.map(&:href) + page.search('script').map{ |x| x['src'] } + page.search("link").map{ |x| x['href'] }
   links.uniq!
   @request_hash[k] ||= []
 
@@ -95,7 +95,7 @@ p 'run'
 hydra.run
 p 'finish run'
 
-@request_hash.each do |k, request|
+@request_hash.each do |k, requests|
   @broken_responses_hash[k] ||= []
   requests.each do |request|
     response = request.response
@@ -107,7 +107,7 @@ puts '===================================================='
 p "再次检验errors，非#{ALLOW_STATUS}"
 
 @broken_responses_hash.each do |k, broken_responses|
-  broken_responses.each do |broken_resonse|
+  broken_responses.each do |broken_response|
     response = Typhoeus::Request.get(broken_response.effective_url.to_s, @options)
     @final_errors << [k, response.code, response.effective_url] unless ALLOW_STATUS.include?(response.code)
   end
@@ -116,4 +116,4 @@ end
 p "--------最终的死链如下--------"
 p @final_errors
 @final_errors.each { |x| outfile << x } unless @final_errors.empty?
-@outfile.close
+outfile.close
