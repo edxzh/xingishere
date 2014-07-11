@@ -27,7 +27,7 @@ outfile_path = File.expand_path("../../tmp/#{Time.now.strftime("%Y-%m-%d")}_brok
 outfile = CSV.open(outfile_path, 'w')
 
 def valid_link?(href)
-  href.to_s != "javascript:void(0)" && href.to_s != "#" && href.to_s != "" && href.to_s.include?('http')
+  href.to_s != "javascript:void(0)" && href.to_s != "#" && href.to_s != ""# && href.to_s.include?('http')
 end
 
 class String
@@ -75,6 +75,14 @@ p Time.now
 agent = Mechanize.new
 agent.log = Logger.new(File.expand_path('../../log/mech.log', __FILE__))
 
+def link_with_host(link)
+  if link[0] == '/'
+    "http://www.xingishere.com#{link}"
+  else
+    link
+  end
+end
+
 TO_TEST_LINK.each do |k, v|
   page = agent.get(v)
   links = page.links.map(&:href) + page.search('script').map{ |x| x['src'] } + page.search("link").map{ |x| x['href'] }
@@ -83,7 +91,7 @@ TO_TEST_LINK.each do |k, v|
 
   links.each do |link|
     if valid_link?(link) && link != 'http://www.xingishere.com/logout'
-      request = Typhoeus::Request.new(link, @options.merge(:timeout => 30))
+      request = Typhoeus::Request.new(link_with_host(link), @options.merge(:timeout => 30))
       @request_hash[k] << request
       hydra.queue request
     end
