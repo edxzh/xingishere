@@ -102,3 +102,18 @@ p 'finish run'
     @broken_responses_hash[k] << response unless ALLOW_STATUS.include?(response.code.to_i)
   end
 end
+
+puts '===================================================='
+p "再次检验errors，非#{ALLOW_STATUS}"
+
+@broken_responses_hash.each do |k, broken_responses|
+  broken_responses.each do |broken_resonse|
+    response = Typhoeus::Request.get(broken_response.effective_url.to_s, @options)
+    @final_errors << [k, response.code, response.effective_url] unless ALLOW_STATUS.include?(response.code)
+  end
+end
+
+p "--------最终的死链如下--------"
+p @final_errors
+@final_errors.each { |x| outfile << x } unless @final_errors.empty?
+@outfile.close
