@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <title>恭喜您成功注册xingishere.com</title>
-</head>
-<body>
-  <style type="text/css">
-    .container{ width:400px; }
-    .f12{font-size: 12px;}
-    .ccc{color: #ccc;}
-  </style>
-  <div class="container">
-    <p class="f12 ccc">提示：此邮件是系统自动发出，请不要直接“回复”本邮件。如果您有任何疑问，欢</p>
-    <p>亲爱的<%= @user.name %>，您好！</p>
-    <h1 style="color:red">恭喜您成功注册xingishere.com！！！！</h1>
-    <p>请点击点击下面链接激活您的帐号</p>
-    <a href="http://www.xingishere.com/users/activate?email=<%= @user.email %>&activate_code=<%= @user.activate_code %>">http://www.xingishere.com/users/activate?email=<%= @user.email %>&activate_code=<%= @user.activate_code %></a>
-  </div>
-</body>
+  </head>
+  <body>
+    <style type="text/css">
+      .container{color:#666; width: 88%; padding: 30px 70px; background-color:#f7f9fa;}
+      .content{ border:1px solid #dedede; background-color: #fff; margin: 2px auto; padding: 4px 8px; border-radius: 4px; }
+      .body{border-bottom:1px dashed #666666;padding-bottom:20px;margin-top:10px;}
+      .author{border-bottom: 1px solid red;}
+      .author_name{margin-left: 10px;}
+      .f12{font-size: 12px;}
+      .ccc{color: #ccc;}
+    </style>
+    <div class="container">
+      <p class="f12 ccc">提示：此邮件是系统自动发出，请不要直接“回复”本邮件。如果您有任何疑问，请发送邮件至 <a href="mailto:Edward_mjz@hotmail.com">Edward_mjz@hotmail.com</a></p>
+      <div class="content">
+        <div class="body">
+          <p class="author"><%= gravatar_for @author, size: 52 %> <span class="author_name"><font color="#000000" size="2" face="微软雅黑,黑体" style="font-size:18px;font-weight:bold">周星</font></span></p>
+          <p>亲爱的 <%= @user.name %>:</p>
+          <p>您好!</p>
+          <p>您已经成功注册xingishere.com，请点击点击下面链接激活您的帐号</p>
+          <a href="http://www.xingishere.com/users/activate?email=<%= @user.email %>&activate_code=<%= @user.activate_code %>">点击激活通行证账户</a>
+          <p class="f12">如果上述文字点击无效，请把下面网页地址复制到浏览器地址栏中打开：</p>
+          <p class="f12">http://www.xingishere.com/users/activate?email=<%= @user.email %>&activate_code=<%= @user.activate_code %></p>
+          <p>请妥善保留这封电子邮件</p>
+          <p>注意：</p>
+          <ol>
+            <li>激活成功的账号才可登陆，您可以评论自己感兴趣的博客，收藏喜欢的博客，还可以对网站进行吐槽。</li>
+            <li>因为一些不能说的原因，请不要发表敏感信息等，博主在第一时间发现会立即删除且不会给您任何通知。</li>
+            <li>如果您有任何问题，可以写信给博主 <a href="mailto:Edward_mjz@hotmail.com">Edward_mjz@hotmail.com</a></li>
+            <li>现在开始访问主页: <a href="http://www.xingishere.com" target="_blank">www.xingishere.com</a></li>
+          </ol>
+          <p>感谢您的注册和关注，您的支持是我最大的动力，我会继续用心去code，用心去写每一篇博客，用心去研究每一个大家感兴趣的技术。我的世界因为你们更精彩！</p>
+        <p class="f12">如果您没有申请注册本站，请忽略此邮件。</p>
+        </div><!-- body -->
+        <p><%= format_date(Time.now) %></p>
+      </div><!-- content -->
+    </div><!-- container -->
+  </body>
 </html>
