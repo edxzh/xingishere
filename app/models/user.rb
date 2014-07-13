@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
   validates :height,      numericality: { only_integer: true }, :if => :profile?
   has_secure_password
 
+  scope :activated, -> { where("activate_status = ?", true) }
+
   def status_name
     I18n.t("user.status.#{STATUS.at(status)}")
   end

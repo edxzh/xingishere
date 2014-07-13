@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.where("email = ?", params[:email].downcase).first
+    user = User.activated.where("email = ?", params[:email].downcase).first
     if user && user.authenticate(params[:password])
       login user
       session[:user_name] = user.name
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       end
       redirect_back_or root_path
     else
-      flash.now[:danger] = "登录失败,请检查邮件地址和密码"
+      flash.now[:danger] = "登录失败,邮箱或密码错误"
       render 'new'
     end
   end

@@ -11,6 +11,8 @@ class CommentsController < ApplicationController
 
     if current_user.nil?
       render json: { status: -1, message: '只有登录后的用户才能评论哦！如果没有帐号点击右上角注册按钮！' } and return
+    elsif current_user.activate_status == false
+      render json: { status: -1, message: '请您先到注册邮箱中激活账号再进行其它操作！' } and return
     end
 
     if @comment.save
