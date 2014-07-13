@@ -1,5 +1,5 @@
 # encoding: utf-8
-class WeekWellChosenMailer < ActivateMailer::Base
+class WeekWellChosenMailer < ActionMailer::Base
   default from: "www.xingishere.com"
 
   def week_blogs(blogs, user)
