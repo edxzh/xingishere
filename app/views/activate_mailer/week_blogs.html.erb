@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>撕瓦星哥2每周精选</title>
+  </head>
+  <body>
+    <style type="text/css">
+      .container{color:#666; width: 86%; padding: 30px 70px; background-color:#f7f9fa;}
+      .content{ border:1px solid #dedede; background-color: #fff; margin: 2px auto; padding: 4px 8px; border-radius: 4px; }
+      .body{border-bottom:1px dashed #666666;padding-bottom:20px;margin-top:10px;}
+      .title{font-size:24px;padding:20px 15px;border-bottom:1px solid gray;}
+      .web{color: blue; margin-right: 10px;}
+      .author{border-bottom: 1px solid red;}
+      .author_name{margin-left: 10px;}
+      .f12{font-size: 12px;}
+      .ccc{color: #ccc;}
+    </style>
+    <div class="container">
+      <p class="f12 ccc">提示：退订功能尚在开发，如果您有任何疑问，请发送邮件至 <a href="mailto:Edward_mjz@hotmail.com">Edward_mjz@hotmail.com</a></p>
+      <div class="content">
+        <div class="body">
+          <div class="title">
+            <span class="web">撕瓦星哥2</span>每周精选
+          </div><!-- title -->
+          <table cellspacing="0" class="blogs">
+            <tbody>
+              <% @blogs.each do |blog| %>
+                <tr><td><%= link_to blog.title, blog_path(blog)  %>访问量：<%= blog.view_total %></td></tr>
+                <tr><td><%= gravatar_for blog.user %><%= blog.user.name %>,<%= blog.user.description %></td></tr>
+                <tr>
+                  <td><%= display_content(blog.content) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div><!-- body -->
+        <p><%= format_date(Time.now) %></p>
+      </div><!-- content -->
+    </div><!-- container -->
+  </body>
+</html>
