@@ -6,15 +6,22 @@
   </head>
   <body>
     <style type="text/css">
-      .container{color:#666; width: 86%; padding: 30px 70px; background-color:#f7f9fa;}
-      .content{ border:1px solid #dedede; background-color: #fff; margin: 2px auto; padding: 4px 8px; border-radius: 4px; }
+      .container{color:#666; width: 552px; padding: 30px 70px; background-color:#f7f9fa; margin:0px auto;border-radius:2px;}
+      .content{ border:1px solid #dedede; background-color: #fff; margin: 2px auto; padding: 4px 28px; border-radius: 4px; }
       .body{border-bottom:1px dashed #666666;padding-bottom:20px;margin-top:10px;}
-      .title{font-size:24px;padding:20px 15px;border-bottom:1px solid gray;}
-      .web{color: blue; margin-right: 10px;}
+      .title{font-size:24px;padding:20px 15px;border-bottom:1px solid #EDF0F1;}
+      .web{color: #118ac6; margin:0px 16px 0px 2px;}
+      .blog_title{color:#259;font-size:17px;font-weight:bold;text-decoration:none;border:none;outline:none;}
+      .blogs{border-bottom:1px solid #EDF0F1;margin:20px 0 0 0;padding-bottom:20px;}
       .author{border-bottom: 1px solid red;}
       .author_name{margin-left: 10px;}
+      .gravatar{height:22px;border-radius:2px;outline:none;text-decoration:none;border:none;margin:0 2px 0 0;padding:0;display:inline;position:relative;top:6px;}
+      .view_total{color:#676b6d;font-size:13px;position:relative;left:370px;}
+      .view_all{font-size:13px;color:#259;display:inline-block;text-decoration:none;}
+      .blog_content{font-size:13px;line-height:22px;text-decoration:none;color:#333;display:block;}
       .f12{font-size: 12px;}
       .ccc{color: #ccc;}
+      strong{font-weight:bold;color:#333;font-size:13px;}
     </style>
     <div class="container">
       <p class="f12 ccc">提示：退订功能尚在开发，如果您有任何疑问，请发送邮件至 <a href="mailto:Edward_mjz@hotmail.com">Edward_mjz@hotmail.com</a></p>
@@ -23,17 +30,21 @@
           <div class="title">
             <span class="web">撕瓦星哥2</span>每周精选
           </div><!-- title -->
+          <% @blogs.each do |blog| %>
           <table cellspacing="0" class="blogs">
             <tbody>
-              <% @blogs.each do |blog| %>
-                <tr><td><%= link_to blog.title, blog_path(blog)  %>访问量：<%= blog.view_total %></td></tr>
-                <tr><td><%= gravatar_for blog.user %><%= blog.user.name %>,<%= blog.user.description %></td></tr>
                 <tr>
-                  <td><%= display_content(blog.content) %></td>
+                  <td><%= link_to blog.title, blog_path(blog), class: "blog_title"  %></td>
                 </tr>
-              <% end %>
+                <tr>
+                  <td><%= gravatar_for blog.user %><strong><%= blog.user.name %></strong>, <%= blog.user.description %><span class="view_total">访问量：<%= blog.view_total %></span></td>
+                </tr>
+                <tr>
+                  <td><a href=<%= blog_path(blog) %> target="_blank" class="blog_content"><%= display_content(blog.content) %></a><%= link_to "阅读全文", blog_path(blog), class: "view_all" %></td>
+                </tr>
             </tbody>
           </table>
+          <% end %>
         </div><!-- body -->
         <p><%= format_date(Time.now) %></p>
       </div><!-- content -->
