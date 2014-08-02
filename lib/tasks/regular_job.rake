@@ -4,7 +4,7 @@ namespace :regular_job do
   task  :send_week_chosen => :environment do
     emails = User.activated.select("email")
     emails.each do |email|
-      WeekWellChosenMailer.week_blogs(email)
+      WeekWellChosenMailer.week_blogs(email).deliver
     end
   end
 end
