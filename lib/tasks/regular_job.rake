@@ -2,9 +2,15 @@
 namespace :regular_job do
   desc  "每周日晚上21:30给订阅的用户发邮件"
   task  :send_week_chosen => :environment do
-    emails = User.activated.select("email")
+    logger = Logger.new(Rails.root.join('tmp', 'week_chosen.log'))
+    logger.info(Time.now.to_s)
+    logger.info("邮件发送开始")
+    emails = User.activated.pluck("email")
     emails.each do |email|
-      WeekWellChosenMailer.week_blogs(email.email).deliver
+      p email
+      logger.info(email)
+      WeekWellChosenMailer.week_blogs(email).deliver
     end
+    logger.info("邮件发送结束")
   end
 end
