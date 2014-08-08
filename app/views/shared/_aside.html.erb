@@ -31,14 +31,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <!-- <h4 class="modal-title" id="myModalLabel">邮件订阅</h4> -->
           <p id="subscribe_des" class="modal-title">通过邮件订阅的用户每周会收到一封来自撕瓦星哥的邮件，系统会向您推荐本周精选的博客</p>
         </div>
         <div class="modal-body">
           <div class="form-inline">
               <%= label_tag 'subscribe_email', "电子邮箱:", class: "control-label sub_label" %>
             <div class="form-group">
-              <%= email_field_tag :sub_email, "", class: "form-control", id: "subscribe_email", placeholder: "电子邮箱" %>
+              <%= email_field_tag :sub_email, "", class: "form-control", id: "subscribe_email", placeholder: "电子邮箱", required: true %>
               <span id="sub_message"></span>
           </div>
           </div>
