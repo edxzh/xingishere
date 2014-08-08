@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Blog < ActiveRecord::Base
   attr_accessible :title, :content, :user_id, :blog_category_id, :view_total, :weight, :publish_status, :url_name, :seo_keyword
   belongs_to  :user

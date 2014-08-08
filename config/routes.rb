@@ -12,6 +12,7 @@ Mywebsite::Application.routes.draw do
   root  to: 'home#index', as: :root
 
   resources :comments, only: [:index, :create]
+  resources :subscribes, only: [:create, :destroy]
 
   resources :blogs, only: [:index, :show] do
     collection do

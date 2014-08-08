@@ -5,7 +5,7 @@
 <div class="form-group">
   <%= label_tag 'email', "电子邮箱", class: "col-sm-2 control-label" %>
   <div class="col-sm-5">
-    <%= text_field_tag :email, cookies[:email],class: "form-control", placeholder: "电子邮箱", required: true %>
+    <%= email_field_tag :email, cookies[:email],class: "form-control", placeholder: "电子邮箱", required: true %>
   </div>
 </div>
 <div class="form-group">

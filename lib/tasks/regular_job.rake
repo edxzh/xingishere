@@ -5,8 +5,8 @@ namespace :regular_job do
     logger = Logger.new(Rails.root.join('tmp', 'week_chosen.log'))
     logger.info(Time.now.to_s)
     logger.info("邮件发送开始")
-    emails = User.activated.pluck("email")
-    emails.each do |email|
+
+    Subscribe.pluck("email").each do |email|
       p email
       logger.info(email)
       WeekWellChosenMailer.week_blogs(email).deliver
