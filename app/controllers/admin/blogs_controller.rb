@@ -38,7 +38,7 @@ class Admin::BlogsController < AdminController
   end
 
   def update
-    @blog = Blog.find(params[:id])
+    @blog = Blog.find_by_url_name(params[:id])
     if @blog.update_attributes(params[:blog])
       redirect_to admin_blogs_path, success: "更新成功"
     else
