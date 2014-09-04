@@ -33,7 +33,7 @@ class Admin::BlogsController < AdminController
   end
 
   def edit
-    @blog = Blog.find_by_url_name(params[:d])
+    @blog = Blog.find_by_url_name(params[:id])
     @category = BlogCategory.all
   end
 
