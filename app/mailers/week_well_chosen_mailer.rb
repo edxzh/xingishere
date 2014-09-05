@@ -5,7 +5,7 @@ class WeekWellChosenMailer < ActionMailer::Base
   helper  ApplicationHelper
 
   def week_blogs(email)
-    @blogs      = Blog.published.order("view_total ASC, created_at DESC").limit(5)
+    @blogs      = Blog.published.order("created_at DESC").limit(5)
     category_ids =  BlogCategory.pluck("id")
     ran_category_ids = category_ids.sample(4)
     @blog_categories = BlogCategory.find(ran_category_ids)
