@@ -44,6 +44,7 @@ Mywebsite::Application.routes.draw do
     resources :blog_categories
     resources :link_categories
     resources :tips
+    resources :subscribes, only: [:index, :destroy]
   end
 
   # The priority is based upon order of creation:

@@ -1,0 +1,21 @@
+<% provide(:title, '博客留言列表') %>
+<p class="fr">共有<span class="red ml5 mr5 f20 fb"><%= @comments.total_count %></span>个留言</p>
+<div id="main">
+  <table class="table">
+    <tr>
+      <th>发布者</th>
+      <th>内容</th>
+      <th>发布状态</th>
+      <th>操作</th>
+    </tr>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.name %></td>
+        <td><%= comment.content %></td>
+        <td><%= comment.publish_status %></td>
+        <td><span class="ml10"><%= link_to '取消发布', admin_comment_path(comment), method: :delete, data: { confirm: '确定取消发布？' } %></td>
+      </tr>
+    <% end %>
+  </table>
+    <%= paginate @comments %>
+</div>
