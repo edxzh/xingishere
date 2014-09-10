@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140520142324) do
+ActiveRecord::Schema.define(:version => 20140808090216) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -67,6 +67,12 @@ ActiveRecord::Schema.define(:version => 20140520142324) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.boolean  "publish_status", :default => true, :null => false
+  end
+
+  create_table "subscribes", :force => true do |t|
+    t.string   "email",      :limit => 40, :default => "", :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
   create_table "tags", :force => true do |t|

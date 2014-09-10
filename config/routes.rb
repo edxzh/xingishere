@@ -12,6 +12,7 @@ Mywebsite::Application.routes.draw do
   root  to: 'home#index', as: :root
 
   resources :comments, only: [:index, :create]
+  resources :subscribes, only: [:create, :destroy]
 
   resources :blogs, only: [:index, :show] do
     collection do
@@ -43,6 +44,7 @@ Mywebsite::Application.routes.draw do
     resources :blog_categories
     resources :link_categories
     resources :tips
+    resources :subscribes, only: [:index, :destroy]
   end
 
   # The priority is based upon order of creation:

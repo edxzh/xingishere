@@ -46,6 +46,6 @@ Mywebsite::Application.configure do
     :port           => 587,
     :domain         => "www.xingishere.com",
     :user_name      => "postmaster@xingishere.com",
-    :password       => "1gr53ig90kq4",
+    :password       => Settings.smtp_password,
   }
 end

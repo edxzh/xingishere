@@ -1,7 +1,12 @@
 <div class="user">
-  <h2>关于作者</h2>
+  <div class="tc mt20 mb10"><img src="/images/admin.jpg" alt="博主头像" class="img-circle" height="100px"></div>
   <p class="doc">一个半吊子ruby on rails程序员，现就职于成都团博百众有限责任公司&nbsp;&nbsp;<%= link_to "更多信息", me_path, target: "_blank" %></p>
-  <p class="rss"><%= link_to '订阅本站', '#' %></p>
+  <p class="rss">
+  <div class="tc mb15">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      邮件订阅
+    </button>
+  </div>
   <p>联系作者：Edward_mjz@hotmail.com</p>
   <div class="panel panel-default mt25">
     <div class="panel-heading" style="text-align:center;">小贴士</div>
@@ -23,4 +28,27 @@
   </ul>
   <h2 class="mt25">统计信息</h2>
   <%= statistics %>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <p id="subscribe_des" class="modal-title">通过邮件订阅的用户每周会收到一封来自撕瓦星哥的邮件，系统会向您推荐本周精选的博客</p>
+        </div>
+        <div class="modal-body">
+          <div class="form-inline">
+              <%= label_tag 'subscribe_email', "电子邮箱:", class: "control-label sub_label" %>
+            <div class="form-group">
+              <%= email_field_tag :sub_email, "", class: "form-control", id: "subscribe_email", placeholder: "电子邮箱", required: true %>
+              <span id="sub_message"></span>
+          </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="sub_submit">提交</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

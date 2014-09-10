@@ -1,6 +1,7 @@
-<% provide(:title, '博客分类列表') %>
+<% provide(:title, '小贴士列表') %>
 <div id="main">
   <%= link_to '新建小贴士', new_admin_tip_path, class: "btn btn-primary btn-large" %>
+  <p class="fr">共有<span class="red ml5 mr5 f20 fb"><%= @tips.total_count %></span>篇小贴士</p>
   <table class="table admin_bc_index">
     <tr>
       <th>内容</th>

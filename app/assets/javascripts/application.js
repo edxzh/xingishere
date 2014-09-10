@@ -20,3 +20,20 @@ if (window.console) {
     cons.log("请在邮件中注明%c来自:console,星哥愿意请您吃饭！","color:red;font-weight:bold;");
   }
 }
+
+$(function(){
+  $("#sub_submit").click(function(){
+    email = $("#subscribe_email").val();
+    $.ajax({
+      url: "/subscribes/",
+      type: 'POST',
+      data: {
+        email: email
+      },
+      success: function(data, status){
+        $("#sub_message").html(data.message);
+        $("#sub_message").show();
+      }
+    })
+  })
+})

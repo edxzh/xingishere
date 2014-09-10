@@ -30,9 +30,9 @@ class BlogsController < ApplicationController
     @blog = Blog.find(blog_id)
     if current_user.present?
       add_type = UserLove.add(current_user.id, blog_id)
-      render json: { type: add_type, count: @blog.loves_count }
+      render json: { type: add_type, count: @blog.user_loves.count }
     else
-      render json: { type: -1, count: @blog.loves_count+1 }
+      render json: { type: -1, count: @blog.user_loves.count + 1 }
     end
   end
 

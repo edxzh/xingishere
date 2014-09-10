@@ -1,7 +1,7 @@
 # encoding : utf-8
 class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  attr_accessible :username, :password, :password_confirmation, :name, :sex, :birthday, :status, :height, :position, :address, :relation, :image, :rights, :score, :description, :email
+  attr_accessible :username, :password, :password_confirmation, :name, :sex, :birthday, :status, :height, :position, :address, :relation, :image, :rights, :score, :description, :email, :status_name
   STATUS    = %w(single married divorce).freeze
   RELATION  = %w(primary junior senior colleage society workmate relative)
   has_many  :user_loves,      dependent:  :destroy, inverse_of: :user,  class_name: UserLove

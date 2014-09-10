@@ -11,7 +11,7 @@ class Admin::MessagesController < AdminController
     if @message.save
       redirect_to admin_messages_path, success: "取消发布成功"
     else
-      redirect_to admin_messages_path, success: "发布失败"
+      redirect_to admin_messages_path, success: "取消发布失败"
     end
   end
 end

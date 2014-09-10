@@ -23,7 +23,7 @@
 job_type :rake_without_flock, "cd :path;PATH=#{ENV['PATH']} bundle exec rake :task RAILS_ENV=production"
 
 # 注意，rake 必须执行 flock 文件名
-job_type :rake, "mkdir -p /tmp/zhe800_crontab_lock; chmod +xrw /tmp/zhe800_crontab_lock ; flock -xn /tmp/zhe800_crontab_lock/:flock.lock -c 'cd :path;PATH=#{ENV['PATH']} bundle exec rake :task RAILS_ENV=production'"
+job_type :rake, "mkdir -p /tmp/blog_crontab_lock; chmod +xrw /tmp/blog_crontab_lock ; flock -xn /tmp/blog_crontab_lock/:flock.lock -c 'cd :path;PATH=#{ENV['PATH']} bundle exec rake :task RAILS_ENV=production'"
 
 every '30 21 * * 0' do
   rake "regular_job:send_week_chosen", flock: "regular_job.send_week_chosen"
