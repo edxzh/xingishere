@@ -4,7 +4,6 @@ wp
 !.gitkeep
 /nbproject/
 db/schema.rb
-db/tuan800_db_schema.rb
 db/structure.sql
 .DS_Store
 *.DS_Store
