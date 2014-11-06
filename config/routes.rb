@@ -37,7 +37,11 @@ Mywebsite::Application.routes.draw do
 
   namespace 'admin' do
     get '/' => 'blogs#index'
-    resources :blogs
+    resources :blogs, except: [:destroy] do
+      member do
+        post "toggle_publish_status"
+      end
+    end
     resources :messages, only: [:index, :destroy]
     resources :comments, only: [:index, :destroy]
     resources :links, except: [:show]

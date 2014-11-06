@@ -2,7 +2,7 @@
 class Admin::BlogsController < AdminController
   layout 'admin'
   def index
-    @blogs = Blog.published.page(params[:page]).per(10)
+    @blogs = Blog.weight_order.page(params[:page]).per(10)
     @category = BlogCategory.all
   end
 
@@ -47,8 +47,13 @@ class Admin::BlogsController < AdminController
   end
 
   def destroy
-    @blog = Blog.find(params[:id])
-    @blog.update_attributes(publish_status:  false)
+    @blog = Blog.find_by_url_name(params[:id])
+    if @blog.publish_status?
+      @blog.update_attributes(publish_status:  false)
+    else
+      @blog.update_attributes(publish_status:  true)
+    end
+
     if @blog.save
       redirect_to admin_blogs_url, success: "删除成功"
     else
@@ -56,4 +61,18 @@ class Admin::BlogsController < AdminController
     end
   end
 
+  def toggle_publish_status
+    @blog = Blog.find_by_url_name(params[:id])
+    if @blog.publish_status?
+      @blog.update_attributes(publish_status:  false)
+    else
+      @blog.update_attributes(publish_status:  true)
+    end
+
+    if @blog.save
+      redirect_to admin_blogs_url, success: "删除成功"
+    else
+      redirect_to admin_blogs_url, danger: "删除失败"
+    end
+  end
 end

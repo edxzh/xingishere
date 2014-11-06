@@ -47,4 +47,8 @@ class Blog < ActiveRecord::Base
     BlogCategory.find(category_id).blogs if category_id.present?
   end
 
+  def published?
+    publish_status?
+  end
+
 end
