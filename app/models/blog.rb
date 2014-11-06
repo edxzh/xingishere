@@ -14,7 +14,7 @@ class Blog < ActiveRecord::Base
 
   # validates :user,              presence: true
 
-  default_scope -> { order('weight DESC, created_at DESC') }
+  scope :weight_order, -> { order('weight DESC, created_at DESC') }
   scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
   scope :keyword,  ->(keyword) { where("title like ? or content like ?", "%#{keyword}%", "%#{keyword}%") if keyword.present? }
   scope :category, ->(category_id) { where("blog_category_id = ?", category_id) }
