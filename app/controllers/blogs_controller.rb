@@ -13,6 +13,9 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find_by_url_name(params[:id])
+    if @blog.nil?
+      render_404_page
+      else
     @like = false                   # 当前用户是否喜欢此博客
     @blog.view_total = @blog.view_total += 1
     @blog.save
@@ -22,6 +25,7 @@ class BlogsController < ApplicationController
     @auth = true if current_user.present? && @blog.user_id == current_user.id
 
     @comments = @blog.comments.page(params[:page]).per(10)
+      end
   end
 
   def user_like

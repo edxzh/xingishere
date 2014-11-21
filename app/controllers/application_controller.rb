@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
       redirect_to '/404.html'
     end
   end
+
+  def render_404_page
+    redirect_to "/404.html"
+  end
 end

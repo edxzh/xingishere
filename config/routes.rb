@@ -3,6 +3,8 @@ Mywebsite::Application.routes.draw do
   resources :links, only: [:index]
   resources :sessions,  only: [:new, :create, :destory]
 
+  match '*path' => redirect('/404.html') unless Rails.env.development?
+
   get "account/advanced"
   get "account/icon"
   get "account/profile"
