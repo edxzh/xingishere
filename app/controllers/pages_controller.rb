@@ -9,7 +9,4 @@ class PagesController < ApplicationController
   def resume
     
   end
-  def not_found_page
-    layout "false"
-  end
 end

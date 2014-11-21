@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
   end
 
   def render_404_page
-    redirect_to "/404.html"
+    respond_to do |format|
+      format.xml { render :xml => { :error => 'Not found' }, :status => 404 }
+      format.html { render template: 'errors/404', status: 404, layout: 'static' }
+    end
+    # redirect_to "/404.html"
   end
 end

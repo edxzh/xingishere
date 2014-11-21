@@ -74,6 +74,9 @@ module Mywebsite
     # mail default host
     config.action_mailer.default_url_options = { host: 'xingishere.com' }
 
+    # 接收到错误提示时，从route中寻找，而不直接读public的文件
+    config.exceptions_app = self.routes
+
     # rspec
     config.generators do |g|
       g.test_framework  :rspec,
