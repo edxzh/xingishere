@@ -4,11 +4,13 @@
     <p class="mr100 fr">共有<span class="red ml5 mr5 f20 fb"><%= @subscribes.total_count %></span>人订阅</p>
     <tr>
       <th>邮件地址</th>
+      <th>订阅时间</th>
       <th>操作</th>
     </tr>
     <% @subscribes.each do |subscribe| %>
       <tr>
         <td><%= subscribe.email %></td>
+        <td><%= subscribe.created_at.to_s(:db) %></td>
         <td><%= link_to '删除', admin_subscribe_path(subscribe), method: :delete, data: { confirm: '确定删除？' } %></td>
       </tr>
     <% end %>
