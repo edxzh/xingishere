@@ -2,7 +2,7 @@
 class CommentsController < ApplicationController
   layout false, only: :create
   def index
-    @comments = Comment.published
+    @comments = Comment.published.order('created_at DESC')
   end
 
   def create
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
-      @comments = Blog.published.find(params[:blog_id]).comments.published.page(params[:page]).per(10)
+      @comments = Blog.published.find(params[:blog_id]).comments.published.order('created_at DESC').page(params[:page]).per(10)
     end
   end
 

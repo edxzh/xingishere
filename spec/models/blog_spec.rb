@@ -43,15 +43,18 @@ describe Blog do
     end
 
     it "scope keyword" do
-      FactoryGirl.create_list(:blog2, 3, { user_id: user.id } )
-      FactoryGirl.create_list(:blog3, 3, { user_id: user.id } )
+      %w(rails文章1, ruby文章2, swift文章3).each do |s|
+        FactoryGirl.create(:blog2, { user_id: user.id, title: s, url_name: s } )
+      end
 
-      expect(Blog.published.keyword("文章").count).to eq 6
-      expect(Blog.published.keyword("rails").count).to eq 3
+      expect(Blog.published.keyword("文章").count).to eq 3
+      expect(Blog.published.keyword("3").count).to eq 1
     end
 
     it "scope category" do
-      FactoryGirl.create_list(:blog2, 3, { user_id: user.id, blog_category_id: blog_category2.id })
+      %w(rails文章1, ruby文章2, swift文章3).each do |s|
+        FactoryGirl.create(:blog2, { user_id: user.id, title: s, url_name: s, blog_category_id: blog_category2.id })
+      end
 
       expect(Blog.published.category(blog_category2.id).count).to eq 3
       expect(Blog.published.category(blog_category.id).count).to eq 1
@@ -60,20 +63,21 @@ describe Blog do
 
   describe "类方法 class method" do
     it "#category_find" do
-      @blog_category = FactoryGirl.create(:blog_category)
-      FactoryGirl.create_list(:blog, 3, { user_id: user.id, blog_category_id: blog_category.id })
-      expect(Blog.published.category_find(blog_category.id).count).to eq 4
+      %w(rails文章1, ruby文章2, swift文章3).each do |s|
+        FactoryGirl.create(:blog2, { user_id: user.id, title: s, url_name: s, blog_category_id: blog_category2.id })
+      end
+      expect(Blog.published.category_find(blog_category2.id).count).to eq 3
     end
   end
 
   describe "实例方法 instance method" do
-    it ".username" do
-      expect(@blog.username).to eq user.name
-    end
-
-    it ".loves_count" do
-      user_love = FactoryGirl.create(:user_love, user_id: user.id, blog_id: @blog.id)
-      expect(@blog.loves_count).to eq 1
-    end
+    # it ".username" do
+    #   expect(@blog.username).to eq user.name
+    # end
+    #
+    # it ".loves_count" do
+    #   user_love = FactoryGirl.create(:user_love, user_id: user.id, blog_id: @blog.id)
+    #   expect(@blog.loves_count).to eq 1
+    # end
   end
 end
