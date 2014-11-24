@@ -7,4 +7,5 @@
 <h2>script</h2>
 <p>After deployed, you should execute deadlink script</p>
 <pre>ruby script/deadlink.rb</pre>
+<h2>Acknowledgement</h2>
 <p>Thanks <a href="https://github.com/zhangyuan">zhangyuan</a>/<a href="https://github.com/huhongda">huhongda</a>/houxiaolong, who give me a lot support and confidence.</p>
