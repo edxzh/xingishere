@@ -72,6 +72,8 @@ gem 'rvm-capistrano'
 gem 'rails_best_practices'
 gem 'annotate', ">=2.6.0"
 
+gem 'colorize'
+
 # To use debugger
 # gem 'debugger'
 

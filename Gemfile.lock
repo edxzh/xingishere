@@ -77,6 +77,7 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     colored (1.2)
+    colorize (0.7.3)
     columnize (0.3.6)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
@@ -303,6 +304,7 @@ DEPENDENCIES
   carrierwave-mongoid
   chinese_pinyin
   coffee-rails (~> 3.2.1)
+  colorize
   dalli
   database_cleaner
   debugger
