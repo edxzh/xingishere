@@ -5,7 +5,9 @@
 <p>The code maybe not elegant, so if u have some advice, contact me please, I would be grateful to u.</p>
 <p>The online blog is <a href="http://www.xingishere.com">www.xingishere.com.</a>I have wrote some tech blog on it</p>
 <h2>script</h2>
-<p>After deployed, you should execute deadlink script</p>
+<p>After deployed, you should execute checker script to make sure the configuration is intack</p>
+<pre>ruby script/checker.rb</pre>
+<p>then execute deadlink script to make sure there is no 404 or 500 error on all links</p>
 <pre>ruby script/deadlink.rb</pre>
 <h2>Acknowledgement</h2>
 <p>Thanks <a href="https://github.com/zhangyuan">zhangyuan</a>/<a href="https://github.com/huhongda">huhongda</a>/houxiaolong, who give me a lot support and confidence.</p>
