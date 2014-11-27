@@ -5,6 +5,10 @@ class SessionsController < ApplicationController
 
   end
 
+  def auth
+   Rails.logger.debug request.env["omniauth.auth"]
+  end
+
   def create
     user = User.activated.where("email = ?", params[:email].downcase).first
     if user && user.authenticate(params[:password])

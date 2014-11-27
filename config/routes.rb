@@ -1,4 +1,5 @@
 Mywebsite::Application.routes.draw do
+  match "/auth/:provider/callback" => "sessions#auth"
   resources :messages, only: [:create, :index]
   resources :links, only: [:index]
   resources :sessions,  only: [:new, :create, :destory]
