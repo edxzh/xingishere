@@ -10,4 +10,4 @@
 <p>then execute deadlink script to make sure there is no 404 or 500 error on all links</p>
 <pre>ruby script/deadlink.rb</pre>
 <h2>Acknowledgement</h2>
-<p>Thanks <a href="https://github.com/zhangyuan">zhangyuan</a>/<a href="https://github.com/huhongda">huhongda</a>/houxiaolong, who give me a lot support and confidence.</p>
+<p>Thanks <a href="https://github.com/zhangyuan" target="_blank">zhangyuan</a>/<a href="https://github.com/huhongda" target="_blank">huhongda</a>/<a href="http://sosop.github.io/" target="_blank">houxiaolong</a>, who give me a lot support and confidence.</p>
