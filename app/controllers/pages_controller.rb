@@ -9,4 +9,7 @@ class PagesController < ApplicationController
   def resume
     
   end
+  def xingge
+    render layout: false
+  end
 end

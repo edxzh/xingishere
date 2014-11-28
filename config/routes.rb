@@ -33,8 +33,9 @@ Mywebsite::Application.routes.draw do
   match '/logout',    to: 'sessions#destroy',   via: 'get'
 
   match 'about',  to: 'pages#about', as: :about
-  match 'me',     to: 'pages#me', as: :me
+  #match 'me',     to: 'pages#me', as: :me
   match 'resume', to: 'pages#resume', as: :resume
+  match 'xingge', to: 'pages#xingge', as: :xingge
 
   namespace 'admin' do
     get '/' => 'blogs#index'

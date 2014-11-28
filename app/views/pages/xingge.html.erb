@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>个人主页</title>
+    <meta name="title" content="jQuery One Page Scroll by Pete R. | The Pete Design" />
+    <meta name="description" content="Create an Apple-like one page scroller website (iPhone 5S website) with One Page Scroll plugin" />
+    <meta name="author" content="Pete R.">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/onepage/jquery.onepage-scroll.js"></script>
+    <link href='/onepage/onepage-scroll.css' rel='stylesheet' type='text/css'>
+    <link href='/stylesheets/me.css' rel='stylesheet' type='text/css'>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script>
+      $(document).ready(function(){
+        $(".main").onepage_scroll({
+          sectionContainer: "section",
+          responsiveFallback: 600,
+          loop: true
+        });
+      });
+
+    </script>
+  </head>
+  <body>
+    <div class="main">
+
+      <section class="page1">
+      <div class="page_container">
+        <h2>周星，1990，吉林四平人，摩羯座，2009年毕业于成都信息工程学院，专业计算机科学与技术，身高约170cm，现就职于成都高新区孵化园某大型互联网公司，全职ruby程序员</h2>
+      </div>
+      <img src="/images/programmer.png" alt="programmer">
+      </section>
+      <section class="page2">
+      <div class="page_container">
+        <h2>我出生在东北的一个农村，09年第二次高考侥幸考上了并不是第一志愿的成都信息工程学院，大三时开始专注前端开发，13年毕业加入成都团800并转投ruby开发，有幸师承张渊等人，在不工作的时间我喜欢打篮球、踢足球、看一些历史书籍，或者打一局星际和炉石。</h2>
+      </div>
+      </section>
+      <section class="page3">
+      <div class="page_container">
+        <div class="weibo">
+          <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2723667581&verifier=c0b09ef7&dpc=1"></iframe>
+        </div>
+        <h2>如果你也是程序员，如果你和我有同样的兴趣爱好，我愿意与您成为朋友，您可以通过如下方式联系我</h2>
+        <div class="btns mt20">
+          <a target=blank href="tencent://message/?uin=317583395&site=xingishere.com&Menu=yes" class="btn btn-primary mr20">QQ</a>
+          <a class="btn btn-primary" href="https://github.com/Dogzhou" target="_blank">Github</a>
+        </div>
+      </div>
+      </section>
+    </div>
+    <a class="back" href="http://www.xingishere.com">回到首页</a>
+    <p class="footer">滚动鼠标滚轮或按方向键</p>
+  </body>
+</html>

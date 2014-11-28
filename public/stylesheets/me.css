@@ -1,0 +1,152 @@
+a{text-decoration:none;}
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  display: block;
+  padding: 7px;
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.25);
+  font-weight: bold;
+  font-size: 13px;
+  color: #000;
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  display: block;
+  padding: 7px;
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.25);
+  font-weight: bold;
+  font-size: 13px;
+  color: #000;
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+}
+.back:hover {
+  color: black;
+  background: rgba(255, 255, 255, 0.5);
+}
+header {
+  position: relative;
+  z-index: 10;
+}
+.main section  {
+  overflow: hidden;
+}
+.main section .page_container {
+  position: relative;
+  top: 25%;
+  margin: 0 auto 0;
+  max-width: 950px;
+  z-index: 3;
+}
+.main section > img {
+  position: absolute;
+  max-width: 100%;
+  z-index: 1;
+}
+.main section.page1 {
+  background:rgb(230, 217, 200);
+}
+.main section.page1 h2 {
+  color: rgba(0,0,0,0.85);
+  width: 475px;
+  line-height: 160%;
+  text-indent: 2em
+}
+.main section.page1 img {
+  position: relative;
+  left: 60%;
+  bottom: 70px;
+}
+.main section .page_container .btns {
+  width: 80%;
+  margin-top: 20px;
+}
+.main section.page2 {
+  background: #555557 url(back-phone.png) no-repeat center -150px;
+}
+.main section.page2 > img {
+  position: absolute;
+  top: -300px;
+  left: 50%;
+  margin-left: -1095px;
+}
+.main section.page2 .page_container {
+  overflow: hidden;
+}
+.main section.page2 h2 {
+  color: rgba(255,255,255,0.85);
+  line-height: 160%;
+  font-weight: 100;
+  text-indent: 1.5em;
+}
+.viewing-page-2 .back{
+  background: rgba(0, 0, 0, 0.25);
+  color: #FFF;
+}
+.main section.page3{
+  background: url(/images/page4.jpg) 50% 0 no-repeat;
+}
+.main section.page3 .page_container {
+  overflow: hidden;
+  width: 80%;
+}
+.main section.page3 h1 {
+  text-align: left;
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 60px;
+  letter-spacing: -1px;
+  color: black;
+}
+.main section.page3 h2 {
+  color: rgba(0,0,0,0.85);
+  text-align: left;
+  line-height: 160%;
+  font-weight: 100;
+  font-size: 21px;
+}
+.main section.page3 .weibo {
+  float: left;
+  margin-right: 5%;
+}
+.main section.page3 a {
+  width: 100px;
+}
+
+body.disabled-onepage-scroll .onepage-wrapper  section {
+  min-height: 100%;
+  height: auto;
+}
+
+body.disabled-onepage-scroll .main section .page_container, body.disabled-onepage-scroll .main section.page3 .page_container  {
+  padding: 20px;
+  margin-top: 150px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.page4{
+  background: url(/images/page4.jpg) 50% 0 no-repeat;
+}
+.mr20{
+  margin-right: 20px;
+}
