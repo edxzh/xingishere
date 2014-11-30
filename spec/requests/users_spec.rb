@@ -23,22 +23,22 @@ describe "Users pages" do
         fill_in "user[password]",         with: "a" * 5
       end
       it "无法创建新用户" do
-        expect { click_button submit }.not_to change(User, :count)
+        expect { click_button(submit, {name: "commit"}) }.not_to change(User, :count)
       end
     end
     describe "有效的数据" do
       before do
-        fill_in "user[name]",                   with: "test"
+        fill_in "user[name]",                   with: "sadasdf"
         fill_in "user[password]",               with: "password"
         fill_in "user[password_confirmation]",  with: "password"
-        fill_in "user[email]",                  with: "test@qq.com"
+        fill_in "user[email]",                  with: "tedsdfst@qq.com"
       end
       it "可以成功创建用户" do
-        expect { click_button submit }.to change(User, :count)
+        expect { first('input[type="submit"]').click }.to change(User, :count)
       end
 
       describe "用户注册成功" do
-        before { click_button submit }
+        before { click_button(submit, options = {name: "commit"}) }
         let(:user) { User.find_by_email("test@qq.com") }
 
         it { should have_title(user.name) }
@@ -54,7 +54,7 @@ describe "Users pages" do
     before { visit user_path(user)}
 
     it { should have_content(user.name) }
-    it { should have_title(full_title(user.name)) }
+    it { should have_title(user.name) }
 
     describe "blogs" do
       it { should have_content(b1.content) }
@@ -69,9 +69,8 @@ describe "Users pages" do
     before { visit edit_user_path(user) }
 
     describe "页面" do
-      it { should have_content("编辑") }
-      it { should have_title(full_title("资料编辑")) }
-      # it { should have_link("change", href: 'http://sds') }
+      it { should have_content("确认") }
+      it { should have_title("资料编辑") }
     end
     describe "填写无效数据" do
       before { click_button "保存" }
@@ -87,7 +86,7 @@ describe "Users pages" do
         fill_in "user[password]",                 with: user.password
         fill_in "user[password_confirmation]",    with: user.password
       end
-      it { should have_title(full_title(new_name)) }
+      it { should have_title(new_name) }
       it { should have_selector('div.alert.alert-success') }
       it { should have_link('退出', href: logout_path) }
       specify { expect(user.reload.name).to eq new_name }
