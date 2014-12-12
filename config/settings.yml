@@ -7,3 +7,8 @@ regexp:
   qq: ^[1-9]*[1-9][0-9]*$
   url_name: ^\w+_\d+$
   phone_number: ^(?:130|131|132|133|134|135|136|137|138|139|145|147|150|151|152|153|155|156|157|158|159|170|180|181|182|183|184|185|186|187|188|189)[0-9]{8}$
+
+secret_token: 'wefg4gdfefo8eir9t0gpokl98ejfud7y6'
+omniauth:
+  key: 'adfwefwwef'
+  secret: 'asefwef'
