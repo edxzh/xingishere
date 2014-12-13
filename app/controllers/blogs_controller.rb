@@ -12,7 +12,9 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @blog = Blog.find_by_url_name(params[:id])
+    @blog = Rails.cache.fetch("/blog/#{params[:id]}", expires_in: 60.minutes) do
+      Blog.find_by_url_name(params[:id])
+    end
     if @blog.nil?
       render_404_page
       else
