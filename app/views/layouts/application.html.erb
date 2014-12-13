@@ -22,7 +22,9 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <%= render 'shared/header' %>
+    <% cache "v1/header/", expires_in: 10.minutes do %>
+      <%= render 'shared/header' %>
+    <% end %>
     <div class="info">
       <div class="container" style="max-width:calc(78%)">
         <h1>Edward的博客</h1>
@@ -44,11 +46,11 @@
           <div class="col-lg-9">
             <%= yield %>
           </div>
-          <% cache "v1/aside/", expires_in: 10.minutes do %>
           <div class="col-lg-3">
+          <% cache "v1/aside/", expires_in: 10.minutes do %>
             <%= render 'shared/aside' %>
-          </div><!-- span3 -->
           <% end %>
+          </div><!-- span3 -->
         <!-- </div>-->
       </div><!-- row -->
     </div>
@@ -65,6 +67,8 @@
        })();
 
 </script>
+  <% cache "v1/header/", expires_in: 10.minutes do %>
     <%= render 'shared/footer' %>
+  <% end %>
   </body>
 </html>
