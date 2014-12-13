@@ -22,7 +22,7 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <% cache "v1/header/", expires_in: 10.minutes do %>
+    <% cache "v1/header/", expires_in: 60.minutes do %>
       <%= render 'shared/header' %>
     <% end %>
     <div class="info">
@@ -47,7 +47,7 @@
             <%= yield %>
           </div>
           <div class="col-lg-3">
-          <% cache "v1/aside/", expires_in: 10.minutes do %>
+          <% cache "v1/aside/", expires_in: 60.minutes do %>
             <%= render 'shared/aside' %>
           <% end %>
           </div><!-- span3 -->
@@ -67,7 +67,7 @@
        })();
 
 </script>
-  <% cache "v1/header/", expires_in: 10.minutes do %>
+  <% cache "v1/header/", expires_in: 60.minutes do %>
     <%= render 'shared/footer' %>
   <% end %>
   </body>
