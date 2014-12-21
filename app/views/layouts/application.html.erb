@@ -22,9 +22,7 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <% cache "v1/header/", expires_in: 60.minutes do %>
-      <%= render 'shared/header' %>
-    <% end %>
+    <%= render 'shared/header' %>
     <div class="info">
       <div class="container" style="max-width:calc(78%)">
         <h1>Edward的博客</h1>
