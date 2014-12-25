@@ -20,7 +20,9 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <%= render 'shared/link_header' %>
+    <% cache "v1/link_header/", expires_in: 60.minutes do %>
+      <%= render 'shared/link_header' %>
+    <% end %>
     <div class="info">
       <div class="container" style="max-width:calc(78%)">
         <h1>友情链接</h1>
@@ -43,6 +45,8 @@
        })();
 
 </script>
-    <%= render 'shared/footer' %>
+    <% cache "v1/footer/", expires_in: 60.minutes do %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>
