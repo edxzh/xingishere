@@ -1,27 +1,97 @@
-<% provide :title, "关于本站" %>
-<% content_for :h1 do %>关于本站<% end %>
-<% content_for :info do %>点点滴滴<% end %>
-  <div class="rows">
-    <h3>开始</h3>
-    <p>很早就想做一个自己的技术博客，2013年十一长假的时候在纸上比比划划，有个一个所谓的设计，当时已经入职3个月，但是对一些技术还不是很熟练，于是一边调研一边做，经过几个月的时间（实际开发时间可能只有几十个小时），网站上线。</p>
-    <h3>技术</h3>
-    <p>前端使用了bootstrap 3，刚开始用的bootstrap 2,后来又改成gem的方式引用，后来又改成手动引用3，新版本的改动还是不小，最让人眼前一亮的是“扁平化”，每一个后端开发人员都应该熟悉一种或几种前端框架，这会让你减少很多麻烦，而bootstrap无疑是最全面/强大/成熟的框架之一，在此再推荐一个前端框架:FlatUI，有兴趣的同学可以摸索一下。</p>
-    <p>js代码不多，凡是需要自己写的都写成了coffee，之前用coffee重构过一些代码，因为平时工作很少用到，所以等再用时竟然忘了许多，只有重看了一边doc。职业ruby的同行都应该学一下coffee，它借鉴了ruby的语法和python的缩进，有人评价为“诗一样的语言”</p>
-    <p>后端使用ruby语言在rails框架上开发，使用了大量的Gem，使用capstrano部署，unicorn和nginx，在Godaddy上注册了这个域名，在digitocean上购买了VPS，使用DNSPod作域名解析，添加了GA统计和newrelic监控<p>
-    <p>开发过程中遇到了一些技术问题，都是之前没遇到过的，很多页面都是模仿了已经成功的案例，新建日志仿照了QQ空间，这里面的设计可以说是完全抄袭，通过富文本编辑控件上传的图片保存在mongodb里，此处用到了一个 gem: rails_kindeditor</p>
-    <p>数据库使用了mysql和mongoDB，项目目前有 12 张表，未来这个数字还会继续增长，在数据库设计上还是费了很多心思，对于一个项目来说，数据库设计是最重要的，如果一开始设计就有问题，那么未来会在错误的路上越走越远。博客的图片资源都保存在mongoDB里，做这个博客项目也学会了很关于mongo的东西。</p>
-    <p>图片处理使用carrierwave和minimagick</p>
-    <p>推荐zen-coding，这玩意只要学会了，以后写html不用都不习惯</p>
-    <h3>筹备中</h3>
-    <p>大多之前筹备的功能均已开发完成，项目源代码托管在在 <a href="https://github.com/Dogzhou/My_blog" target="_blank">github</a>，欢迎您对代码、设计提供宝贵的意见，还有一些在筹备中的功能，会用到好玩的技术，希望大家继续关注。</p>
-    <p>项目有一个勉强可以“看得下去”的后台，功能多为增删改查和更改发布状态，后台的开发不是重点，暂时自己能用即可</p>
-    <p>项目没有敏感词过滤系统，即现在博客/留言是可以留敏感词的，但是请大家<span class="red">一定不要尝试</span>，这个功能需求可能要费些工夫，后面再开发</p>
-    <h3>关于单元测试</h3>
-    <p>对几乎所有的model都写了测试，并写了部分request测试，后台部分暂时没有写测试，因为整个项目没有太复杂的逻辑，所以测试也比较简单，现在测试覆盖率不高，在接下来的时间里会逐渐增大覆盖率。</p>
-    <p>增加了死链测试和配置检测脚本，死链测试会抓取页面上所有的链接并进行并法请求，最后把请求结果为500、404的链接展示出来；配置检测脚本用来检测当前配置是否正确，这两个脚本在大型项目中实用价值会很高，您可以了解一下</p>
-    <h3>结束</h3>
-    <p>引用论语中的一段：子贡倦于学，告孔子曰：愿有所息。子曰：生无所息。人只要活着，就要不停的学习，这个博客的开发，永远不会结束</p>
-    <h3>鸣谢</h3>
-    <p>感谢渊格格的技术支持，他对这个项目提供了很多意见和建议，上面推荐的rails_kindeditor也有他贡献的一部分代码，也是他教会了我购买域名/VPS/解析等等;龙哥对项目的数据库设计提供了很多指导，经常指点我技术问题;感谢公司的同事，他们的一些技术分享给了我很多的启发和思考</p>
-    <p>最后感谢dota，篮球，和一些闲扯的事，没有它们这个网站可能会提前4个月上线</p>
-  </div>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>About xingishere</title>
+    <meta name="title" content="rails blog" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="description" content="xingishere.com">
+    <meta name="author" content="周星">
+    <link href="/impress/impress.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/icon.png" />
+    <style type="text/css">
+      img {border-radius: 50%; height: 100px; width: 100px;}
+      .images { margin-top: 80px; }
+      .images img{ margin-right: 70px; }
+    </style>
+  </head>
+  <body class="impress-not-supported">
+    <div class="fallback-message">
+      <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+      <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+    </div><!-- fallback-message  -->
+    <div id="impress">
+      <div id="think" class="step" data-x="1000" data-y="-1500">
+        <q><p>Jan 1st 2015 PM 14:03</p>
+          <p><strong>turn off</b> computer and start thinking</strong>
+          <p>write some sentences to <strong>xingishere</strong></p></q>
+      </div>
+
+      <div id="ing" class="step" data-x="850" data-y="3000" data-rotate="270" data-scale="6">
+        <p><b class="positioning">3052</b> lines code</p>
+        <p><b class="rotating">163</b> unit tests</p>
+        <p><b class="scaling">11</b> mysql DB tables</p>
+      </div>
+
+      <div id="tech" class="step" data-x="2000" data-y="1800" data-rotate="90" data-scale="5">
+        <p>ruby on rails coffeescript bootstrap mysql memcached capstrano unicorn nginx newrelic GA Github</p>
+      </div>
+      <div id="big" class="step" data-x="100" data-y="150" data-rotate="90" data-scale="5">
+        <p><strong>countless</strong> days and nights<b>hard</b><span class="thoughts">working</span></p>
+      </div>
+
+      <div id="help" class="step" data-x="3500" data-y="3000" data-rotate="0" data-scale="5">
+        <p>so many <strong>friends</strong> selfless help</p>
+        <div class="images">
+          <img src="/images/zhangyuan.jpg" alt="zhangyuan" />
+          <img src="/images/houxiaolong.jpg" alt="houxiaolong" />
+          <img src="/images/zhonghua.jpg" alt="zhongfox" />
+          <img src="/images/huhongda.jpg" alt="huhongda" />
+        </div>
+      </div>
+
+      <div id="without" class="step" data-x="200" data-y="1000" data-rotate="0" data-scale="5">
+        <p>There will be <b>no</b> xingishere</p>
+        <p><b>without</b> any of them</p>
+      </div>
+
+      <div id="its-in-3d" class="step" data-x="3500" data-y="-850" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="3">
+        <p>more and more tech blogs</p>
+        <p>more and more donates</p>
+        <p>more and more attentions</p>
+      </div>
+
+      <div id="more" class="step" data-x="3500" data-y="-1850" data-rotate="180" data-scale="6">
+        <p>Encourage me to do more</p>
+      </div>
+
+      <div id="all" class="step" data-x="3500" data-y="-1850" data-rotate="180" data-scale="6">
+        <p>to make <b>me</b> better</p>
+        <p>to make <b>you</b> better</p>
+      </div>
+
+      <div id="more" class="step" data-x="3500" data-y="-1850" data-rotate="180" data-scale="6">
+        <p>It is <b>xingishere</b></p>
+      </div>
+
+      <div id="happens" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
+        <p>where <b>better</b> happens</p>
+      </div>
+
+      <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+      </div>
+
+    </div><!-- impress -->
+    <div class="hint">
+      <p>Use a spacebar or arrow keys to navigate</p>
+    </div>
+
+    <script>
+      if ("ontouchstart" in document.documentElement) { 
+        document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+      }
+    </script>
+    <script type="text/javascript" src="/impress/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>

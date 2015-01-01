@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   layout  "static"
   def about
-    
+    render layout: false
   end
   def me
     
