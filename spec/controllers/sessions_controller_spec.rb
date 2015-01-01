@@ -9,12 +9,12 @@ describe SessionsController do
   describe "登录" do
     it "登录成功" do
       post :create, { email: @user.email, password: @user.password }
-      response.should be_success
+      expect(response.status).to eq 200
     end
 
     it "登录失败" do
       post :create, { email: @user.email, password: "wrong password" }
-      response.should be_success
+      expect(response.status).to eq 200
     end
   end
 
@@ -23,7 +23,7 @@ describe SessionsController do
       session[:user_name] = @user.name
       session[:user_id] = @user.id
       get 'destroy'
-      response.should be_success
+      expect(response.status).to eq 302
     end
   end
 end
