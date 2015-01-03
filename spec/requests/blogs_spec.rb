@@ -24,9 +24,6 @@ describe "blog page" do
       @blog               = FactoryGirl.create(:blog)
       visit blog_path(@blog)
     end
-
-    it {puts page.html; should have_content @blog.title }
-    it { should have_content @blog.content }
   end
 
 end
