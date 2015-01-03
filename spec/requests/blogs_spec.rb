@@ -4,11 +4,10 @@ require 'spec_helper'
 describe "blog page" do
   describe "index" do
     before(:each) do
-      @blog_category      = FactoryGirl.create(:blog_category)
-      @blog               = FactoryGirl.create(:blog, blog_category_id: @blog_category.id)
-      @unpublished_blog   = FactoryGirl.create(:unpublished_blog, blog_category_id: @blog_category.id)
-      @blog2              = FactoryGirl.create(:blog2, blog_category_id: @blog_category.id)
-      @blog3              = FactoryGirl.create(:blog3, blog_category_id: @blog_category.id)
+      @blog               = FactoryGirl.create(:blog)
+      @unpublished_blog   = FactoryGirl.create(:unpublished_blog)
+      @blog2              = FactoryGirl.create(:blog2)
+      @blog3              = FactoryGirl.create(:blog3)
       visit blogs_path
     end
     subject { page }
@@ -26,9 +25,7 @@ describe "blog page" do
       visit blog_path(@blog)
     end
 
-    subject { page }
-
-    it { should have_content @blog.title }
+    it {puts page.html; should have_content @blog.title }
     it { should have_content @blog.content }
   end
 
