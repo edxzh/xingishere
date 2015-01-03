@@ -9,7 +9,7 @@ describe SessionsController do
   describe "登录" do
     it "登录成功" do
       post :create, { email: @user.email, password: @user.password }
-      expect(response.status).to eq 200
+      expect(response.status).to eq 302
     end
 
     it "登录失败" do

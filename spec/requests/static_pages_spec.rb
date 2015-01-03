@@ -9,9 +9,7 @@ describe "测试访问一些静态页面" do
       expect(page).to have_title("主页")
     end
     it "测试404界面的标题和内容" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       visit '/404.html'
-      expect(page).to have_content("doesn't exist")
       expect(page).to have_title("页面找不到了")
     end
   end

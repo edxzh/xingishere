@@ -15,6 +15,8 @@ describe SubscribesController do
     end
 
     it "create fail" do
+      post :create, email: "example@qq.com"
+      expect(response.body).to eq({ "status" => -1, "message" => "您已经订阅" }.to_json)
     end
 
   end

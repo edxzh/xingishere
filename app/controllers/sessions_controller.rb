@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.activated.where("email = ?", params[:email].downcase).first
+    user = User.where("email = ?", params[:email].downcase).first
     if user && user.authenticate(params[:password])
       login user
       session[:user_name] = user.name
