@@ -11,6 +11,7 @@ class Blog < ActiveRecord::Base
   validates   :content,           presence: true
   validates   :url_name,          presence: true, uniqueness: true
   validates   :seo_keyword,       presence: true
+  validates   :blog_category_id,  presence: true
 
   # validates :user,              presence: true
 

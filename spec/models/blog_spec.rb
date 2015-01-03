@@ -3,23 +3,22 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Blog do
   let(:user) { FactoryGirl.create(:user) }
-  let(:blog_category) { FactoryGirl.create(:blog_category) }
-  let(:blog_category2) { FactoryGirl.create(:blog_category2) }
+  let(:blog_category) { FactoryGirl.create(:blog_category3) }
 
   before :each do
-    @blog = FactoryGirl.create(:blog, user_id: user.id, blog_category_id: blog_category.id)
+    @blog = FactoryGirl.create(:blog)
   end
 
   subject { @blog }
 
   it { should respond_to(:content) }
-  it { should respond_to(:user_id) }
-  it { should respond_to(:user) }
-  its(:user) { should eq user }
+  it { should respond_to(:user_name) }
+  it { should respond_to(:blog_category_name) }
 
   it { should be_valid }
 
   describe "模型校验" do
+    it { should validate_presence_of(:blog_category_id) }
     it "缺少user_id" do
       @blog.user_id = nil
       expect(@blog).not_to be_valid
@@ -43,8 +42,8 @@ describe Blog do
     end
 
     it "scope keyword" do
-      %w(rails文章1, ruby文章2, swift文章3).each do |s|
-        FactoryGirl.create(:blog2, { user_id: user.id, title: s, url_name: s } )
+      %w(rails文章1, ruby文章2, swift文章3).each_with_index do |s, index|
+        FactoryGirl.create(:blog2, { title: s, url_name: s, blog_category_id: index } )
       end
 
       expect(Blog.published.keyword("文章").count).to eq 3
@@ -53,20 +52,19 @@ describe Blog do
 
     it "scope category" do
       %w(rails文章1, ruby文章2, swift文章3).each do |s|
-        FactoryGirl.create(:blog2, { user_id: user.id, title: s, url_name: s, blog_category_id: blog_category2.id })
+        FactoryGirl.create(:blog2, { title: s, url_name: s, blog_category_id: blog_category.id })
       end
 
-      expect(Blog.published.category(blog_category2.id).count).to eq 3
-      expect(Blog.published.category(blog_category.id).count).to eq 1
+      expect(Blog.published.category(blog_category.id).count).to eq 3
     end
   end
 
   describe "类方法 class method" do
     it "#category_find" do
       %w(rails文章1, ruby文章2, swift文章3).each do |s|
-        FactoryGirl.create(:blog2, { user_id: user.id, title: s, url_name: s, blog_category_id: blog_category2.id })
+        FactoryGirl.create(:blog2, { title: s, url_name: s, blog_category_id: blog_category.id })
       end
-      expect(Blog.published.category_find(blog_category2.id).count).to eq 3
+      expect(Blog.published.category_find(blog_category.id).count).to eq 3
     end
   end
 
