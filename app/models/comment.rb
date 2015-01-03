@@ -4,8 +4,8 @@ class Comment < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :blog
 
-  validates :user_id,      presence: true
-  validates :blog_id,   presence: true
+  validates :user_id,       presence: true
+  validates :blog_id,       presence: true
 
   scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
 

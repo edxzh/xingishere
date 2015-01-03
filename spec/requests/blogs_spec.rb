@@ -22,8 +22,7 @@ describe "blog page" do
 
   describe "show" do
     before(:each) do
-      @blog_category      = FactoryGirl.create(:blog_category)
-      @blog               = FactoryGirl.create(:blog, blog_category_id: @blog_category.id)
+      @blog               = FactoryGirl.create(:blog)
       visit blog_path(@blog)
     end
 

@@ -1,7 +1,15 @@
+# encoding: utf-8
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Comment do
-  it "should be valid" do
-    Comment.new.should be_valid
+  before(:each) do
+    @comment = FactoryGirl.create(:comment1)
+  end
+
+  subject { @comment }
+
+  describe "模型校验" do
+    it { should validate_presence_of(:user_id) }
+    it { should validate_presence_of(:blog_id) }
   end
 end

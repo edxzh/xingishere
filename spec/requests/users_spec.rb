@@ -48,10 +48,8 @@ describe "Users pages" do
 
   describe "个人主页" do
     let(:user) { FactoryGirl.create(:user) }
-    let!(:b_c_1) { FactoryGirl.create(:blog_category) }
-    let!(:b_c_2) { FactoryGirl.create(:blog_category2) }
-    let!(:b1) { FactoryGirl.create(:blog, blog_category_id: b_c_1.id, user_id: user.id) }
-    let!(:b2) { FactoryGirl.create(:blog2, blog_category_id: b_c_2.id, user_id: user.id) }
+    let!(:b1) { FactoryGirl.create(:blog, user_id: user.id) }
+    let!(:b2) { FactoryGirl.create(:blog2, user_id: user.id) }
 
     before(:each) do
       login user
