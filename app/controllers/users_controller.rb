@@ -2,8 +2,8 @@
 class UsersController < ApplicationController
   include SessionsHelper
   layout "account",       only: [:show]
-  before_filter :user_login,    only: [:edit, :update, :show]
-  before_filter :is_admin,  only: [:edit, :update, :index]
+  before_filter :user_login,    only: [:update, :show]
+  before_filter :is_admin,  only: [:update, :index]
   def index
     @users = User.page(params[:page]).per(10)# .padding(1)
   end
@@ -53,19 +53,6 @@ class UsersController < ApplicationController
       flash[:danger]   = "激活不成功，请检查地址链接是否复制错误"
     end
     redirect_to root_path
-  end
-
-  def edit
-    @user = User.find(params[:id])
-  end
-
-  def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      redirect_to @user, :notice  => "更新成功"
-    else
-      render 'edit'
-    end
   end
 
   def destroy

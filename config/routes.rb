@@ -22,7 +22,7 @@ Mywebsite::Application.routes.draw do
     end
   end
 
-  resources :users do
+  resources :users, except: [:edit, :update] do
     collection do
       get "success"
       get "activate"

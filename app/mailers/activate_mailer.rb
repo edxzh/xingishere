@@ -5,7 +5,6 @@ class ActivateMailer < ActionMailer::Base
 
   def user_activate(user)
     @user         = user
-    @author       = User.find(1)
     @subject      = "帐号激活"
     @to           = user.email
     mail to: @to, subject: @subject
