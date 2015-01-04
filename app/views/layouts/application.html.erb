@@ -45,9 +45,7 @@
             <%= yield %>
           </div>
           <div class="col-lg-3">
-          <% cache "v1/aside/", expires_in: 60.minutes do %>
             <%= render 'shared/aside' %>
-          <% end %>
           </div><!-- span3 -->
         <!-- </div>-->
       </div><!-- row -->
