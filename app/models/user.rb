@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   # attr_accessor :password,  :password_confirmation
 
   before_save { self.email = email.downcase }
+  before_save :create_remember_token
 
   # validates :username,    presence: true, uniqueness: true
   # username is quit
@@ -56,6 +57,11 @@ class User < ActiveRecord::Base
 
   def advanced?
     self[:address]
+  end
+
+private
+  def create_remember_token
+    self.remember_token = SecureRandom.urlsafe_base64
   end
 
 end
