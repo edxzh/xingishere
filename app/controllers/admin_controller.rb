@@ -2,7 +2,7 @@
 class AdminController < ApplicationController
   before_filter :is_admin
   def user_login
-    if session[:user_id].blank?
+    if cookies[:remember_token].blank?
       store_location
       flash[:info] = "请您先登录"
       redirect_to login_path
@@ -10,7 +10,7 @@ class AdminController < ApplicationController
   end
 
   def is_admin
-    user = User.find(session[:user_id]) if session[:user_id].present?
+    user = User.find(cookies[:remember_token]) if cookies[:remember_token].present?
     if !user || !user.admin?
       redirect_to '/404.html'
     end

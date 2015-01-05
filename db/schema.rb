@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140808090216) do
+ActiveRecord::Schema.define(:version => 20150105084929) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(:version => 20140808090216) do
     t.boolean  "publish_status", :default => true, :null => false
   end
 
-  create_table "subscribes", :force => true do |t|
-    t.string   "email",      :limit => 40, :default => "", :null => false
+  create_table "subscribes", :force => true, :comment => "邮件订阅每周精选" do |t|
+    t.string   "email",      :limit => 40, :default => "", :null => false, :comment => "邮箱地址"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
   end
@@ -116,8 +116,10 @@ ActiveRecord::Schema.define(:version => 20140808090216) do
     t.boolean  "admin",                          :default => false
     t.string   "activate_code"
     t.boolean  "activate_status",                :default => false,        :null => false
+    t.string   "remember_token",                                           :null => false, :comment => "cookie记忆权标"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

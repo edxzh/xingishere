@@ -21,6 +21,7 @@ gem 'bson', '1.8.0'
 gem 'bson_ext', '1.8.0'
 gem 'piet'
 gem 'spreadsheet'
+gem 'migration_comments'
 gem 'roo'
 
 gem 'twitter-bootstrap-rails'

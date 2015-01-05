@@ -1,13 +1,13 @@
 module SessionsHelper
   def login(user)
-    user = User.find(user.id)
+    cookies[:remember_token] = { value: user.remember_token, expires: 1.year.from_now }
     self.current_user = user
   end
   def current_user=(user)
     @current_user = user
   end
   def current_user
-    @current_user ||= User.where("id = ?", session[:user_id]).first
+    @current_user ||= User.find_by_remember_token(cookies[:remember_token])
   end
   def current_user?(user)
     @current_user == user

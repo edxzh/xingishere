@@ -135,6 +135,8 @@ GEM
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (~> 0.0, >= 0.0.9)
     metaclass (0.0.1)
+    migration_comments (0.3.2)
+      activerecord (>= 2.3.2)
     mime-types (1.25)
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
@@ -338,6 +340,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mechanize (~> 2.5.1)
+  migration_comments
   mini_magick (~> 3.4)
   mocha
   mongo (= 1.8.0)

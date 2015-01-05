@@ -13,8 +13,6 @@ class SessionsController < ApplicationController
     user = User.where("email = ?", params[:email].downcase).first
     if user && user.authenticate(params[:password])
       login user
-      session[:user_name] = user.name
-      session[:user_id] = user.id
       flash.now[:success] = "登录成功"
       if params[:remeber] == "1"
         cookies[:email] = { value: user.email, expires: 1.year.from_now }
@@ -28,8 +26,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_name] = nil
-    session[:user_id]   = nil
+    cookies.delete  :remember_token
     logout
     redirect_to root_path
   end

@@ -7,7 +7,6 @@ namespace :regular_job do
     logger.info("邮件发送开始")
 
     Subscribe.pluck("email").each do |email|
-      p email
       logger.info(email)
       WeekWellChosenMailer.week_blogs(email).deliver
     end

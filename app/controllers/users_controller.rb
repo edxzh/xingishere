@@ -24,8 +24,7 @@ class UsersController < ApplicationController
     @user.activate_code = SecureRandom.hex 32       # 生成32位随机字符串
     if @user.save
       flash[:success] = "恭喜您注册成功，现在您可畅游所有服务"
-      session[:user_id]     = @user.id
-      session[:user_name]   = @user.name
+      cookies[:remember_token] = { value: user.remember_token, expires: 1.year.from_now }
       ActivateMailer.user_activate(@user).deliver
       redirect_to success_users_path
     else
@@ -34,8 +33,7 @@ class UsersController < ApplicationController
   end
 
   def success
-    @user = User.find(session[:user_id])
-    if @user.blank?
+    if current_user.blank?
       flash[:danger] = "请您注册并登录"
       redirect_to root_path
     end
