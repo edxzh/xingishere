@@ -10,7 +10,7 @@ class AdminController < ApplicationController
   end
 
   def is_admin
-    user = User.find(cookies[:remember_token]) if cookies[:remember_token].present?
+    user = User.find_by_remember_token(cookies[:remember_token]) if cookies[:remember_token].present?
     if !user || !user.admin?
       redirect_to '/404.html'
     end
