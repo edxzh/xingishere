@@ -1,5 +1,5 @@
 <h2>Description</h2>
-<p>It's my blog called xing's blog, author come from sichuan, chengdu, china.</p>
+<p>It's my blog called xingishere, The author come from sichuan, chengdu, china.</p>
 <p>It was supposed to be done a few months ago, but I spent a lot of time on DOTA, basketball and so on</p>
 <p>It is coded by ruby 1.9.3 and running on rails3.2.13. </p>
 <p>The code maybe not elegant, so if u have some advice, contact me please, I would be grateful to u.</p>
