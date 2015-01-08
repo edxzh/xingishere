@@ -10,6 +10,7 @@ FactoryGirl.define do
     activate_code               SecureRandom.hex(4)
     activate_status             true
     admin                       false
+    remember_token              SecureRandom.urlsafe_base64
     factory :profile_user do
       status                      1
       relation                    1

@@ -13,6 +13,8 @@ describe "测试访问一些静态页面" do
       end
 
       it { should have_title("关于博主") }
+      # it { should have_selector("link[href$='/onepage/onepage-scroll.css']") }
+      # it { should have_selector("script[src$='/onepage/onepage-scroll.js']") }
       # TODO 测试页面中的 css 和 js
     end
 

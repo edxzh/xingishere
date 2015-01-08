@@ -1,8 +1,13 @@
 # encoding: utf-8
-# Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :message do
-    content "留言"
+  factory :message, class:  "Message" do
+    content         "留言"
+    association     :user
+  end
+
+  factory :message_2, class:  "Message" do
+    content         "留言2"
+    association     :user
   end
 end
