@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(:version => 20150105084929) do
     t.boolean  "publish_status", :default => true, :null => false
   end
 
-  create_table "subscribes", :force => true, :comment => "邮件订阅每周精选" do |t|
-    t.string   "email",      :limit => 40, :default => "", :null => false, :comment => "邮箱地址"
+  create_table "subscribes", :force => true do |t|
+    t.string   "email",      :limit => 40, :default => "", :null => false
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
   end
