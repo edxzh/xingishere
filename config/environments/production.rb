@@ -66,14 +66,5 @@ Mywebsite::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # send emails
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.smtp_settings = {
-    :authentication => :plain,
-    :address        => "smtp.mailgun.org",
-    :port           => 587,
-    :domain         => "www.xingishere.com",
-    :user_name      => "postmaster@xingishere.com",
-    :password       => Settings.smtp_password,
-  }
 end
