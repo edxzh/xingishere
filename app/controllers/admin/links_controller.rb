@@ -4,7 +4,7 @@ class Admin::LinksController < AdminController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.page(params[:page]).per(20)
+    @links = Link.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
