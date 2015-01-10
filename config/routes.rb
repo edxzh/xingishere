@@ -53,6 +53,12 @@ Mywebsite::Application.routes.draw do
     resources :subscribes, only: [:index, :destroy]
   end
 
+  # gem kindeditor upload routes
+  namespace :kindeditor do
+    post "/upload" => "assets#create"
+    get  "/filemanager" => "assets#list"
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
