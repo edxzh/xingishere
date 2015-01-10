@@ -2,7 +2,7 @@
 class Admin::BlogsController < AdminController
   layout 'admin'
   def index
-    @blogs = Blog.weight_order.page(params[:page]).per(10)
+    @blogs = Blog.where("title like ?", "%#{params[:title]}%").weight_order.page(params[:page]).per(10)
     @category = BlogCategory.all
   end
 

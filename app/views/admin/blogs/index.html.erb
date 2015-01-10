@@ -1,5 +1,10 @@
 <% provide(:title, '博客列表') %>
-<div id="main">
+<%= form_tag admin_blogs_path, method: :get, class: "well form-search form-inline" do %>
+  <%= label_tag(:title, "标题：") %>
+  <%= text_field_tag "title", params[:title], class: "form-control mr20" %>
+  <%= button_tag "提交", class: "btn btn-primary" %>
+<% end %>
+<div id="row-fluid">
   <%= link_to '新建日志', new_admin_blog_path, class: "btn btn-primary btn-large" %>
   <p class="fr">共有<span class="red ml5 mr5 f20 fb"><%= @blogs.total_count %></span>篇博客</p>
   <ul class="blog_index">

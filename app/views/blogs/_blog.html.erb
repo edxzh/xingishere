@@ -3,11 +3,9 @@
     <%= raw weight_status(blog) %><%= link_to blog.title, blog_path(blog) %>
   </h3>
   <div class="blog_info">
-    分类：<%= link_to blog.blog_category_name, blogs_path(category: blog.blog_category_id) %> |
-    标签：<% blog.tags.each do |tag| %>
-      <%= link_to blog.tag, root_path(tags: blog.blog_category_id) %><br />
-    <% end %>
-    | 发布：<%= format_time(blog.created_at) %> | 热度：<span class="label label-default"><%= blog.view_total %>℃</span>
+    分类：<%= link_to blog.blog_category_name, blogs_path(category: blog.blog_category_id) %>
+    <span class="ml50">热度：<span class="label label-default"><%= blog.view_total %>℃</span></span>
+    <span class="fr mr20">发布：<%= format_time(blog.created_at) %></span>
   </div>
 </div>
 <p><%= display_content(blog.content) %></p>
