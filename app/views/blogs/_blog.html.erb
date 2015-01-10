@@ -4,7 +4,7 @@
   </h3>
   <div class="blog_info">
     分类：<%= link_to blog.blog_category_name, blogs_path(category: blog.blog_category_id) %>
-    <span class="ml50">热度：<span class="label label-default"><%= blog.view_total %>℃</span></span>
+    <span class="ml10">热度：<span class="label label-default"><%= blog.view_total %>℃</span></span>
     <span class="fr mr20">发布：<%= format_time(blog.created_at) %></span>
   </div>
 </div>
