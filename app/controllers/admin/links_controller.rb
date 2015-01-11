@@ -49,7 +49,7 @@ class Admin::LinksController < AdminController
     respond_to do |format|
       if link.save
         format.html { redirect_to admin_links_path, success: '创建成功' }
-        format.json { render json: link, status: :created, location: link }
+        format.json { render json: link, status: :created, location: admin_links_path }
       else
         format.html { render "new" }
         format.json { render json: link.errors, status: :unprocessable_entity }

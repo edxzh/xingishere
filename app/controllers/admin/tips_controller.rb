@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Admin::TipsController < AdminController
   layout 'admin'
   # GET /tips
@@ -40,8 +41,8 @@ class Admin::TipsController < AdminController
 
     respond_to do |format|
       if @tip.save
-        format.html { redirect_to @tip, notice: 'Tip was successfully created.' }
-        format.json { render json: @tip, status: :created, location: @tip }
+        format.html { redirect_to admin_tips_path, success: '创建成功' }
+        format.json { render json: @tip, status: :created, location: admin_tips_path }
       else
         format.html { render "new" }
         format.json { render json: @tip.errors, status: :unprocessable_entity }

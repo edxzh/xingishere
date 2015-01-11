@@ -5,6 +5,7 @@ class CreateLinks < ActiveRecord::Migration
       t.string :title,                limit: 20,  null: false, default: "",     comment: "标题"
       t.string :href,                 limit: 50,  null: false, default: "",     comment: "链接"
       t.text :description,            limit: 100,                               comment: "描述"
+      t.integer :link_category_id,                null: false,                  comment: "友链类型ID"
 
       t.timestamps
     end
