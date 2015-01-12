@@ -1,22 +1,22 @@
 # encoding: utf-8
 FactoryGirl.define do
   factory :blog, class: "Blog" do
-    association       :user
-    title             "我的日记"
-    content           "日记内容1"
-    url_name          "woderiji"
-    seo_keyword       "blog"
-    association       :blog_category
-    publish_status    true
+    association               :user
+    sequence(:title)          { |n| "我的日记_#{n}" }
+    content                   "日记内容1"
+    sequence(:url_name)       { |n| "woderiji_#{n}" }
+    seo_keyword               "blog"
+    association               :blog_category
+    publish_status            true
   end
 
   factory :unpublished_blog, class: "Blog" do
     association       :user
-    title             "未发布"
-    url_name          "weifabu"
-    content           "未发布内容"
-    seo_keyword       "blog"
-    association       :blog_category, name: "unpublished_blog_blog_category"
+    sequence(:title)          { |n| "未发布_#{n}" }
+    sequence(:url_name)       { |n| "weifabu_#{n}" }
+    content                   "未发布内容"
+    seo_keyword               "blog"
+    association               :blog_category, name: "unpublished_blog_blog_category"
     publish_status    false
   end
 

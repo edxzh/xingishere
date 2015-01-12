@@ -19,7 +19,7 @@ describe "登录验证Authentication" do
       end
 
       it { should have_title('主页') }
-      it { should have_content(user.username) }
+      it { should have_content(user.name) }
       it { should have_link("我的主页", href: user_path(user)) }
       it { should have_link("个人资料设置", href: account_profile_path) }
       it { should have_link("退出", href: logout_path) }
