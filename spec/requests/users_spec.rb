@@ -64,22 +64,22 @@ describe "Users pages" do
       it { should have_content(b2.title) }
       it { should have_content(user.blogs.count) }
     end
-  end
 
-  # 验证
-  describe "权限控制：" do
-    describe "未登录用户" do
+    describe "profile 页面" do
       let(:user) { FactoryGirl.create(:user) }
+      before(:each) do
+        login user
+        visit account_profile_path
+      end
+      it { should have_title("资料编辑") }
+      it { should have_button("确认") }
 
-      describe "in the users controller" do
-
-        describe "进入列表页" do
-          before { visit users_path }
-          it { should have_title("页面找不到了") }
-        end
+      describe "成功更新了信息" do
+        before { click_button("确认") }
+        # TODO
+        # it { should have_content("职业") }
       end
     end
-
   end
 
   describe "列表页" do
@@ -121,4 +121,20 @@ describe "Users pages" do
 
   end
 
+  describe "权限控制：" do
+    describe "未登录用户" do
+      let(:user) { FactoryGirl.create(:user) }
+      describe "进入列表页" do
+        before { visit users_path }
+        it { should have_title("页面找不到了") }
+      end
+
+      describe "进入个人信息页面" do
+        before { visit account_profile_path }
+        it { should have_button("登录") }
+      end
+
+    end
+
+  end
 end
