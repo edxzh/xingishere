@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 # Specs in this file have access to a helper object that includes
@@ -11,4 +12,10 @@ require 'spec_helper'
 #   end
 # end
 describe HomeHelper do
+  before(:each) do
+    @blog = FactoryGirl.create(:top_blog)
+  end
+  it "weight_status" do
+    expect(weight_status(@blog)).to eq "<span class='ding'>[顶]</span>"
+  end
 end

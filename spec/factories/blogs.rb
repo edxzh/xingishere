@@ -8,6 +8,9 @@ FactoryGirl.define do
     seo_keyword               "blog"
     association               :blog_category
     publish_status            true
+    factory :top_blog do
+      weight                  100
+    end
   end
 
   factory :unpublished_blog, class: "Blog" do
