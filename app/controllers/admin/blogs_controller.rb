@@ -23,9 +23,7 @@ class Admin::BlogsController < AdminController
   end
 
   def create
-    @blog                   = Blog.new(params[:blog])
-    @blog.user_id           = current_user.id
-    if @blog.save
+    if current_user.blogs.create(params[:blog])
       redirect_to admin_blogs_path, success: "发表成功"
     else
       render 'new'
