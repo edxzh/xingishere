@@ -41,7 +41,7 @@
 <div class="cmt_box">
   <% if @comments.present? %>
     <% @comments.each_with_index do |comment, index| %>
-      <%= raw show_comment(comment, @comments.count - index -1) %>
+      <%= raw show_comment(comment, index) %>
     <% end %>
     <%= paginate @comments %>
   <% else %>
