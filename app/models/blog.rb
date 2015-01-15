@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Blog < ActiveRecord::Base
-  attr_accessible :title, :content, :user_id, :blog_category_id, :view_total, :weight, :publish_status, :url_name, :seo_keyword
+  attr_accessible :title, :content, :blog_category_id, :view_total, :weight, :publish_status, :url_name, :seo_keyword
   belongs_to  :user
   belongs_to  :blog_category
   has_many    :tags
@@ -13,7 +13,6 @@ class Blog < ActiveRecord::Base
   validates   :seo_keyword,       presence: true
   validates   :blog_category_id,  presence: true
 
-  # validates :user,              presence: true
 
   scope :weight_order, -> { order('weight DESC, created_at DESC') }
   scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }

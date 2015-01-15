@@ -35,6 +35,14 @@ describe Blog do
     end
   end
 
+  describe "参数保护" do
+    it "不能设置user_id" do
+      expect do
+        Blog.new(user_id: user.id)
+      end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end
+  end
+
   describe "测试scope" do
     it "scope published" do
       @blog = FactoryGirl.create(:unpublished_blog, user_id: user.id)
