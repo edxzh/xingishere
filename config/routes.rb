@@ -39,6 +39,7 @@ Mywebsite::Application.routes.draw do
 
   scope 'cn' do
     get '/blogs'      =>  'api/blogs#index'
+    get "/blogs/:id"  =>  'api/blogs#show'
     get '/messages'   =>  'api/messages#index'
   end
 

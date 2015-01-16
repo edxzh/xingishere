@@ -10,4 +10,10 @@ class Api::BlogsController < ApiController
     @blogs        = relation.page(params[:page]).per(10)
     @total_count  = relation.count
   end
+
+  def show
+    @blog = Rails.cache.fetch("/api/blog/#{params[:id]}", expires_in: 60.minutes) do
+      Blog.find_by_url_name(params[:id])
+    end
+  end
 end
