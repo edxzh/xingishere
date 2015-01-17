@@ -36,6 +36,7 @@ Mywebsite::Application.routes.draw do
   #match 'me',     to: 'pages#me', as: :me
   match 'resume', to: 'pages#resume', as: :resume
   match 'xingge', to: 'pages#xingge', as: :xingge
+  match 'api',    to: 'pages#api', as: :api
 
   scope 'cn' do
     get 'blogs'       =>  'api/blogs#index'
