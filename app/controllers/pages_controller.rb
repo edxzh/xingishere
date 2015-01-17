@@ -12,4 +12,7 @@ class PagesController < ApplicationController
   def xingge
     render layout: false
   end
+  def api
+    
+  end
 end
