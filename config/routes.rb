@@ -40,6 +40,7 @@ Mywebsite::Application.routes.draw do
   scope 'cn' do
     get 'blogs'       =>  'api/blogs#index'
     get "blogs/:id"   =>  'api/blogs#show'
+    get 'categories'  =>  'api/blogs#categories'
     get 'home'        =>  'api/home#index'
     get 'nav'         =>  'api/home#nav'
     get 'links'       =>  'api/links#index'

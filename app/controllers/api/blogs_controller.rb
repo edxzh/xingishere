@@ -19,4 +19,8 @@ class Api::BlogsController < ApiController
     end
     @comments = @blog.comments.page(params[:page]).per(10)
   end
+
+  def categories
+    @blog_category = BlogCategory.all
+  end
 end
