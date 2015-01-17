@@ -38,9 +38,13 @@ Mywebsite::Application.routes.draw do
   match 'xingge', to: 'pages#xingge', as: :xingge
 
   scope 'cn' do
-    get '/blogs'      =>  'api/blogs#index'
-    get "/blogs/:id"  =>  'api/blogs#show'
-    get '/messages'   =>  'api/messages#index'
+    get 'blogs'       =>  'api/blogs#index'
+    get "blogs/:id"   =>  'api/blogs#show'
+    get 'home'        =>  'api/home#index'
+    get 'nav'         =>  'api/home#nav'
+    get 'links'       =>  'api/links#index'
+    post 'subscribes' =>  'api/subscribes#create'
+    get 'messages'    =>  'api/messages#index'
   end
 
   namespace 'admin' do
