@@ -3,28 +3,28 @@
 <% content_for :info do %>下面是API路由列表，包括参数说明<% end %>
 <table class="table">
   <tr>
-    <th>name</th>
-    <th>method</th>
-    <th>url</th>
-    <th>params</th>
+    <th>接口</th>
+    <th>方法</th>
+    <th>地址</th>
+    <th>说明</th>
   </tr>
   <tr>
-    <td>home</td>
+    <td>主页</td>
     <td>GET</td>
     <td>http://xingishere.com/cn/home.json</td>
+    <td>page:当前页数 per_page:每页个数</td>
+  </tr>
+  <tr>
+    <td>导航</td>
+    <td>GET</td>
+    <td>http://xingishere.com/cn/nav.json</td>
     <td>无</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>博客列表</td>
+    <td>GET</td>
+    <td>http://xingishere.com/cn/blogs.json</td>
+    <td>keyword:关键词查询 category:分类查询 order:排序,值为hottest(最热)/newest(最新) page:当前页数 per_page:每页个数</td>
   </tr>
   <tr>
     <td></td>

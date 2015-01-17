@@ -9,7 +9,7 @@ class Api::BlogsController < ApiController
       relation = Blog.published.includes(:blog_category, :comments)
     end
     order = params[:order] == "hottest" ? "view_total" : "created_at"
-    @blogs        = relation.order("#{order} DESC").page(params[:page]).per(10)
+    @blogs        = relation.order("#{order} DESC").page(params[:page]).per(params[:per_page])
     @total_count  = relation.count
   end
 
