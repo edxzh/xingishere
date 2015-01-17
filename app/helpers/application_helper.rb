@@ -24,10 +24,6 @@ module ApplicationHelper
     gravatar_url  = "http://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
 
-  def format_time(time)
-    time.strftime("%Y-%m-%d %H:%M:%S")
-  end
-
   def options_for_select_status(selected = nil)
     options = []
     I18n.t("user.status").each do |k, v|
