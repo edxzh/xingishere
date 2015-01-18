@@ -17,6 +17,7 @@ class Api::BlogsController < ApiController
     @blog = Rails.cache.fetch("/api/blog/#{params[:id]}", expires_in: 60.minutes) do
       Blog.find_by_url_name(params[:id])
     end
+    render json: { status: 404 } and return if @blog.nil?
     @comments = @blog.comments.page(params[:page]).per(10)
   end
 
