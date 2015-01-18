@@ -1,15 +1,16 @@
 <% provide :title, "接口文档" %>
 <% content_for :h1 do %>接口文档<% end %>
 <% content_for :info do %>下面是API路由列表，包括参数说明<% end %>
-<table class="table">
+<div class="table-responsive">
+<table class="table" class="table-condensed">
   <tr>
-    <th width=10%>接口</th>
+    <th width=15%>接口</th>
     <th width=10%>方法</th>
     <th width=30%>地址</th>
-    <th width=50%>说明</th>
+    <th width=45%>参数</th>
   </tr>
   <tr>
-    <td>主页</td>
+    <td>首页</td>
     <td>GET</td>
     <td>http://xingishere.com/cn/home.json</td>
     <td>page:当前页数 per_page:每页个数</td>
@@ -27,15 +28,28 @@
     <td>keyword:关键词查询 category:分类查询 order:排序,值为hottest(最热)/newest(最新) page:当前页数 per_page:每页个数</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>博客详情</td>
+    <td>GET</td>
+    <td>http://xingishere.com/cn/blogs/:url_name.json</td>
+    <td>avatar_size: 博客评论用户的头像尺寸</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>博客分类列表</td>
+    <td>GET</td>
+    <td>http://xingishere.com/cn/categories.json</td>
+    <td>无</td>
+  </tr>
+  <tr>
+    <td>友情链接</td>
+    <td>GET</td>
+    <td>http://xingishere.com/cn/links.json</td>
+    <td>无</td>
+  </tr>
+  <tr>
+    <td>邮箱订阅</td>
+    <td>POST</td>
+    <td>http://xingishere.com/cn/subscribes</td>
+    <td>email:订阅的邮箱</td>
   </tr>
 </table>
+</div>
