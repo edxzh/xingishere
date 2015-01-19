@@ -36,11 +36,17 @@ Mywebsite::Application.routes.draw do
   #match 'me',     to: 'pages#me', as: :me
   match 'resume', to: 'pages#resume', as: :resume
   match 'xingge', to: 'pages#xingge', as: :xingge
+  match 'api',    to: 'pages#api', as: :api
 
   scope 'cn' do
-    get '/blogs'      =>  'api/blogs#index'
-    get "/blogs/:id"  =>  'api/blogs#show'
-    get '/messages'   =>  'api/messages#index'
+    get 'blogs'       =>  'api/blogs#index'
+    get "blogs/:id"   =>  'api/blogs#show'
+    get 'categories'  =>  'api/blogs#categories'
+    get 'home'        =>  'api/home#index'
+    get 'nav'         =>  'api/home#nav'
+    get 'links'       =>  'api/links#index'
+    post 'subscribes' =>  'api/subscribes#create'
+    get 'messages'    =>  'api/messages#index'
   end
 
   namespace 'admin' do

@@ -1,13 +1,15 @@
+# encoding: utf-8
 class Api::BlogsController < ApiController
   def index
     if params[:category].present?
-      relation = Blog.published.weight_order.includes(:comments).category(params[:category])
+      relation = Blog.published.includes(:comments).category(params[:category])
     elsif params[:keyword]
-      relation = Blog.published.weight_order.includes(:comments).keyword(params[:keyword])
+      relation = Blog.published.includes(:comments).keyword(params[:keyword])
     else
-      relation = Blog.published.weight_order.includes(:blog_category, :comments)
+      relation = Blog.published.includes(:blog_category, :comments)
     end
-    @blogs        = relation.page(params[:page]).per(10)
+    order = params[:order] == "hottest" ? "view_total" : "created_at"
+    @blogs        = relation.order("#{order} DESC").page(params[:page]).per(params[:per_page])
     @total_count  = relation.count
   end
 
@@ -15,5 +17,11 @@ class Api::BlogsController < ApiController
     @blog = Rails.cache.fetch("/api/blog/#{params[:id]}", expires_in: 60.minutes) do
       Blog.find_by_url_name(params[:id])
     end
+    render json: { status: 404 } and return if @blog.nil?
+    @comments = @blog.comments.page(params[:page]).per(10)
+  end
+
+  def categories
+    @blog_category = BlogCategory.all
   end
 end

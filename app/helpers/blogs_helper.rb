@@ -19,7 +19,7 @@ module BlogsHelper
           <div class='cmt'>
             <p class='cmt_name'>#{comment.name}<span class='cmt_id'>第#{index + 1}楼</span></p>
             <p class='cmt_content'>#{h comment.content}</p>
-            <p class='cmt_time'>#{format_time(comment.created_at)}</p>
+            <p class='cmt_time'>#{comment.created_at.to_s(:db)}</p>
           </div>
         </div>"
     else

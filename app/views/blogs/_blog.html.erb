@@ -5,7 +5,7 @@
   <div class="blog_info">
     分类：<%= link_to blog.blog_category_name, blogs_path(category: blog.blog_category_id) %>
     <span class="ml10">热度：<span class="label label-default"><%= blog.view_total %>℃</span></span>
-    <span class="fr mr20">发布：<%= format_time(blog.created_at) %></span>
+    <span class="fr mr20">发布：<%= blog.created_at.to_s(:db) %></span>
   </div>
 </div>
 <p><%= display_content(blog.content) %></p>

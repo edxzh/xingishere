@@ -15,7 +15,7 @@
       标签：<% @blog.tags.each do |tag| %>
               <%= link_to @blog.tag, root_path(tags: @blog.category) %><br />
             <% end %>
-      | 发布：<%= format_time(@blog.created_at) %>
+      | 发布：<%= @blog.created_at.to_s(:db) %>
       <% if @auth.present? %>
       <% end %>
     </div>
