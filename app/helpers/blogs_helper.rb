@@ -14,7 +14,7 @@ module BlogsHelper
 
   def show_comment(comment, index)
     if comment.publish_status
-      "<div class='comment'>
+      "<div class='comment' id=#{comment.id}>
           #{gravatar_for comment.user}
           <div class='cmt'>
             <p class='cmt_name'>#{comment.name}<span class='cmt_id'>第#{index + 1}楼</span></p>
@@ -24,7 +24,7 @@ module BlogsHelper
         </div>"
     else
       "
-        <div class='delete'><span>#{comment.id}楼 来自 <span class='red'>#{comment.name}</span> 的吐槽已删除</span></div>
+        <div class='delete' id=#{comment.id}><span>#{comment.id}楼 来自 <span class='red'>#{comment.name}</span> 的吐槽已删除</span></div>
       "
     end
   end
