@@ -37,11 +37,6 @@ class Blog < ActiveRecord::Base
       end
     end
 
-    def loved_by_user(user_id)
-      blog_ids = UserLove.where(user_id: user_id).pluck("blog_id")
-      where(id: blog_ids)
-    end
-
   end
 
   # 通过类别找一批blog
