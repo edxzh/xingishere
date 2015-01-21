@@ -6,6 +6,8 @@ class Blog < ActiveRecord::Base
   has_many    :tags
   has_many    :user_loves,        dependent:  :destroy, inverse_of: :blog,  class_name: UserLove
   has_many    :comments
+  has_many    :loved_users,       through:  :user_loves, source: :user
+
   validates   :user_id,           presence: true
   validates   :title,             presence: true, uniqueness: true
   validates   :content,           presence: true
