@@ -83,7 +83,6 @@ gem 'omniauth-weibo-oauth2'
 
 group :development do
   gem 'quiet_assets'
-  gem 'debugger'
   gem 'awesome_print'
   gem 'nifty-generators'
 end
