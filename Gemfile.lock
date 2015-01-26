@@ -1,5 +1,5 @@
 GEM
-  remote: http://ruby.taobao.org/
+  remote: https://rubygems.org/
   specs:
     actionmailer (3.2.13)
       actionpack (= 3.2.13)
@@ -78,17 +78,10 @@ GEM
     coffee-script-source (1.6.3)
     colored (1.2)
     colorize (0.7.3)
-    columnize (0.3.6)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
     dalli (2.6.4)
     database_cleaner (1.1.1)
-    debugger (1.6.2)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.3)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.4)
     domain_name (0.5.12)
       unf (>= 0.0.5, < 1.0.0)
@@ -334,7 +327,6 @@ DEPENDENCIES
   colorize
   dalli
   database_cleaner
-  debugger
   factory_girl_rails
   jbuilder
   jquery-rails
