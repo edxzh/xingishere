@@ -8,7 +8,15 @@ defaults: &defaults
   pool: 5
   timeout: 5000
   host: localhost
+  encoding: utf8
+
   <<: *<%= ENV['DB'] || "mysql" %>
 
 development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
   <<: *defaults
