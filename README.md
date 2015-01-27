@@ -1,5 +1,5 @@
 # xingishere
-[![Build Status](https://travis-ci.org/zhangyuan/wechat.svg)](https://travis-ci.org/zhangyuan/wechat)
+[![Build Status](https://travis-ci.org/Dogzhou/xingishere.svg)](https://travis-ci.org/Dogzhou/xingishere)
 
 My open source blog project
 
