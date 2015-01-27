@@ -24,9 +24,6 @@ gem 'spreadsheet'
 gem 'migration_comments'
 gem 'roo'
 
-gem 'twitter-bootstrap-rails'
-gem 'bootstrap-datetimepicker-rails'
-
 gem 'bcrypt-ruby', '3.0.1'
 
 gem 'whenever'

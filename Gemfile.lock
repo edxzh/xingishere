@@ -36,7 +36,6 @@ GEM
     arel (3.0.2)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
-    bootstrap-datetimepicker-rails (0.0.11)
     bson (1.8.0)
       activesupport
     bson_ext (1.8.0)
@@ -278,11 +277,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.2.8)
-      actionpack (>= 3.1)
-      execjs
-      rails (>= 3.1)
-      railties (>= 3.1)
     typhoeus (0.6.6)
       ethon (~> 0.6.1)
     tzinfo (0.3.37)
@@ -314,7 +308,6 @@ DEPENDENCIES
   annotate (>= 2.6.0)
   awesome_print
   bcrypt-ruby (= 3.0.1)
-  bootstrap-datetimepicker-rails
   bson (= 1.8.0)
   bson_ext (= 1.8.0)
   capistrano
@@ -356,7 +349,6 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   spreadsheet
-  twitter-bootstrap-rails
   typhoeus (~> 0.6.1)
   uglifier (>= 1.0.3)
   unicorn
