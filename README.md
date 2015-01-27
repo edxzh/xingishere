@@ -1,6 +1,8 @@
 # xingishere
-My open source blog project
 [![Build Status](https://travis-ci.org/zhangyuan/wechat.svg)](https://travis-ci.org/zhangyuan/wechat)
+
+My open source blog project
+
 # description
 <p>It's my blog called xingishere, The author come from sichuan, chengdu, china.</p>
 <p>It was supposed to be done a few months ago, but I spent a lot of time on DOTA, basketball and so on</p>
