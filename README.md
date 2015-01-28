@@ -1,6 +1,8 @@
 # xingishere
 [![Build Status](https://travis-ci.org/Dogzhou/xingishere.svg)](https://travis-ci.org/Dogzhou/xingishere)
 
+[![Build Status](https://snap-ci.com/Dogzhou/xingishere/branch/master/build_image)](https://snap-ci.com/Dogzhou/xingishere/branch/master)
+
 My open source blog project
 
 # description
