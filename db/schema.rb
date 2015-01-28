@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20140808090216) do
   add_index "blogs", ["user_id"], :name => "index_blogs_on_user_id"
 
   create_table "comments", :force => true, :comment => "博客评论表" do |t|
-    t.text     "content",        :limit => 255,                   :null => false, :comment => "评论内容"
+    t.text     "content",        :limit => 255,                                   :comment => "评论内容"
     t.integer  "blog_id",                       :default => 0,    :null => false, :comment => "博客ID"
     t.integer  "user_id",                       :default => 0,    :null => false, :comment => "用户ID"
     t.integer  "pid",                                                             :comment => "回复的评论ID"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20140808090216) do
 
   create_table "messages", :force => true, :comment => "网站评论表" do |t|
     t.integer  "user_id"
-    t.text     "content",                          :null => false, :comment => "评论内容"
+    t.text     "content",                                          :comment => "评论内容"
     t.boolean  "publish_status", :default => true, :null => false, :comment => "发布状态"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20140808090216) do
   end
 
   create_table "tips", :force => true, :comment => "小贴士" do |t|
-    t.text     "content",    :limit => 255, :null => false, :comment => "内容"
+    t.text     "content",    :limit => 255,                 :comment => "内容"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
