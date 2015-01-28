@@ -19,7 +19,7 @@ FactoryGirl.define do
     sequence(:url_name)       { |n| "weifabu_#{n}" }
     content                   "未发布内容"
     seo_keyword               "blog"
-    association               :blog_category, name: "unpublished_blog_blog_category"
+    association               :blog_category, name: "unpublished_category"
     publish_status    false
   end
 
