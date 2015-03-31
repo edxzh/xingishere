@@ -60,6 +60,7 @@ tmtagsHistory
 
 .ruby-gemset
 .ruby-version
+.rbenv-gemsets
 /.git-rewrite/
 /config/shards.yml
 config/sunspot.yml
