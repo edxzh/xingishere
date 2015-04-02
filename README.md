@@ -20,6 +20,10 @@ The online blog is <a href="http://www.xingishere.com" target="_blank">www.xingi
 * rails 3.2.13
 * mysql 5.5
 
+## usage
+    bundle install
+    ruby script/configs_init.rb
+
 ## script
 After deployed, you should execute checker script to make sure the configuration is intack
 
