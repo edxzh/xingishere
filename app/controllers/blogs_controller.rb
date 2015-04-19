@@ -12,9 +12,7 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @blog = Rails.cache.fetch("/blog/#{params[:id]}", expires_in: 60.minutes) do
-      Blog.find_by_url_name(params[:id])
-    end
+    @blog = Blog.find_by_url_name(params[:id])
     render_404_page if @blog.nil?
     @like = false                   # 当前用户是否喜欢此博客
     @blog.view_total = @blog.view_total += 1
