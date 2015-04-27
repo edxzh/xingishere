@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    cookies.delete  :remember_token
+    session[:user_id] = nil
     logout
     redirect_to root_path
   end

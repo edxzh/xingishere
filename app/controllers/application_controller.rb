@@ -4,13 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   def authorize
-    if User.find_by_remember_token(cookies[:remember_token]).blank?
+    if User.find_by_id(session[:user_id]).blank?
       redirect_to user_login_path, alert: "请您先登录"
     end
   end
 
   def user_login
-    if cookies[:remember_token].blank?
+    if session[:user_id].blank?
       store_location
       flash[:info] = "请您先登录"
       redirect_to login_path
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin
-    user = User.find_by_remember_token(cookies[:remember_token]) if cookies[:remember_token].present?
+    user = User.find(session[:user_id]) if session[:user_id].present?
     if !user || !user.admin?
       render_404_page
     end

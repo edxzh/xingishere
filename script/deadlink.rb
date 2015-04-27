@@ -47,9 +47,7 @@ class NilClass
 end
 
 TO_TEST_LINK = {
-  :index      =>  "http://www.xingishere.com",
-  :blogs      =>  "http://www.xingishere.com/blogs",
-  :links      =>  "http://www.xingishere.com/links"
+  :index      =>  { page: "http://10.38.23.64:8080/products/hardware/configurator/bhui/launchNI.wss", path: "http://http://10.38.23.64:8080/products/hardware/configurator/bhui/" }
 }
 
 @options                    = {}
@@ -75,26 +73,25 @@ p Time.now
 agent = Mechanize.new
 agent.log = Logger.new(File.expand_path('../../log/mech.log', __FILE__))
 
-def link_with_host(link)
+def link_with_host(link, path)
   if link[0] == '/'
-    "http://www.xingishere.com#{link}"
+    "#{path}#{link}"
   else
     link
   end
 end
 
 TO_TEST_LINK.each do |k, v|
-  page = agent.get(v)
+  page = agent.get(v[:page])
   links = page.links.map(&:href) + page.search('script').map{ |x| x['src'] } + page.search("link").map{ |x| x['href'] }
   links.uniq!
+  p links
   @request_hash[k] ||= []
 
   links.each do |link|
-    if valid_link?(link) && link != 'http://www.xingishere.com/logout'
-      request = Typhoeus::Request.new(link_with_host(link), @options.merge(:timeout => 30))
-      @request_hash[k] << request
-      hydra.queue request
-    end
+    request = Typhoeus::Request.new(link_with_host(v[:page], v[:path]), @options.merge(:timeout => 30))
+    @request_hash[k] << request
+    hydra.queue request
   end
 
 end

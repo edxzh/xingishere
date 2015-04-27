@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 
   layout false, only: :create
   def index
-    @messages = Message.page(params[:page]).per(10)
+    @messages = Message.page(params[:page]).per(10).order("id DESC")
     @message = Message.new
 
     if request.xhr?

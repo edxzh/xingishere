@@ -20,7 +20,6 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :admin,                                                                   comment: "是否为管理员"
       t.string  :activate_code,       limit: 65,                                          comment: "激活校验码"
       t.boolean :activate_status,                   null: false,  default: false,         comment: "激活状态"
-      t.string  :remember_token,      limit: 30,    null: false,                          comment: "cookie记忆权标"
       t.timestamps
 
     end
