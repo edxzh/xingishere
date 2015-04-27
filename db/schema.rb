@@ -119,12 +119,10 @@ ActiveRecord::Schema.define(:version => 20140808090216) do
     t.boolean  "admin",                                                                    :comment => "是否为管理员"
     t.string   "activate_code",   :limit => 65,                                            :comment => "激活校验码"
     t.boolean  "activate_status",                :default => false,        :null => false, :comment => "激活状态"
-    t.string   "remember_token",  :limit => 30,                            :null => false, :comment => "cookie记忆权标"
     t.datetime "created_at",                                               :null => false
     t.datetime "updated_at",                                               :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end
