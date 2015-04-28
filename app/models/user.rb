@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   # attr_accessor :password,  :password_confirmation
 
   before_save { self.email = email.downcase }
-  before_create :create_remember_token
   after_destroy :change_messages_publish_status
 
   # validates :username,    presence: true, uniqueness: true
@@ -62,9 +61,6 @@ class User < ActiveRecord::Base
   end
 
 private
-  def create_remember_token
-    self.remember_token = SecureRandom.urlsafe_base64
-  end
 
   def change_messages_publish_status
     self.messages.update_all(publish_status: Settings.publish_status.deleted)
