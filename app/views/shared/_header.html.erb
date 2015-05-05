@@ -38,7 +38,7 @@
           </ul>
         </li>
       <% else %>
-        <li><%= link_to '注册', register_path %></li>
+        <li><%= link_to '注册', register_path, onClick: "_gaq.push(['_trackEvent', 'newusers', 'new', 'user click register button']);" %></li>
         <li><%= link_to '登录', login_path %></li>
       <% end %>
       </ul>

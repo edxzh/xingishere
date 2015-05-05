@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131220075712) do
+ActiveRecord::Schema.define(:version => 20140808090216) do
 
   create_table "blog_categories", :force => true, :comment => "博客分类表" do |t|
     t.string   "name",       :limit => 25, :null => false, :comment => "类型名"
@@ -49,9 +49,10 @@ ActiveRecord::Schema.define(:version => 20131220075712) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "link_categories", :force => true, :comment => "友链类型表" do |t|
-    t.string   "category",   :limit => 100, :null => false, :comment => "类型名"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.string   "category",   :limit => 100,                :null => false, :comment => "类型名"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.integer  "user_id",                   :default => 0, :null => false
   end
 
   create_table "links", :force => true, :comment => "友情链接表" do |t|
@@ -63,11 +64,31 @@ ActiveRecord::Schema.define(:version => 20131220075712) do
     t.datetime "updated_at",                                      :null => false
   end
 
+  create_table "messages", :force => true, :comment => "网站评论表" do |t|
+    t.integer  "user_id"
+    t.text     "content",                                          :comment => "评论内容"
+    t.boolean  "publish_status", :default => true, :null => false, :comment => "发布状态"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "subscribes", :force => true, :comment => "邮件订阅每周精选" do |t|
+    t.string   "email",      :limit => 40, :default => "", :null => false, :comment => "邮箱地址"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
   create_table "tags", :force => true, :comment => "博客标签表" do |t|
     t.integer  "blog_id",                  :default => 0,  :null => false, :comment => "博客ID"
     t.string   "name",       :limit => 20, :default => "", :null => false, :comment => "标签名"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
+  end
+
+  create_table "tips", :force => true, :comment => "小贴士" do |t|
+    t.text     "content",    :limit => 255,                 :comment => "内容"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "user_loves", :force => true, :comment => "用户喜爱博客中间表" do |t|

@@ -24,6 +24,7 @@ gem 'spreadsheet'
 gem 'migration_comments'
 gem 'roo'
 
+# To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.0.1'
 
 gem 'whenever'
@@ -41,13 +42,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
 gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
 gem 'kaminari'
 
 gem 'typhoeus', '~> 0.6.1', require: false
@@ -57,11 +52,11 @@ gem 'typhoeus', '~> 0.6.1', require: false
 gem 'rest-client', '~> 1.6.7'
 # gem 'multimap', '~> 1.1.2'
 
+# To use Jbuilder templates for JSON
 gem 'jbuilder'
 
 # Use unicorn as the app server
 gem 'unicorn'
-# gem 'bcrypt-ruby', '3.0.1'
 
 # Deploy with Capistrano
 gem 'capistrano', require: false
