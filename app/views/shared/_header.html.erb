@@ -14,7 +14,7 @@
         <li><%= link_to root_path do %>主页 <span class="glyphicon glyphicon-home"></span><% end %></li>
         <li><%= link_to blogs_path do %>博客 <span class="glyphicon glyphicon-book"></span><% end %></li>
         <li><%= link_to messages_path do %>吐槽 <span class="glyphicon glyphicon-comment"><% end %></li>
-        <li><%= link_to about_path, target: "_blank" do %>关于本站 <span class="glyphicon glyphicon-star"><% end %></li>
+        <li><%= link_to about_path, target: "_blank", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'about', 'user click about on nav']);" do %>关于本站 <span class="glyphicon glyphicon-star"><% end %></li>
         <li><%= link_to "友情链接", links_path, target: "_blank" %></li>
         <li><%= link_to "API", api_path, target: "_blank" %></li>
       </ul>
@@ -22,7 +22,7 @@
         <div class="form-group">
           <%= text_field_tag(:keyword, params[:keyword], class: "form-control", placeholder: "Search") %>
         </div>
-        <%= submit_tag "搜索", class: "btn" %>
+        <%= submit_tag "搜索", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'search', 'user click search button on nav']);", class: "btn" %>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
       <% if current_user.present? %>
@@ -38,7 +38,7 @@
           </ul>
         </li>
       <% else %>
-        <li><%= link_to '注册', register_path, onClick: "_gaq.push(['_trackEvent', 'newusers', 'new', 'user click register button']);" %></li>
+        <li><%= link_to '注册', register_path, onClick: "_gaq.push(['_trackEvent', 'buttonClick', 'register', 'user click register button']);" %></li>
         <li><%= link_to '登录', login_path %></li>
       <% end %>
       </ul>

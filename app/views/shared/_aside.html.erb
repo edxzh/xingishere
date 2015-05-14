@@ -3,7 +3,7 @@
   <p class="doc">一个以写 java 为生的 ruby on rails 程序员，现就职于 thoughtworks&nbsp;&nbsp;<%= link_to "更多信息", xingge_path, target: "_blank", class: "fb" %></p>
   <p class="rss">
   <div class="tc mb15">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'subscribe mail', 'user click subscribe button on aside']);">
       邮件订阅
     </button>
   </div>
@@ -50,8 +50,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" id="sub_submit">提交</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'cancel subscribe', 'user cancel subscribe']);">取消</button>
+          <button type="button" class="btn btn-primary" id="sub_submit", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'submit subscribe', 'user submit subscribe']);">提交</button>
         </div>
       </div>
     </div>
