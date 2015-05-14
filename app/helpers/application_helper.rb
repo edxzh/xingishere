@@ -72,4 +72,10 @@ module ApplicationHelper
       <li>留言个数：#{Message.count}</li>
     </ul>"
   end
+
+  def render_ga
+    if Rails.env.production?
+      render 'shared/ga'
+    end
+  end
 end

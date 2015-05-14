@@ -31,7 +31,7 @@
     <div class="container" style="max-width:calc(78%)">
       <%= yield %>
     </div><!-- container -->
-    <%= render 'shared/ga' %>
+    <%= render_ga %>
     <% cache "v1/footer/", expires_in: 60.minutes do %>
       <%= render 'shared/footer' %>
     <% end %>

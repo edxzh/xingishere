@@ -50,7 +50,7 @@
         <!-- </div>-->
       </div><!-- row -->
     </div>
-  <%= render 'shared/ga' %>
+  <%= render_ga %>
   <% cache "v1/footer/", expires_in: 60.minutes do %>
     <%= render 'shared/footer' %>
   <% end %>

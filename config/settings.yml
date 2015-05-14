@@ -13,3 +13,4 @@ secret_token: 'wefg4gdfefo8eir9t0gpokl98ejfud7y6'
 omniauth:
   key: 'adfwefwwef'
   secret: 'asefwef'
+ga_track_id: 'UA-48833622-1'
