@@ -1,5 +1,5 @@
-author_name: '周星'
-domain_name: 'http://www.xingishere.com'
+author_name: 'XX'
+domain_name: 'http://www.xxx.com'
 publish_status:
   deleted:  0
   published:  1
@@ -9,8 +9,8 @@ regexp:
   url_name: ^\w+_\d+$
   phone_number: ^(?:130|131|132|133|134|135|136|137|138|139|145|147|150|151|152|153|155|156|157|158|159|170|180|181|182|183|184|185|186|187|188|189)[0-9]{8}$
 
-secret_token: 'wefg4gdfefo8eir9t0gpokl98ejfud7y6'
+secret_token: 'XXXXXXXXXXXXXXXXXXXX'
 omniauth:
-  key: 'adfwefwwef'
-  secret: 'asefwef'
-ga_track_id: 'UA-48833622-1'
+  key: 'xxxxxxxxxx'
+  secret: 'xxxxxxxxxxx'
+ga_track_id: 'UA-XXXXXXXX-X'
