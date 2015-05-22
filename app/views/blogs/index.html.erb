@@ -1,8 +1,5 @@
 <% provide(:title, '博客列表') %>
 <div id="main">
-  <% if params[:keyword].present? %>
-    <%= raw params[:keyword] %>
-  <% end %>
   <ul class="blog_index">
     <% @blogs.each do |category_id, blogs| %>
       <h3><%= BlogCategory.find(category_id).name %></h3>
