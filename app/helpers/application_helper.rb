@@ -74,6 +74,8 @@ module ApplicationHelper
   end
 
   def render_ga
+    if Rails.env.production?
       render 'shared/ga'
+    end
   end
 end
