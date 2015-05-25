@@ -75,6 +75,7 @@ gem 'omniauth-weibo-oauth2'
 
 group :development do
   gem 'rubocop'
+  gem 'brakeman', :require => false
   gem 'quiet_assets'
   gem 'awesome_print'
   gem 'nifty-generators'
