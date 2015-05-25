@@ -74,6 +74,7 @@ gem 'omniauth-weibo-oauth2'
 # gem 'debugger'
 
 group :development do
+  gem 'rubocop'
   gem 'quiet_assets'
   gem 'awesome_print'
   gem 'nifty-generators'
