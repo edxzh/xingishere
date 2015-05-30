@@ -40,8 +40,8 @@ $(document).ready ->
   $(".cmt_btn").on 'click', () ->
     content   = $(".cmt_text_area").val()
     blog_id   = $("#blog_id").val()
-    nickname  = $(".cmt_user_name").val()
-    email     = $(".cmt_user_email").val()
+    nickname  = $("#cmt_user_name").val()
+    email     = $("#cmt_user_email").val()
     if validate_input() == true
       $.ajax
         url: '/comments'
@@ -61,16 +61,16 @@ $(document).ready ->
           swal("哎呀妈呀!", data.message, "error")
 
   window.validate_input = () ->
-    if $(".cmt_user_name").length > 0 && $(".cmt_user_name").val() == ""
+    if $("#cmt_user_name").length > 0 && $("#cmt_user_name").val() == ""
       swal("哎呀妈呀!", "昵称都没有还想评论？想的美!", "error")
       return false
-    if $(".cmt_user_email").length > 0 && $(".cmt_user_email").val() == ""
+    if $("#cmt_user_email").length > 0 && $("#cmt_user_email").val() == ""
       swal("哎呀妈呀!", "没填电子邮箱我们咋联系你捏？", "error")
       return false
-    if $(".cmt_user_email").length > 0 && validate_email_regexp($(".cmt_user_email").val()) == false
+    if $("#cmt_user_email").length > 0 && validate_email_regexp($("#cmt_user_email").val()) == false
       swal("哎呀妈呀!", "真尼玛的亮瞎了，你填的是电子邮件？", "error")
       return false
-    if $(".cmt_text_area").val() == ""
+    if $("#cmt_text_area").val() == ""
       swal("哎呀妈呀!", "伸伸小手，填写评论内容好吗？", "error")
       return false
     return true

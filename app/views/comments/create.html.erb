@@ -1,8 +1,8 @@
 <% if @comments.present? %>
   <% @comments.each_with_index do |comment, index| %>
-    <%= raw show_comment(comment, @comments.count - index - 1) %>
+    <%= raw show_comment(comment, index) %>
   <% end %>
-  <%#= paginate @comments %>
+  <%= paginate @comments %>
 <% else %>
   还没有人留下痕迹，还不快来抢沙发！！！！！！！
   <img src="/images/shafa.jpg" alt="" />

@@ -154,6 +154,11 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 .cmt_time{position:absolute;bottom: 5px; left:68px;color:#999;font-size:12px;}
 .cmt_text_area{width:500px;min-height:100px;border:1px solid #d5d5d5;margin-top:10px;}
 .comment_form{width:500px;margin-top:20px;}
+#cmt_user_name{width:25%;float:left;margin-right:2%;}
+#cmt_user_email{width:73%}
+.cmt_box .pagination{margin-left:20px;}
+.tips{color:#777; font-size:12px;}
+
 @media (max-width: 768px) {
   .comment_form{width:100%;}
   .cmt_text_area{width:100%;min-height:100px;border:1px solid #d5d5d5;margin-top:10px;}
