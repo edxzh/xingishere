@@ -7,6 +7,8 @@ class CreateComments < ActiveRecord::Migration
       t.integer :user_id,             null: false,  default: 0,     comment: "用户ID"
       t.integer :pid,                                               comment: "回复的评论ID"
       t.boolean :publish_status,      null: false,  default: true,  comment: "发布状态"
+      t.string  :remote_ip,           null: false,  default: '',    comment: "评论者IP"
+      t.string  :address,             null: false,  default: '',    comment: "评论者所在省市"
       t.timestamps
     end
     add_index :comments,  :user_id
