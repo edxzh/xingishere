@@ -30,4 +30,20 @@ namespace :do do
 
     logger.info("导入结束，时间为:#{Time.now.to_s(:db)}")
   end
+
+  desc  "把blogs表对应的username/email导到nickname/email字段"
+  task  export_comment_user_info_to_comments:   :environment do
+    logger = Logger.new(Rails.root.join('tmp', 'export_comment_user_info_to_comments.log'))
+
+    logger.info("开始导入，时间为:#{Time.now.to_s(:db)}")
+    Comment.all.each do |comment|
+      comment.nickname  = comment.user.name
+      comment.email     = comment.user.email
+      if comment.save
+        logger.info("成功导入，commentId 为 #{comment.id}")
+      else
+        logger.info("导入失败，commentId 为 #{comment.id}")
+      end
+    end
+  end
 end
