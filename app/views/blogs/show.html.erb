@@ -36,7 +36,7 @@
   <% if current_user.nil? %>
     <p style="color:#777; font-size:12px;">未登录用户评论请填写昵称和邮箱</p>
     <div class="form-inline">
-      <%= text_field "name", "", class: "form-control cmt_user_name", placeholder: "昵称", maxlength: 7, required: "required", style: "width:25%;float:left;margin-right:10px;" %>
+      <%= text_field "nickname", "", class: "form-control cmt_user_name", placeholder: "昵称", maxlength: 7, required: "required", style: "width:25%;float:left;margin-right:10px;" %>
       <%= email_field "email", "", class: "form-control cmt_user_email", placeholder: "电子邮箱", required: "required", style: "width:73%" %>
     </div>
   <% end %>

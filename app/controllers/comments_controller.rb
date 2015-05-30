@@ -7,8 +7,26 @@ class CommentsController < ApplicationController
   end
 
   def create
-    user_id = current_user.present? ? current_user.id : 0
-    @comment = Comment.new({ content: params[:content], blog_id: params[:blog_id], user_id: user_id })
+    if current_user.present?
+      user_id   = current_user.id
+      nickname  = current_user.name
+      email     = current_user.email
+    else
+      user_id   = 0
+      nickname  = params[:nickname]
+      email     = params[:email]
+    end
+
+    remote_ip = request.remote_ip
+
+    @comment  = Comment.new({
+      content:    params[:content],
+      blog_id:    params[:blog_id],
+      user_id:    user_id,
+      nickname:   nickname,
+      email:      email,
+      remote_ip:  remote_ip
+    })
 
     if @comment.save
       @comments = Blog.published.find(params[:blog_id]).comments.published.order('created_at DESC').page(params[:page]).per(10)

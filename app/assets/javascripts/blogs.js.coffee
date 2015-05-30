@@ -38,8 +38,10 @@ $(document).ready ->
       updateLike(count)
 
   $(".cmt_btn").on 'click', () ->
-    content = $(".cmt_text_area").val()
-    blog_id = $("#blog_id").val()
+    content   = $(".cmt_text_area").val()
+    blog_id   = $("#blog_id").val()
+    nickname  = $(".cmt_user_name").val()
+    email     = $(".cmt_user_email").val()
     if validate_input() == true
       $.ajax
         url: '/comments'
@@ -47,6 +49,8 @@ $(document).ready ->
         data:
           blog_id: blog_id
           content: content
+          nickname: nickname
+          email:  email
         success: (data) ->
           if data.status != -1
             $(".cmt_box").html(data)

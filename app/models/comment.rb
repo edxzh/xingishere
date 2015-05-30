@@ -1,6 +1,6 @@
 # encoding : utf-8
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :blog_id, :user_id, :pid, :publish_status
+  attr_accessible :content, :blog_id, :user_id, :pid, :publish_status, :nickname, :email, :remote_ip
   belongs_to  :user
   belongs_to  :blog
 
@@ -15,11 +15,4 @@ class Comment < ActiveRecord::Base
     # end
   end
 
-  def name
-    if self.user_id != 0
-      User.find(self.user_id).name
-    else
-      "匿名用户"
-    end
-  end
 end
