@@ -23,11 +23,11 @@ $(document).ready ->
             $(".msg_text_area").val("")
             $(".say").show()
           else
-            alert data.message
+            swal("哎呀妈呀!", data.message, "error");
         error: (data) ->
-          alert(data.message)
+          swal("哎呀妈呀!", data.message, "error");
     else
-      alert "请填写评论内容"
+      swal("哎呀妈呀!", "伸伸小手，填写评论内容好吗？", "error");
 
   window.paginate = () ->
     $(".pagi nav .pagination").on "click", "a", () ->

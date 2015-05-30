@@ -40,7 +40,7 @@ $(document).ready ->
   $(".cmt_btn").on 'click', () ->
     content = $(".cmt_text_area").val()
     blog_id = $("#blog_id").val()
-    if content != ""
+    if validate_input() == true
       $.ajax
         url: '/comments'
         type: 'POST'
@@ -52,11 +52,21 @@ $(document).ready ->
             $(".cmt_box").html(data)
             $(".cmt_text_area").val("")
           else
-            swal("Oops!", data.message, "error");
+            swal("哎呀妈呀!", data.message, "error");
         error: (data) ->
           swal("哎呀妈呀!", data.message, "error");
-    else
+
+  window.validate_input = () ->
+    if $(".cmt_user_name").length > 0 && $(".cmt_user_name").val() == ""
+      swal("哎呀妈呀!", "昵称都没有还想评论？想的美!", "error");
+      return false
+    if $(".cmt_user_email").length > 0 && $(".cmt_user_email").val() == ""
+      swal("哎呀妈呀!", "没填电子邮箱我们咋联系你捏？", "error");
+      return false
+    if $(".cmt_text_area").val() == ""
       swal("哎呀妈呀!", "伸伸小手，填写评论内容好吗？", "error");
+      return false
+    return true
 
   window.paginate = () ->
     $(".pagi nav .pagination").on "click", "a", () ->
