@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
     })
 
     if @comment.save
-      @comments = Blog.published.find(params[:blog_id]).comments.published.order('created_at DESC').page(params[:page]).per(10)
+      @comments = Blog.published.find(params[:blog_id]).comments.published.page(params[:page]).per(10)
     end
   end
 
