@@ -55,6 +55,7 @@ $(document).ready ->
           if data.status != -1
             $(".cmt_box").html(data)
             $(".cmt_text_area").val("")
+            swal("真厉害!", "你留言成功了!", "success")
           else
             swal("哎呀妈呀!", data.message, "error")
         error: (data) ->

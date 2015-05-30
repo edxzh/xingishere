@@ -15,7 +15,9 @@ module ApplicationHelper
 
   # Returns the Gravatar (http://gravatar.com/) for the given user.
   def gravatar_for(user, options = { size: 50 })
-    return image_tag("/images/50.jpg", class: "gravatar") if user.nil?
+    images = %w(qq1.jpg qq2.jpg qq3.jpg)
+    default_image = images.sample
+    return image_tag("/images/#{default_image}", class: "gravatar", size: "50x50") if user.nil?
 
     size = options[:size]
     image_tag(avatar_url(user, size), alt: user.name, class: "gravatar")
