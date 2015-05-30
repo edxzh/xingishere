@@ -32,8 +32,15 @@
 <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a></div>
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
-<div>
-  <textarea name="" class="cmt_text_area"></textarea>
+<div class="comment_form">
+  <% if current_user.nil? %>
+    <p style="color:#777; font-size:12px;">未登录用户评论请填写昵称和邮箱</p>
+    <div class="form-inline">
+      <%= text_field "name", "", class: "form-control cmt_user_name", placeholder: "昵称", maxlength: 7, required: "required", style: "width:25%;float:left;margin-right:10px;" %>
+      <%= email_field "email", "", class: "form-control cmt_user_email", placeholder: "电子邮箱", required: "required", style: "width:73%" %>
+    </div>
+  <% end %>
+  <textarea name="" class="form-control cmt_text_area"></textarea>
   <br />
   <input type="button" class="btn btn-primary cmt_btn" value="发表" name="" />
 </div>

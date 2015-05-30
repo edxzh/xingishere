@@ -10,6 +10,7 @@
     <link href="/stylesheets/base.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/docs.css" rel="stylesheet" type="text/css" />
+    <link href="/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="/images/icon.png" />
     <%= stylesheet_link_tag "application", "data-turbolinks-track" => true %>
     <%= yield :styles %>
@@ -17,6 +18,7 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= javascript_include_tag controller_path, media: "all" %>
     <script type="text/javascript" src="/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/sweetalert/sweetalert.min.js"></script>
     <%= yield :javascripts %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>

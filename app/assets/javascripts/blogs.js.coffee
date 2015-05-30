@@ -19,7 +19,7 @@ $(document).ready ->
         else
           toggle()
       error: () ->
-        alert("ajax请求不成功，请联系开发者")
+        swal("哎呀妈呀!", "ajax请求不成功，联系开发者有饭吃哦！", "error");
 
   window.updateLike = (count) ->
     str = ''
@@ -52,11 +52,11 @@ $(document).ready ->
             $(".cmt_box").html(data)
             $(".cmt_text_area").val("")
           else
-            alert data.message
+            swal("Oops!", data.message, "error");
         error: (data) ->
-          alert(data.message)
+          swal("哎呀妈呀!", data.message, "error");
     else
-      alert "请填写评论内容"
+      swal("哎呀妈呀!", "伸伸小手，填写评论内容好吗？", "error");
 
   window.paginate = () ->
     $(".pagi nav .pagination").on "click", "a", () ->
