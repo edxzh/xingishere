@@ -67,8 +67,9 @@ gem 'annotate', ">=2.6.0"
 
 gem 'colorize'
 
-gem "omniauth"
+gem 'omniauth'
 gem 'omniauth-weibo-oauth2'
+gem 'harmonious_dictionary'
 
 # To use debugger
 # gem 'debugger'
