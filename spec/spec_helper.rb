@@ -5,6 +5,8 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'webmock/rspec'
 require 'capybara/rspec'
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 
 # test mail
 # require 'email_spec'

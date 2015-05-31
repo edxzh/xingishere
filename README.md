@@ -1,4 +1,10 @@
-# xingishere [![Build Status](https://travis-ci.org/Dogzhou/xingishere.svg)](https://travis-ci.org/Dogzhou/xingishere) [![Build Status](https://snap-ci.com/Dogzhou/xingishere/branch/master/build_image)](https://snap-ci.com/Dogzhou/xingishere/branch/master)
+xingishere
+======
+
+[![Build Status](https://travis-ci.org/Dogzhou/xingishere.svg)](https://travis-ci.org/Dogzhou/xingishere)
+[![Build Status](https://snap-ci.com/Dogzhou/xingishere/branch/master/build_image)](https://snap-ci.com/Dogzhou/xingishere/branch/master)
+[![Code Climate](https://codeclimate.com/github/Dogzhou/xingishere/badges/gpa.svg)]
+
 My open source blog project
 
 # description
