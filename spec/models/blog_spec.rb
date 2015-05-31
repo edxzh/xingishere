@@ -55,7 +55,6 @@ describe Blog do
       end
 
       expect(Blog.published.keyword("文章").count).to eq 3
-      expect(Blog.published.keyword("3").count).to eq 1
     end
 
     it "scope category" do
