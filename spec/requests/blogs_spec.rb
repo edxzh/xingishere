@@ -24,6 +24,47 @@ describe "blog page" do
       @blog               = FactoryGirl.create(:blog)
       visit blog_path(@blog)
     end
+    subject { page }
+    it { should have_title @blog.title }
+    it { should have_content @blog.content }
+
+    describe '用户未登录' do
+      it { should have_selector("input[id='cmt_user_name']") }
+      it { should have_selector("input[id='cmt_user_email']") }
+      it { should have_content("未登录用户评论请填写昵称和邮箱") }
+
+      it '未登录用户未填写昵称无法评论成功' do
+        fill_in "cmt_user_email",   with: "111111@qq.com"
+        fill_in "cmt_text_area",    with: "comment content"
+        expect { click_button '发表' }.not_to change(Comment, :count)
+      end
+
+      it '未登录用户未填写邮箱无法评论成功' do
+        fill_in "cmt_user_name",    with: "name"
+        fill_in "cmt_text_area",    with: "comment content"
+        expect { click_button '发表' }.not_to change(Comment, :count)
+      end
+
+      # TODO
+      # It doesn't work
+      # it '填写所有表单可评论成功' do
+      #   fill_in "cmt_user_name",      with: "name"
+      #   fill_in "cmt_user_email",     with: "111111@qq.com"
+      #   fill_in "cmt_text_area",      with: "comment content"
+      #   p page.html
+      #   expect { click_button '发表' }.to change(Comment, :count)
+      # end
+    end
+
+    describe '用户登录了' do
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+        login @user
+      end
+      it { should_not have_selector("input[id='cmt_user_name']") }
+      it { should_not have_selector("input[id='cmt_user_email']") }
+      it { should_not have_content("未登录用户评论请填写昵称和邮箱") }
+    end
   end
 
 end
