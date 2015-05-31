@@ -30,6 +30,8 @@ class CommentsController < ApplicationController
 
     if @comment.save
       @comments = Blog.published.find(params[:blog_id]).comments.published.page(params[:page]).per(10)
+    else
+      render json: { status: -1, message: @comment.errors.messages.values }
     end
   end
 
