@@ -23,12 +23,7 @@ namespace :checker do
     end
 
     check "检查数据库配置", "请检查数据库配置" do
-      p 'xxx'
-      User.last
-    end
-
-    check "检查memcached配置" do
-      XXx.last
+      ActiveRecord::Base.connection.active?
     end
 
   end

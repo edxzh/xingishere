@@ -1,4 +1,4 @@
-# xingishere
+# xingishere [![Build Status](https://travis-ci.org/Dogzhou/xingishere.svg)](https://travis-ci.org/Dogzhou/xingishere) [![Build Status](https://snap-ci.com/Dogzhou/xingishere/branch/master/build_image)](https://snap-ci.com/Dogzhou/xingishere/branch/master)
 My open source blog project
 
 # description
@@ -10,7 +10,7 @@ It is coded by ruby 1.9.3 and running on rails3.2.13.
 
 The code maybe not elegant, so if u have some advice, contact me please, I would be grateful to u
 
-The online blog is <a href="http://www.xingishere.com" target="_blank">www.xingishere.com.</a> I have wrote some tech blog on it.
+The online blog is <a href="http://starzhou.com" target="_blank">starzhou.com.</a> I have wrote some tech blog on it.
 ## environment
 * ruby 1.9.3
 * rails 3.2.13
@@ -29,9 +29,5 @@ then execute deadlink script to make sure there is no 404 or 500 error on all li
 
     ruby script/deadlink.rb
 
-# code status
-[![Build Status](https://travis-ci.org/Dogzhou/xingishere.svg)](https://travis-ci.org/Dogzhou/xingishere)
-
-[![Build Status](https://snap-ci.com/Dogzhou/xingishere/branch/master/build_image)](https://snap-ci.com/Dogzhou/xingishere/branch/master)
 ## Acknowledgement
 <p>Thanks <a href="https://github.com/zhangyuan" target="_blank">zhangyuan</a> <a href="https://github.com/huhongda" target="_blank">huhongda</a> <a href="http://sosop.github.io/" target="_blank">houxiaolong</a>, who give me a lot support and confidence.</p>
