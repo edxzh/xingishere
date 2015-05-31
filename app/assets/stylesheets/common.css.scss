@@ -148,13 +148,14 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 .author_message{height:120px;padding-left: 10px;margin-bottom:20px;}
 .cmt_box{border:1px solid #e5e5e5;}
 .comment_title{padding:4px 0 4px 10px;border:1px solid #e5e5e5;font-weight:bold;}
-.comment img{float:left;margin-right:14px;}
+.comment img{margin-right:14px;margin-top:10px;}
 .comment_id{margin-left:10px;color:#777;}
 .cmt_name{margin-left:2%;}
 .cmt_time{position:absolute;bottom: 5px; left:68px;color:#999;font-size:12px;}
 .cmt_text_area{width:500px;min-height:100px;border:1px solid #d5d5d5;margin-top:10px;}
 .cmt_content{margin-top:5px;}
 .comment_form{width:500px;margin-top:20px;}
+#cmt_img_div{float:left;height:100px;margin-top:10px;}
 #cmt_user_name{width:25%;float:left;margin-right:2%;}
 #cmt_user_email{width:73%}
 .cmt_box .pagination{margin-left:20px;}

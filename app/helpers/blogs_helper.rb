@@ -15,16 +15,18 @@ module BlogsHelper
   def show_comment(comment, index)
     if comment.publish_status
       "<div class='comment' id=comment_#{comment.id}>
-          #{gravatar_for comment.user}
-          <div class='cmt'>
-            <p class='cmt_name'>#{comment.nickname}<span class='cmt_id'>第#{index + 1}楼</span></p>
-            <p class='cmt_content'>#{comment.content}</p>
-            <p class='cmt_time'>#{comment.created_at.to_s(:db)}</p>
-          </div>
-        </div>"
+         <div id='cmt_img_div'>
+           #{gravatar_for comment.user}
+         </div>
+         <div class='cmt'>
+           <p class='cmt_name'>#{comment.nickname}<span class='cmt_id'>第#{index + 1}楼</span></p>
+           <p class='cmt_content'>#{comment.content}</p>
+           <p class='cmt_time'>#{comment.created_at.to_s(:db)}</p>
+         </div>
+       </div>"
     else
       "
-        <div class='delete' id=comment_#{comment.id}><span>#{comment.id}楼 来自 <span class='red'>#{comment.name}</span> 的吐槽已删除</span></div>
+       <div class='delete' id=comment_#{comment.id}><span>#{comment.id}楼 来自 <span class='red'>#{comment.name}</span> 的吐槽已删除</span></div>
       "
     end
   end
