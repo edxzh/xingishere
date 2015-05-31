@@ -9,7 +9,7 @@ regexp:
   url_name: ^\w+_\d+$
   phone_number: ^(?:130|131|132|133|134|135|136|137|138|139|145|147|150|151|152|153|155|156|157|158|159|170|180|181|182|183|184|185|186|187|188|189)[0-9]{8}$
 
-secret_token: 'XXXXXXXXXXXXXXXXXXXX'
+secret_token: 'wefg4Xdfeio3eir9t0g1okl28eifud7y6'
 omniauth:
   key: 'xxxxxxxxxx'
   secret: 'xxxxxxxxxxx'
