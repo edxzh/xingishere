@@ -7,6 +7,7 @@
     <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta name="description" content="xingishere.com">
     <meta name="author" content="周星">
+    <link href="/stylesheets/base.css" rel="stylesheet" type="text/css" />
     <link href="/impress/impress.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/images/icon.png" />
   </head>
@@ -81,13 +82,13 @@
     <div class="hint">
       <p>Use a spacebar or arrow keys to navigate</p>
     </div>
-    <script>
-      if ("ontouchstart" in document.documentElement) { 
-        document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
-      }
-    </script>
     <script type="text/javascript" src="/impress/impress.min.js"></script>
     <script>impress().init();</script>
+    <script>
+    if ("ontouchstart" in document.documentElement) { 
+      document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+    }
+    </script>
     <%= render_ga %>
   </body>
 </html>

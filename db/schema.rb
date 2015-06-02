@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20140808090216) do
 
   create_table "link_categories", :force => true, :comment => "友链类型表" do |t|
     t.string   "category",   :limit => 100, :null => false, :comment => "类型名"
-    t.integer  "user_id",                   :null => false, :comment => "user_id"
+    t.integer  "user_id",                                   :comment => "user_id"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
