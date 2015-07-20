@@ -1,6 +1,6 @@
 <% provide(:title, @blog.title) %>
 <% content_for :seo_keyword do %>
-  <meta name="keywords" content=<%= @blog.seo_keyword %> />
+  <meta name="keywords" content="<%= @blog.seo_keyword %>" />
 <% end %>
 <ol class="breadcrumb">
   <li><%= link_to '首页', '/' %></li>
