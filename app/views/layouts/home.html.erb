@@ -31,17 +31,35 @@
             <p>Sometimes too smart, sometimes too silly</p>
               <img src="http://7xkiny.com1.z0.glb.clouddn.com/QQ20150721-2.png" alt="博主头像" class="img-circle" height="140px">
             <div class="links">
-            <%= link_to "更多信息", xingge_path, target: "_blank" %>
-            &nbsp;
-            <%= link_to "关于本站", about_path, target: "_blank", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'about', 'userclick about on nav']);" %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+              <%= link_to "更多信息", xingge_path, target: "_blank" %>
+              &nbsp;&nbsp;
+              <%= link_to "关于本站", about_path, target: "_blank", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'about', 'userclick about on nav']);" %>
+            </div><!-- links -->
+          </div><!-- desc-wrapper -->
+        </div><!-- col-xs-12 -->
+      </div><!-- row -->
+    </div><!-- container -->
     </header>
-    <div class="content">
-    </div>
+
+    <main class="body">
+    <div class="container">
+      <div class="col-xs-12">
+        <h1 class="title-bordered" id="about">about</h1>
+        <h2 class="blockquote">I’m glad you found me. My name is xing zhou and I am a world-changer.</h2>
+        <h1 class="title-bordered" id="blog">blog</h1>
+        <% @blogs.each do |blog| %>
+          <article class="blog">
+            <header>
+            <span class="post-meta"><time datetime=<%= blog.created_at.to_s(:db) %>><%= blog.created_at.to_s(:db) %> </time>发表在 <%= link_to blog.blog_category_name, blogs_path(category: blog.blog_category_id), class: "title" %></span>
+            <h2 class="post_h2"><%= link_to blog.title, blog_path(blog) %></h2>
+            </header>
+            <section class="content"><%= display_content(blog.content) %></section>
+          </article>
+        <% end %>
+      </div><!-- col-xs-12 -->
+      ..............
+    </div><!-- container -->
+    </main>
     <%= render_ga %>
   </body>
 </html>
