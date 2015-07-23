@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .header {
+  border: none;
   position: relative;
   background-color: rgba(0,0,0,0.2);;
   -webkit-font-smoothing: antialiased;
@@ -76,7 +77,6 @@
 }
 .blockquote{
   font: 400 italic 28px/1.348 "freight-text-pro",serif;
-  text-align: center;
   text-transform: none;
   letter-spacing: 0;
 }
@@ -86,18 +86,19 @@
   letter-spacing: -1px;
   margin-top: 0px;
 }
-.blog {
+.post {
   font-family:'Open Sans','helvetica neue',tahoma,'hiragino sans gb',stheiti,'wenquanyi micro hei','Microsoft YaHei UI Light',\5FAE\8F6F\96C5\9ED1,\5B8B\4F53,sans-serif;
-  padding: 0 0 30px 30px;
-  text-align: left;
-  margin: 40 0 5px 0;
+  border-bottom: #EBF2F6 1px solid;
+  padding: 0 0 40px 0px;
+  margin: 40px 0 0px 0;
+  position: relative;
 }
-.blog:after{
+.post:after{
   display: block;
   content: "";
   width: 7px;
   height: 7px;
-  border: #e2e2e2 1px solid;
+  border: #E7EEF2 1px solid;
   position: absolute;
   bottom: -5px;
   left: 50%;
@@ -120,7 +121,7 @@
 .post_h2 a:hover {
   color: #000;
 }
-.blog .content {
+.post .content {
   margin: 1.6rem 0 0 0;
   font-size: 1.2em;
   line-height: 1.6em;
