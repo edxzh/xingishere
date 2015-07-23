@@ -5,7 +5,7 @@ class SubscribesController < ApplicationController
     email = params[:email]
     s = Subscribe.new(email: email)
     if s.save
-      render json: { status: 1, message: "订阅成功" }
+      render json: { status: 1, message: "subscribe success" }
     else
       messages = ""
       s.errors.messages.each do |m|
