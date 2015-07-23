@@ -28,7 +28,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="desc-wrapper">
-            <p>Sometimes too smart, sometimes too silly</p>
+            <p>Sometimes over smart, sometimes over silly</p>
             <img src="http://7xkiny.com1.z0.glb.clouddn.com/QQ20150721-2.png" alt="博主头像" class="img-circle" height="140px">
             <div class="links">
               <%= link_to "更多信息", xingge_path, target: "_blank" %>
@@ -45,7 +45,7 @@
     <div class="container">
       <div class="col-xs-12">
         <h1 class="title-bordered" id="about">about</h1>
-        <h2 class="blockquote">I’m glad you found me. My name is xing zhou and I am a world-changer.</h2>
+        <h2 class="blockquote">I’m glad you found me. My name is xing zhou and I am a developer.</h2>
         <h1 class="title-bordered" id="post">blog</h1>
         <% @blogs.each do |blog| %>
           <article class="post">
@@ -56,10 +56,22 @@
           <section class="content"><%= display_content(blog.content) %></section>
           </article>
         <% end %>
+        <%= paginate @blogs %>
       </div><!-- col-xs-12 -->
-      ..............
     </div><!-- container -->
     </main>
+    <footer>
+    <div id="subscribe">
+      <section class="form-inline">
+        <div class="form-group">
+          <input type="email" name="subscribe" class="form-control input-lg" id="subscribe_email" require=true placeholder="Enter your email address" />
+        </div>
+        <button id="sub_submit", onclick="_gaq.push(['_trackEvent', 'buttonClick', 'submit subscribe', 'user submit subscribe']);" class="btn btn-default btn-lg">subscribe</button>
+      </section>
+    </div>
+    <h1 class="title-bordered" id="about">public welfare</h1>
+    <p class="donate">send a donation to <a href="http://www.vim.org/sponsor/" class="fb" target="_blank">vim</a>, helping <a href="http://iccf-holland.org/" class="fb" target="_blank">children in Uganda</a>.</p>
+    </footer>
     <%= render_ga %>
   </body>
 </html>

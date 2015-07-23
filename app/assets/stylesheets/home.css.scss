@@ -1,6 +1,8 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+}
 .header {
   border: none;
   position: relative;
@@ -52,6 +54,9 @@
 .links a:hover {
   background-color: rgba(255,255,255,.2);
 }
+main.body{
+  text-align: center;
+}
 .title-bordered{
   font-size: 13px;
   font-weight: 700;
@@ -87,6 +92,7 @@
   margin-top: 0px;
 }
 .post {
+  text-align: left;
   font-family:'Open Sans','helvetica neue',tahoma,'hiragino sans gb',stheiti,'wenquanyi micro hei','Microsoft YaHei UI Light',\5FAE\8F6F\96C5\9ED1,\5B8B\4F53,sans-serif;
   border-bottom: #EBF2F6 1px solid;
   padding: 0 0 40px 0px;
@@ -132,16 +138,19 @@
   font-size: 1.5rem;
   color: #9EABB3;
 }
-#subscribe_email {
-  border: none;
-  width: 84%;
-  line-height: inherit;
-  bottom: 0;
-  text-indent: 10px;
-  font-size: inherit;
-  color: white;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 5px 0px 0px 5px;
-  outline: none;
-  vertical-align: bottom;
+.donate{
+  font-size: 16px;
+}
+footer{
+  text-align: center;
+  padding: 40px 0px 40px 0px;
+  background-color: #F7F7F7;
+}
+#subscribe{
+  text-align: center;
+}
+@media (min-width: 992px){
+  #subscribe_email {
+    width: 450px;
+  }
 }
