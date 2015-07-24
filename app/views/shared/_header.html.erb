@@ -7,13 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">撕瓦星哥2</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li><%= link_to root_path do %>主页 <span class="glyphicon glyphicon-home"></span><% end %></li>
         <li><%= link_to blogs_path do %>博客 <span class="glyphicon glyphicon-book"></span><% end %></li>
-        <li><%= link_to messages_path do %>吐槽 <span class="glyphicon glyphicon-comment"><% end %></li>
         <li><%= link_to about_path, target: "_blank", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'about', 'user click about on nav']);" do %>关于本站 <span class="glyphicon glyphicon-star"><% end %></li>
         <li><%= link_to "友情链接", links_path, target: "_blank" %></li>
         <li><%= link_to "API", api_path, target: "_blank" %></li>
@@ -24,6 +22,7 @@
         </div>
         <%= submit_tag "搜索", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'search', 'user click search button on nav']);", class: "btn" %>
       <% end %>
+      <!--
       <ul class="nav navbar-nav navbar-right">
       <% if current_user.present? %>
         <li class="dropdown">
@@ -42,6 +41,7 @@
         <li><%= link_to '登录', login_path %></li>
       <% end %>
       </ul>
+      -->
     </nav>
   </div><!-- container -->
 </header><!-- navbar -->

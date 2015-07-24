@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %></title>
+    <meta name="title" content="rails blog" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="一个程序员的blog，专职ruby on rails开发" />
+    <meta name="author" content="周星" />
+    <meta name="keywords" content="周星,博客,ruby,rails" />
+    <link href="/stylesheets/base.css" rel="stylesheet" type="text/css" />
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/images/icon.png" />
+    <%= stylesheet_link_tag controller_path, "data-turbolinks-track" => true %>
+    <%= yield :styles %>
+
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag controller_path,"data-turbolinks-track" => true %>
+    <script type="text/javascript" src="/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/sweetalert/sweetalert.min.js"></script>
+    <%= yield :javascripts %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <header class="navbar navbar-inverse navbar-fixed-top header" role="banner" style="background-image: url(http://7xkiny.com1.z0.glb.clouddn.com/beautiful_nights.jpeg)">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="desc-wrapper">
+            <p>Sometimes over smart, sometimes over silly</p>
+            <img src="http://7xkiny.com1.z0.glb.clouddn.com/QQ20150721-2.png" alt="博主头像" class="img-circle" height="140px">
+            <div class="links">
+              <%= link_to "更多信息", xingge_path, target: "_blank" %>
+              &nbsp;&nbsp;
+              <%= link_to "关于本站", about_path, target: "_blank", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'about', 'userclick about on nav']);" %>
+            </div><!-- links -->
+          </div><!-- desc-wrapper -->
+        </div><!-- col-xs-12 -->
+      </div><!-- row -->
+    </div><!-- container -->
+    </header>
+
+    <main class="body" role="main">
+    <div class="container">
+      <div class="col-xs-12">
+        <h1 class="title-bordered" id="about">about</h1>
+        <h2 class="blockquote">I’m glad you found me. My name is xing zhou and I am a developer.</h2>
+        <h1 class="title-bordered" id="post">blog</h1>
+        <% @blogs.each do |blog| %>
+          <article class="post">
+          <header>
+          <span class="post-meta"><time datetime=<%= blog.created_at.to_s(:db) %>><%= blog.created_at.to_s(:db) %> </time>发表在 <%= link_to blog.blog_category_name, blogs_path(category: blog.blog_category_id), class: "title" %></span>
+          <h2 class="post_h2"><%= link_to blog.title, blog_path(blog) %></h2>
+          </header>
+          <section class="content"><%= display_content(blog.content) %></section>
+          </article>
+        <% end %>
+        <%= paginate @blogs %>
+      </div><!-- col-xs-12 -->
+    </div><!-- container -->
+    </main>
+    <footer>
+    <div id="subscribe">
+      <section class="form-inline">
+        <div class="form-group">
+          <input type="email" name="subscribe" class="form-control input-lg" id="subscribe_email" require=true placeholder="Enter your email address" />
+        </div>
+        <button id="sub_submit", onclick="_gaq.push(['_trackEvent', 'buttonClick', 'submit subscribe', 'user submit subscribe']);" class="btn btn-default btn-lg">subscribe</button>
+      </section>
+    </div>
+    <h1 class="title-bordered" id="about">public welfare</h1>
+    <p class="donate">send a donation to <a href="http://www.vim.org/sponsor/" class="fb" target="_blank">vim</a>, helping <a href="http://iccf-holland.org/" class="fb" target="_blank">children in Uganda</a>.</p>
+    </footer>
+    <%= render_ga %>
+  </body>
+</html>

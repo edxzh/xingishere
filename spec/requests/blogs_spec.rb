@@ -31,7 +31,6 @@ describe "blog page" do
     describe '用户未登录' do
       it { should have_selector("input[id='cmt_user_name']") }
       it { should have_selector("input[id='cmt_user_email']") }
-      it { should have_content("未登录用户评论请填写昵称和邮箱") }
 
       it '未登录用户未填写昵称无法评论成功' do
         fill_in "cmt_user_email",   with: "111111@qq.com"
@@ -63,7 +62,6 @@ describe "blog page" do
       end
       it { should_not have_selector("input[id='cmt_user_name']") }
       it { should_not have_selector("input[id='cmt_user_email']") }
-      it { should_not have_content("未登录用户评论请填写昵称和邮箱") }
     end
   end
 
