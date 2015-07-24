@@ -10,5 +10,5 @@ describe "首页" do
 
   it { should have_content("Sometimes over smart, sometimes over silly") }
   it { should have_content("xing") }
-  it { should have_content("donate") }
+  it { should have_content("donation") }
 end
