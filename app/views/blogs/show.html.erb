@@ -30,11 +30,14 @@
 </div>
 <!-- 百度分享代码 -->
 <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a></div>
+
+<p>支付宝扫码赞助博主</p>
+<div><img src="/images/zfbqr.png" alt="" class="mrcenter w160"></div>
+
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 <div class="comment_form">
   <% if current_user.nil? %>
-    <p class="tips">未登录用户评论请填写昵称和邮箱</p>
     <div class="form-inline">
       <%= text_field "nickname", "", class: "form-control", id: "cmt_user_name", placeholder: "昵称", maxlength: 7, required: "required" %>
       <%= email_field "email", "", class: "form-control", id: "cmt_user_email", placeholder: "电子邮箱", required: "required" %>
@@ -46,15 +49,10 @@
 </div>
 <p class="message_title">评论（<%= @comments.length %>）</p>
 <div class="cmt_box">
-  <% if @comments.present? %>
     <% @comments.each_with_index do |comment, index| %>
       <%= raw show_comment(comment, index) %>
     <% end %>
     <%= paginate @comments %>
-  <% else %>
-    还没有人留下痕迹，还不快来抢沙发！！！！！！！
-    <img src="/images/shafa.jpg" alt="" />
-  <% end %>
 </div>
 <script>
   with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
