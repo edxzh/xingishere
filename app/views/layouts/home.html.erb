@@ -31,7 +31,7 @@
             <p>Sometimes over smart, sometimes over silly</p>
             <img src="http://7xkiny.com1.z0.glb.clouddn.com/QQ20150721-2.png" alt="博主头像" class="img-circle" height="140px">
             <div class="links">
-              <%= link_to "更多信息", xingge_path, target: "_blank" %>
+              <%= link_to "更多信息", xingge_path, class: "mr20", target: "_blank" %>
               &nbsp;&nbsp;
               <%= link_to "关于本站", about_path, target: "_blank", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'about', 'userclick about on nav']);" %>
             </div><!-- links -->
@@ -40,13 +40,12 @@
       </div><!-- row -->
     </div><!-- container -->
     </header>
-
     <main class="body" role="main">
     <div class="container">
       <div class="col-xs-12">
-        <h1 class="title-bordered" id="about">about</h1>
-        <h2 class="blockquote">I’m glad you found me. My name is xing zhou and I am a developer.</h2>
-        <h1 class="title-bordered" id="post">blog</h1>
+        <p class="title-bordered" id="about">about</p>
+        <p class="blockquote">I’m glad you found me. My name is xing zhou and I am a developer</p>
+        <p class="title-bordered" id="post">blog</p>
         <% @blogs.each do |blog| %>
           <article class="post">
           <header>
@@ -59,6 +58,10 @@
         <%= paginate @blogs %>
       </div><!-- col-xs-12 -->
     </div><!-- container -->
+    <div>
+      <p class="title-bordered" id="contact">contact</p>
+      <p class="contact">want to talk something or join Thoughtworks, send email to Edward_mjz@hotmail.com</p>
+    </div>
     </main>
     <footer>
     <div id="subscribe">
