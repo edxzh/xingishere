@@ -10,6 +10,7 @@ Mywebsite::Application.routes.draw do
   post "account/update_pro"
   post "account/update_adv"
   get "home/index"
+  match '/(page/:page)' => 'home#index', constraints: { page: /\d+/}
   root  to: 'home#index', as: :root
 
   resources :comments, only: [:index, :create]
