@@ -28,10 +28,10 @@ gem 'roo'
 gem 'bcrypt-ruby', '3.0.1'
 
 # redis
-# gem "hiredis", "~> 0.4.0"
-# gem "redis", ">= 2.2.0", :require => ["redis", "redis/connection/hiredis"]
-# gem 'redis-objects'
-# gem 'redis-namespace'
+gem "hiredis", "~> 0.4.0"
+gem "redis", ">= 2.2.0", :require => ["redis", "redis/connection/hiredis"]
+gem 'redis-objects'
+gem 'redis-namespace'
 
 gem 'whenever'
 gem 'mechanize', '~> 2.5.1'
