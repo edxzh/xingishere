@@ -34,7 +34,7 @@ $(function(){
         if(data.status == -1) {
           swal('sorry', data.message, "error");
         } else {
-          swal('sorry', data.message, "success")
+          swal('success!', data.message, "success")
         }
         $("#sub_message").html(data.message);
         $("#sub_message").show();
