@@ -13,7 +13,7 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find_by_url_name(params[:id])
-    render_404_page if @blog.nil?
+    render_404_page and return if @blog.blank?
     @like = false                   # 当前用户是否喜欢此博客
     @blog.view_total = @blog.view_total += 1
     @blog.save
