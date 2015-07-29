@@ -11,7 +11,7 @@ require 'simplecov'
 SimpleCov.start
 
 CodeClimate::TestReporter.start
-SimpleCov.minimum_coverage 100
+SimpleCov.minimum_coverage 90
 
 # test mail
 # require 'email_spec'
