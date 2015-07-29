@@ -408,6 +408,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda-matchers
   simple_form
+  simplecov
   spreadsheet
   typhoeus (~> 0.6.1)
   uglifier (>= 1.0.3)

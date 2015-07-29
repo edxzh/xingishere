@@ -100,7 +100,8 @@ group :test do
   gem 'webmock'
   gem 'database_cleaner'
   gem 'capybara'
-  gem "codeclimate-test-reporter", require: false
+  gem 'codeclimate-test-reporter', require: false
+  gem 'simplecov'
 end
 
 gem 'mocha', :group => :test, :require => false

@@ -5,8 +5,13 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'webmock/rspec'
 require 'capybara/rspec'
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
+require 'simplecov'
+
+SimpleCov.start
+
 CodeClimate::TestReporter.start
+SimpleCov.minimum_coverage 100
 
 # test mail
 # require 'email_spec'
