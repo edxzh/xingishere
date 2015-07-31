@@ -1,5 +1,5 @@
-FROM docker-registry.delivery.realestate.com.au/shinkansen/ubuntu-ruby2.1:201504232114
-MAINTAINER Mike Bailey <mike.bailey@rea-group.com>, Adam Tohovitis <adam.tohovitis@rea-rea-group.com>
+FROM zhouxing/starzhou:0.1
+MAINTAINER zhouxing <Edward_mjz@hotmail.com>
 
 RUN apt-get update -y
 
