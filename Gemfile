@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-#source 'http://ruby.taobao.org'
+#source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.13'
 
@@ -22,7 +22,6 @@ gem 'bson_ext', '1.8.0'
 gem 'piet'
 gem 'spreadsheet'
 gem 'migration_comments'
-gem 'roo'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.0.1'
@@ -64,17 +63,12 @@ gem 'jbuilder'
 # Use unicorn as the app server
 gem 'unicorn'
 
-# Deploy with Capistrano
-gem 'capistrano', require: false
-# gem 'capistrano-rvm'
-gem 'rvm-capistrano'
 gem 'rails_best_practices'
 gem 'annotate', ">=2.6.0"
 
 gem 'colorize'
 
 gem 'omniauth'
-gem 'omniauth-weibo-oauth2'
 gem 'harmonious_dictionary'
 
 # To use debugger
@@ -102,13 +96,7 @@ group :test do
   gem 'capybara'
   gem 'codeclimate-test-reporter', require: false
   gem 'simplecov'
-end
-
-gem 'mocha', :group => :test, :require => false
-gem 'simple_form'
-
-group :development do
-  gem 'capistrano-conditional', :require => false # <-- This is important!
+  gem 'mocha', :require => false
 end
 
 group :production do
