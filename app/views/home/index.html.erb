@@ -1,5 +1,14 @@
-<% provide(:title, '主页') %>
-<div id="main">
-  <%= render partial: 'blogs/blog', collection: @blogs %>
+<% cache "v1/home/blogs/", expires_in: 30.minutes do %>
+  <p class="title-bordered" id="post">blog</p>
+  <% @blogs.each do |blog| %>
+    <article class="post">
+    <header>
+    <span class="post-meta"><time datetime=<%= blog.created_at.to_s(:db) %>><%= blog.created_at.to_s(:db) %> </time>发表在 <%= link_to blog.blog_category_name, blogs_path(category: blog.blog_category_id), class: "title" %></span>
+    <h2 class="post_h2"><%= link_to blog.title, blog_path(blog) %></h2>
+    </header>
+    <section class="content"><%= display_content(blog.content) %></section>
+    </article>
+  <% end %>
   <%= paginate @blogs %>
-</div>
+
+<% end %>
