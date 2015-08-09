@@ -25,37 +25,21 @@
   </head>
   <body>
     <%= render 'shared/header' %>
-    <!--
-    <div class="info">
-      <div class="container" style="max-width:calc(78%)">
-        <h1>Edward的博客</h1>
-        <p>有时过于聪明，有时过于愚蠢</p>
-      </div>
-    </div><!-- info -->
     <div class="container" style="max-width:calc(77%)">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %> fade in"><%= value %>
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true" >x</button>
         </div>
       <% end %>
-      <div class="alert alert-success fade in none">
-        评论成功！！！
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" >x</button>
-      </div>
       <div class="row">
-          <div class="col-lg-9 col-lg-offset-2">
-            <%= yield %>
-          </div>
-          <!--
-          <div class="col-lg-3">
-            <%= render 'shared/aside' %>
-          </div><!-- span3 -->
-        <!-- </div>
+        <div class="col-lg-9 col-lg-offset-2">
+          <%= yield %>
+        </div>
       </div><!-- row -->
     </div>
-  <%= render_ga %>
-  <% cache "v1/footer/", expires_in: 60.minutes do %>
-    <%= render 'shared/footer' %>
-  <% end %>
+    <%= render_ga %>
+    <% cache "v1/footer/", expires_in: 60.minutes do %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>
