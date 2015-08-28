@@ -9,5 +9,5 @@
     <section class="content"><%= display_content(blog.content) %></section>
     </article>
   <% end %>
-  <%= paginate @blogs %>
+  <%= paginate @blogs, theme: 'home_page' %>
 <% end %>

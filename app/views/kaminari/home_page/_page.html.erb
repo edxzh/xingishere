@@ -9,5 +9,5 @@
 -%>
 <li class="page<%= ' current active' if page.current? %>">
   <%# <%= link_to_unless page.current?, page, url, {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil} %>
-  <%= link_to page, url, {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil} %>
+  <%= link_to page, url+"#post", {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil} %>
 </li>
