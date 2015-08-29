@@ -3,16 +3,11 @@ class PagesController < ApplicationController
   def about
     render layout: false
   end
-  def me
-    
-  end
   def resume
-    
   end
   def xingge
     render layout: false
   end
   def api
-    
   end
 end

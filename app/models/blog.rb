@@ -18,7 +18,9 @@ class Blog < ActiveRecord::Base
 
   scope :weight_order, -> { order('weight DESC, created_at DESC') }
   scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
-  scope :keyword,  ->(keyword) { where("title like ? or content like ?", "%#{keyword}%", "%#{keyword}%") if keyword.present? }
+  scope :keyword,  ->(keyword) do
+    where("title like ? or content like ?", "%#{keyword}%", "%#{keyword}%") if keyword.present?
+  end
   scope :category, ->(category_id) { where("blog_category_id = ?", category_id) }
 
   delegate :name,   to: :blog_category,   prefix: true

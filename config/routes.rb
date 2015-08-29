@@ -34,7 +34,6 @@ Mywebsite::Application.routes.draw do
   match '/logout',    to: 'sessions#destroy',   via: 'get'
 
   match 'about',  to: 'pages#about', as: :about
-  #match 'me',     to: 'pages#me', as: :me
   match 'resume', to: 'pages#resume', as: :resume
   match 'xingge', to: 'pages#xingge', as: :xingge
   match 'api',    to: 'pages#api', as: :api
@@ -61,7 +60,7 @@ Mywebsite::Application.routes.draw do
     resources :comments, only: [:index, :destroy]
     resources :links, except: [:show]
     resources :blog_categories
-    resources :link_categories
+    resources :link_categories, only: [:index, :new, :create]
     resources :tips
     resources :subscribes, only: [:index, :destroy]
   end

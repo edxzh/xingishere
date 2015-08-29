@@ -1,7 +1,8 @@
 # encoding : utf-8
 class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  attr_accessible :username, :password, :password_confirmation, :name, :sex, :birthday, :status, :height, :position, :address, :relation, :relation_name, :image, :rights, :score, :description, :email, :status_name, :remember_token
+  attr_accessible :username, :password, :password_confirmation, :name, :sex, :birthday, :status, :height, :position,
+    :address, :relation, :relation_name, :image, :rights, :score, :description, :email, :status_name, :remember_token
   STATUS    = %w(single married divorce).freeze
   RELATION  = %w(primary junior senior colleage society workmate relative)
   has_many  :user_loves,      dependent:  :destroy, inverse_of: :user,  class_name: UserLove
@@ -22,9 +23,13 @@ class User < ActiveRecord::Base
 
   validates :sex,         presence: { message: '请选择性别' }, :if => :profile?
 
-  validates :password,    presence: { message: '请输入密码' }, confirmation: { message: '两次输入的密码不一致' }, length: { minimum: 6, maximum: 20, message: '密码长度应大于6个字符，小于20个字符' }, on: :create
+  validates :password,    presence: { message: '请输入密码' },
+    confirmation: { message: '两次输入的密码不一致' },
+    length: { minimum: 6, maximum: 20, message: '密码长度应大于6个字符，小于20个字符' }, on: :create
   validates :name,        presence: { message: '请输入名字' }, uniqueness: { case_sensitive: false, message: '名字已存在，请重新填写' }
-  validates :email,       presence: { message: '请输入email' }, format: { with: VALID_EMAIL_REGEX, message: 'email格式不正确' }, uniqueness: { case_sensitive: false, message: '重复的email，请重新填写' }#, unless: :profile?
+  validates :email,       presence: { message: '请输入email' },
+    format: { with: VALID_EMAIL_REGEX, message: 'email格式不正确' },
+    uniqueness: { case_sensitive: false, message: '重复的email，请重新填写' }
   validates :height,      numericality: { only_integer: true }, :if => :profile?
   has_secure_password
 

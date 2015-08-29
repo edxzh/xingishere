@@ -26,7 +26,9 @@ module BlogsHelper
        </div>"
     else
       "
-       <div class='delete' id=comment_#{comment.id}><span>#{comment.id}楼 来自 <span class='red'>#{comment.name}</span> 的吐槽已删除</span></div>
+       <div class='delete' id=comment_#{comment.id}>
+         <span>#{comment.id}楼 来自 <span class='red'>#{comment.name}</span> 的吐槽已删除</span>
+       </div>
       "
     end
   end

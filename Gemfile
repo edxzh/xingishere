@@ -75,6 +75,7 @@ gem 'harmonious_dictionary'
 # gem 'debugger'
 
 group :development do
+  gem 'cane'
   gem 'rubocop'
   gem 'brakeman', :require => false
   gem 'quiet_assets'
