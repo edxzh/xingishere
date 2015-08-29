@@ -2,7 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'webmock/rspec'
 require 'capybara/rspec'
 require 'codeclimate-test-reporter'
@@ -23,6 +22,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 require 'database_cleaner'
 
 RSpec.configure do |config|
+  config.include Rails.application.routes.url_helpers
+
+  config.infer_spec_type_from_file_location!
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
