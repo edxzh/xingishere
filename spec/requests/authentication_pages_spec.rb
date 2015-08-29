@@ -1,5 +1,5 @@
 # encoding : utf-8
-require 'spec_helper'
+require 'rails_helper'
 
 describe "登录验证Authentication" do
   let(:user) { FactoryGirl.create(:user) }

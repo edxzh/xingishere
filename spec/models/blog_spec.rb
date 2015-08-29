@@ -1,5 +1,5 @@
 # encoding : utf-8
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'rails_helper'
 
 describe Blog do
   let(:user) { FactoryGirl.create(:user) }

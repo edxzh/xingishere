@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'spec_helper'
+require 'rails_helper'
 
 describe "留言页面" do
   let(:user) { FactoryGirl.create(:user) }

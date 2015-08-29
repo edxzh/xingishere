@@ -1,5 +1,5 @@
 # encoding : utf-8
-require 'spec_helper'
+require 'rails_helper'
 
 describe "测试访问一些静态页面" do
 
