@@ -90,6 +90,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'rspec-its'
   gem 'shoulda-matchers'
   gem 'webmock'
   gem 'database_cleaner'

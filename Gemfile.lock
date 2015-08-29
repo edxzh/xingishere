@@ -230,6 +230,9 @@ GEM
     rspec-expectations (3.3.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
+    rspec-its (1.2.0)
+      rspec-core (>= 3.0.0)
+      rspec-expectations (>= 3.0.0)
     rspec-mocks (3.3.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
@@ -351,6 +354,7 @@ DEPENDENCIES
   redis-namespace
   redis-objects
   rest-client (~> 1.6.7)
+  rspec-its
   rspec-rails
   rubocop
   sass-rails (~> 3.2.3)
