@@ -1,13 +1,13 @@
 language: ruby
 rvm:
-  - 1.9.3
+  - 2.1.5
 env:
   - DB=mysql
   - CODECLIMATE_REPO_TOKEN=dece3140046023965f9238f220d0b04c1930feff242dfc7b5f2769efd45878ce
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
-  - bundle exec rake
+  - bundle exec rake spec
 before_script:
   - cp config/database.travis.yml config/database.yml
   - mysql -e 'create database xingishere_test'
