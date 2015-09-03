@@ -34,11 +34,11 @@ RSpec.describe '留言页面', type: :feature do
         msg_text_area = find(:css, '.msg_text_area')
         fill_in msg_text_area,   with: "吐槽测试"
       end
-      #it "可以发表" do
-      #  expect do
-      #    click_button("发表")
-      #  end.to change(Message, :count)
-      #end
+      # it '可以发表' do
+      #   expect do
+      #     click_button('发表')
+      #   end.to change(Message, :count)
+      # end
     end
   end
 end

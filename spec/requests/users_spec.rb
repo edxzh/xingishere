@@ -8,8 +8,8 @@ RSpec.describe 'Users pages', type: :feature do
 
     it { should have_content('注册') }
     it { should have_title('注册') }
-
   end
+
   describe '注册页面创建功能' do
     before { visit register_path }
 
@@ -73,12 +73,6 @@ RSpec.describe 'Users pages', type: :feature do
       end
       it { should have_title('资料编辑') }
       it { should have_button('确认') }
-
-      describe '成功更新了信息' do
-        before { click_button('确认') }
-        # TODO
-        # it { should have_content("职业") }
-      end
     end
   end
 
@@ -118,7 +112,6 @@ RSpec.describe 'Users pages', type: :feature do
         it { should_not have_link('删除', href: user_path(admin)) }
       end
     end
-
   end
 
   describe '权限控制：' do

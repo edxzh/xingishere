@@ -5,7 +5,6 @@ RSpec.describe '测试访问一些静态页面', type: :feature do
   subject { page }
 
   describe 'GET /static_pages' do
-
     describe '测试 xingge 页面' do
       before(:each) do
         visit xingge_path
