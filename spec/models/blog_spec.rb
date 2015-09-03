@@ -52,7 +52,7 @@ describe Blog do
 
     it 'scope keyword' do
       %w(rails文章1, ruby文章2, swift文章3).each_with_index do |s, index|
-        FactoryGirl.create(:blog2, { title: s, url_name: s, blog_category_id: index } )
+        FactoryGirl.create(:blog2, title: s, url_name: s, blog_category_id: index)
       end
 
       expect(Blog.published.keyword('文章').count).to eq 3
@@ -70,7 +70,7 @@ describe Blog do
   describe '类方法 class method' do
     it '#category_find' do
       %w(rails文章1, ruby文章2, swift文章3).each do |s|
-        FactoryGirl.create(:blog2, { title: s, url_name: s, blog_category_id: blog_category.id })
+        FactoryGirl.create(:blog2, title: s, url_name: s, blog_category_id: blog_category.id)
       end
 
       expect(Blog.published.category_find(blog_category.id).count).to eq 3

@@ -2,10 +2,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before {
+  before do
     @user = FactoryGirl.create(:user)
     @profile_user = FactoryGirl.create(:profile_user)
-  }
+  end
 
   subject { @user }
 
@@ -28,9 +28,10 @@ RSpec.describe User, type: :model do
   end
 
   describe '模型校验' do
-    before {
+    before do
       @user = FactoryGirl.create(:user)
-    }
+    end
+
     it '用户姓名不存在时' do
       @user.name = ' '
       expect(@user).not_to be_valid
