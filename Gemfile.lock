@@ -50,6 +50,7 @@ GEM
       sass (~> 3.0)
       terminal-table (~> 1.4)
     builder (3.0.4)
+    byebug (6.0.2)
     cane (2.6.2)
       parallel
     capybara (2.4.4)
@@ -311,6 +312,7 @@ DEPENDENCIES
   awesome_print
   bcrypt-ruby (= 3.0.1)
   brakeman
+  byebug
   cane
   capybara
   carrierwave

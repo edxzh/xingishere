@@ -75,6 +75,7 @@ group :development do
   gem 'brakeman', require: false
   gem 'quiet_assets'
   gem 'awesome_print'
+  gem 'byebug', require: false
 end
 
 group :test, :development do
