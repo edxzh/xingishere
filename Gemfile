@@ -15,11 +15,7 @@ gem 'rails_kindeditor'
 gem 'carrierwave'
 gem 'carrierwave-mongoid'
 gem 'mini_magick', '~> 3.4'
-gem 'mongo', '1.8.0'
 gem 'mongoid', '~> 3.1.4'
-gem 'bson', '1.8.0'
-gem 'bson_ext', '1.8.0'
-gem 'piet'
 gem 'spreadsheet'
 gem 'migration_comments'
 
@@ -79,8 +75,6 @@ group :development do
   gem 'brakeman', require: false
   gem 'quiet_assets'
   gem 'awesome_print'
-  gem 'nifty-generators'
-  gem 'byebug', require: false
 end
 
 group :test, :development do
@@ -96,7 +90,7 @@ group :test do
   gem 'capybara'
   gem 'codeclimate-test-reporter', require: false
   gem 'simplecov'
-  gem 'mocha', :require => false
+  gem 'mocha', require: false
 end
 
 group :production do

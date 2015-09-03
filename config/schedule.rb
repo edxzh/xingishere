@@ -18,8 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-
-
 job_type :rake_without_flock, "cd :path;PATH=#{ENV['PATH']} bundle exec rake :task RAILS_ENV=production"
 
 # 注意，rake 必须执行 flock 文件名
