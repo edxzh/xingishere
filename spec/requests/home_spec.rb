@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'rails_helper'
 
-describe "首页" do
+RSpec.describe "首页", type: :feature do
   before(:each) do
     visit root_path
   end

@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'rails_helper'
 
-describe SessionsController do
+RSpec.describe SessionsController, type: :controller do
   before do
     @user = FactoryGirl.create(:user)
   end

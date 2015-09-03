@@ -1,7 +1,7 @@
 # encoding : utf-8
 require 'rails_helper'
 
-describe "Users pages" do
+RSpec.describe "Users pages", type: :feature do
   subject { page }
   describe "用户注册页面的内容测试" do
     # Run the generator again with the --webrat flag if you want to use webrat methods/matchers

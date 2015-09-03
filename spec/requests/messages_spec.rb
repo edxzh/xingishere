@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'rails_helper'
 
-describe "留言页面" do
+RSpec.describe "留言页面", type: :feature do
   let(:user) { FactoryGirl.create(:user) }
   subject { page }
 

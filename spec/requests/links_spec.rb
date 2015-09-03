@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'rails_helper'
 
-describe "友情链接页面" do
+RSpec.describe "友情链接页面", type: :feature do
   before(:each) do
     @link = FactoryGirl.create(:link)
     visit links_path

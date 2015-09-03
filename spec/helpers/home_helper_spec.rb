@@ -11,7 +11,7 @@ require 'rails_helper'
 #     end
 #   end
 # end
-describe HomeHelper do
+RSpec.describe HomeHelper do
   before(:each) do
     @blog = FactoryGirl.create(:top_blog)
   end

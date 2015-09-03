@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'rails_helper'
 
-describe "blog page" do
+RSpec.describe "blog page", type: :feature do
   describe "index" do
     before(:each) do
       @blog               = FactoryGirl.create(:blog)

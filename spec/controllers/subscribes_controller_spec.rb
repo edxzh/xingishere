@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'rails_helper'
 
-describe SubscribesController do
+RSpec.describe SubscribesController, type: :controller do
 
   describe "create" do
     before(:each) do

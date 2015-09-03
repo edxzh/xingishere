@@ -1,7 +1,7 @@
 # encoding : utf-8
 require 'rails_helper'
 
-describe "登录验证Authentication" do
+RSpec.describe "登录验证Authentication" do
   let(:user) { FactoryGirl.create(:user) }
   subject { page }
 
