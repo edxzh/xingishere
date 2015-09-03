@@ -26,5 +26,5 @@ job_type :rake_without_flock, "cd :path;PATH=#{ENV['PATH']} bundle exec rake :ta
 job_type :rake, "mkdir -p /tmp/blog_crontab_lock; chmod +xrw /tmp/blog_crontab_lock ; flock -xn /tmp/blog_crontab_lock/:flock.lock -c 'cd :path;PATH=#{ENV['PATH']} bundle exec rake :task RAILS_ENV=production'"
 
 every '30 21 * * 0' do
-  rake "regular_job:send_week_chosen", flock: "regular_job.send_week_chosen"
+  rake 'regular_job:send_week_chosen', flock: 'regular_job.send_week_chosen'
 end

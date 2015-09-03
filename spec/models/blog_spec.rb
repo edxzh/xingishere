@@ -60,7 +60,7 @@ describe Blog do
 
     it 'scope category' do
       %w(rails文章1, ruby文章2, swift文章3).each do |s|
-        FactoryGirl.create(:blog2, { title: s, url_name: s, blog_category_id: blog_category.id })
+        FactoryGirl.create(:blog2, title: s, url_name: s, blog_category_id: blog_category.id)
       end
 
       expect(Blog.published.category(blog_category.id).count).to eq 3

@@ -4,7 +4,7 @@ class AdminController < ApplicationController
   def user_login
     if session[:user_id].blank?
       store_location
-      flash[:info] = "请您先登录"
+      flash[:info] = '请您先登录'
       redirect_to login_path
     end
   end

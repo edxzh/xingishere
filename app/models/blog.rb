@@ -15,7 +15,6 @@ class Blog < ActiveRecord::Base
   validates   :seo_keyword,       presence: true
   validates   :blog_category_id,  presence: true
 
-
   scope :weight_order, -> { order('weight DESC, created_at DESC') }
   scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
   scope :keyword,  ->(keyword) do
@@ -29,8 +28,8 @@ class Blog < ActiveRecord::Base
   def to_param
     url_name
   end
+
   class << self
-    # TODO 此方法需重构
     def like_by_user?(user_id, blog_id)
       if UserLove.where("user_id = ? AND blog_id = ?", user_id, blog_id).first
         true
@@ -38,7 +37,6 @@ class Blog < ActiveRecord::Base
         false
       end
     end
-
   end
 
   # 通过类别找一批blog
@@ -49,5 +47,4 @@ class Blog < ActiveRecord::Base
   def published?
     publish_status?
   end
-
 end

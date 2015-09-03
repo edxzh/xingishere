@@ -18,12 +18,12 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe Admin::TipsController do
+RSpec.describe Admin::TipsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Tip. As you add validations to Tip, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "content" => "MyText" } }
+  let(:valid_attributes) { { 'content' => 'MyText' } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -156,5 +156,4 @@ describe Admin::TipsController do
   #     response.should redirect_to(tips_url)
   #   end
   # end
-
 end

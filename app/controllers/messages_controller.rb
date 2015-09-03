@@ -5,20 +5,17 @@ class MessagesController < ApplicationController
 
   layout false, only: :create
   def index
-    @messages = Message.page(params[:page]).per(10).order("id DESC")
+    @messages = Message.page(params[:page]).per(10).order('id DESC')
     @message = Message.new
 
     if request.xhr?
       render layout: false
     end
-
   end
 
   # POST /messages
   # POST /messages.json
   def create
-    # 前端发来ajax请求，只有一个参数content
-
     @message          = Message.new(content: params[:content])
     @message.user_id  = current_user.present? ? current_user.id : 0
 
@@ -31,6 +28,5 @@ class MessagesController < ApplicationController
     if @message.save
       @messages = Message.page(params[:page]).per(10)
     end
-
   end
 end

@@ -2,5 +2,4 @@
 require 'rails_helper'
 
 describe UserLove do
-  
 end

@@ -8,14 +8,14 @@ class ApplicationController < ActionController::Base
 
   def authorize
     if User.find_by_id(session[:user_id]).blank?
-      redirect_to user_login_path, alert: "请您先登录"
+      redirect_to user_login_path, alert: '请您先登录'
     end
   end
 
   def user_login
     if session[:user_id].blank?
       store_location
-      flash[:info] = "请您先登录"
+      flash[:info] = '请您先登录'
       redirect_to login_path
     end
   end
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
 
   def render_404_page
     respond_to do |format|
-      format.xml { render :xml => { :error => 'Not found' }, :status => 404 }
+      format.xml { render xml: { error: 'Not found' }, status: 404 }
       format.html { render template: 'errors/404', status: 404, layout: 'static' }
     end
   end

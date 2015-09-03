@@ -26,19 +26,5 @@ RSpec.describe '留言页面', type: :feature do
       it { should have_content('还没有人留下痕迹，还不快来抢沙发！！！！！！！') }
       it { should have_selector("img[src$='/images/shafa.jpg']") }
     end
-
-    describe '登录的账号才能发表留言' do
-      before(:each) do
-        login user
-        visit messages_path
-        msg_text_area = find(:css, '.msg_text_area')
-        fill_in msg_text_area,   with: "吐槽测试"
-      end
-      # it '可以发表' do
-      #   expect do
-      #     click_button('发表')
-      #   end.to change(Message, :count)
-      # end
-    end
   end
 end

@@ -10,13 +10,12 @@ RSpec.describe SubscribesController, type: :controller do
     it 'create success' do
       post :create, email: 'Edward_mjz@hotmail.com'
       expect(response.headers['Content-Type']).to have_content('application/json')
-      expect(JSON.parse(response.body)).to eq({ 'status' => 1, 'message' => 'subscribe success' })
+      expect(JSON.parse(response.body)).to eq('status' => 1, 'message' => 'subscribe success')
     end
 
     it 'create fail' do
       post :create, email: 'example@qq.com'
-      expect(JSON.parse(response.body)).to eq({ 'status' => -1, 'message' => 'you have subscribed' })
+      expect(JSON.parse(response.body)).to eq('status' => -1, 'message' => 'you have subscribed')
     end
-
   end
 end
