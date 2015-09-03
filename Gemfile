@@ -23,6 +23,8 @@ gem 'piet'
 gem 'spreadsheet'
 gem 'migration_comments'
 
+gem 'gemoji'
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.0.1'
 
@@ -71,19 +73,15 @@ gem 'colorize'
 gem 'omniauth'
 gem 'harmonious_dictionary'
 
-# To use debugger
-# gem 'debugger'
-
 group :development do
   gem 'cane'
   gem 'rubocop'
-  gem 'brakeman', :require => false
+  gem 'brakeman', require: false
   gem 'quiet_assets'
   gem 'awesome_print'
   gem 'nifty-generators'
+  gem 'byebug', require: false
 end
-
-# TODO add guard and spork
 
 group :test, :development do
   gem 'factory_girl_rails'
