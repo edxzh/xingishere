@@ -5,13 +5,10 @@ class Comment < ActiveRecord::Base
   belongs_to  :blog
 
   validates :user_id, :blog_id, :nickname, :email, :content,      presence: true
-  # validate  :content, :nickname, :check_sensitive_words
   validates :nickname, length: { minimum: 1, maximum: 8 }
   validates :content,  length: { minimum: 1, maximum: 160 }
   validate_harmonious_of :nickname, message: '昵称里也敢放敏感词...想喝茶了吗'
   validate_harmonious_of :content,  message: '内容里不要放敏感词嘛...要喝茶的哦'
 
   scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
-
-
 end
