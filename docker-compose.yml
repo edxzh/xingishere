@@ -7,11 +7,11 @@ memcached:
   ports:
     - '11211:11211'
 redis:
-  image: zhouxing/redis:latest
+  image: zhouxing/redis:3.0.3
   ports:
     - '6379:6379'
 mongo:
-  image: zhouxing/mongo:latest
+  image: zhouxing/mongo:3.1.6
   ports:
     - '28017:28017'
 app:
