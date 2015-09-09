@@ -4,10 +4,10 @@ class Kindeditor::Asset
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :file_size, :type => Integer
-  field :file_type, :type => String
-  field :owner_id, :type => Integer
-  field :asset_type, :type => String
+  field :file_size,   type: Integer
+  field :file_type,   type: String
+  field :owner_id,    type: Integer
+  field :asset_type,  type: String
 
   mount_uploader :asset, Kindeditor::AssetUploader
   validates_presence_of :asset

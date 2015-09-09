@@ -1,9 +1,10 @@
 # encoding : utf-8
 class UsersController < ApplicationController
   include SessionsHelper
-  layout "account",       only: [:show]
+  layout 'account',       only: [:show]
   before_filter :user_login,    only: [:update, :show]
   before_filter :is_admin,  only: [:update, :index]
+
   def index
     @users = User.page(params[:page]).per(10)# .padding(1)
   end
@@ -11,7 +12,6 @@ class UsersController < ApplicationController
   def show
     @user       = User.find(params[:id])
     @blogs      = @user.blogs.published.page(params[:page]).per(2)
-
     @love_blogs = @user.love_blogs.page(params[:page]).per(10)
   end
 
@@ -21,9 +21,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @user.activate_code = SecureRandom.hex 32       # 生成32位随机字符串
+    @user.activate_code = SecureRandom.hex 32
     if @user.save
-      flash[:success] = "恭喜您注册成功，现在您可畅游所有服务"
+      flash[:success] = '恭喜您注册成功，现在您可畅游所有服务'
       session[:user_id] = @user.id
       ActivateMailer.user_activate(@user).deliver
       redirect_to success_users_path
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def success
     if current_user.blank?
-      flash[:danger] = "请您注册并登录"
+      flash[:danger] = '请您注册并登录'
       redirect_to root_path
     end
   end
@@ -44,11 +44,11 @@ class UsersController < ApplicationController
     if user.present? && !user.activate_status && user.activate_code == params[:activate_code]
       user.activate_status = true
       user.save
-      flash[:success] = "恭喜您激活成功！"
+      flash[:success] = '恭喜您激活成功！'
     elsif user.present? && user.activate_status
-      flash[:danger] = "您的帐号已经处于激活状态"
+      flash[:danger] = '您的帐号已经处于激活状态'
     else
-      flash[:danger]   = "激活不成功，请检查地址链接是否复制错误"
+      flash[:danger] = '激活不成功，请检查地址链接是否复制错误'
     end
     redirect_to root_path
   end
@@ -56,7 +56,6 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_url, :success => "删除成功"
+    redirect_to users_url, success: '删除成功'
   end
-  private
 end

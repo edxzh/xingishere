@@ -12,14 +12,8 @@ class User < ActiveRecord::Base
   has_many  :messages
   has_many  :love_blogs,      through:  :user_loves, source: :blog
 
-  # 加入has_secure_password后不再需要此代码
-  # attr_accessor :password,  :password_confirmation
-
   before_save { self.email = email.downcase }
   after_destroy :change_messages_publish_status
-
-  # validates :username,    presence: true, uniqueness: true
-  # username is quit
 
   validates :sex,         presence: { message: '请选择性别' }, :if => :profile?
 
@@ -38,9 +32,11 @@ class User < ActiveRecord::Base
   def status_name
     I18n.t("user.status.#{STATUS.at(status)}")
   end
+
   def status_name=(name)
     self.status = STATUS.index(name)
   end
+
   def status_EN
     STATUS.at(status)
   end
@@ -70,5 +66,4 @@ private
   def change_messages_publish_status
     self.messages.update_all(publish_status: Settings.publish_status.deleted)
   end
-
 end

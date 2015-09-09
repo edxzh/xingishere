@@ -22,7 +22,7 @@ module Mywebsite
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-      config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/entries)
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/entries)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -46,7 +46,7 @@ module Mywebsite
     config.generators.orm :active_record
 
     # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
+    config.encoding = 'utf-8'
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
@@ -67,7 +67,7 @@ module Mywebsite
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.assets.prefix = "/assets"
+    config.assets.prefix = '/assets'
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
@@ -86,7 +86,7 @@ module Mywebsite
         routing_specs:    false,
         controller_specs: true,
         request_specs:    false
-      g.fixture_replacement :factory_girl, dir: "spec/factories"
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
   end
 

@@ -1,9 +1,10 @@
 # encoding : utf-8
 class AccountController < ApplicationController
   before_filter :user_login
+
   def profile
     @user = current_user
-    @male = (@user.sex == "male") ? true : false
+    @male = (@user.sex == 'male') ? true : false
   end
 
   def update_pro
@@ -17,10 +18,10 @@ class AccountController < ApplicationController
       height:       params[:height]
     )
     if @user.save
-      flash[:info] = "修改成功"
+      flash[:info] = '修改成功'
       redirect_to account_advanced_path
     else
-      flash[:info] = "修改失败"
+      flash[:info] = '修改失败'
       redirect_to account_profile_path
     end
   end
@@ -39,10 +40,10 @@ class AccountController < ApplicationController
     )
 
     if @user.save
-      flash[:info] = "更新成功"
+      flash[:info] = '更新成功'
       redirect_to user_path(current_user)
     else
-      flash[:info] = "更新失败"
+      flash[:info] = '更新失败'
       redirect_to account_advanced_path
     end
   end

@@ -3,7 +3,6 @@ require 'dalli'
 
 module Memcached
   module Config
-
     def self.servers
       unless @servers
         path   = File.join(Rails.root, 'config', 'memcached.yml')
