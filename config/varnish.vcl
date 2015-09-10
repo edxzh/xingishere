@@ -3,8 +3,8 @@ vcl 4.0;
 import directors;
 
 backend server_rails {
-     .host = "127.0.0.1";
-     .port = "8080";
+  .host = "127.0.0.1";
+  .port = "8080";
 }
 
 sub vcl_init {
@@ -13,35 +13,35 @@ sub vcl_init {
 }
 
 sub vcl_recv {
-     if (req.method != "GET"   &&
-       req.method != "HEAD"    &&
-       req.method != "PUT"     &&
-       req.method != "POST"    &&
-       req.method != "TRACE"   &&
-       req.method != "OPTIONS" &&
-       req.method != "DELETE") {
-         return (pipe);
-     }
+  if (req.method != "GET"   &&
+    req.method != "HEAD"    &&
+    req.method != "PUT"     &&
+    req.method != "POST"    &&
+    req.method != "TRACE"   &&
+    req.method != "OPTIONS" &&
+    req.method != "DELETE") {
+      return (pipe);
+    }
 
-     if ((req.method == "POST" || req.method == "PUT") &&
-       req.http.transfer-encoding ~ "chunked") {
-         return(pipe);
-     }
+    if ((req.method == "POST" || req.method == "PUT") &&
+      req.http.transfer-encoding ~ "chunked") {
+        return(pipe);
+      }
 
-     if (req.method != "GET" && req.method != "HEAD") {
-         return (pass);
-     }
+      if (req.method != "GET" && req.method != "HEAD") {
+        return (pass);
+      }
 
-     if (req.http.Accept-Encoding) {
+      if (req.http.Accept-Encoding) {
         if (req.url ~ "\.(jpg|jpeg|bmp|swf|png|gif|gz|tgz|bz2|tbz|mp3|ogg|ico|pdf|cur)$") {
             # No point in compressing these
-            unset req.http.Accept-Encoding;
+          unset req.http.Accept-Encoding;
         } elsif (req.http.Accept-Encoding ~ "gzip") {
-            set req.http.Accept-Encoding = "gzip";
+          set req.http.Accept-Encoding = "gzip";
         } elsif (req.http.Accept-Encoding ~ "deflate") {
-            set req.http.Accept-Encoding = "deflate";
+          set req.http.Accept-Encoding = "deflate";
         } else {
-            unset req.http.Accept-Encoding;
+          unset req.http.Accept-Encoding;
         }
      }
 
@@ -52,23 +52,23 @@ sub vcl_recv {
 }
 
 sub vcl_pipe {
-    return (pipe);
+  return (pipe);
 }
 
 sub vcl_pass {
-    return (fetch);
+  return (fetch);
 }
 
 sub vcl_backend_response {
   #  set beresp.grace = 1h;
-     set beresp.ttl = 5m;
+  set beresp.ttl = 5m;
 
-    if (beresp.status != 200 && beresp.status != 403 && beresp.status != 404 && beresp.status != 301 && beresp.status != 302 && beresp.status != 503) {
+  if (beresp.status != 200 && beresp.status != 403 && beresp.status != 404 && beresp.status != 301 && beresp.status != 302 && beresp.status != 503) {
      # set beresp.saintmode = 10s;
-        return (retry);
-    }
-    unset beresp.http.set-cookie;
-    return (deliver);
+    return (retry);
+  }
+  unset beresp.http.set-cookie;
+  return (deliver);
 }
 
 sub vcl_hash {
@@ -104,9 +104,9 @@ sub vcl_miss {
 }
 
 sub vcl_backend_error {
-     set beresp.http.Content-Type = "text/html; charset=utf-8";
-     set beresp.http.Retry-After = "5";
-     synthetic({"
+   set beresp.http.Content-Type = "text/html; charset=utf-8";
+   set beresp.http.Retry-After = "5";
+   synthetic({"
  <?xml version="1.0" encoding="utf-8"?>
  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -124,13 +124,13 @@ sub vcl_backend_error {
    </body>
  </html>
  "});
-     return (deliver);
+  return (deliver);
 }
 
 sub vcl_synth {
-     set resp.http.Content-Type = "text/html; charset=utf-8";
-     set resp.http.Retry-After = "5";
-     synthetic({"
+  set resp.http.Content-Type = "text/html; charset=utf-8";
+  set resp.http.Retry-After = "5";
+  synthetic({"
  <?xml version="1.0" encoding="utf-8"?>
  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
