@@ -15,8 +15,6 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   after_destroy :change_messages_publish_status
 
-  validates :sex,         presence: { message: '请选择性别' }, :if => :profile?
-
   validates :password,    presence: { message: '请输入密码' },
     confirmation: { message: '两次输入的密码不一致' },
     length: { minimum: 6, maximum: 20, message: '密码长度应大于6个字符，小于20个字符' }, on: :create
@@ -24,7 +22,10 @@ class User < ActiveRecord::Base
   validates :email,       presence: { message: '请输入email' },
     format: { with: VALID_EMAIL_REGEX, message: 'email格式不正确' },
     uniqueness: { case_sensitive: false, message: '重复的email，请重新填写' }
-  validates :height,      numericality: { only_integer: true }, :if => :profile?
+
+  validates :height,      numericality: { only_integer: true }, if: :profile?
+  validates :sex,         presence: { message: '请选择性别' },  if: :profile?
+
   has_secure_password
 
   scope :activated, -> { where("activate_status = ?", true) }
@@ -34,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def status_name=(name)
-    self.status = STATUS.index(name)
+    status = STATUS.index(name)
   end
 
   def status_EN
