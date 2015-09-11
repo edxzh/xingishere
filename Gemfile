@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 #source 'http://ruby.taobao.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.2.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -15,7 +15,7 @@ gem 'rails_kindeditor'
 gem 'carrierwave'
 gem 'carrierwave-mongoid'
 gem 'mini_magick', '~> 3.4'
-gem 'mongoid', '~> 3.1.4'
+gem 'mongoid'
 gem 'spreadsheet'
 gem 'migration_comments'
 
@@ -36,15 +36,17 @@ gem 'chinese_pinyin'
 gem 'acts_as_list', '~> 0.1.8'
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+gem 'sass-rails',   '~> 5.0'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'uglifier', '>= 1.0.3'
+
+gem 'turbolinks'
+gem 'sdoc', '~> 0.4.0', group: :doc
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 #  gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
-end
+
 gem 'jquery-rails'
 gem 'kaminari'
 
@@ -62,7 +64,7 @@ gem 'jbuilder'
 gem 'unicorn'
 
 gem 'rails_best_practices'
-gem 'annotate', ">=2.6.0"
+gem 'annotate'
 
 gem 'colorize'
 
@@ -79,6 +81,8 @@ group :development do
 end
 
 group :test, :development do
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
 end
