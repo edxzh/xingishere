@@ -12,7 +12,7 @@ class WeekWellChosenMailer < ActionMailer::Base
     user_ids = User.activated.pluck("id")
     ran_user_ids = user_ids.sample(4)
     @users = User.find(ran_user_ids)
-    @subject    = "撕瓦星哥每周精选"
+    @subject    = "starzhou每周精选"
     @to         = email
     mail to: @to, subject: @subject
   end
