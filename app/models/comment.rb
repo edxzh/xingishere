@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id             :integer          not null, primary key
+#  content        :string(160)
+#  blog_id        :integer
+#  user_id        :integer
+#  pid            :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  publish_status :boolean          default(TRUE), not null
+#  remote_ip      :string(20)       default(""), not null   # ;IP
+#  nickname       :string(20)       default(""), not null
+#  email          :string(50)       default(""), not null
+#
+
 # encoding : utf-8
 class Comment < ActiveRecord::Base
   belongs_to  :user

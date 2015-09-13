@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: user_loves
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  blog_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class UserLove < ActiveRecord::Base
   validates :user_id,   presence: true
   validates :blog_id,   presence: true

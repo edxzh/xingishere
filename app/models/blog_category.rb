@@ -1,4 +1,15 @@
 #encoding: utf-8
+# == Schema Information
+#
+# Table name: blog_categories
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  blog_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class BlogCategory < ActiveRecord::Base
   has_many  :blogs
 

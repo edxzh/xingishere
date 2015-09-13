@@ -1,4 +1,23 @@
 # encoding: utf-8
+# == Schema Information
+#
+# Table name: blogs
+#
+#  id               :integer          not null, primary key
+#  title            :string(30)       default("我的日志"), not null
+#  content          :text(65535)      not null
+#  user_id          :integer          not null
+#  tag              :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  blog_category_id :integer
+#  view_total       :integer          default(0), not null
+#  weight           :integer          default(0), not null
+#  publish_status   :boolean          default(TRUE), not null
+#  seo_keyword      :string(100)      default(""), not null
+#  url_name         :string(50)       default(""), not null
+#
+
 class Blog < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :blog_category
