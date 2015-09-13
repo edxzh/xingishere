@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.2.1)
       actionpack (= 4.2.1)
@@ -173,7 +173,7 @@ GEM
       connection_pool (~> 2.0)
       optionable (~> 0.2.0)
     multi_json (1.11.2)
-    mysql2 (0.4.0)
+    mysql2 (0.3.18)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
     newrelic_rpm (3.13.0.299)
@@ -377,7 +377,7 @@ DEPENDENCIES
   mini_magick (~> 3.4)
   mocha
   mongoid
-  mysql2
+  mysql2 (~> 0.3.18)
   newrelic_rpm
   omniauth
   quiet_assets
@@ -405,6 +405,3 @@ DEPENDENCIES
   web-console (~> 2.0)
   webmock
   whenever
-
-BUNDLED WITH
-   1.10.6
