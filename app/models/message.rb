@@ -1,6 +1,5 @@
 # encoding : utf-8
 class Message < ActiveRecord::Base
-  attr_accessible :content, :user_id, :publish_status
   belongs_to  :user
   validates   :content,     presence: true
 

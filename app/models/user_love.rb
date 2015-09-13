@@ -1,5 +1,4 @@
 class UserLove < ActiveRecord::Base
-  attr_accessible :blog_id, :user_id
   validates :user_id,   presence: true
   validates :blog_id,   presence: true
   belongs_to :user
