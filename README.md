@@ -12,13 +12,13 @@ It's my blog called xingishere, The author come from sichuan, chengdu, china.
 
 It was supposed to be done a few months ago, but I spent a lot of time on DOTA, basketball and so on.
 
-It is coded by ruby 1.9.3 and running on rails3.2.13. 
+It is coded by ruby 2.1.1 and running on rails3.2.13. 
 
 The code maybe not elegant, so if u have some advice, contact me please, I would be grateful to u
 
 The online blog is <a href="http://starzhou.com" target="_blank">starzhou.com.</a> I have wrote some tech blog on it.
 ## environment
-* ruby 1.9.3
+* ruby 2.1.1
 * rails 3.2.13
 * mysql 5.5
 
