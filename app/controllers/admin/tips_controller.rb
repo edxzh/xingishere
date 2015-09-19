@@ -37,7 +37,7 @@ class Admin::TipsController < AdminController
   # POST /tips
   # POST /tips.json
   def create
-    @tip = Tip.new(params[:tip])
+    @tip = Tip.new(tip_params)
 
     respond_to do |format|
       if @tip.save
@@ -56,7 +56,7 @@ class Admin::TipsController < AdminController
     @tip = Tip.find(params[:id])
 
     respond_to do |format|
-      if @tip.update_attributes(params[:tip])
+      if @tip.update_attributes(tip_params)
         format.html { redirect_to @tip, notice: 'Tip was successfully updated.' }
         format.json { head :no_content }
       else
@@ -76,5 +76,11 @@ class Admin::TipsController < AdminController
       format.html { redirect_to tips_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def tip_params
+    params.require(:tip).permit(:content)
   end
 end
