@@ -23,7 +23,6 @@
 #  admin           :boolean          default(FALSE)
 #  activate_code   :string(255)
 #  activate_status :boolean          default(FALSE), not null
-#  remember_token  :string(255)      not null                            # cookie记忆权标
 #
 
 # encoding : utf-8
