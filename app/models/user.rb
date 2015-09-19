@@ -1,8 +1,34 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string(20)
+#  name            :string(20)       default("星哥粉丝"), not null
+#  password_digest :string(255)
+#  sex             :string(255)
+#  birthday        :date             default(Thu, 01 Jan 1970), not null
+#  status          :integer          default(0), not null
+#  height          :integer
+#  position        :string(255)
+#  address         :string(255)
+#  relation        :integer          default(0), not null
+#  image           :string(255)
+#  rights          :integer          default(2), not null
+#  score           :integer          default(0), not null
+#  description     :text(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  email           :string(255)
+#  admin           :boolean          default(FALSE)
+#  activate_code   :string(255)
+#  activate_status :boolean          default(FALSE), not null
+#  remember_token  :string(255)      not null                            # cookie记忆权标
+#
+
 # encoding : utf-8
 class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  attr_accessible :username, :password, :password_confirmation, :name, :sex, :birthday, :status, :height, :position,
-    :address, :relation, :relation_name, :image, :rights, :score, :description, :email, :status_name, :remember_token
   STATUS    = %w(single married divorce).freeze
   RELATION  = %w(primary junior senior colleage society workmate relative)
   has_many  :user_loves,      dependent:  :destroy, inverse_of: :user,  class_name: UserLove
