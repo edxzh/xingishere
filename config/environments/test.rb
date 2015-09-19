@@ -8,15 +8,8 @@ Mywebsite::Application.configure do
   # and recreated between test runs. Don't rely on the data there!
   config.cache_classes = true
 
-  # Eager load code on boot. This eager loads most of Rails and
-  # your application in memory, allowing both threaded web servers
-  # and those relying on copy on write to perform better.
-  # Rake tasks automatically ignore this option for performance.
-  config.eager_load = true
-
   # Configure static asset server for tests with Cache-Control for performance
-  config.serve_static_files = true
-
+  config.serve_static_assets = true
   config.static_cache_control = "public, max-age=3600"
 
   # Log error messages when you accidentally call methods on nil
@@ -38,6 +31,8 @@ Mywebsite::Application.configure do
   config.action_mailer.delivery_method = :test
 
   # Raise exception on mass assignment protection for Active Record models
+  config.active_record.mass_assignment_sanitizer = :strict
+
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 

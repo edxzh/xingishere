@@ -23,7 +23,7 @@ class Admin::BlogsController < AdminController
   end
 
   def create
-    if current_user.blogs.create(blog_params)
+    if current_user.blogs.create(params[:blog])
       redirect_to admin_blogs_path, success: "发表成功"
     else
       render 'new'
@@ -37,7 +37,7 @@ class Admin::BlogsController < AdminController
 
   def update
     @blog = Blog.find_by_url_name(params[:id])
-    if @blog.update_attributes(blog_params)
+    if @blog.update_attributes(params[:blog])
       redirect_to admin_blogs_path, success: "更新成功"
     else
       render 'edit'
@@ -72,11 +72,5 @@ class Admin::BlogsController < AdminController
     else
       redirect_to admin_blogs_url, danger: "删除失败"
     end
-  end
-
-  private
-
-  def blog_params
-    params.require(:blog).permit(:title, :content, :blog_category_id, :weight, :publish_status, :seo_keyword, :url_name)
   end
 end
