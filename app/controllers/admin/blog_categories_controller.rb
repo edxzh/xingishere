@@ -15,7 +15,7 @@ class Admin::BlogCategoriesController < AdminController
   end
 
   def create
-    @blog_category = BlogCategory.new(params[:blog_category])
+    @blog_category = BlogCategory.new(blog_category_params)
     if @blog_category.save
       redirect_to admin_blog_categories_path, success: "新增分类成功"
     else
@@ -29,7 +29,7 @@ class Admin::BlogCategoriesController < AdminController
 
   def update
     @blog_category = BlogCategory.find(params[:id])
-    if @blog_category.update_attributes(params[:blog_category])
+    if @blog_category.update_attributes(blog_category_params)
       redirect_to admin_blog_categories_path, success: "更新成功"
     else
       render 'edit'
@@ -41,5 +41,11 @@ class Admin::BlogCategoriesController < AdminController
     @blog_category.destroy
 
     redirect_to admin_blog_categories_path, success: "删除成功"
+  end
+
+  private
+
+  def blog_category_params
+    params.require(:blog_category).permit(:name)
   end
 end

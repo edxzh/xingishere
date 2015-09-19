@@ -44,7 +44,7 @@ class Admin::LinksController < AdminController
   # POST /links
   # POST /links.json
   def create
-    link = Link.new(params[:link])
+    link = Link.new(link_params)
 
     respond_to do |format|
       if link.save
@@ -63,7 +63,7 @@ class Admin::LinksController < AdminController
     @link = Link.find(params[:id])
 
     respond_to do |format|
-      if @link.update_attributes(params[:link])
+      if @link.update_attributes(link_params)
         format.html { redirect_to admin_links_path, success: '更新成功' }
         format.json { head :no_content }
       else
@@ -83,5 +83,11 @@ class Admin::LinksController < AdminController
       format.html { redirect_to admin_links_path, info: "删除成功"  }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def link_params
+    params.require(:link).permit(:title, :href, :description, :link_category_id)
   end
 end

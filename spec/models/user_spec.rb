@@ -38,7 +38,7 @@ RSpec.describe User, type: :model do
     end
 
     it '密码不存在时' do
-      @user.password = ' '
+      @user.password = nil
       expect(@user).not_to be_valid
     end
 

@@ -1,6 +1,17 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  content        :text(65535)      not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  publish_status :boolean          default(TRUE), not null
+#
+
 # encoding : utf-8
 class Message < ActiveRecord::Base
-  attr_accessible :content, :user_id, :publish_status
   belongs_to  :user
   validates   :content,     presence: true
 
