@@ -12,6 +12,7 @@ class Kindeditor::Asset
   mount_uploader :asset, Kindeditor::AssetUploader
   validates_presence_of :asset
   before_save :update_asset_attributes
+  attr_accessible :asset
 
   def self.collection_name
     :kindeditor_assets

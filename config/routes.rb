@@ -1,5 +1,5 @@
 Mywebsite::Application.routes.draw do
-  get "/auth/:provider/callback" => "sessions#auth"
+  match "/auth/:provider/callback" => "sessions#auth"
   resources :messages, only: [:create, :index]
   resources :links, only: [:index]
   resources :sessions,  only: [:new, :create, :destory]
@@ -10,7 +10,7 @@ Mywebsite::Application.routes.draw do
   post "account/update_pro"
   post "account/update_adv"
   get "home/index"
-  get '/(page/:page)' => 'home#index', constraints: { page: /\d+/}
+  match '/(page/:page)' => 'home#index', constraints: { page: /\d+/}
   root  to: 'home#index', as: :root
 
   resources :comments, only: [:index, :create]
@@ -29,14 +29,14 @@ Mywebsite::Application.routes.draw do
       get "activate"
     end
   end
-  get '/register',  to: 'users#new',          via: 'get'
-  get '/login',     to: 'sessions#new',       via: 'get'
-  get '/logout',    to: 'sessions#destroy',   via: 'get'
+  match '/register',  to: 'users#new',          via: 'get'
+  match '/login',     to: 'sessions#new',       via: 'get'
+  match '/logout',    to: 'sessions#destroy',   via: 'get'
 
-  get 'about',  to: 'pages#about', as: :about
-  get 'resume', to: 'pages#resume', as: :resume
-  get 'xingge', to: 'pages#xingge', as: :xingge
-  get 'api',    to: 'pages#api', as: :api
+  match 'about',  to: 'pages#about', as: :about
+  match 'resume', to: 'pages#resume', as: :resume
+  match 'xingge', to: 'pages#xingge', as: :xingge
+  match 'api',    to: 'pages#api', as: :api
 
   scope 'cn' do
     get 'blogs'       =>  'api/blogs#index'
@@ -132,5 +132,5 @@ Mywebsite::Application.routes.draw do
       get code, to: "errors#show", code: code
   end
   # match '*path' => redirect('/404.html')
-  get "*path" => "errors#404"
+  match "*path" => "errors#404"
 end
