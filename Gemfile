@@ -22,7 +22,7 @@ gem 'migration_comments'
 gem 'gemoji'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '3.0.1'
+gem 'bcrypt-ruby', '3.1.2'
 
 # redis
 gem "hiredis", "~> 0.4.0"
