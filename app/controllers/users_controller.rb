@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     @user.activate_code = SecureRandom.hex 32
     if @user.save
       flash[:success] = '恭喜您注册成功，现在您可畅游所有服务'
@@ -57,5 +57,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     redirect_to users_url, success: '删除成功'
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
