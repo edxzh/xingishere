@@ -22,5 +22,30 @@ module Mywebsite
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.time_zone = 'Beijing'
+
+    config.active_record.time_zone_aware_attributes = false
+    config.active_record.default_timezone = :local
+
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
+    config.i18n.default_locale = 'zh-CN'
+    config.generators.orm :active_record
+
+    config.active_support.escape_html_entities_in_json = true
+    config.action_mailer.default_url_options = { host: 'xingishere.com' }
+
+    config.exceptions_app = self.routes
+
+    config.generators do |g|
+      g.test_framework  :rspec,
+        fixtures:         true,
+        view_specs:       false,
+        helper_specs:     false,
+        routing_specs:    false,
+        controller_specs: true,
+        request_specs:    false
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+    end
   end
 end
