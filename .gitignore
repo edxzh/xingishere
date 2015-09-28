@@ -32,6 +32,7 @@ doc/app
 db/transfer.sql
 Gemfile.local
 public/uploads
+public/assets/*
 config/local.rb
 config/recipes/production.rb
 config/settings.local.yml
