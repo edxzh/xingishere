@@ -10,7 +10,7 @@
     </tr>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.name %></td>
+        <td><%= comment.nickname %></td>
         <td><%= comment.content %></td>
         <td><%= comment.publish_status %></td>
         <td><span class="ml10"><%= link_to '取消发布', admin_comment_path(comment), method: :delete, data: { confirm: '确定取消发布？' } %></td>
