@@ -10,9 +10,9 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  publish_status :boolean          default(TRUE), not null
-#  remote_ip      :string(20)       default(""), not null   # ;IP
-#  nickname       :string(20)       default(""), not null
-#  email          :string(50)       default(""), not null
+#  remote_ip      :string(20)       default(""), not null   # 评论者IP
+#  nickname       :string(20)       default(""), not null   # 昵称
+#  email          :string(50)       default(""), not null   # 电子邮箱
 #
 
 # encoding : utf-8
