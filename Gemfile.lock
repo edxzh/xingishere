@@ -224,6 +224,9 @@ GEM
       ruby-progressbar
     rails_config (0.3.4)
       activesupport (>= 3.0)
+    rails_kindeditor (0.4.5)
+      carrierwave
+      mini_magick
     railties (4.2.1)
       actionpack (= 4.2.1)
       activesupport (= 4.2.1)
@@ -381,6 +384,7 @@ DEPENDENCIES
   rails (= 4.2.1)
   rails_best_practices
   rails_config (~> 0.3.1)
+  rails_kindeditor
   redis (>= 2.2.0)
   redis-namespace
   redis-objects

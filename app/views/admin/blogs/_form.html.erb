@@ -1,6 +1,7 @@
 <%= content_for :javascripts do %>
-  <script type="text/javascript" src="/kindeditor/kindeditor-all-min.js"></script>
-  <script type="text/javascript" src="/kindeditor/lang/zh_CN.js"></script>
+  <%= javascript_include_tag "kindeditor/kindeditor.js", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "kindeditor/lang/zh_CN.js", "data-turbolinks-track" => true %>
+
 <% end %>
   <%= f.error_messages %>
   <%= f.text_field :title, placeholder: "我的日志", class: "form-control" %>

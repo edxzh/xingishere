@@ -17,6 +17,7 @@ gem 'mongoid'
 gem 'spreadsheet'
 gem 'migration_comments'
 
+gem 'rails_kindeditor'
 gem 'gemoji'
 
 # To use ActiveModel has_secure_password

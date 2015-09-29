@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require kindeditor
 if (window.console) {
   var cons = console;
   if (cons) {
