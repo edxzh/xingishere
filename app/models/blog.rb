@@ -55,11 +55,11 @@ class Blog < ActiveRecord::Base
         false
       end
     end
-  end
 
-  # 通过类别找一批blog
-  def self.category_find(category_id)
-    BlogCategory.find(category_id).blogs if category_id.present?
+    # 通过类别找一批blog
+    def category_find(category_id)
+      BlogCategory.find(category_id).blogs if category_id.present?
+    end
   end
 
   def published?
