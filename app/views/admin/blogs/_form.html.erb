@@ -4,7 +4,7 @@
 <% end %>
   <%= f.error_messages %>
   <%= f.text_field :title, placeholder: "我的日志", class: "form-control" %>
-  <%= f.kindeditor :content, height: 500 %>
+  <%= f.cktext_area :content, height: 500, ckeditor: { language: 'zh-cn' } %>
   <div class="panel-footer">
     <span class="form-inline" role="form">
       <span class="pull-left ">
