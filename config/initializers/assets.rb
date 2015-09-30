@@ -10,3 +10,4 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 Rails.application.config.assets.precompile = [ Proc.new{ |path| !File.extname(path).in?(['.html', '.htm']) } ]
 Rails.application.config.assets.paths.unshift Rails.root.join("app", "assets").to_s
+Rails.application.config.assets.precompile += %w( ckeditor/* )
