@@ -93,7 +93,6 @@ group :test do
   gem 'webmock'
   gem 'database_cleaner'
   gem 'capybara'
-  gem 'codeclimate-test-reporter', require: false
   gem 'simplecov'
   gem 'mocha', require: false
 end

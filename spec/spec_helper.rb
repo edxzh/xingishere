@@ -4,12 +4,10 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'webmock/rspec'
 require 'capybara/rspec'
-require 'codeclimate-test-reporter'
 require 'simplecov'
 
 SimpleCov.start
 
-CodeClimate::TestReporter.start
 SimpleCov.minimum_coverage 50
 
 # test mail
