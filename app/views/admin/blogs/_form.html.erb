@@ -1,34 +1,30 @@
-<%= content_for :javascripts do %>
-  <script type="text/javascript" src="/kindeditor/kindeditor-all-min.js"></script>
-  <script type="text/javascript" src="/kindeditor/lang/zh_CN.js"></script>
-<% end %>
-  <%= f.error_messages %>
-  <%= f.text_field :title, placeholder: "我的日志", class: "form-control" %>
-  <%= f.kindeditor :content, height: 500 %>
-  <div class="panel-footer">
-    <span class="form-inline" role="form">
-      <span class="pull-left ">
-        分类：<%= f.select :blog_category_id, options_from_collection_for_select(@category, :id, :name, @blog.blog_category_id), {}, { class: "form-control" } %>
-        <input type="button" class="btn" value="增加分类" name="" data-toggle="modal" data-target=".bs-modal-sm" />
-        <span class="form-inline">
-          <span class="form-group">
-            <label class="control-label">权重：</label>
-            <%= f.text_field :weight, class: "form-control", placeholder: "权重" %>
-          </span>
-          <span class="form-group">
-            <label class="control-label">url_name：</label>
-            <%= f.text_field :url_name, class: "form-control", placeholder: "url name" %>
-          </span>
-          <span class="form-group">
-            <label class="control-label">seo_keyword</label>
-            <%= f.text_field :seo_keyword, class: "form-control", placeholder: "seo keyword" %>
-          </span>
+<%= f.error_messages %>
+<%= f.text_field :title, placeholder: "我的日志", class: "form-control" %>
+<%= f.cktext_area :content, height: 500, ckeditor: { language: 'zh-cn' } %>
+<div class="panel-footer">
+  <span class="form-inline" role="form">
+    <span class="pull-left ">
+      分类：<%= f.select :blog_category_id, options_from_collection_for_select(@category, :id, :name, @blog.blog_category_id), {}, { class: "form-control" } %>
+      <input type="button" class="btn" value="增加分类" name="" data-toggle="modal" data-target=".bs-modal-sm" />
+      <span class="form-inline">
+        <span class="form-group">
+          <label class="control-label">权重：</label>
+          <%= f.text_field :weight, class: "form-control", placeholder: "权重" %>
+        </span>
+        <span class="form-group">
+          <label class="control-label">url_name：</label>
+          <%= f.text_field :url_name, class: "form-control", placeholder: "url name" %>
+        </span>
+        <span class="form-group">
+          <label class="control-label">seo_keyword</label>
+          <%= f.text_field :seo_keyword, class: "form-control", placeholder: "seo keyword" %>
         </span>
       </span>
-      <%= f.submit "发表", class: "btn btn-default pull-right btn-lg" %>
     </span>
-    <div class="cb"></div>
-  </div>
+    <%= f.submit "发表", class: "btn btn-default pull-right btn-lg" %>
+  </span>
+  <div class="cb"></div>
+</div>
 <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
