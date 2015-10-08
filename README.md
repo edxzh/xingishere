@@ -35,6 +35,11 @@ Generate config files
 
     ruby script/configs_init.rb
 
+Create database and database tables
+
+    bundle exec rake db:create
+    bundle exec rake db:migrate
+
 Generate admin account, email is `admin@admin.com`, password is `123456`
 
     bundle exec rake admin:generate
