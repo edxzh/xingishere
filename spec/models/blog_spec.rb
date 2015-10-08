@@ -15,26 +15,8 @@ describe Blog do
   it { should respond_to(:user_name) }
   it { should respond_to(:blog_category_name) }
 
-  it { should be_valid }
-
-  describe '模型校验' do
-    it { should validate_presence_of(:blog_category_id) }
-
-    it '缺少user_id' do
-      @blog.user_id = nil
-      expect(@blog).not_to be_valid
-    end
-
-    it '缺少title' do
-      @blog.title = ' '
-      expect(@blog).not_to be_valid
-    end
-
-    it '缺少内容' do
-      @blog.content = ' '
-      expect(@blog).not_to be_valid
-    end
-  end
+  it { should validate_presence_of(:user_id, :title, :content, :seo_keyword, :blog_category_id) }
+  it { should validate_uniqueness_of(:title, :url_name) }
 
   describe '测试scope' do
     it 'scope published' do

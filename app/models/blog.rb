@@ -19,6 +19,8 @@
 #
 
 class Blog < ActiveRecord::Base
+  enum publish_status: [ :draft, :published ]
+
   belongs_to  :user
   belongs_to  :blog_category
   has_many    :tags
@@ -34,7 +36,6 @@ class Blog < ActiveRecord::Base
   validates   :blog_category_id,  presence: true
 
   scope :weight_order, -> { order('weight DESC, created_at DESC') }
-  scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
   scope :keyword,  ->(keyword) do
     where("title like ? or content like ?", "%#{keyword}%", "%#{keyword}%") if keyword.present?
   end
@@ -60,9 +61,5 @@ class Blog < ActiveRecord::Base
     def category_find(category_id)
       BlogCategory.find(category_id).blogs if category_id.present?
     end
-  end
-
-  def published?
-    publish_status?
   end
 end
