@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css">
 <% provide(:title, @blog.title) %>
 <% content_for :seo_keyword do %>
   <meta name="keywords" content="<%= @blog.seo_keyword %>" />
@@ -20,7 +21,7 @@
       <% if @auth.present? %>
       <% end %>
     </div>
-  <div class="mt5 mb10"><%= raw emojify(@blog.content) %></div>
+  <div class="mt5 mb10" id="show_blog_content"><%= raw emojify(@blog.content) %></div>
   <div class="mb30">
     <span onclick="user_like(<%= @blog.id %>)" class="pull-right">
       <a href="javascript:void(0)" id="like"><%= like_icon %><span id="count"><%= @blog.user_loves.count %></span>人喜欢</a>
@@ -57,3 +58,5 @@
 <script>
   with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
