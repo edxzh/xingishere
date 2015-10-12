@@ -19,8 +19,6 @@
 #
 
 class Blog < ActiveRecord::Base
-  enum publish_status: [ :draft, :published ]
-
   belongs_to  :user
   belongs_to  :blog_category
   has_many    :tags
@@ -39,6 +37,7 @@ class Blog < ActiveRecord::Base
   scope :keyword,  ->(keyword) do
     where("title like ? or content like ?", "%#{keyword}%", "%#{keyword}%") if keyword.present?
   end
+  scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
   scope :category, ->(category_id) { where("blog_category_id = ?", category_id) }
 
   delegate :name,   to: :blog_category,   prefix: true
@@ -46,6 +45,10 @@ class Blog < ActiveRecord::Base
 
   def to_param
     url_name
+  end
+
+  def published?
+    publish_status?
   end
 
   class << self

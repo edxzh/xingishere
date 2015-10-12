@@ -14,13 +14,13 @@ FactoryGirl.define do
   end
 
   factory :unpublished_blog, class: "Blog" do
-    association       :user
+    association               :user
     sequence(:title)          { |n| "未发布_#{n}" }
     sequence(:url_name)       { |n| "weifabu_#{n}" }
     content                   "未发布内容"
     seo_keyword               "blog"
+    publish_status            false
     association               :blog_category, name: "unpublished_category"
-    publish_status    false
   end
 
   factory :blog2, class: "Blog" do
