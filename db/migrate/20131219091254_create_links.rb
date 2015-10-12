@@ -7,7 +7,7 @@ class CreateLinks < ActiveRecord::Migration
       t.text :description,            limit: 100,                               comment: "描述"
       t.integer :link_category_id,                null: false,                  comment: "友链类型ID"
 
-      t.timestamps
+      t.timestamps                                null: false
     end
   end
 end

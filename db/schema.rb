@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 20150930122033) do
 
   create_table "blog_categories", force: :cascade, comment: "博客分类表" do |t|
     t.string   "name",       limit: 25, null: false, comment: "类型名"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "blogs", force: :cascade, comment: "博客表" do |t|
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20150930122033) do
     t.string   "seo_keyword",      limit: 60,    default: "",     null: false, comment: "SEO关键词"
     t.string   "url_name",         limit: 25,    default: "",     null: false, comment: "URL后缀"
     t.boolean  "publish_status",   limit: 1,     default: true,   null: false, comment: "发布状态"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 20150930122033) do
     t.string   "remote_ip",      limit: 20,  default: "",   null: false, comment: "评论者IP"
     t.string   "nickname",       limit: 20,  default: "",   null: false, comment: "昵称"
     t.string   "email",          limit: 50,  default: "",   null: false, comment: "电子邮箱"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 20150930122033) do
   create_table "link_categories", force: :cascade, comment: "友链类型表" do |t|
     t.string   "category",   limit: 100, null: false, comment: "类型名"
     t.integer  "user_id",    limit: 4,                comment: "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "links", force: :cascade, comment: "友情链接表" do |t|
@@ -79,42 +79,42 @@ ActiveRecord::Schema.define(version: 20150930122033) do
     t.string   "href",             limit: 50,  default: "", null: false, comment: "链接"
     t.text     "description",      limit: 255,                           comment: "描述"
     t.integer  "link_category_id", limit: 4,                null: false, comment: "友链类型ID"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "messages", force: :cascade, comment: "网站评论表" do |t|
     t.integer  "user_id",        limit: 4
     t.text     "content",        limit: 65535,                             comment: "评论内容"
     t.boolean  "publish_status", limit: 1,     default: true, null: false, comment: "发布状态"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   create_table "subscribes", force: :cascade, comment: "邮件订阅每周精选" do |t|
     t.string   "email",      limit: 40, default: "", null: false, comment: "邮箱地址"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "tags", force: :cascade, comment: "博客标签表" do |t|
     t.integer  "blog_id",    limit: 4,  default: 0,  null: false, comment: "博客ID"
     t.string   "name",       limit: 20, default: "", null: false, comment: "标签名"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "tips", force: :cascade, comment: "小贴士" do |t|
-    t.text     "content",    limit: 255, comment: "内容"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text     "content",    limit: 255,              comment: "内容"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "user_loves", force: :cascade, comment: "用户喜爱博客中间表" do |t|
     t.integer  "user_id",    limit: 4, default: 0, null: false, comment: "用户ID"
     t.integer  "blog_id",    limit: 4, default: 0, null: false, comment: "博客ID"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "user_loves", ["user_id"], name: "index_user_loves_on_user_id", using: :btree
@@ -138,8 +138,8 @@ ActiveRecord::Schema.define(version: 20150930122033) do
     t.boolean  "admin",           limit: 1,                                       comment: "是否为管理员"
     t.string   "activate_code",   limit: 65,                                      comment: "激活校验码"
     t.boolean  "activate_status", limit: 1,   default: false,        null: false, comment: "激活状态"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

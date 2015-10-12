@@ -5,7 +5,7 @@ class CreateTags < ActiveRecord::Migration
       t.integer :blog_id,                 null: false, default: 0,    comment: "博客ID"
       t.string :name,       limit: 20,    null: false, default: "",   comment: "标签名"
 
-      t.timestamps
+      t.timestamps                        null: false
     end
   end
 end
