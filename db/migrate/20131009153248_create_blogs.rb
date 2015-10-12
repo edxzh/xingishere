@@ -12,7 +12,7 @@ class CreateBlogs < ActiveRecord::Migration
       t.string  :seo_keyword,       limit: 60,   null: false,  default: "",          comment: "SEO关键词"
       t.string  :url_name,          limit: 25,   null: false,  default: "",          comment: "URL后缀"
       t.boolean :publish_status,                 null: false,  default: true,        comment: "发布状态"
-      t.timestamps
+      t.timestamps                               null: false
     end
     add_index :blogs,  :user_id
   end

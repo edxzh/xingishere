@@ -6,7 +6,7 @@ class CreateMessages < ActiveRecord::Migration
       t.text :content,                                          comment: "评论内容"
       t.boolean :publish_status,  null: false,  default: true,  comment: "发布状态"
 
-      t.timestamps
+      t.timestamps                null: false
     end
   end
 end
