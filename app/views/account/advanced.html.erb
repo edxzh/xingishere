@@ -1,3 +1,4 @@
+<%= provide :title, "高级资料" %>
 <%= render "nav", base_path: account_profile_path, advanced_path: "#" %>
 <%= form_tag account_update_adv_path, method: :post, class: "form-horizontal", roles: "form" do %>
   <fieldset>
@@ -14,7 +15,7 @@
       </div>
     </div>
     <div class="form-group">
-      <%= label_tag :relation, "与周星的关系：", class: "col-sm-2 control-label" %>
+      <%= label_tag :relation, "与#{Settings.author_name}的关系：", class: "col-sm-2 control-label" %>
       <div class="col-sm-5">
         <%= select_tag :relation, options_for_select_relation(@user.relation_EN), { class: "form-control" } %>
       </div>

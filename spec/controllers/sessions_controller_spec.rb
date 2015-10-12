@@ -1,26 +1,29 @@
-require 'spec_helper'
+# encoding: utf-8
+require 'rails_helper'
 
-describe SessionsController do
+RSpec.describe SessionsController, type: :controller do
+  before do
+    @user = FactoryGirl.create(:user)
+  end
 
-  describe "GET 'index'" do
-    it "returns http success" do
-      get 'index'
-      response.should be_success
+  describe "登录" do
+    it "登录成功" do
+      post :create, email: @user.email, password: @user.password
+      expect(response.status).to eq 302
+    end
+
+    it "登录失败" do
+      post :create, email: @user.email, password: 'wrong password'
+      expect(response.status).to eq 200
     end
   end
 
-  describe "GET 'login'" do
-    it "returns http success" do
-      get 'login'
-      response.should be_success
+  describe '退出登录' do
+    it '退出登录' do
+      session[:user_name] = @user.name
+      session[:user_id] = @user.id
+      get 'destroy'
+      expect(response.status).to eq 302
     end
   end
-
-  describe "GET 'logout'" do
-    it "returns http success" do
-      get 'logout'
-      response.should be_success
-    end
-  end
-
 end

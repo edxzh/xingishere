@@ -1,4 +1,6 @@
 Mywebsite::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+  get "/auth/:provider/callback" => "sessions#auth"
   resources :messages, only: [:create, :index]
   resources :links, only: [:index]
   resources :sessions,  only: [:new, :create, :destory]
@@ -9,41 +11,65 @@ Mywebsite::Application.routes.draw do
   post "account/update_pro"
   post "account/update_adv"
   get "home/index"
+  get '/(page/:page)' => 'home#index', constraints: { page: /\d+/}
   root  to: 'home#index', as: :root
 
   resources :comments, only: [:index, :create]
+  resources :subscribes, only: [:create, :destroy]
 
-  resources :blogs, only: [:index] do
+  resources :blogs, only: [:index, :show] do
     collection do
       get "user_like"
       post "add_category"
     end
   end
-  get "blogs/:title" => "blogs#show", as: :blog
 
-  resources :users do
+  resources :users, except: [:edit, :update] do
     collection do
       get "success"
       get "activate"
     end
   end
-  match '/register',  to: 'users#new',          via: 'get'
-  match '/login',     to: 'sessions#new',       via: 'get'
-  match '/logout',    to: 'sessions#destroy',   via: 'get'
+  get '/register',  to: 'users#new',          via: 'get'
+  get '/login',     to: 'sessions#new',       via: 'get'
+  get '/logout',    to: 'sessions#destroy',   via: 'get'
 
-  match 'about',  to: 'pages#about', as: :about
-  match 'me',     to: 'pages#me', as: :me
-  match 'resume', to: 'pages#resume', as: :resume
+  get 'about',  to: 'pages#about', as: :about
+  get 'resume', to: 'pages#resume', as: :resume
+  get 'xingge', to: 'pages#xingge', as: :xingge
+  get 'api',    to: 'pages#api', as: :api
+
+  scope 'cn' do
+    get 'blogs'       =>  'api/blogs#index'
+    get "blogs/:id"   =>  'api/blogs#show'
+    get 'categories'  =>  'api/blogs#categories'
+    get 'home'        =>  'api/home#index'
+    get 'nav'         =>  'api/home#nav'
+    get 'links'       =>  'api/links#index'
+    post 'subscribes' =>  'api/subscribes#create'
+    get 'messages'    =>  'api/messages#index'
+  end
 
   namespace 'admin' do
     get '/' => 'blogs#index'
-    resources :blogs
+    resources :blogs, except: [:destroy] do
+      member do
+        post "toggle_publish_status"
+      end
+    end
     resources :messages, only: [:index, :destroy]
     resources :comments, only: [:index, :destroy]
     resources :links, except: [:show]
     resources :blog_categories
-    resources :link_categories
+    resources :link_categories, only: [:index, :new, :create]
     resources :tips
+    resources :subscribes, only: [:index, :destroy]
+  end
+
+  # gem kindeditor upload routes
+  namespace :kindeditor do
+    post "/upload" => "assets#create"
+    get  "/filemanager" => "assets#list"
   end
 
   # The priority is based upon order of creation:
@@ -102,4 +128,10 @@ Mywebsite::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
+  %w(404 422 500).each do |code|
+      get code, to: "errors#show", code: code
+  end
+  # match '*path' => redirect('/404.html')
+  get "*path" => "errors#404"
 end

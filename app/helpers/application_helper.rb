@@ -11,14 +11,17 @@ module ApplicationHelper
 
   # Returns the Gravatar (http://gravatar.com/) for the given user.
   def gravatar_for(user, options = { size: 50 })
-    gravatar_id   = Digest::MD5::hexdigest(user.email.downcase)
+    images = %w(qq1.jpg qq2.jpg qq3.jpg)
+    default_image = images.sample
+    return image_tag("/images/#{default_image}", class: "gravatar", size: "50x50") if user.nil?
+
     size = options[:size]
-    gravatar_url  = "http://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
-    image_tag(gravatar_url, alt: user.name, class: "gravatar")
+    image_tag(avatar_url(user, size), alt: user.name, class: "gravatar")
   end
 
-  def format_time(time)
-    time.strftime("%Y-%m-%d %H:%M:%S")
+  def avatar_url(user, size=50)
+    gravatar_id   = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_url  = "http://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
 
   def options_for_select_status(selected = nil)
@@ -68,5 +71,11 @@ module ApplicationHelper
       <li>文章个数：#{Blog.published.count}</li>
       <li>留言个数：#{Message.count}</li>
     </ul>"
+  end
+
+  def render_ga
+    if Rails.env.production?
+      render 'shared/ga'
+    end
   end
 end

@@ -1,26 +1,30 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id             :integer          not null, primary key
+#  content        :string(160)
+#  blog_id        :integer
+#  user_id        :integer
+#  pid            :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  publish_status :boolean          default(TRUE), not null
+#  remote_ip      :string(20)       default(""), not null   # 评论者IP
+#  nickname       :string(20)       default(""), not null   # 昵称
+#  email          :string(50)       default(""), not null   # 电子邮箱
+#
+
 # encoding : utf-8
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :blog_id, :user_id, :pid, :publish_status
   belongs_to  :user
   belongs_to  :blog
 
-  validates :user_id,      presence: true
-  validates :blog_id,   presence: true
+  validates :user_id, :blog_id, :nickname, :email, :content,      presence: true
+  validates :nickname, length: { minimum: 1, maximum: 8 }
+  validates :content,  length: { minimum: 1, maximum: 160 }
+  validate_harmonious_of :nickname, message: '昵称里也敢放敏感词...想喝茶了吗'
+  validate_harmonious_of :content,  message: '内容里不要放敏感词嘛...要喝茶的哦'
 
-  default_scope -> { order('created_at DESC') }
   scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
-
-  class << self
-    def blog_has(blog_id)
-      Comment.where(blog_id: blog_id)
-    end
-  end
-
-  def name
-    if self.user_id != 0
-      User.find(self.user_id).name
-    else
-      "匿名用户"
-    end
-  end
 end

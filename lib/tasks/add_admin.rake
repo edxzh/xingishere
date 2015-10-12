@@ -1,14 +1,29 @@
-# encoding : utf-8
-namespace :add do
-  desc  "通过邮箱地址给一个用户赋予管理员权限"
-  task  :admin => :environment do
+namespace :admin do
+  desc 'Grunt a user as administation'
+  task add: :environment do
     email = ENV['email']
     logger = Logger.new(File.join(Rails.root, 'log', 'admin.log'))
 
     user = User.where("email = ?", email).first
-    logger.info user.email
-    logger.info "修改前的权限是：" + user.admin.to_s
-    user.update_attribute(:admin, true)
-    logger.info "修改后的权限是：" + user.admin.to_s
+    user.update_attribute!(:admin, true)
+
+    logger.info "#{user.name} #{user.email} has be grunted as admin!!"
+  end
+
+  desc 'Generate default administrator'
+  task generate: :environment do
+    logger = Logger.new(File.join(Rails.root, 'log', 'admin.log'))
+
+    user = User.new(
+      email:                  'admin@admin.com',
+      name:                   'admin',
+      password:               '123456',
+      password_confirmation:  '123456',
+      admin:                  true
+    )
+    user.save!
+
+    logger.info "Generate administrator successfully, email is #{user.email}, password is 123456"
+    p "Generate administrator successfully, email is #{user.email}, password is 123456"
   end
 end

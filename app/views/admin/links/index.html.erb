@@ -1,6 +1,7 @@
 <% provide :title, "友情链接" %>
 <div id="main">
   <%= link_to '新建友情链接', new_admin_link_path, class: "btn btn-primary btn-large" %>
+  <p class="fr">共有<span class="red ml5 mr5 f20 fb"><%= @links.total_count %></span>个友链</p>
   <table class="table">
     <tr>
       <th>链接名</th>

@@ -9,6 +9,7 @@
     <link href="/stylesheets/base.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/docs.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/images/icon.png" />
     <%= stylesheet_link_tag "application", "data-turbolinks-track" => true %>
     <%= yield :styles %>
 
@@ -19,16 +20,20 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <%= render 'shared/link_header' %>
+    <% cache "v1/link_header/", expires_in: 60.minutes do %>
+      <%= render 'shared/link_header' %>
+    <% end %>
     <div class="info">
       <div class="container" style="max-width:calc(78%)">
         <h1>友情链接</h1>
-        <p>一个值得你ctrl D的网站</p>
       </div><!-- container -->
     </div><!-- info -->
     <div class="container" style="max-width:calc(78%)">
       <%= yield %>
     </div><!-- container -->
-    <%= render 'shared/footer' %>
+    <%= render_ga %>
+    <% cache "v1/footer/", expires_in: 60.minutes do %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>

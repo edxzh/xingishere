@@ -1,6 +1,7 @@
 <% provide(:title, '博客分类列表') %>
 <div id="main">
   <%= link_to '新建博客分类', new_admin_blog_category_path, class: "btn btn-primary btn-large" %>
+  <p class="fr">共有<span class="red ml5 mr5 f20 fb"><%= @blog_categories.total_count %></span>个分类</p>
   <table class="table admin_bc_index">
     <tr>
       <th>类别名</th>

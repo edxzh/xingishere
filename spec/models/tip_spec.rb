@@ -1,5 +1,13 @@
-require 'spec_helper'
+# encoding: utf-8
+require 'rails_helper'
 
 describe Tip do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @tip = FactoryGirl.create(:tip)
+  end
+  subject { @tip }
+
+  describe "模型校验" do
+    it { should validate_presence_of(:content) }
+  end
 end

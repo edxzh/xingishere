@@ -1,7 +1,11 @@
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css">
 <% provide(:title, @blog.title) %>
+<% content_for :seo_keyword do %>
+  <meta name="keywords" content="<%= @blog.seo_keyword %>" />
+<% end %>
 <ol class="breadcrumb">
   <li><%= link_to '首页', '/' %></li>
-  <li><%= link_to @blog.category_name, blogs_path(category: @blog.blog_category_id) %></li>
+  <li><%= link_to @blog.blog_category_name, blogs_path(category: @blog.blog_category_id) %></li>
   <li class="active">正文</li>
 </ol>
 <div class="blog">
@@ -12,43 +16,47 @@
   <h2 class="title"><%= @blog.title %></h2>
     <div class="blog_info">
       <%= hidden_field_tag :blog_id, @blog.id, id: "blog_id" %>
-      作者：<%= @blog.username %> | 
-      标签：<% @blog.tags.each do |tag| %>
-              <%= link_to @blog.tag, root_path(tags: @blog.category) %><br />
-            <% end %>
-      | 发布：<%= format_time(@blog.created_at) %>
+      <span class="ml20">作者：<%= @blog.user_name %></span>
+      <span class="fr mr20">发布：<%= @blog.created_at.to_s(:db) %></span>
       <% if @auth.present? %>
       <% end %>
     </div>
-  <div class="content"><%= raw @blog.content %></div>
-  <div class="mb40">
+  <div class="mt5 mb10" id="show_blog_content"><%= raw emojify(@blog.content) %></div>
+  <div class="mb30">
     <span onclick="user_like(<%= @blog.id %>)" class="pull-right">
-      <a href="javascript:void(0)" id="like"><%= like_icon %><span id="count"><%= @blog.loves_count %></span>人喜欢</a>
+      <a href="javascript:void(0)" id="like"><%= like_icon %><span id="count"><%= @blog.user_loves.count %></span>人喜欢</a>
     </span>
     <div class="cb"></div>
   </div>
 </div>
 <!-- 百度分享代码 -->
 <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a></div>
+
+<p>支付宝扫码赞助博主</p>
+<div><img src="/images/zfbqr.png" alt="" class="mrcenter w160"></div>
+
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
-<form action="" method="post">
-  <textarea name="" class="cmt_text_area"></textarea>
+<div class="comment_form">
+  <% if current_user.nil? %>
+    <div class="form-inline">
+      <%= text_field "nickname", "", class: "form-control", id: "cmt_user_name", placeholder: "昵称", maxlength: 7, required: "required" %>
+      <%= email_field "email", "", class: "form-control", id: "cmt_user_email", placeholder: "电子邮箱", required: "required" %>
+    </div>
+  <% end %>
+  <textarea name="" class="form-control cmt_text_area" id="cmt_text_area" maxlength=160></textarea>
   <br />
   <input type="button" class="btn btn-primary cmt_btn" value="发表" name="" />
-</form>
+</div>
 <p class="message_title">评论（<%= @comments.length %>）</p>
 <div class="cmt_box">
-  <% if @comments.present? %>
     <% @comments.each_with_index do |comment, index| %>
-      <%= raw show_comment(comment, @comments.count - index -1) %>
+      <%= raw show_comment(comment, index) %>
     <% end %>
     <%= paginate @comments %>
-  <% else %>
-    还没有人留下痕迹，还不快来抢沙发！！！！！！！
-    <img src="/images/shafa.jpg" alt="" />
-  <% end %>
 </div>
 <script>
   with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>

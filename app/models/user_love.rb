@@ -1,5 +1,15 @@
+# == Schema Information
+#
+# Table name: user_loves
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  blog_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class UserLove < ActiveRecord::Base
-  attr_accessible :blog_id, :user_id
   validates :user_id,   presence: true
   validates :blog_id,   presence: true
   belongs_to :user
@@ -15,9 +25,6 @@ class UserLove < ActiveRecord::Base
         UserLove.create(user_id: user_id, blog_id: blog_id)
         1
       end
-    end
-    def like_by_user(user_id, blog_id)
-      where("user_id = ? AND blog_id = ?", current_user.id, @blog.id).first
     end
   end
 end

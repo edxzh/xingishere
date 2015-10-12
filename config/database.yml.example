@@ -16,7 +16,7 @@ development:
   pool: 5
   username: root
   password: example
-  socket: /var/run/mysqld/mysqld.sock
+  port: 3306
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -25,11 +25,11 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: myweb_test
+  database: xingishere_test
   pool: 5
   username: root
   password: example
-  socket: /var/run/mysqld/mysqld.sock
+  port: 3306
 
 production:
   adapter: mysql2

@@ -17,16 +17,4 @@ class Admin::LinkCategoriesController < AdminController
       render json: { status: 0 }
     end
   end
-
-  def edit
-    
-  end
-
-  def update
-    
-  end
-
-  def destroy
-    
-  end
 end

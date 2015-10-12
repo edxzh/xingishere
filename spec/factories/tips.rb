@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :tip do
-    content "MyText"
+    content "test"
   end
 end

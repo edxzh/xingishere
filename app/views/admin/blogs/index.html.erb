@@ -1,9 +1,25 @@
 <% provide(:title, '博客列表') %>
-<div id="main">
+<%= form_tag admin_blogs_path, method: :get, class: "well form-search form-inline" do %>
+  <%= label_tag(:title, "标题：") %>
+  <%= text_field_tag "title", params[:title], class: "form-control mr20" %>
+  <%= button_tag "搜索", class: "btn btn-primary" %>
+<% end %>
+<div id="row-fluid">
   <%= link_to '新建日志', new_admin_blog_path, class: "btn btn-primary btn-large" %>
+  <p class="fr">共有<span class="red ml5 mr5 f20 fb"><%= @blogs.total_count %></span>篇博客</p>
   <ul class="blog_index">
     <% @blogs.each do |blog| %>
-      <li class="blogs_li"><%= raw weight_status_index(blog) %><%= link_to blog.title, blog %><span class="blog_time"><%= blog.created_at.strftime("%Y-%m-%d") %><span class="blog_view">访问量：<%= blog.view_total %></span><span class="ml10">评论数：<%= blog.comments.count %></span><span class="ml10"><%= link_to '编辑', edit_admin_blog_path(blog) %></span><span class="ml10"><%= link_to '取消发布', admin_blog_path(blog), method: :delete, data: { confirm: '确定取消发布？' } %></span></span></li>
+      <li class="blogs_li">
+      <%= raw weight_status_index(blog) %>
+      <%= link_to blog.title, blog_path(blog) %>
+      <span class="blog_time">
+        <%= blog.created_at.strftime("%Y-%m-%d") %>
+        <span class="blog_view">访问量：<%= blog.view_total %></span>
+        <span class="ml10">评论数：<%= blog.comments.count %></span>
+        <span class="ml10"><%= link_to '编辑', edit_admin_blog_path(blog) %></span>
+        <span class="ml10"><%= raw publish_text(blog) %></span>
+      </span>
+      </li>
     <% end %>
     <%= paginate @blogs %>
   </ul>

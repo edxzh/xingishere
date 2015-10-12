@@ -29,9 +29,13 @@
 <div class="panel panel-default love_blog_panel">
   <div class="panel-heading">喜欢的文章</div>
   <div class="panel-body">
-    <ul class="blog_index">
-    <% @love_blogs.each do |blog| %>
-      <li><span class="love_blog_cate"><%= blog.category_name %></span><span><%= link_to blog.title, blog %></span><span class="love_blog_right"><span class="love_count">共<%= blog.loves_count %>人喜欢</span></span></li>
+    <% if @love_blogs.present? %>
+      <ul class="blog_index">
+        <% @love_blogs.each do |blog| %>
+          <li><span class="love_blog_cate"><%= blog.blog_category_name %></span><span><%= link_to blog.title, blog_path(blog) %></span><span class="love_blog_right"><span class="love_count">共<%= blog.user_loves.count %>人喜欢</span></span></li>
+        <% end %>
+    <% else %>
+      暂无
     <% end %>
     <%= paginate @love_blogs %>
   </ul>
@@ -40,7 +44,7 @@
 
 <div class="span8">
   <% if @blogs.any? %>
-    <h3>共<%= @blogs.count %>篇博客</h3>
+    <h3>共<%= @blogs.total_count %>篇博客</h3>
     <ol class="blogs">
       <%= render partial: 'blogs/blog', collection: @blogs %>
     </ol>

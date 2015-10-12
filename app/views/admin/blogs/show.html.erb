@@ -11,18 +11,18 @@
   </div>
   <h2 class="title"><%= @blog.title %></h2>
     <div class="blog_info">
-      作者：<%= @blog.username %> | 
+      作者：<%= @blog.user_name %> |
       标签：<% @blog.tags.each do |tag| %>
               <%= link_to @blog.tag, root_path(tags: @blog.category) %><br />
             <% end %>
-      | 发布：<%= format_time(@blog.created_at) %>
+      | 发布：<%= @blog.created_at.to_s(:db) %>
       <% if @auth.present? %>
       <% end %>
     </div>
   <div class="content"><%= raw @blog.content %></div>
   <div class="panel-footer">
     <span onclick="user_like(<%= @blog.id %>)" class="pull-right">
-      <a href="javascript:void(0)" id="like"><%= like_icon %><span id="count"><%= @blog.loves_count %></span>人喜欢</a>
+      <a href="javascript:void(0)" id="like"><%= like_icon %><span id="count"><%= @blog.user_loves.count %></span>人喜欢</a>
     </span>
     <div class="cb"></div>
   </div>

@@ -1,5 +1,5 @@
 <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
-  <div class="container" style="max-width:calc(77%)">
+  <div class="container" style="max-width:calc(80%)">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -7,28 +7,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">撕瓦星哥2</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
-        <li><%= link_to (root_path) do %>主页&nbsp;<span class="glyphicon glyphicon-home"></span><% end %></li>
-        <li><%= link_to "博客", blogs_path %></li>
-        <li><%= link_to "吐槽", messages_path %></li>
+        <li><%= link_to root_path do %>主页 <span class="glyphicon glyphicon-home"></span><% end %></li>
+        <li><%= link_to blogs_path do %>博客 <span class="glyphicon glyphicon-book"></span><% end %></li>
+        <li><%= link_to about_path, target: "_blank", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'about', 'user click about on nav']);" do %>关于本站 <span class="glyphicon glyphicon-star"><% end %></li>
         <li><%= link_to "友情链接", links_path, target: "_blank" %></li>
-        <li><%= link_to "关于本站", about_path, target: "_blank" %></li>
+        <li><%= link_to "API", api_path, target: "_blank" %></li>
       </ul>
       <%= form_tag(blogs_path, method: :get, class: "navbar-form navbar-left", role: "search") do %>
         <div class="form-group">
           <%= text_field_tag(:keyword, params[:keyword], class: "form-control", placeholder: "Search") %>
         </div>
-        <%= submit_tag "搜索", class: "btn" %>
+        <%= submit_tag "搜索", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'search', 'user click search button on nav']);", class: "btn" %>
       <% end %>
+      <!--
       <ul class="nav navbar-nav navbar-right">
-      <% if session[:user_name] %>
+      <% if current_user.present? %>
         <li class="dropdown">
-          <a href="#user" data-toggle="dropdown"><%= session[:user_name] %><b class="caret"></b></a>
+          <a href="#user" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
           <ul class="dropdown-menu" role="menu">
-            <li><%= link_to '我的主页', user_path(id: session[:user_id]) %></li>
+            <li><%= link_to '我的主页', user_path(id: current_user.id) %></li>
             <li><%= link_to '个人资料设置', account_profile_path %></li>
             <li>
               <a href="#">我的关注</a>
@@ -37,10 +37,11 @@
           </ul>
         </li>
       <% else %>
-        <li><%= link_to '注册', register_path %></li>
+        <li><%= link_to '注册', register_path, onClick: "_gaq.push(['_trackEvent', 'buttonClick', 'register', 'user click register button']);" %></li>
         <li><%= link_to '登录', login_path %></li>
       <% end %>
       </ul>
+      -->
     </nav>
   </div><!-- container -->
 </header><!-- navbar -->

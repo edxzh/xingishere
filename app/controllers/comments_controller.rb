@@ -2,22 +2,28 @@
 class CommentsController < ApplicationController
   layout false, only: :create
   def index
-    @comments = Comment.published
+    @comments = Comment.published.order('created_at DESC')
   end
 
   def create
-    @comment = Comment.new
-    @comment.content = params[:content]
-    @comment.user_id = current_user.present? ? current_user.id : 0
-    @comment.blog_id = params[:blog_id]
+    user_id   = current_user.nil? ? 0 : current_user.id
+    nickname  = params[:nickname] || current_user.name
+    email     = params[:email] || current_user.email
+    remote_ip = request.remote_ip
 
-    if current_user.nil?
-      render json: { status: -1, message: '只有登录后的用户才能评论哦！如果没有帐号点击右上角注册按钮！' } and return
-    end
+    @comment  = Comment.new({
+      content:    params[:content],
+      blog_id:    params[:blog_id],
+      user_id:    user_id,
+      nickname:   nickname,
+      email:      email,
+      remote_ip:  remote_ip
+    })
 
     if @comment.save
       @comments = Blog.published.find(params[:blog_id]).comments.published.page(params[:page]).per(10)
+    else
+      render json: { status: -1, message: @comment.errors.messages.values }
     end
   end
-
 end

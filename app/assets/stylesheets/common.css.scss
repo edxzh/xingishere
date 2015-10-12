@@ -78,8 +78,14 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 .caption h3 a{ color: #333; font-weight: 500; line-height: 1.1;}
 .blog{border-bottom-style:0px none #000; border-radius: 5px 5px 0 0;}
 /*.blog{border:none;} */
-.blog_info{color:#999;padding-bottom:10px;}
+.blog_info{color:#999;}
 .ding{color:#FE6600;margin-right:4px;}
+#subscribe_des{margin-bottom:10px;font-size:13px;}
+#sub_message{display:none;margin:5px 0px 0px 10px;color:red;}
+.sub_label{margin-right: 20px;}
+
+/* 登录界面 */
+#login_remeber_label{color: #666;}
 
 /* 新建和编辑日志样式 */
 #blog_title{width: 680px; text-align: center;}
@@ -88,9 +94,34 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 
 /* blog的show页面 */
 .blog .title{color: #333; font-weight: 500; line-height: 1.1;font-size:30px; text-align:center;border-bottom: 1px solid #e8e8e8; padding-bottom: 5px;}
-.blog .content{margin:18px 0 10px 0;}
-
-
+#show_blog_content {
+  pre {
+    border: none;
+    padding: 0px;
+    margin: 0 0 6px 0;
+    font-size: 14px;
+    background-color: #fff;
+  }
+  /* remove reset style */
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+  ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+  ul ul, ol ul {
+    list-style-type: circle;
+    list-style-position: inside;
+    margin-left: 15px;
+  }
+  ol ol, ul ol {
+    list-style-type: lower-latin;
+    list-style-position: inside;
+    margin-left: 15px;
+  }
+}
 
 /* 链接的分类 */
 .modal-sm{width: 300px;}
@@ -132,6 +163,9 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 .love_blog_right{color:#777777;float:right}
 .love_blog_cate{margin-right:40px;}
 
+/* 注册登录相关 */
+.login_success_container{background-color: #eee; padding: 4px 8px; border-radius: 0px 4px 4px 4px;}
+
 /* 博客评论 */
 .comment{position:relative;min-height: 140px; border-bottom:1px solid #e5e5e5; padding: 10px 0px 0px 4px;}
 .cmt_id{margin-left:10px;color:#777;}
@@ -139,11 +173,23 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
 .author_message{height:120px;padding-left: 10px;margin-bottom:20px;}
 .cmt_box{border:1px solid #e5e5e5;}
 .comment_title{padding:4px 0 4px 10px;border:1px solid #e5e5e5;font-weight:bold;}
-.comment img{float:left;margin-right:14px;}
+.comment img{margin-right:14px;margin-top:10px;}
 .comment_id{margin-left:10px;color:#777;}
-.cmt_name{margin-left:10px;}
+.cmt_name{margin-left:2%;}
 .cmt_time{position:absolute;bottom: 5px; left:68px;color:#999;font-size:12px;}
-.cmt_text_area{width:500px;min-height:100px;border:1px solid #d5d5d5;margin-left: 8px;}
+.cmt_text_area{width:500px;min-height:100px;border:1px solid #d5d5d5;margin-top:10px;}
+.cmt_content{margin-top:5px;}
+.comment_form{width:500px;margin-top:20px;}
+#cmt_img_div{float:left;height:100px;}
+#cmt_user_name{width:25%;float:left;margin-right:2%;}
+#cmt_user_email{width:73%}
+.cmt_box .pagination{margin-left:20px;}
+.tips{color:#777; font-size:12px;}
+
+@media (max-width: 768px) {
+  .comment_form{width:100%;}
+  .cmt_text_area{width:100%;min-height:100px;border:1px solid #d5d5d5;margin-top:10px;}
+ }
 .cmt_btn{margin:4px 0px 24px 8px;width:90px;}
 .cmt_form{display:none;}
 .pagi{text-align:center;}

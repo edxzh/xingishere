@@ -4,7 +4,6 @@ wp
 !.gitkeep
 /nbproject/
 db/schema.rb
-db/tuan800_db_schema.rb
 db/structure.sql
 .DS_Store
 *.DS_Store
@@ -33,6 +32,7 @@ doc/app
 db/transfer.sql
 Gemfile.local
 public/uploads
+public/assets/*
 config/local.rb
 config/recipes/production.rb
 config/settings.local.yml
@@ -61,6 +61,7 @@ tmtagsHistory
 
 .ruby-gemset
 .ruby-version
+.rbenv-gemsets
 /.git-rewrite/
 /config/shards.yml
 config/sunspot.yml

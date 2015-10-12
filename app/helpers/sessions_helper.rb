@@ -1,17 +1,22 @@
 module SessionsHelper
   def login(user)
-    user = User.find(user.id)
+    # cookies[:remember_token] = { value: user.remember_token, expires: 1.year.from_now }
+    session[:user_id] = user.id
     self.current_user = user
   end
+
   def current_user=(user)
     @current_user = user
   end
+
   def current_user
-    @current_user ||= User.where("id = ?", session[:user_id]).first
+    @current_user ||= User.find_by_id(session[:user_id])
   end
+
   def current_user?(user)
     @current_user == user
   end
+
   def logout
     self.current_user = nil
   end
@@ -20,6 +25,7 @@ module SessionsHelper
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)
   end
+
   def store_location
     session[:return_to] = request.fullpath if request.get?
   end

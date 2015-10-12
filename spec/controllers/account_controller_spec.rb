@@ -1,12 +1,5 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe AccountController do
-
-  describe "GET 'profile'" do
-    it "returns http success" do
-      get 'profile'
-      response.should be_success
-    end
-  end
 
 end

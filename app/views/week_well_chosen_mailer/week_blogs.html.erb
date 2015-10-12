@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>starzhou每周精选</title>
+  </head>
+  <body>
+    <style type="text/css">
+      .container{color:#666; width: 552px; padding: 30px 70px; background-color:#f7f9fa; margin:0px auto;border-radius:2px;}
+      .content{ border:1px solid #dedede; background-color: #fff; margin: 2px auto; padding: 4px 28px; border-radius: 4px; }
+      .body{border-bottom:1px dashed #666666;padding-bottom:20px;margin-top:10px;}
+      .title{font-size:24px;padding:20px 15px;border-bottom:1px solid #EDF0F1;}
+      .web{color: #118ac6; margin:0px 16px 0px 2px;}
+      .blog_title{color:#259;font-size:17px;font-weight:bold;text-decoration:none;border:none;outline:none;}
+      .blogs{border-bottom:1px solid #EDF0F1;margin:20px 0 0 0;padding-bottom:20px;}
+      .author{border-bottom: 1px solid red;}
+      .author_name{margin-left: 10px;}
+      .gravatar{border-radius:2px;outline:none;text-decoration:none;border:none;margin:0 2px 0 0;padding:0;display:inline;position:relative;top:6px;}
+      .view_total{color:#676b6d;font-size:13px;position:relative;left:180px;}
+      .view_all{font-size:13px;color:#259;display:inline-block;text-decoration:none;}
+      .blog_content{font-size:13px;line-height:22px;text-decoration:none;color:#333;display:block;}
+      .f12{font-size: 12px;}
+      .ccc{color: #ccc;}
+      strong{font-weight:bold;color:#333;font-size:13px;}
+    </style>
+    <div class="container">
+      <p class="f12 ccc">提示：退订功能尚在开发，如果您有任何疑问，请发送邮件至 <a href="mailto:Edward_mjz@hotmail.com">Edward_mjz@hotmail.com</a></p>
+      <div class="content">
+        <div class="body">
+          <div class="title">
+            <span class="web">starzhou</span>每周精选
+          </div><!-- title -->
+          <% @blogs.each do |blog| %>
+            <table cellspacing="0" class="blogs">
+              <tbody>
+                <tr>
+                  <td><%= link_to blog.title, blog_url(blog), class: "blog_title"  %></td>
+                </tr>
+                <tr>
+                  <td><%= gravatar_for(blog.user, {size: 22}) %><strong><%= blog.user.name %></strong>, <span style="font-size:13px;color:#666"><%= blog.user.description %></span><span class="view_total">访问量：<%= blog.view_total %></span></td>
+                </tr>
+                <tr>
+                  <td><a href=<%= blog_url(blog) %> target="_blank" class="blog_content"><%= display_content(blog.content) %></a><%= link_to "阅读全文", blog_url(blog), class: "view_all" %></td>
+                </tr>
+              </tbody>
+            </table>
+          <% end %>
+          <!-- 热门话题  -->
+          <table cellspacing="0" style="margin-top:40px;border-bottom:1px solid #EDF0F1;padding-bottom:30px;width:494px;">
+            <tbody>
+              <tr>
+                <td><strong style="font-size:16px;font-weight:bold;color:#333333">热门话题</strong></td>
+              </tr>
+              <% @blog_categories.each do |category| %>
+                <tr>
+                  <td height="15" style="font-size:0px; line-height: 0px">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <%= link_to blogs_url(category: category.id), { style: "border:none;text-decoration:none;outline:none", target: "_blank" } do %>
+                      <span style="font-size:14px;color:#259;font-weight:bold"><%= category.name %></span>&nbsp;
+                      <span style="font-size:13px;color:#666666"><%= category.blogs.published.count %>&nbsp;篇博文</span>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <table style="margin-top:40px;">
+            <tbody>
+              <tr>
+                <td><strong style="font-size:16px;font-weight:bold;color:#333333">你可能认识他们</strong></td>
+              </tr>
+              <tr>
+                <td height="15" style="font-size:0px; line-height: 0px">&nbsp;</td>
+              </tr>
+              <tr>
+                <td>
+                  <% @users.each do |user| %>
+                    <table cellspacing="0" border="0" cellpadding="0" cellspacing="0" width="238" align="left" style="margin-bottom:10px;border:1px solid #FFFFFF;border-collapse:collapse">
+                      <tbody>
+                        <tr>
+                          <td bgcolor="#FFFFFF" width="40">
+                            <%= gravatar_for(user, {size: 40}) %>
+                          </td>
+                          <td bgcolor="#FFFFFF" width="13">&nbsp;</td>
+                          <td><%= user.name %></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- body -->
+        <p><%= Date.today.to_s %></p>
+      </div><!-- content -->
+    </div><!-- container -->
+  </body>
+</html>
