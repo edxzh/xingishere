@@ -12,6 +12,7 @@ RSpec.describe 'blog page', type: :feature do
       @blog3              = FactoryGirl.create(:blog3)
       visit blogs_path
     end
+
     it { should have_title '博客列表' }
     it { should have_content @blog.title }
     it { should have_content @blog2.view_total }
