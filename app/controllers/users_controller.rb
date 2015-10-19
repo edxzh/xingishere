@@ -1,9 +1,10 @@
 # encoding : utf-8
 class UsersController < ApplicationController
   include SessionsHelper
-  layout 'account',       only: [:show]
-  before_filter :user_login,    only: [:update, :show]
-  before_filter :is_admin,  only: [:update, :index]
+
+  layout 'account',           only: [:show]
+  before_filter :user_login,  only: [:update, :show]
+  before_filter :is_admin,    only: [:update, :index]
 
   def index
     @users = User.page(params[:page]).per(10)# .padding(1)
