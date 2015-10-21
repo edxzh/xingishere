@@ -10,6 +10,8 @@ gem 'mysql2', '~> 0.3.18'
 gem 'rails_config', '~> 0.3.1'
 gem 'dalli'
 
+gem 'activeadmin', github: 'activeadmin'
+
 gem 'carrierwave'
 gem 'carrierwave-mongoid'
 gem 'mini_magick', '~> 3.4'

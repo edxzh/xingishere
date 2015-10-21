@@ -1,4 +1,5 @@
 Mywebsite::Application.routes.draw do
+  ActiveAdmin.routes(self)
   mount Ckeditor::Engine => '/ckeditor'
   get "/auth/:provider/callback" => "sessions#auth"
   resources :messages, only: [:create, :index]
@@ -50,21 +51,21 @@ Mywebsite::Application.routes.draw do
     get 'messages'    =>  'api/messages#index'
   end
 
-  namespace 'admin' do
-    get '/' => 'blogs#index'
-    resources :blogs, except: [:destroy] do
-      member do
-        post "toggle_publish_status"
-      end
-    end
-    resources :messages, only: [:index, :destroy]
-    resources :comments, only: [:index, :destroy]
-    resources :links, except: [:show]
-    resources :blog_categories
-    resources :link_categories, only: [:index, :new, :create]
-    resources :tips
-    resources :subscribes, only: [:index, :destroy]
-  end
+  # namespace 'admin' do
+  #   get '/' => 'blogs#index'
+  #   resources :blogs, except: [:destroy] do
+  #     member do
+  #       post "toggle_publish_status"
+  #     end
+  #   end
+  #   resources :messages, only: [:index, :destroy]
+  #   resources :comments, only: [:index, :destroy]
+  #   resources :links, except: [:show]
+  #   resources :blog_categories
+  #   resources :link_categories, only: [:index, :new, :create]
+  #   resources :tips
+  #   resources :subscribes, only: [:index, :destroy]
+  # end
 
   # gem kindeditor upload routes
   namespace :kindeditor do
