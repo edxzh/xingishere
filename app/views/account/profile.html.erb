@@ -1,38 +1,38 @@
-<%= provide :title, "资料编辑" %>
+<%= provide :title, '资料编辑' %>
 <% content_for :javascripts do %>
-  <script type="text/javascript" src="/javascripts/bootstrap-datetimepicker.min.js"></script>
-  <script type="text/javascript" src="/javascripts/bootstrap-datetimepicker.zh-CN.js"></script>
+  <script type='text/javascript' src='/javascripts/bootstrap-datetimepicker.min.js'></script>
+  <script type='text/javascript' src='/javascripts/bootstrap-datetimepicker.zh-CN.js'></script>
 <% end %>
 <% content_for :styles do %>
-  <link href="/stylesheets/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+  <link href='/stylesheets/bootstrap-datetimepicker.min.css' rel='stylesheet' />
 <% end %>
-<%= render "nav", base_path: "#", advanced_path: account_advanced_path %>
-<%= form_tag account_update_pro_path, method: :post, class: "form-horizontal", roles: "form" do %>
+<%= render 'nav', base_path: '#', advanced_path: account_advanced_path %>
+<%= form_tag account_update_pro_path, method: :post, class: 'form-horizontal', roles: 'form' do %>
   <fieldset>
     <div class="form-group">
-      <%= label_tag :sex, "您是：", class: "col-sm-2 control-label" %>
+      <%= label_tag :sex, '您是：', class: 'col-sm-2 control-label' %>
       <div class="col-sm-5">
-        <label class="inline"><%= radio_button_tag :sex, 'male', @male, class: "inline" %>帅哥</label>&nbsp;
-        <label class="inline"><%= radio_button_tag :sex, 'female', !@male, class: "inline" %>美女</label>
+        <label class="inline"><%= radio_button_tag :sex, 'male', @male, class: 'inline' %>帅哥</label>&nbsp;
+        <label class="inline"><%= radio_button_tag :sex, 'female', !@male, class: 'inline' %>美女</label>
       </div>
     </div>
     <div class="form-group">
-      <%= label_tag :birthday, "出生日期：", class: "col-sm-2 control-label" %>
+      <%= label_tag :birthday, '出生日期：', class: 'col-sm-2 control-label' %>
       <div class="col-sm-3 input-group date form_date" data-date="" data-date-format="yyyy-mm-dd">
-        <%= text_field_tag :birthday, display_birth(@user.birthday), class: "form-control", readonly: "readonly" %>
+        <%= text_field_tag :birthday, display_birth(@user.birthday), class: 'form-control', readonly: 'readonly' %>
         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
       </div>
     </div>
     <div class="form-group">
-      <%= label_tag :status, "婚姻情况：", class: "col-sm-2 control-label" %>
-      <div class="col-sm-3 input-group">
-        <%= select_tag :status, options_for_select_status(@user.status_EN), { class: "form-control" } %>
-        <span class="input-group-addon"><span class="glyphicon glyphicon-heart-empty"></span></span>
+      <%= label_tag :status, '婚姻情况：', class: 'col-sm-2 control-label' %>
+      <div class='col-sm-3 input-group'>
+        <%= select_tag :status, options_for_select_status(@user.status_EN), { class: 'form-control' } %>
+        <span class='input-group-addon'><span class='glyphicon glyphicon-heart-empty'></span></span>
       </div>
     </div>
     <div class="form-group">
-      <%= label_tag :status, "身高：", class: "col-sm-2 control-label" %>
+      <%= label_tag :status, '身高：', class: 'col-sm-2 control-label' %>
       <div class="col-sm-3 input-group">
         <%= number_field_tag :height, @user.height, { class: "form-control" } %>
         <span class="input-group-addon">cm</span>
@@ -40,7 +40,7 @@
     </div>
     <div class="form-group">
       <div class="col-sm-offset-4 col-sm-5">
-        <%= submit_tag "确认", class: "btn" %>
+        <%= submit_tag '确认', class: 'btn' %>
       </div>
     </div>
   </fieldset>

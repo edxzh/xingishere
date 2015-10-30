@@ -1,4 +1,3 @@
-# encoding: utf-8
 class Admin::TipsController < AdminController
   layout 'admin'
   # GET /tips

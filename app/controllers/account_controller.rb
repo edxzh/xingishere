@@ -1,6 +1,5 @@
-# encoding : utf-8
 class AccountController < ApplicationController
-  before_filter :user_login
+  before_action :user_login
 
   def profile
     @user = current_user
