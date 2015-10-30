@@ -90,6 +90,7 @@ end
 group :test do
   gem 'rspec-its'
   gem 'shoulda-matchers'
+  gem 'email_spec'
   gem 'webmock'
   gem 'database_cleaner'
   gem 'capybara'
