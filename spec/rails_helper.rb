@@ -5,6 +5,17 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'email_spec'
+require 'webmock/rspec'
+require 'capybara/rspec'
+require 'database_cleaner'
+include EmailSpec::Helpers
+include EmailSpec::Matchers
+
+SimpleCov.start
+SimpleCov.minimum_coverage 50
+
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -23,7 +34,6 @@ require 'rspec/rails'
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
