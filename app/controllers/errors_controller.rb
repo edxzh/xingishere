@@ -1,5 +1,6 @@
 class ErrorsController < ApplicationController
   layout 'static'
+
   def show
     render status_code.to_s, status: status_code
   end

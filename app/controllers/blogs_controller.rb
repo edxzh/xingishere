@@ -1,4 +1,3 @@
-# encoding : utf-8
 class BlogsController < ApplicationController
   def index
     if params[:category].present?

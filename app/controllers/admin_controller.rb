@@ -1,6 +1,6 @@
-# encoding : utf-8
 class AdminController < ApplicationController
-  before_filter :is_admin
+  before_action :is_admin
+
   def user_login
     if session[:user_id].blank?
       store_location

@@ -1,4 +1,3 @@
-# encoding: utf-8
 class Api::BlogsController < ApiController
   def index
     if params[:category].present?
@@ -8,7 +7,7 @@ class Api::BlogsController < ApiController
     else
       relation = Blog.published.includes(:blog_category, :comments)
     end
-    order = params[:order] == "hottest" ? "view_total" : "created_at"
+    order = params[:order] == 'hottest' ? 'view_total' : 'created_at'
     @blogs        = relation.order("#{order} DESC").page(params[:page]).per(params[:per_page])
     @total_count  = relation.count
   end
