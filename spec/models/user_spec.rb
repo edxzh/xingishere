@@ -2,18 +2,25 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before do
-    @user = FactoryGirl.create(:user)
-    @profile_user = FactoryGirl.create(:profile_user)
-  end
-
-  subject { @user }
-
-  it { should respond_to(:username, :password, :password_confirmation, :name, :sex, :birthday, :status, :email, :height, :position, :address, :relation, :image, :rights, :score, :description) }
+  it { should respond_to(:password, :password_confirmation) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
-  it { should respond_to(:blogs) }
+
+  it { should have_many(:user_loves).dependent(:destroy).inverse_of(:user).class_name('UserLove') }
+  it { should have_many(:blogs).dependent(:destroy).inverse_of(:user) }
+  it { should have_many(:comments).dependent(:destroy).inverse_of(:user) }
+  it { should have_many(:link_categories).dependent(:destroy).inverse_of(:user) }
+  it { should have_many(:messages) }
+  it { should have_many(:love_blogs).through(:user_loves).source(:blog) }
+
+  it { should validate_presence_of(:password).with_message('请输入密码') }
+  it { should validate_confirmation_of(:password).with_message('两次输入的密码不一致') }
+  it { should validate_length_of(:password).is_at_most(20).is_at_lease(6).with_message('请输入名字').on(:create) }
+  it { should validate_presence_of(:name).with_message('请输入名字') }
+  it { should validate_uniqueness_of(:name).with_message('名字已存在，请重新填写').case_insensitive }
+  it { should validate_presence_of(:email).with_message('请输入email') }
+  it { should validate_uniqueness_of(:email).with_message('重复的email，请重新填写').case_insensitive }
 
   it { should be_valid }
 
@@ -24,72 +31,6 @@ RSpec.describe User, type: :model do
 
     it 'RELATION应该是个指定的数组' do
       expect(User::RELATION).to eq %w(primary junior senior colleage society workmate relative)
-    end
-  end
-
-  describe '模型校验' do
-    before do
-      @user = FactoryGirl.create(:user)
-    end
-
-    it '用户姓名不存在时' do
-      @user.name = ' '
-      expect(@user).not_to be_valid
-    end
-
-    it '密码不存在时' do
-      @user.password = nil
-      expect(@user).not_to be_valid
-    end
-
-    it '两次输入密码不匹配时' do
-      @user.password_confirmation = 'password1'
-      expect(@user).not_to be_valid
-    end
-
-    it '密码太长时' do
-      @user.password = 'x' * 21
-      expect(@user).not_to be_valid
-    end
-
-    it '密码太短时' do
-      @user.password = 'x' * 5
-      expect(@user).not_to be_valid
-    end
-
-    it 'email格式无效时' do
-      email = %w( user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar+baz.com )
-      email.each do |invalid_email|
-        @user.email =  invalid_email
-        expect(@user).not_to be_valid
-      end
-    end
-
-    it '有效的email格式' do
-      email = %w( user@foo.com A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn )
-      email.each do |valid_email|
-        @user.email = valid_email
-        expect(@user).to be_valid
-      end
-    end
-
-    it 'Email的大小写敏感' do
-      @user_with_same_email = @user.dup
-      @user_with_same_email.email = @user.email.upcase
-      expect(@user_with_same_email).not_to be_valid
-    end
-
-    it '设置管理员权限' do
-      @user.toggle!(:admin)
-      expect(@user.admin).to eq true
-    end
-
-    it '普通用户和高级用户的信息' do
-      expect(@user.status_name).to eq '单身'
-      expect(@user.relation_name).to eq '小学同学'
-
-      expect(@profile_user.status_name).to eq '已婚'
-      expect(@profile_user.relation_name).to eq '中学同学'
     end
   end
 
