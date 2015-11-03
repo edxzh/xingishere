@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 FactoryGirl.define do
   factory :comment1, class: "Comment" do
     association       :user

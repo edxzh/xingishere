@@ -1,12 +1,11 @@
-# encoding : utf-8
 FactoryGirl.define do
-  factory :user, class: "User" do
+  factory :user, class: 'User' do
     sequence(:id)               { |n| n }
     sequence(:username)         { |n| "username_#{n}" }
     sequence(:name)             { |n| "name_#{n}" }
     sequence(:email)            { |n| "test_e_#{n}@qq.com" }
-    password                    "password"
-    password_confirmation       "password"
+    password                    'password'
+    password_confirmation       'password'
     activate_code               SecureRandom.hex(4)
     activate_status             true
     admin                       false
@@ -15,7 +14,7 @@ FactoryGirl.define do
       status                      1
       relation                    1
       factory :advanced_user do
-        address                 "成都市XX村"
+        address                 '成都市XX村'
       end
     end
 
