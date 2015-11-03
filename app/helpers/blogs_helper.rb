@@ -1,4 +1,3 @@
-# encoding : utf-8
 module BlogsHelper
   def like_icon
     if @like
