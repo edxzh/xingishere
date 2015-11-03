@@ -1,6 +1,5 @@
 module SessionsHelper
   def login(user)
-    # cookies[:remember_token] = { value: user.remember_token, expires: 1.year.from_now }
     session[:user_id] = user.id
     self.current_user = user
   end
