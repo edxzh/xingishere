@@ -1,6 +1,5 @@
-# encoding: utf-8
 FactoryGirl.define do
-  factory :blog, class: "Blog" do
+  factory :blog, class: 'Blog' do
     association               :user
     sequence(:title)          { |n| "我的日记_#{n}" }
     content                   "日记内容1"
@@ -13,33 +12,33 @@ FactoryGirl.define do
     end
   end
 
-  factory :unpublished_blog, class: "Blog" do
+  factory :unpublished_blog, class: 'Blog' do
     association               :user
     sequence(:title)          { |n| "未发布_#{n}" }
     sequence(:url_name)       { |n| "weifabu_#{n}" }
-    content                   "未发布内容"
-    seo_keyword               "blog"
+    content                   '未发布内容'
+    seo_keyword               'blog'
     publish_status            false
-    association               :blog_category, name: "unpublished_category"
+    association               :blog_category, name: 'unpublished_category'
   end
 
-  factory :blog2, class: "Blog" do
-    association       :user
-    title             "rails文章"
-    content           "rails内容"
-    url_name          "railswenzhang"
-    seo_keyword       "blog"
-    association       :blog_category, name: "blog_category2"
-    publish_status    true
+  factory :blog2, class: 'Blog' do
+    association         :user
+    sequence(:title)    { |n| "rails文章_#{n}" }
+    content             'rails内容'
+    sequence(:url_name) { |n| "rails_content_#{n}" }
+    seo_keyword         'blog'
+    association         :blog_category, name: 'blog_category2'
+    publish_status      true
   end
 
-  factory :blog3, class: "Blog" do
-    association       :user
-    title             "ruby文章"
-    content           "ruby文章"
-    url_name          "rubywenzhang"
-    seo_keyword       "blog"
-    association       :blog_category, name: "blog_category3"
-    publish_status    true
+  factory :blog3, class: 'Blog' do
+    association         :user
+    sequence(:title)    { |n| "ruby文章_#{n}" }
+    content             'ruby文章'
+    sequence(:url_name) { |n| "ruby_content_#{n}" }
+    seo_keyword         'blog'
+    association         :blog_category, name: 'blog_category3'
+    publish_status      true
   end
 end

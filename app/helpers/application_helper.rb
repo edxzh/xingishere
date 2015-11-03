@@ -1,12 +1,6 @@
-# encoding : utf-8
 module ApplicationHelper
-  def full_title(page_title)
-    base_title = "星's blog"
-    if page_title.present?
-      "#{page_title} | #{base_title}"
-    else
-      base_title
-    end
+  def title(page_title)
+    content_for(:title) { h(page_title.to_s) }
   end
 
   # Returns the Gravatar (http://gravatar.com/) for the given user.
@@ -20,8 +14,8 @@ module ApplicationHelper
   end
 
   def avatar_url(user, size=50)
-    gravatar_id   = Digest::MD5::hexdigest(user.email.downcase)
-    gravatar_url  = "http://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
+    gravatar_id  = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_url = "http://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
 
   def options_for_select_status(selected = nil)
