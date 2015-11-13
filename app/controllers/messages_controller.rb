@@ -1,4 +1,3 @@
-# encoding : utf-8
 class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json

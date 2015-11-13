@@ -1,7 +1,5 @@
-# encoding : utf-8
 class ApplicationController < ActionController::Base
-  # before_filter :authorize
-  before_filter :set_cache_control_headers, if: :is_prod?
+  before_action :set_cache_control_headers, if: :is_prod?
   protect_from_forgery with: :exception
 
   include SessionsHelper

@@ -34,10 +34,10 @@ class Blog < ActiveRecord::Base
   validates   :blog_category_id,  presence: true
 
   scope :weight_order, -> { order('weight DESC, created_at DESC') }
-  scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
   scope :keyword,  ->(keyword) do
     where("title like ? or content like ?", "%#{keyword}%", "%#{keyword}%") if keyword.present?
   end
+  scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
   scope :category, ->(category_id) { where("blog_category_id = ?", category_id) }
 
   delegate :name,   to: :blog_category,   prefix: true
@@ -45,6 +45,10 @@ class Blog < ActiveRecord::Base
 
   def to_param
     url_name
+  end
+
+  def published?
+    publish_status?
   end
 
   class << self
@@ -55,14 +59,10 @@ class Blog < ActiveRecord::Base
         false
       end
     end
-  end
 
-  # 通过类别找一批blog
-  def self.category_find(category_id)
-    BlogCategory.find(category_id).blogs if category_id.present?
-  end
-
-  def published?
-    publish_status?
+    # 通过类别找一批blog
+    def category_find(category_id)
+      BlogCategory.find(category_id).blogs if category_id.present?
+    end
   end
 end

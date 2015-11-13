@@ -1,4 +1,3 @@
-# encoding : utf-8
 module MessagesHelper
   def show_message(message)
     if message.publish_status

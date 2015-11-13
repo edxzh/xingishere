@@ -1,4 +1,3 @@
-# encoding : utf-8
 class Admin::LinkCategoriesController < AdminController
   def index
     @link = LinkCategory.all

@@ -1,12 +1,6 @@
-# encoding : utf-8
 module ApplicationHelper
-  def full_title(page_title)
-    base_title = "星's blog"
-    if page_title.present?
-      "#{page_title} | #{base_title}"
-    else
-      base_title
-    end
+  def title(page_title)
+    content_for(:title) { h(page_title.to_s) }
   end
 
   # Returns the Gravatar (http://gravatar.com/) for the given user.
@@ -20,13 +14,13 @@ module ApplicationHelper
   end
 
   def avatar_url(user, size=50)
-    gravatar_id   = Digest::MD5::hexdigest(user.email.downcase)
-    gravatar_url  = "http://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
+    gravatar_id  = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_url = "http://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
 
   def options_for_select_status(selected = nil)
     options = []
-    I18n.t("user.status").each do |k, v|
+    I18n.t('user.status').each do |k, v|
       options << [v, k]
     end
     options_for_select(options, selected)
@@ -34,7 +28,7 @@ module ApplicationHelper
 
   def options_for_select_relation(selected = nil)
     options = []
-    I18n.t("user.relation").each do |k, v|
+    I18n.t('user.relation').each do |k, v|
       options << [v, k]
     end
     options_for_select(options, selected)
@@ -47,7 +41,7 @@ module ApplicationHelper
   end
 
   def hot_blogs
-    Blog.published.order("view_total ASC, created_at DESC").limit(10)
+    Blog.published.order('view_total ASC, created_at DESC').limit(10)
   end
 
   def all_category
@@ -66,11 +60,11 @@ module ApplicationHelper
   end
 
   def statistics
-    raw "<ul>
+    raw '<ul>
       <li>会员个数：#{User.count}</li>
       <li>文章个数：#{Blog.published.count}</li>
       <li>留言个数：#{Message.count}</li>
-    </ul>"
+    </ul>'
   end
 
   def render_ga

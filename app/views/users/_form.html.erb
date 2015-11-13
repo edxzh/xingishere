@@ -1,6 +1,8 @@
 <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
   <fieldset>
-    <%= f.error_messages %>
+    <% @user.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
     <legend><%= "#{page}" %></legend>
     <div class="form-group">
       <%= f.label :name, "名字", class: "col-sm-2 control-label" %>
@@ -32,7 +34,7 @@
     </div>
     <div class="form-group">
       <div class="col-sm-offset-5 col-sm-6 col-xs-3">
-        <%= f.submit "提交", class: "btn btn-default btn-lg", title: "submit" %>
+        <%= f.submit "提交", class: "btn btn-success", title: "submit" %>
       </div>
     </div>
   </fieldset>

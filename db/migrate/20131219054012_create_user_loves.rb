@@ -5,7 +5,7 @@ class CreateUserLoves < ActiveRecord::Migration
       t.integer :user_id,     null: false,    default: 0,   comment: "用户ID"
       t.integer :blog_id,     null: false,    default: 0,   comment: "博客ID"
 
-      t.timestamps
+      t.timestamps            null: false
     end
     add_index :user_loves,  :user_id
   end

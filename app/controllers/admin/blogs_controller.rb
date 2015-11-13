@@ -1,6 +1,6 @@
-# encoding: utf-8
 class Admin::BlogsController < AdminController
   layout 'admin'
+
   def index
     @blogs = Blog.where("title like ?", "%#{params[:title]}%").weight_order.page(params[:page]).per(10)
     @category = BlogCategory.all
@@ -8,13 +8,6 @@ class Admin::BlogsController < AdminController
 
   def show
     @blog = Blog.find(params[:id])
-    @like = false                   # 当前用户是否喜欢此博客
-    @blog.view_total = @blog.view_total += 1
-    @blog.save
-    @like = true if (current_user.present? && Blog.like_by_user?(current_user.id, @blog.id))
-
-    @auth = false # 用户是否有权限操作此博客
-    @auth = true if current_user.present? && @blog.user_id == current_user.id
   end
 
   def new

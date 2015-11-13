@@ -1,4 +1,3 @@
-# encoding: utf-8
 class Admin::LinksController < AdminController
   layout  'admin'
   # GET /links

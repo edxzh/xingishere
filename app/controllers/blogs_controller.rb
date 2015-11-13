@@ -1,4 +1,3 @@
-# encoding : utf-8
 class BlogsController < ApplicationController
   def index
     if params[:category].present?
@@ -30,7 +29,7 @@ class BlogsController < ApplicationController
 
     @blog = Blog.find(blog_id)
     if current_user.present?
-      add_type = UserLove.add(current_user.id, blog_id)
+      add_type = UserLove.change_status(current_user.id, blog_id)
       render json: { type: add_type, count: @blog.user_loves.count }
     else
       render json: { type: -1, count: @blog.user_loves.count + 1 }

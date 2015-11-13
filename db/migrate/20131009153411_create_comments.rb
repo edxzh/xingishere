@@ -10,7 +10,7 @@ class CreateComments < ActiveRecord::Migration
       t.string  :remote_ip,           limit: 20,    null: false,  default: '',    comment: "评论者IP"
       t.string  :nickname,            limit: 20,    null: false,  default: '',    comment: "昵称"
       t.string  :email,               limit: 50,    null: false,  default: '',    comment: "电子邮箱"
-      t.timestamps
+      t.timestamps                    null: false
     end
     add_index :comments,  :user_id
   end

@@ -16,10 +16,9 @@ class UserLove < ActiveRecord::Base
   belongs_to :blog
 
   class << self
-    def add(user_id, blog_id)
-      tmp = UserLove.where("user_id = ? AND blog_id = ?", user_id, blog_id).first
-      if tmp
-        tmp.destroy
+    def change_status(user_id, blog_id)
+      user_love = UserLove.find_by(user_id: user_id, blog_id: blog_id)
+      if user_love && user_love.destroy
         0
       else
         UserLove.create(user_id: user_id, blog_id: blog_id)
