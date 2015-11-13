@@ -1,5 +1,8 @@
 <fieldset>
   <%= f.error_messages %>
+  <% if @blog_category.errors.any? %>
+    <%= @blog_category.errors.full_messages %>
+  <% end %>
   <legend></legend>
   <div class="form-group">
     <%= f.label :name, "类别名", class: "col-sm-2 control-label" %>

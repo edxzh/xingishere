@@ -1,4 +1,6 @@
-<%= f.error_messages %>
+<% if @blog.errors.any? %>
+  <%= @blog.errors.full_messages %>
+<% end %>
 <%= f.text_field :title, placeholder: "我的日志", class: "form-control" %>
 <%= f.cktext_area :content, height: 500, ckeditor: { language: 'zh-cn' } %>
 <div class="panel-footer">
