@@ -24,8 +24,6 @@
 #  activate_code   :string(255)
 #  activate_status :boolean          default(FALSE), not null
 #
-
-# encoding : utf-8
 class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   STATUS    = %w(single married divorce).freeze

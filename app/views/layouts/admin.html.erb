@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= full_title(yield(:title)) %></title>
+    <title><%= yield(:title) %></title>
 
     <link href="/stylesheets/base.css" rel="stylesheet" type="text/css" />
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="/dist/css/docs.css" rel="stylesheet" type="text/css" />
     <%= stylesheet_link_tag "application", "data-turbolinks-track" => true %>
     <%= yield :styles %>
 
@@ -18,7 +17,7 @@
   </head>
   <body>
     <%= render 'shared/admin_header' %>
-    <div class="container bs-docs-container mt40">
+    <div class="container mt40">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %> fade in"><%= value %>
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true" >x</button>

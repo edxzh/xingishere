@@ -1,34 +1,34 @@
-<%= provide :title, "高级资料" %>
-<%= render "nav", base_path: account_profile_path, advanced_path: "#" %>
-<%= form_tag account_update_adv_path, method: :post, class: "form-horizontal", roles: "form" do %>
+<%= provide :title, '高级资料' %>
+<%= render 'nav', base_path: account_profile_path, advanced_path: '#' %>
+<%= form_tag account_update_adv_path, method: :post, class: 'form-horizontal', roles: 'form' do %>
   <fieldset>
     <div class="form-group">
-      <%= label_tag :position, "职业：", class: "col-sm-2 control-label" %>
+      <%= label_tag :position, '职业：', class: 'col-sm-2 control-label' %>
       <div class="col-sm-5">
-        <%= text_field_tag :position, @user.position, class: "form-control" %>
+        <%= text_field_tag :position, @user.position, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
-      <%= label_tag :address, "现住址：", class: "col-sm-2 control-label" %>
+      <%= label_tag :address, '现住址：', class: 'col-sm-2 control-label' %>
       <div class="col-sm-5">
-        <%= text_field_tag :address, @user.address, class: "form-control" %>
+        <%= text_field_tag :address, @user.address, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
-      <%= label_tag :relation, "与#{Settings.author_name}的关系：", class: "col-sm-2 control-label" %>
+      <%= label_tag :relation, "与#{Settings.author_name}的关系：", class: 'col-sm-2 control-label' %>
       <div class="col-sm-5">
-        <%= select_tag :relation, options_for_select_relation(@user.relation_EN), { class: "form-control" } %>
+        <%= select_tag :relation, options_for_select_relation(@user.relation_EN), { class: 'form-control' } %>
       </div>
     </div>
     <div class="form-group">
-      <%= label_tag :description, "个性签名：", class: "col-sm-2 control-label" %>
+      <%= label_tag :description, '个性签名：', class: 'col-sm-2 control-label' %>
       <div class="col-sm-5">
-        <%= text_area_tag :description, @user.description, { class: "form-control" } %>
+        <%= text_area_tag :description, @user.description, { class: 'form-control' } %>
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-offset-6 col-sm-5">
-        <%= submit_tag "确认", class: "btn" %>
+        <%= submit_tag '确认', class: 'btn' %>
       </div>
     </div>
   </fieldset>

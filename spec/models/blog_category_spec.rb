@@ -2,20 +2,8 @@
 require 'rails_helper'
 
 describe BlogCategory do
-  before(:each) do
-    @blog_category = FactoryGirl.create(:blog_category)
-  end
+  it { should have_many(:blogs) }
 
-  subject { @blog_category }
-
-  describe "模型校验" do
-    it "必须存在类别名" do
-      @blog_category.name = ""
-      expect(@blog_category).not_to be_valid
-    end
-    it "类别名不能重复" do
-      @blog_category_with_same_name = @blog_category.dup
-      expect(@blog_category_with_same_name).not_to be_valid
-    end
-  end
+  it { should validate_uniqueness_of(:name).with_message('类别名已存在') }
+  it { should validate_presence_of(:name).with_message('必须存在类别名') }
 end

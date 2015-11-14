@@ -11,30 +11,23 @@ describe Blog do
 
   subject { @blog }
 
-  it { should respond_to(:content) }
-  it { should respond_to(:user_name) }
-  it { should respond_to(:blog_category_name) }
+  it { should belong_to(:user) }
+  it { should belong_to(:blog_category) }
 
-  it { should be_valid }
+  it { should have_many(:tags) }
+  it { should have_many(:user_loves).dependent(:destroy).inverse_of(:blog).class_name('UserLove') }
+  it { should have_many(:comments) }
+  it { should have_many(:loved_users).through(:user_loves).source(:user) }
 
-  describe '模型校验' do
-    it { should validate_presence_of(:blog_category_id) }
+  it { should validate_presence_of(:user_id) }
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:content) }
+  it { should validate_presence_of(:url_name) }
+  it { should validate_presence_of(:seo_keyword) }
+  it { should validate_presence_of(:blog_category_id) }
 
-    it '缺少user_id' do
-      @blog.user_id = nil
-      expect(@blog).not_to be_valid
-    end
-
-    it '缺少title' do
-      @blog.title = ' '
-      expect(@blog).not_to be_valid
-    end
-
-    it '缺少内容' do
-      @blog.content = ' '
-      expect(@blog).not_to be_valid
-    end
-  end
+  it { should validate_uniqueness_of(:title) }
+  it { should validate_uniqueness_of(:url_name) }
 
   describe '测试scope' do
     it 'scope published' do

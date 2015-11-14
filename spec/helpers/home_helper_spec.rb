@@ -1,21 +1,19 @@
-# encoding: utf-8
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the HomeHelper. For example:
-#
-# describe HomeHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe HomeHelper do
-  before(:each) do
-    @blog = FactoryGirl.create(:top_blog)
+  let(:top_blog) { FactoryGirl.create(:top_blog) }
+
+  describe '.weight_status' do
+    it 'should return correct html with 顶' do
+      expect(weight_status(top_blog)).to eq "<span class='ding'>[顶]</span>"
+    end
   end
-  it "weight_status" do
-    expect(weight_status(@blog)).to eq "<span class='ding'>[顶]</span>"
+
+  describe '.display_content' do
+    let(:random_string) { SecureRandom.hex(150) }
+
+    it 'should return first 240 with ......' do
+      expect(display_content(random_string)).to eq random_string[0...240] + '......'
+    end
   end
 end

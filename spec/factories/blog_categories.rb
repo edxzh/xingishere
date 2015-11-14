@@ -1,16 +1,13 @@
-# encoding : utf-8
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :blog_category, class: "BlogCategory" do
-    name "个性签名"
+    sequence(:name) { |n| "个性签名_#{n}" }
   end
 
   factory :blog_category2, class: "BlogCategory" do
-    name "技术博客"
+    sequence(:name) { |n| "技术博客" }
   end
 
   factory :blog_category3, class: "BlogCategory" do
-    name "美丽世界"
+    sequence(:name) { |n| "美丽世界" }
   end
 end
