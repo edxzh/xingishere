@@ -10,10 +10,6 @@ describe HomeController do
 
     it { should render_with_layout('home') }
 
-    it 'should render layout home' do
-      subject
-    end
-
     it 'should assign @blogs' do
       subject
       expect(assigns(:blogs).count).to eq 10
