@@ -11,8 +11,7 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @blog = Blog.find_by_url_name(params[:id])
-    render_404_page and return if @blog.blank?
+    @blog = Blog.find_by_url_name!(params[:id])
     @like = false
     @blog.view_total = @blog.view_total += 1
     @blog.save

@@ -1,6 +1,4 @@
 class MessagesController < ApplicationController
-  # GET /messages
-  # GET /messages.json
 
   layout false, only: :create
   def index
