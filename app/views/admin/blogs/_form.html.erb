@@ -7,8 +7,11 @@
 <script type="text/javascript" src="/assets/hotkeys.js"></script>
 <script type="text/javascript" src="/assets/uploader.js"></script>
 <script type="text/javascript" src="/assets/simditor.js"></script>
-<script type="text/javascript" src="/assets/initial.js"></script>
+<script type="text/javascript" src="/assets/beautify-html.js"></script>
+<script type="text/javascript" src="/assets/simditor-html.js"></script>
 <link rel="stylesheet" media="screen" href="/assets/simditor.css" data-turbolinks-track="true" />
+<link rel="stylesheet" media="screen" href="/assets/simditor-html.css" data-turbolinks-track="true" />
+
 <div class="panel-footer">
   <span class="form-inline" role="form">
     <span class="pull-left ">
@@ -54,8 +57,8 @@
 </div>
 <script type="text/javascript">
   $(window).bind('beforeunload',function(){return '您输入的内容尚未保存，确定离开此页面吗？';});
-var editor = new Simditor({
-  textarea: $('#editor')
-  //optional options
-});
+  var editor = new Simditor({
+    textarea: $('#blog_content'),
+    toolbar: ['title','bold','italic','underline','strikethrough','color','|','ol','ul','blockquote','code','table','link','image','hr','html']
+  })
 </script>
