@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ckeditor/init
 if (window.console) {
   var cons = console;
   if (cons) {

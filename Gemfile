@@ -19,8 +19,6 @@ gem 'migration_comments'
 
 gem 'gemoji'
 
-gem 'ckeditor'
-
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.1.2'
 

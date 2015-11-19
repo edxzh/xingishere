@@ -2,7 +2,20 @@
   <%= @blog.errors.full_messages %>
 <% end %>
 <%= f.text_field :title, placeholder: "我的日志", class: "form-control" %>
-<%= f.cktext_area :content, height: 500, ckeditor: { language: 'zh-cn' } %>
+<%= f.text_area :content, height: 500 %>
+<script type="text/javascript" src="/assets/module.min.js"></script>
+<script type="text/javascript" src="/assets/hotkeys.min.js"></script>
+<script type="text/javascript" src="/assets/uploader.min.js"></script>
+<script type="text/javascript" src="/assets/simditor.min.js"></script>
+<script type="text/javascript" src="/assets/beautify-html.js"></script>
+<script type="text/javascript" src="/assets/simditor-html.js"></script>
+<script type="text/javascript" src="/assets/marked.js"></script>
+<script type="text/javascript" src="/assets/to-markdown.js"></script>
+<script type="text/javascript" src="/assets/simditor-markdown.js"></script>
+<link rel="stylesheet" media="screen" href="/assets/simditor.css" data-turbolinks-track="true" />
+<link rel="stylesheet" media="screen" href="/assets/simditor-html.css" data-turbolinks-track="true" />
+<link rel="stylesheet" media="screen" href="/assets/simditor-markdown.css" data-turbolinks-track="true" />
+
 <div class="panel-footer">
   <span class="form-inline" role="form">
     <span class="pull-left ">
@@ -48,4 +61,8 @@
 </div>
 <script type="text/javascript">
   $(window).bind('beforeunload',function(){return '您输入的内容尚未保存，确定离开此页面吗？';});
+  var editor = new Simditor({
+    textarea: $('#blog_content'),
+    toolbar: ['title','bold','italic','underline','strikethrough','color','|','ol','ul','blockquote','code','table','link','image','hr','html', 'markdown']
+  })
 </script>
