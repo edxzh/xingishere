@@ -2,7 +2,7 @@
   <%= @blog.errors.full_messages %>
 <% end %>
 <%= f.text_field :title, placeholder: "我的日志", class: "form-control" %>
-<%= f.text_field :content, height: 500 %>
+<%= f.text_area :content, height: 500 %>
 <script type="text/javascript" src="/assets/module.min.js"></script>
 <script type="text/javascript" src="/assets/hotkeys.min.js"></script>
 <script type="text/javascript" src="/assets/uploader.min.js"></script>
