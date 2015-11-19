@@ -2,7 +2,7 @@ class Admin::SubscribesController < AdminController
   layout 'admin'
 
   def index
-    @subscribes = Subscribe.page(params[:page]).per(10)
+    @subscribes = Subscribe.order('id DESC').page(params[:page]).per(10)
   end
 
   def destroy
