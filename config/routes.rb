@@ -1,5 +1,4 @@
 Mywebsite::Application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
   get "/auth/:provider/callback" => "sessions#auth"
   resources :messages, only: [:create, :index]
   resources :links, only: [:index]
