@@ -63,6 +63,6 @@
   $(window).bind('beforeunload',function(){return '您输入的内容尚未保存，确定离开此页面吗？';});
   var editor = new Simditor({
     textarea: $('#blog_content'),
-    toolbar: ['title','bold','italic','underline','strikethrough','color','|','ol','ul','blockquote','code','table','link','image','hr','html', 'markdown']
+    toolbar: ['title','bold','italic','underline','strikethrough','color','|','ol','ul','blockquote','code','table','|','link','image','hr','|','indent','outdent','alignment','html', 'markdown']
   })
 </script>
