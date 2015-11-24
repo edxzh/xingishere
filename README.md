@@ -20,6 +20,7 @@ The online blog is <a href="http://starzhou.com" target="_blank">starzhou.com.</
 * ruby 2.2.3
 * rails 4.2.1
 * mysql 5.5
+* memcached 1.4.24
 
 ## development
 Clone this repo to local
@@ -43,6 +44,8 @@ Create database and database tables
 Generate admin account, email is `admin@admin.com`, password is `123456`
 
     bundle exec rake admin:generate
+
+Custom config/settings.yml, the file in repo can be an example
 
 ## script
 After deployed, you should execute checker script to make sure the configuration is intack
