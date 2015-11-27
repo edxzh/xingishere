@@ -17,7 +17,7 @@ class Admin::BlogsController < AdminController
 
   def create
     if current_user.blogs.create(blog_params)
-      redirect_to admin_blogs_path, success: "发表成功"
+      redirect_to admin_blogs_path, success: '发表成功'
     else
       render 'new'
     end
@@ -31,24 +31,9 @@ class Admin::BlogsController < AdminController
   def update
     @blog = Blog.find_by_url_name(params[:id])
     if @blog.update_attributes(blog_params)
-      redirect_to admin_blogs_path, success: "更新成功"
+      redirect_to admin_blogs_path, success: '更新成功'
     else
       render 'edit'
-    end
-  end
-
-  def destroy
-    @blog = Blog.find_by_url_name(params[:id])
-    if @blog.publish_status?
-      @blog.update_attributes(publish_status:  false)
-    else
-      @blog.update_attributes(publish_status:  true)
-    end
-
-    if @blog.save
-      redirect_to admin_blogs_url, success: "删除成功"
-    else
-      redirect_to admin_blogs_url, danger: "删除失败"
     end
   end
 
@@ -61,9 +46,9 @@ class Admin::BlogsController < AdminController
     end
 
     if @blog.save
-      redirect_to admin_blogs_url, success: "删除成功"
+      redirect_to admin_blogs_url, success: '删除成功'
     else
-      redirect_to admin_blogs_url, danger: "删除失败"
+      redirect_to admin_blogs_url, danger: '删除失败'
     end
   end
 

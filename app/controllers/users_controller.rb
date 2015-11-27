@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   layout 'account',           only: [:show]
   before_filter :user_login,  only: [:show]
-  before_filter :is_admin
 
   def show
     @user       = User.find(params[:id])
@@ -52,7 +51,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_url, success: '删除成功'
+    redirect_to admin_users_url, success: '删除成功'
   end
 
   private
