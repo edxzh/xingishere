@@ -15,7 +15,6 @@
 <link rel="stylesheet" media="screen" href="/assets/simditor.css" data-turbolinks-track="true" />
 <link rel="stylesheet" media="screen" href="/assets/simditor-html.css" data-turbolinks-track="true" />
 <link rel="stylesheet" media="screen" href="/assets/simditor-markdown.css" data-turbolinks-track="true" />
-
 <div class="panel-footer">
   <span class="form-inline" role="form">
     <span class="pull-left ">
@@ -53,7 +52,7 @@
             <label class="sr-only" for="exampleInputEmail2">新增分类</label>
             <%= text_field_tag :Cname,"", class: "form-control", placeholder: "新增分类" %>
           </div>
-          <%= button_tag "确定", class: "btn btn-primary", onclick: "addLink()", type: "button" %>
+          <%= button_tag "确定", class: "btn btn-primary col-sm-offset-9", onclick: "addLink()", type: "button" %>
         </form>
       </div><!-- modal-body -->
     </div><!-- modal-content -->
