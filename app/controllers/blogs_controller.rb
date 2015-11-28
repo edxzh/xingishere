@@ -7,18 +7,13 @@ class BlogsController < ApplicationController
     else
       relation = Blog.published.weight_order.includes(:blog_category, :comments)
     end
-    @blogs = relation.group_by { |blog| blog.blog_category_id }
+    @blogs = relation.group_by(&:blog_category_id)
   end
 
   def show
     @blog = Blog.find_by_url_name!(params[:id])
-    @like = false
-    @blog.view_total = @blog.view_total += 1
+    @blog.view_total += 1
     @blog.save
-    @like = true if(current_user.present? && Blog.like_by_user?(current_user.id, @blog.id))
-
-    @auth = false
-    @auth = true if(current_user.present? && @blog.user_id == current_user.id)
 
     @comments = @blog.comments.page(params[:page]).per(10)
   end

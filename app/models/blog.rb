@@ -50,16 +50,11 @@ class Blog < ActiveRecord::Base
     publish_status?
   end
 
-  class << self
-    def like_by_user?(user_id, blog_id)
-      if UserLove.where("user_id = ? AND blog_id = ?", user_id, blog_id).first
-        true
-      else
-        false
-      end
-    end
+  def like_by_user?(user_id)
+    user_loves.find_by_user_id(user_id)
+  end
 
-    # 通过类别找一批blog
+  class << self
     def category_find(category_id)
       BlogCategory.find(category_id).blogs if category_id.present?
     end
