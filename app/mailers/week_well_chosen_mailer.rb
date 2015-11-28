@@ -1,6 +1,5 @@
 class WeekWellChosenMailer < ActionMailer::Base
   default from: 'starzhou.com'
-  helper  HomeHelper
   helper  ApplicationHelper
 
   def deliver_week_blogs(email)
