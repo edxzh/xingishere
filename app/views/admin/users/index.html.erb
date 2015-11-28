@@ -1,0 +1,31 @@
+<% provide(:title, '用户列表') %>
+<div id="main">
+  <p class="fr">共有<span class="red ml5 mr5 f20 fb"><%= @users.total_count %></span>个用户</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>头像</th>
+        <th>email</th>
+        <th>名字</th>
+        <th>激活状态</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= gravatar_for user, size: 52 %></td>
+          <td><%= user.email %></td>
+          <td><%= link_to user.name, user %></td>
+          <td><%= user.activate_status %></td>
+          <td>
+            <% if current_user.present? && current_user.admin? && !current_user?(user) %>
+              <%= button_to "删除", user, method: :delete, data: { confirm: "确认删除此用户？" }, class: "btn btn-danger" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @users %>
+</div>

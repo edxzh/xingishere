@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_cache_control_headers, if: :is_prod?
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404_page
   protect_from_forgery with: :exception
 
   include SessionsHelper
@@ -31,13 +31,4 @@ class ApplicationController < ActionController::Base
       format.html { render template: 'errors/404', status: 404, layout: 'static' }
     end
   end
-
-  def is_prod?
-    Rails.env.production?
-  end
-
-  def set_cache_control_headers(max_age = 5.minutes.to_s)
-    response.headers['Cache-Control'] = 'public, no-cache'
-    response.headers['Surrogate-Control'] = "max-age=#{max_age}"
-  end
-  end
+end

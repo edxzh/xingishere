@@ -1,4 +1,3 @@
-# encoding : utf-8
 require 'rails_helper'
 
 RSpec.describe '测试访问一些静态页面', type: :feature do

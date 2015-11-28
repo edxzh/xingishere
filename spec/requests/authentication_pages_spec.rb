@@ -1,4 +1,3 @@
-# encoding : utf-8
 require 'rails_helper'
 
 RSpec.describe '登录验证Authentication' do

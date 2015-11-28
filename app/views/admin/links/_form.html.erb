@@ -27,3 +27,23 @@
     <%= submit_tag "提交", class: "btn btn-primary" %>
   </div>
 </div>
+<input type="button" class="btn btn-default" value="增加分类" name="" data-toggle="modal" data-target=".bs-modal-sm" />
+<div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal", aria-hidden="true">x</button>
+        <h4 class="modal-title" id="mySmallModalLabel">增加分类</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-inline">
+          <div class="form-group">
+            <label class="sr-only" for="exampleInputEmail2">新增分类</label>
+            <%= text_field_tag :Cname, "", class: "form-control", placeholder: "新增分类" %>
+          </div>
+          <%= button_tag "确定", class: "btn btn-primary col-sm-offset-9", onclick: "addLink()", type: "button" %>
+        </form>
+      </div><!-- modal-body -->
+    </div><!-- modal-content -->
+  </div><!-- modal-dialog -->
+</div>

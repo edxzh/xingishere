@@ -1,7 +1,0 @@
-<li>
-  <%= gravatar_for user, size: 52 %>
-  <%= link_to user.name, user %>
-  <% if current_user.present? && current_user.admin? && !current_user?(user) %>
-    <%= button_to "删除", user, method: :delete, data: { confirm: "确认删除此用户？" }, class: "btn btn-default" %>
-  <% end %>
-</li>

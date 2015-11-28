@@ -1,6 +1,9 @@
 <div class="caption mb5">
   <h3 class="underline mb5 pb5">
-    <%= raw weight_status(blog) %><%= link_to blog.title, blog_path(blog) %>
+    <% if blog.weight > 0 %>
+      <span class='ding'>[顶]</span>
+    <% end %>
+    <%= link_to blog.title, blog_path(blog) %>
   </h3>
   <div class="blog_info">
     分类：<%= link_to blog.blog_category_name, blogs_path(category: blog.blog_category_id) %>
@@ -8,4 +11,4 @@
     <span class="fr mr20">发布：<%= blog.created_at.to_s(:db) %></span>
   </div>
 </div>
-<p><%= display_content(blog.content) %></p>
+<p><%= truncate(blog.content, length: 240) %></p>

@@ -2,25 +2,5 @@
   <%= javascript_include_tag controller_path, media: "all" %>
 <% end %>
 <%= form_for(@link, url: admin_links_path, html: { class: "form-horizontal" }) do |f| %>
-  <%= render "form", f: f %>
+  <%= render 'form', f: f %>
 <% end %>
-<input type="button" class="btn btn-default" value="增加分类" name="" data-toggle="modal" data-target=".bs-modal-sm" />
-<div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal", aria-hidden="true">x</button>
-        <h4 class="modal-title" id="mySmallModalLabel">增加分类</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-inline" role="form">
-          <div class="form-group">
-            <label class="sr-only" for="exampleInputEmail2">新增分类</label>
-            <%= text_field_tag :Cname, "", class: "form-control btn btn-default", placeholder: "新增分类" %>
-          </div>
-          <%= button_tag "确定", class: "btn btn-primary", onclick: "addLink()", type: "button" %>
-        </div>
-      </div><!-- modal-body -->
-    </div><!-- modal-content -->
-  </div><!-- modal-dialog -->
-</div>
