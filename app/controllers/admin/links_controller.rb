@@ -1,7 +1,6 @@
 class Admin::LinksController < AdminController
-  layout  'admin'
-  # GET /links
-  # GET /links.json
+  layout 'admin'
+
   def index
     @links = Link.page(params[:page]).per(10)
 
@@ -11,8 +10,6 @@ class Admin::LinksController < AdminController
     end
   end
 
-  # GET /links/1
-  # GET /links/1.json
   def show
     @link = Link.find(params[:id])
 
@@ -22,8 +19,6 @@ class Admin::LinksController < AdminController
     end
   end
 
-  # GET /links/new
-  # GET /links/new.json
   def new
     @link = Link.new
     @category = LinkCategory.where(user_id: current_user.id)
@@ -34,14 +29,11 @@ class Admin::LinksController < AdminController
     end
   end
 
-  # GET /links/1/edit
   def edit
     @link = Link.find(params[:id])
     @category = LinkCategory.where(user_id: current_user.id)
   end
 
-  # POST /links
-  # POST /links.json
   def create
     link = Link.new(link_params)
 
@@ -50,14 +42,12 @@ class Admin::LinksController < AdminController
         format.html { redirect_to admin_links_path, success: '创建成功' }
         format.json { render json: link, status: :created, location: admin_links_path }
       else
-        format.html { render "new" }
+        format.html { render 'new' }
         format.json { render json: link.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /links/1
-  # PUT /links/1.json
   def update
     @link = Link.find(params[:id])
 
@@ -66,20 +56,18 @@ class Admin::LinksController < AdminController
         format.html { redirect_to admin_links_path, success: '更新成功' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render 'edit' }
         format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /links/1
-  # DELETE /links/1.json
   def destroy
     @link = Link.find(params[:id])
     @link.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_links_path, info: "删除成功"  }
+      format.html { redirect_to admin_links_path, info: '删除成功' }
       format.json { head :no_content }
     end
   end

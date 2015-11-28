@@ -1,8 +1,8 @@
-# encoding : utf-8
 require 'rails_helper'
 
 RSpec.describe 'Users pages', type: :feature do
   subject { page }
+
   describe '用户注册页面的内容测试' do
     before { visit register_path }
 
@@ -76,51 +76,9 @@ RSpec.describe 'Users pages', type: :feature do
     end
   end
 
-  describe '列表页' do
-    before do
-      login FactoryGirl.create(:admin)
-      FactoryGirl.create(:user, name: 'kobe',  email: 'kobe@qq.com')
-      FactoryGirl.create(:user, name: 'james', email: 'james@qq.com')
-      visit users_path
-    end
-
-    it { should have_title('用户列表') }
-    it { should have_content('用户列表') }
-
-    describe 'pagination' do
-      before(:all) { 30.times { FactoryGirl.create(:user) } }
-      after(:all) { User.delete_all }
-      it { should have_selector('ul.pagination') }
-    end
-
-    describe '删除用户链接' do
-      it { should have_button('删除') }
-      describe '管理员用户登录' do
-        let(:admin) { FactoryGirl.create(:admin) }
-        before do
-          login admin
-          visit users_path
-        end
-
-        it { should have_button('删除') }
-
-        it '可以删除其他用户' do
-          expect do
-            click_button('删除', match: :first)
-          end.to change(User, :count).by(-1)
-        end
-        it { should_not have_link('删除', href: user_path(admin)) }
-      end
-    end
-  end
-
   describe '权限控制：' do
     describe '未登录用户' do
       let(:user) { FactoryGirl.create(:user) }
-      describe '进入列表页' do
-        before { visit users_path }
-        it { should have_title('页面找不到了') }
-      end
 
       describe '进入个人信息页面' do
         before { visit account_profile_path }

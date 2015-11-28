@@ -15,7 +15,6 @@
 <link rel="stylesheet" media="screen" href="/assets/simditor.css" data-turbolinks-track="true" />
 <link rel="stylesheet" media="screen" href="/assets/simditor-html.css" data-turbolinks-track="true" />
 <link rel="stylesheet" media="screen" href="/assets/simditor-markdown.css" data-turbolinks-track="true" />
-
 <div class="panel-footer">
   <span class="form-inline" role="form">
     <span class="pull-left ">
@@ -48,13 +47,13 @@
         <h4 class="modal-title" id="mySmallModalLabel">增加分类</h4>
       </div>
       <div class="modal-body">
-        <div class="form-inline" role="form">
+        <form class="form-inline">
           <div class="form-group">
             <label class="sr-only" for="exampleInputEmail2">新增分类</label>
             <%= text_field_tag :Cname,"", class: "form-control", placeholder: "新增分类" %>
           </div>
-          <%= button_tag "确定", class: "btn btn-primary", onclick: "addLink()", type: "button" %>
-        </div>
+          <%= button_tag "确定", class: "btn btn-primary col-sm-offset-9", onclick: "addLink()", type: "button" %>
+        </form>
       </div><!-- modal-body -->
     </div><!-- modal-content -->
   </div><!-- modal-dialog -->
@@ -63,6 +62,6 @@
   $(window).bind('beforeunload',function(){return '您输入的内容尚未保存，确定离开此页面吗？';});
   var editor = new Simditor({
     textarea: $('#blog_content'),
-    toolbar: ['title','bold','italic','underline','strikethrough','color','|','ol','ul','blockquote','code','table','link','image','hr','html', 'markdown']
+    toolbar: ['title','bold','italic','underline','strikethrough','color','|','ol','ul','blockquote','code','table','|','link','image','hr','|','indent','outdent','alignment','html', 'markdown']
   })
 </script>
