@@ -16,12 +16,6 @@
         <li><%= link_to "友情链接", links_path, target: "_blank" %></li>
         <li><%= link_to "API", api_path, target: "_blank" %></li>
       </ul>
-      <%= form_tag(blogs_path, method: :get, class: "navbar-form navbar-left", role: "search") do %>
-        <div class="form-group">
-          <%= text_field_tag(:keyword, params[:keyword], class: "form-control", placeholder: "Search") %>
-        </div>
-        <%= submit_tag "搜索", onclick: "_gaq.push(['_trackEvent', 'buttonClick', 'search', 'user click search button on nav']);", class: "btn" %>
-      <% end %>
       <!--
       <ul class="nav navbar-nav navbar-right">
       <% if current_user.present? %>
