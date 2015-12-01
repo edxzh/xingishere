@@ -19,7 +19,7 @@
       <span class="ml20">作者：<%= @blog.user_name %></span>
       <span class="fr mr20">发布：<%= @blog.created_at.to_s(:db) %></span>
     </div>
-  <div class="mt5 mb10 editor-style" id="show_blog_content"><%= raw emojify(@blog.content) %></div>
+  <div class="mt10 mb10 editor-style" id="show_blog_content"><%= raw emojify(@blog.content) %></div>
   <div class="mb30">
     <span onclick="user_like(<%= @blog.id %>)" class="pull-right">
       <a href="javascript:void(0)" id="like"><span class="glyphicon <%= @blog.like_by_user?(current_user.try(:id)) ? "glyphicon-heart" : "glyphicon-heart-empty" %>" id="like_icon"></span><span id="count"><%= @blog.user_loves.count %></span>人喜欢</a>
