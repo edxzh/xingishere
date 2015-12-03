@@ -1,4 +1,3 @@
-# encoding: utf-8
 class ActivateMailer < ActionMailer::Base
   default from: 'starzhou.com'
   helper ApplicationHelper

@@ -1,4 +1,3 @@
-# encoding: utf-8
 module Admin::BlogsHelper
   def publish_text(blog)
     if blog.published?
