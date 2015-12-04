@@ -1,6 +1,4 @@
-# encoding: utf-8
-#
-# 测死链脚本    ruby 1.9.3
+# 测死链脚本    ruby 2.2.0
 #
 # gem版本：typhoeus (0.6.1) mechanize (2.5.1)
 #
