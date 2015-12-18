@@ -49,6 +49,8 @@ class User < ActiveRecord::Base
   validates :height,      numericality: { only_integer: true }, if: :profile?
   validates :sex,         presence: { message: '请选择性别' },  if: :profile?
 
+  before_save :create_remember_token
+
   has_secure_password
 
   scope :activated, -> { where("activate_status = ?", true) }
@@ -89,5 +91,9 @@ private
 
   def change_messages_publish_status
     self.messages.update_all(publish_status: Settings.publish_status.deleted)
+  end
+
+  def create_remember_token
+    self.remember_token = SecureRandom.urlsafe_base64
   end
 end
