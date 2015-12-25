@@ -5,13 +5,13 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def authorize
-    if User.find_by_id(session[:user_id]).blank?
+    if User.find_by_id(cookies[:remember_token]).blank?
       redirect_to user_login_path, alert: '请您先登录'
     end
   end
 
   def user_login
-    if session[:user_id].blank?
+    if cookies[:remember_token].blank?
       store_location
       flash[:info] = '请您先登录'
       redirect_to login_path
@@ -19,10 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin
-    p 'X' * 100
-    p current_user
-    p current_user.admin?
-    p 'h' * 100
     unless current_user && current_user.admin?
       render_404_page
     end

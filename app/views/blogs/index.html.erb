@@ -1,4 +1,5 @@
 <% provide(:title, '博客列表') %>
+The results filter by <%= raw params[:keyword] %>
 <div id="main">
   <ul class="blog_index">
     <% @blogs.each do |category_id, blogs| %>
