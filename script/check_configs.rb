@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# encoding: utf-8
 # 通过调用rake脚本，检查当前配置
 
 rails_root = File.expand_path("../../", __FILE__)

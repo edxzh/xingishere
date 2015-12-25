@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   layout false, only: :create
 
   def index
-    @comments = Comment.published.order('created_at DESC')
+    @comments = Comment.published.order('id DESC')
   end
 
   def create

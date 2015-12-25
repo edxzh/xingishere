@@ -1,5 +1,5 @@
 class WeekWellChosenMailer < ActionMailer::Base
-  default from: 'starzhou.com'
+  default from: 'postmaster@xingishere.com'
   helper  ApplicationHelper
 
   def deliver_week_blogs(email)
