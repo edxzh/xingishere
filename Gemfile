@@ -76,6 +76,7 @@ group :development do
   gem 'quiet_assets'
   gem 'awesome_print'
   gem 'byebug', require: false
+  gem 'parallel_tests'
 end
 
 group :test, :development do
