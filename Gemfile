@@ -70,6 +70,7 @@ gem 'omniauth'
 gem 'harmonious_dictionary'
 
 group :development do
+  gem 'bullet'
   gem 'cane'
   gem 'rubocop'
   gem 'brakeman', require: false

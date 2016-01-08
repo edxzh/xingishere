@@ -62,6 +62,9 @@ GEM
       terminal-table (~> 1.4.5)
     bson (3.2.4)
     builder (3.2.2)
+    bullet (5.0.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.9.0)
     byebug (6.0.2)
     cane (2.6.2)
       parallel
@@ -333,6 +336,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.9.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -356,6 +360,7 @@ DEPENDENCIES
   awesome_print
   bcrypt-ruby (= 3.1.2)
   brakeman
+  bullet
   byebug
   cane
   capybara
