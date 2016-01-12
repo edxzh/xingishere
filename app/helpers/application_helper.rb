@@ -13,9 +13,9 @@ module ApplicationHelper
     image_tag(avatar_url(user, size), alt: user.name, class: "gravatar")
   end
 
-  def avatar_url(user, size=50)
+  def avatar_url(user, size = 50)
     gravatar_id  = Digest::MD5::hexdigest(user.email.downcase)
-    gravatar_url = "http://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
+    "http://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
 
   def options_for_select_status(selected = nil)

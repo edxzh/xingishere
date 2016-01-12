@@ -18,19 +18,19 @@
 #
 
 class Blog < ActiveRecord::Base
-  belongs_to  :user
-  belongs_to  :blog_category
-  has_many    :tags
-  has_many    :user_loves,        dependent:  :destroy, inverse_of: :blog,  class_name: UserLove
-  has_many    :comments
-  has_many    :loved_users,       through:  :user_loves, source: :user
+  belongs_to :user
+  belongs_to :blog_category
+  has_many :tags
+  has_many :user_loves,        dependent:  :destroy, inverse_of: :blog,  class_name: UserLove
+  has_many :comments
+  has_many :loved_users,       through:  :user_loves, source: :user
 
-  validates   :user_id,           presence: true
-  validates   :title,             presence: true, uniqueness: true
-  validates   :content,           presence: true
-  validates   :url_name,          presence: true, uniqueness: true
-  validates   :seo_keyword,       presence: true
-  validates   :blog_category_id,  presence: true
+  validates :user_id,           presence: true
+  validates :title,             presence: true, uniqueness: true
+  validates :content,           presence: true
+  validates :url_name,          presence: true, uniqueness: true
+  validates :seo_keyword,       presence: true
+  validates :blog_category_id,  presence: true
 
   scope :weight_order, -> { order('weight DESC, created_at DESC') }
   scope :keyword,  ->(keyword) do

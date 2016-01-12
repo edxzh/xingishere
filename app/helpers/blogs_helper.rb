@@ -1,5 +1,5 @@
 module BlogsHelper
-  def weight_status_index blog
+  def weight_status_index(blog)
     "<span class='ding_blogs'>[顶]</span>" if blog.weight > 0
   end
 

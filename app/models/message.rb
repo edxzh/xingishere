@@ -10,18 +10,17 @@
 #  publish_status :boolean          default(TRUE), not null
 #
 
-# encoding : utf-8
 class Message < ActiveRecord::Base
-  belongs_to  :user
-  validates   :content,     presence: true
+  belongs_to :user
+  validates :content, presence: true
 
   scope :published, -> { where("publish_status = ?", Settings.publish_status.published) }
 
   def name
-    if self.user_id != 0
-      User.find(self.user_id).name
+    if user_id != 0
+      User.find(user_id).name
     else
-      "匿名用户"
+      '匿名用户'
     end
   end
 end
