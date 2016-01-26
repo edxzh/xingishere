@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include SessionsHelper
 
   layout 'account',           only: [:show]
-  before_filter :user_login,  only: [:show]
+  before_action :user_login,  only: [:show]
 
   def show
     @user       = User.find(params[:id])

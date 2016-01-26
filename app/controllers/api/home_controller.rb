@@ -13,5 +13,4 @@ class Api::HomeController < ApiController
       { name: '关于本站', url: about_url }
     ]
   end
-
 end

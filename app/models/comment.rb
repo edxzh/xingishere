@@ -20,7 +20,7 @@ class Comment < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :blog
 
-  validates :user_id, :blog_id, :nickname, :email, :content,      presence: true
+  validates :user_id, :blog_id, :nickname, :email, :content, presence: true
   validates :nickname, length: { minimum: 1, maximum: 8 }
   validates :content,  length: { minimum: 1, maximum: 160 }
   validate_harmonious_of :nickname, message: '昵称里也敢放敏感词...想喝茶了吗'

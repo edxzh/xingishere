@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   include SessionsHelper
   def new
-
   end
 
   def auth
@@ -25,5 +24,4 @@ class SessionsController < ApplicationController
     logout
     redirect_to root_path
   end
-
 end
