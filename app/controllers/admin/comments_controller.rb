@@ -2,7 +2,7 @@ class Admin::CommentsController < AdminController
   layout 'admin'
 
   def index
-    @comments = Comment.page(params[:page]).per(10)
+    @comments = Comment.order('created_at DESC').page(params[:page]).per(10)
   end
 
   def destroy
