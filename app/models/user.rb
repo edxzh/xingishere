@@ -28,10 +28,10 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   STATUS    = %w(single married divorce).freeze
   RELATION  = %w(primary junior senior colleage society workmate relative)
-  has_many  :user_loves,      dependent:  :destroy, inverse_of: :user,  class_name: UserLove
-  has_many  :blogs,           dependent:  :destroy, inverse_of: :user
-  has_many  :comments,        dependent:  :destroy, inverse_of: :user
-  has_many  :link_categories, dependent:  :destroy, inverse_of: :user
+  has_many  :user_loves,      dependent: :destroy, inverse_of: :user, class_name: UserLove
+  has_many  :blogs,           dependent: :destroy, inverse_of: :user
+  has_many  :comments,        dependent: :destroy, inverse_of: :user
+  has_many  :link_categories, dependent: :destroy, inverse_of: :user
   has_many  :messages
   has_many  :love_blogs,      through:  :user_loves, source: :blog
 

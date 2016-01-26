@@ -23,7 +23,7 @@ Mywebsite::Application.routes.draw do
     end
   end
 
-  resources :users, except: [:edit, :update] do
+  resources :users, except: [:edit, :update, :index] do
     collection do
       get "success"
       get "activate"
@@ -63,12 +63,7 @@ Mywebsite::Application.routes.draw do
     resources :link_categories, only: [:index, :new, :create]
     resources :tips
     resources :subscribes, only: [:index, :destroy]
-  end
-
-  # gem kindeditor upload routes
-  namespace :kindeditor do
-    post "/upload" => "assets#create"
-    get  "/filemanager" => "assets#list"
+    resources :users, only: [:index]
   end
 
   # The priority is based upon order of creation:

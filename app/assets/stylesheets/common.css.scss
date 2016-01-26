@@ -34,6 +34,13 @@ textarea{resize: vertical;}
   }
 }
 
+.navbar-absolute-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
 /* 博客 */
 .blogs {
   list_style: none;
@@ -121,6 +128,9 @@ form fieldset { margin-top: 10px; margin-bottom: 10px; }
     list-style-position: inside;
     margin-left: 15px;
   }
+  font-size: 16px;
+  font-family: arial, sans-serif;
+  line-height: 1.6;
 }
 
 /* 链接的分类 */

@@ -8,6 +8,7 @@ class Api::BlogsController < ApiController
       relation = Blog.published.includes(:blog_category, :comments)
     end
     order = params[:order] == 'hottest' ? 'view_total' : 'created_at'
+
     @blogs        = relation.order("#{order} DESC").page(params[:page]).per(params[:per_page])
     @total_count  = relation.count
   end
@@ -16,7 +17,7 @@ class Api::BlogsController < ApiController
     @blog = Rails.cache.fetch("/api/blog/#{params[:id]}", expires_in: 60.minutes) do
       Blog.find_by_url_name(params[:id])
     end
-    render json: { status: 404 } and return if @blog.nil?
+    render json: { status: 404 } && return if @blog.nil?
     @comments = @blog.comments.page(params[:page]).per(10)
   end
 

@@ -3,10 +3,10 @@
   <% @blogs.each do |blog| %>
     <article class="post">
     <header>
-    <span class="post-meta"><time datetime=<%= blog.created_at.to_s(:db) %>><%= blog.created_at.to_s(:db) %> </time>发表在 <%= link_to blog.blog_category_name, blogs_path(category: blog.blog_category_id), class: "title" %></span>
-    <h2 class="post_h2"><%= link_to blog.title, blog_path(blog) %></h2>
+      <span class="post-meta"><time datetime=<%= blog.created_at.to_s(:db) %>><%= blog.created_at.to_s(:db) %> </time>发表在 <%= link_to blog.blog_category_name, blogs_path(category: blog.blog_category_id), class: "title" %></span>
+      <h2 class="post_h2"><%= link_to blog.title, blog_path(blog) %></h2>
     </header>
-    <section class="content"><%= display_content(blog.content) %></section>
+    <section class="content"><%= truncate(strip_tags(blog.content), length: 240) %></section>
     </article>
   <% end %>
   <%= paginate @blogs, theme: 'home_page' %>

@@ -2,16 +2,11 @@ class UsersController < ApplicationController
   include SessionsHelper
 
   layout 'account',           only: [:show]
-  before_filter :user_login,  only: [:update, :show]
-  before_filter :is_admin,    only: [:update, :index]
-
-  def index
-    @users = User.page(params[:page]).per(10)# .padding(1)
-  end
+  before_action :user_login,  only: [:show]
 
   def show
     @user       = User.find(params[:id])
-    @blogs      = @user.blogs.published.page(params[:page]).per(2)
+    @blogs      = @user.blogs.published.page(params[:page]).per(5)
     @love_blogs = @user.love_blogs.page(params[:page]).per(10)
   end
 
@@ -56,7 +51,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_url, success: '删除成功'
+    redirect_to admin_users_url, success: '删除成功'
   end
 
   private

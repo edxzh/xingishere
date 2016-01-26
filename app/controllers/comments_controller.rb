@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   layout false, only: :create
 
   def index
-    @comments = Comment.published.order('created_at DESC')
+    @comments = Comment.published.order('id DESC')
   end
 
   def create
@@ -11,14 +11,12 @@ class CommentsController < ApplicationController
     email     = params[:email] || current_user.email
     remote_ip = request.remote_ip
 
-    @comment  = Comment.new({
-      content:    params[:content],
-      blog_id:    params[:blog_id],
-      user_id:    user_id,
-      nickname:   nickname,
-      email:      email,
-      remote_ip:  remote_ip
-    })
+    @comment  = Comment.new(content:   params[:content],
+                            blog_id:   params[:blog_id],
+                            user_id:   user_id,
+                            nickname:  nickname,
+                            email:     email,
+                            remote_ip: remote_ip)
 
     if @comment.save
       @comments = Blog.published.find(params[:blog_id]).comments.published.page(params[:page]).per(10)

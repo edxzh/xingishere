@@ -1,6 +1,5 @@
-# encoding: utf-8
 class ActivateMailer < ActionMailer::Base
-  default from: 'starzhou.com'
+  default from: 'postmaster@xingishere.com'
   helper ApplicationHelper
 
   def user_activate(user)

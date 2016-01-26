@@ -70,12 +70,14 @@ gem 'omniauth'
 gem 'harmonious_dictionary'
 
 group :development do
+  gem 'bullet'
   gem 'cane'
   gem 'rubocop'
   gem 'brakeman', require: false
   gem 'quiet_assets'
   gem 'awesome_print'
   gem 'byebug', require: false
+  gem 'parallel_tests'
 end
 
 group :test, :development do
@@ -99,3 +101,5 @@ end
 group :production do
   gem 'newrelic_rpm'
 end
+
+gem 'rack-mini-profiler', require: false
