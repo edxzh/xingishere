@@ -15,7 +15,6 @@
 #  email          :string(50)       default(""), not null   # 电子邮箱
 #
 
-# encoding : utf-8
 class Comment < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :blog

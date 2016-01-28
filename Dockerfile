@@ -1,6 +1,10 @@
 FROM zhouxing/starzhou:0.2
 MAINTAINER zhouxing <Edward_mjz@hotmail.com>
 
+RUN apt-get update -y
+
+RUN apt-get install -y libpq-dev nodejs default-jre git
+
 WORKDIR /app
 
 ADD Gemfile /app/Gemfile

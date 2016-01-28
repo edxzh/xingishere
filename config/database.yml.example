@@ -15,8 +15,9 @@ development:
   database: myweb
   pool: 5
   username: root
-  password: example
+  password:
   port: 3306
+  host: mysql
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,7 +29,7 @@ test:
   database: xingishere_test
   pool: 5
   username: root
-  password: example
+  password:
   port: 3306
 
 production:
