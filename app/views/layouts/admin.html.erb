@@ -23,14 +23,12 @@
         </div>
       <% end %>
       <div class="row">
-        <div class="col-md-12">
-          <div class="col-sm-3">
-            <%= render 'shared/admin_aside' %>
-          </div><!-- span3 -->
-          <div class="col-sm-9">
-            <%= yield %>
-          </div>
-        </div><!-- span12 -->
+        <div class="col-md-3">
+          <%= render 'shared/admin_aside' %>
+        </div><!-- span3 -->
+        <div class="col-md-9">
+          <%= yield %>
+        </div>
       </div><!-- row -->
     </div>
   </body>
