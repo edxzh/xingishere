@@ -2,7 +2,7 @@ Mywebsite::Application.routes.draw do
   get "/auth/:provider/callback" => "sessions#auth"
   resources :messages, only: [:create, :index]
   resources :links, only: [:index]
-  resources :sessions,  only: [:new, :create, :destory]
+  resources :sessions, only: [:new, :create, :destory]
 
   get "account/advanced"
   get "account/icon"
@@ -10,8 +10,8 @@ Mywebsite::Application.routes.draw do
   post "account/update_pro"
   post "account/update_adv"
   get "home/index"
-  get '/(page/:page)' => 'home#index', constraints: { page: /\d+/}
-  root  to: 'home#index', as: :root
+  get '/(page/:page)' => 'home#index', constraints: { page: /\d+/ }
+  root to: 'home#index', as: :root
 
   resources :comments, only: [:index, :create]
   resources :subscribes, only: [:create, :destroy]

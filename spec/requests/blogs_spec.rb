@@ -23,7 +23,7 @@ RSpec.describe 'blog page', type: :feature do
     subject { page }
 
     before(:each) do
-      @blog               = FactoryGirl.create(:blog)
+      @blog = FactoryGirl.create(:blog)
       visit blog_path(@blog)
     end
 
@@ -52,6 +52,7 @@ RSpec.describe 'blog page', type: :feature do
         @user = FactoryGirl.create(:user)
         login @user
       end
+
       it { should_not have_selector("input[id='cmt_user_name']") }
       it { should_not have_selector("input[id='cmt_user_email']") }
     end

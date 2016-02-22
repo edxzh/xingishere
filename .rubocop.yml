@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 AbcSize:
   Enabled: false
 
@@ -102,9 +104,6 @@ SignalException:
 SingleLineBlockParams:
   Enabled: false
 
-SingleSpaceBeforeFirstArg:
-  Enabled: false
-
 SpaceAroundOperators:
   Enabled: false
 
@@ -131,3 +130,6 @@ UnusedMethodArgument:
 
 WordArray:
   MinSize: 2
+
+AllCops:
+  TargetRubyVersion: 2.2
