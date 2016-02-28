@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def avatar_url(user, size = 50)
-    gravatar_id  = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
     "http://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
 

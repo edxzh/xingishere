@@ -1,5 +1,5 @@
 mysql:
-  image: zhouxing/mysql:5.5
+  image: zhouxing/mysql:latest
   ports:
     - '3306:3306'
 memcached:

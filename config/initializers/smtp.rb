@@ -7,7 +7,7 @@ Mywebsite::Application.configure do
       port:           Settings.smtp.port,
       domain:         Settings.smtp.domain,
       user_name:      Settings.smtp.user_name,
-      password:       Settings.smtp.password,
+      password:       Settings.smtp.password
     }
   end
 end

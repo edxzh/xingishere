@@ -17,7 +17,7 @@
     <div class="blog_info">
       <%= hidden_field_tag :blog_id, @blog.id, id: "blog_id" %>
       <span class="ml20">作者：<%= @blog.user_name %></span>
-      <span class="fr mr20">发布：<%= @blog.created_at.to_s(:db) %></span>
+      <span class="fr mr20">发布：<%= @blog.created_at.to_date %></span>
     </div>
   <div class="mt10 mb10 editor-style" id="show_blog_content"><%= raw emojify(@blog.content) %></div>
   <div class="mb30">

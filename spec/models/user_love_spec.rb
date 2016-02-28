@@ -1,4 +1,3 @@
-# encoding: utf-8
 require 'rails_helper'
 
 describe UserLove do
@@ -28,6 +27,5 @@ describe UserLove do
         expect(subject).to eq 1
       end
     end
-
   end
 end

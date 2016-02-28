@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def status_name=(name)
-    status = STATUS.index(name)
+    STATUS.index(name)
   end
 
   def status_EN
@@ -88,6 +88,6 @@ class User < ActiveRecord::Base
 private
 
   def change_messages_publish_status
-    self.messages.update_all(publish_status: Settings.publish_status.deleted)
+    messages.update_all(publish_status: Settings.publish_status.deleted)
   end
 end

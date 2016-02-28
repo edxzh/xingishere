@@ -1,6 +1,6 @@
 class WeekWellChosenMailer < ActionMailer::Base
   default from: 'postmaster@xingishere.com'
-  helper  ApplicationHelper
+  helper ApplicationHelper
 
   def deliver_week_blogs(email)
     @blogs              = Blog.published.order('created_at DESC').limit(5)

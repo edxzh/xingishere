@@ -36,7 +36,7 @@ module Mywebsite
     config.active_support.escape_html_entities_in_json = true
     config.action_mailer.default_url_options = { host: 'xingishere.com' }
 
-    config.exceptions_app = self.routes
+    config.exceptions_app = routes
 
     config.generators do |g|
       g.test_framework  :rspec,

@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
-  before_action :is_admin
+  before_action :admin?
 
-  def is_admin
+  def admin?
     user = User.find(session[:user_id]) if session[:user_id].present?
     if !user || !user.admin?
       render_404_page

@@ -4,7 +4,7 @@ module Memcached
   module Config
     def self.servers
       unless @servers
-        path   = File.join(Rails.root, 'config', 'memcached.yml')
+        path = File.join(Rails.root, 'config', 'memcached.yml')
         raise "Miss configuration memcached.yml, Please check" unless File.exist?(path)
         config = YAML.load_file(path)
         if config[Rails.env].blank? || config[Rails.env]['servers'].blank?

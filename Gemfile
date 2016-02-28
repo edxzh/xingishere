@@ -81,6 +81,7 @@ group :development do
 end
 
 group :test, :development do
+  gem 'dotenv-rails'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'factory_girl_rails'
