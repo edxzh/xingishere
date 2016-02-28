@@ -40,7 +40,7 @@
                   <td><%= gravatar_for(blog.user, {size: 22}) %><strong><%= blog.user.name %></strong>, <span style="font-size:13px;color:#666"><%= blog.user.description %></span><span class="view_total">访问量：<%= blog.view_total %></span></td>
                 </tr>
                 <tr>
-                  <td><a href=<%= blog_url(blog) %> target="_blank" class="blog_content"><%= display_content(blog.content) %></a><%= link_to "阅读全文", blog_url(blog), class: "view_all" %></td>
+                  <td><a href=<%= blog_url(blog) %> target="_blank" class="blog_content"><%= truncate(strip_tags(blog.content), length: 240) %></a><%= link_to "阅读全文", blog_url(blog), class: "view_all" %></td>
                 </tr>
               </tbody>
             </table>
