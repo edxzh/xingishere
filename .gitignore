@@ -39,7 +39,6 @@ config/settings.local.yml
 config/settings/*.local.yml
 config/settings/**/*.local.yml
 config/environments/*.local.yml
-config/settings/support800/*.local.yml
 vendor/bundle/
 config/newrelic.yml
 config/grid_fs.yml
