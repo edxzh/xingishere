@@ -69,6 +69,8 @@ gem 'colorize'
 gem 'omniauth'
 gem 'harmonious_dictionary'
 
+gem "sentry-raven"
+
 group :development do
   gem 'bullet'
   gem 'cane'

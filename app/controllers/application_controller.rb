@@ -1,8 +1,17 @@
 class ApplicationController < ActionController::Base
+  before_action :set_raven_context
   rescue_from ActiveRecord::RecordNotFound, with: :render_404_page
   protect_from_forgery with: :exception
 
   include SessionsHelper
+
+  def set_raven_context
+    if defined?(Raven)
+      Raven.user_context(
+        email: 'Edward_mjz@hotmail.com',
+      )
+    end
+  end
 
   def authorize
     if User.find_by_id(session[:user_id]).blank?
