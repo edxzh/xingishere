@@ -7,6 +7,8 @@ xingishere
 
 My open source blog project
 
+![](monkeyking.jpeg)
+
 # description
 It's my blog called xingishere, The author come from sichuan, chengdu, china.
 
