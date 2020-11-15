@@ -1,3 +1,7 @@
+# This project is Archived(11-16-2020)
+
+This project has been stopped being updated a while back, with a quite old tech stack it can't provide any help for learning purpose, the way it's being configured, deployed and some practice is not best practice any more, I'm very appreciate your stars and help.
+
 xingishere
 ======
 
@@ -7,16 +11,12 @@ xingishere
 
 My open source blog project
 
-![](monkeyking.jpeg)
-
 # description
 It's my blog called xingishere, The author come from sichuan, chengdu, china.
 
 It was supposed to be done a few months ago, but I spent a lot of time on DOTA, basketball and so on.
 
 The code maybe not elegant, so if u have some advice, contact me please, I would be grateful to u
-
-The online blog is <a href="http://starzhou.com" target="_blank">starzhou.com.</a> I have wrote some tech blog on it.
 
 ## environment
 * ruby 2.2.3
