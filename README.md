@@ -16,8 +16,6 @@ It was supposed to be done a few months ago, but I spent a lot of time on DOTA, 
 
 The code maybe not elegant, so if u have some advice, contact me please, I would be grateful to u
 
-The online blog is <a href="http://starzhou.com" target="_blank">starzhou.com.</a> I have wrote some tech blog on it.
-
 ## environment
 * ruby 2.2.3
 * rails 4.2.1
